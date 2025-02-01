@@ -18,10 +18,6 @@
         th {
             background-color: #f2f2f2;
         }
-        .hint {
-            color: blue;
-            display: none;
-        }
         .correct {
             background-color: lightgreen;
         }
@@ -60,7 +56,6 @@
                 } else {
                     row.classList.add("incorrect");
                     row.classList.remove("correct");
-                    document.getElementById("hint" + index).style.display = "inline";
                 }
             });
         }
@@ -93,7 +88,6 @@
                     document.write('<td><input type="text" size="5"></td>');
                     document.write('<td><input type="text" size="5"></td>');
                     document.write('<td><input type="text" size="10"></td>');
-                    document.write('<td class="hint" id="hint' + i + '">Hint: Check the algorithm logic carefully.</td>');
                     document.write('</tr>');
                 }
             </script>
