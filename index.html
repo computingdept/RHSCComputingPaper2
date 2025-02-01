@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            text-align: center;
         }
         table {
             width: 100%;
@@ -27,6 +28,8 @@
             padding: 10px;
             font-family: monospace;
             border-radius: 5px;
+            text-align: left;
+            display: inline-block;
         }
         .correct {
             background-color: #d4edda;
@@ -34,51 +37,58 @@
         .incorrect {
             background-color: #f8d7da;
         }
+        .hint-box {
+            display: none;
+            background-color: #ffffcc;
+            padding: 10px;
+            border: 1px solid #999;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
     </style>
     <script>
-        function checkTraceTable() {
-            const correctValues = [
-                { line: '1', start: '3', output: '' },
-                { line: '3', start: '3', output: '3' },
-                { line: '4', start: '2', output: '' },
-                { line: '3', start: '2', output: '2' },
-                { line: '4', start: '1', output: '' },
-                { line: '3', start: '1', output: '1' },
-                { line: '4', start: '0', output: '' },
-                { line: '3', start: '0', output: '0' },
-                { line: '4', start: '-1', output: '' },
-                { line: '6', start: '-1', output: 'Finished' }
-            ];
+        function completeAlgorithm() {
+            let start = 3;
+            let tableBody = document.getElementById("traceTableBody");
+            tableBody.innerHTML = "";
+            let lineNumber = 1;
             
-            for (let i = 0; i < correctValues.length; i++) {
-                let lineInput = document.getElementById(`line${i+1}`);
-                let startInput = document.getElementById(`start${i+1}`);
-                let outputInput = document.getElementById(`output${i+1}`);
+            while (start != -1) {
+                let row = tableBody.insertRow();
+                let lineCell = row.insertCell(0);
+                let startCell = row.insertCell(1);
+                let outputCell = row.insertCell(2);
                 
-                if (lineInput.value == correctValues[i].line && 
-                    startInput.value == correctValues[i].start && 
-                    outputInput.value == correctValues[i].output) {
-                    lineInput.classList.add('correct');
-                    startInput.classList.add('correct');
-                    outputInput.classList.add('correct');
-                    
-                    lineInput.classList.remove('incorrect');
-                    startInput.classList.remove('incorrect');
-                    outputInput.classList.remove('incorrect');
-                } else {
-                    lineInput.classList.add('incorrect');
-                    startInput.classList.add('incorrect');
-                    outputInput.classList.add('incorrect');
-                    
-                    lineInput.classList.remove('correct');
-                    startInput.classList.remove('correct');
-                    outputInput.classList.remove('correct');
-                }
+                lineCell.innerHTML = lineNumber;
+                startCell.innerHTML = start;
+                outputCell.innerHTML = start;
+                
+                start -= 1;
+                lineNumber++;
             }
+            
+            let finalRow = tableBody.insertRow();
+            let lineCell = finalRow.insertCell(0);
+            let startCell = finalRow.insertCell(1);
+            let outputCell = finalRow.insertCell(2);
+            
+            lineCell.innerHTML = lineNumber;
+            startCell.innerHTML = "-1";
+            outputCell.innerHTML = "Finished";
+        }
+
+        function showHint() {
+            let hintBox = document.getElementById("hintBox");
+            hintBox.style.display = "block";
         }
     </script>
 </head>
 <body>
+    <img src="/mnt/data/ComputingLogo - (NoBackground).png" alt="Computing Department Logo" class="logo">
     <h2>Analyze the Following Pseudocode Algorithm</h2>
     <div class="code-block">
         <p>01 start = 3</p>
@@ -89,49 +99,23 @@
         <p>06 print("Finished")</p>
     </div>
     
-    <h3>Complete the Trace Table Below</h3>
+    <h3>Trace Table</h3>
     <table>
-        <tr>
-            <th>Line Number</th>
-            <th>start</th>
-            <th>Output</th>
-        </tr>
-        <tr>
-            <td><input type="text" id="line1"></td>
-            <td><input type="text" id="start1"></td>
-            <td><input type="text" id="output1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="line2"></td>
-            <td><input type="text" id="start2"></td>
-            <td><input type="text" id="output2"></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="line3"></td>
-            <td><input type="text" id="start3"></td>
-            <td><input type="text" id="output3"></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="line4"></td>
-            <td><input type="text" id="start4"></td>
-            <td><input type="text" id="output4"></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="line5"></td>
-            <td><input type="text" id="start5"></td>
-            <td><input type="text" id="output5"></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="line6"></td>
-            <td><input type="text" id="start6"></td>
-            <td><input type="text" id="output6"></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="line7"></td>
-            <td><input type="text" id="start7"></td>
-            <td><input type="text" id="output7"></td>
-        </tr>
+        <thead>
+            <tr>
+                <th>Line Number</th>
+                <th>start</th>
+                <th>Output</th>
+            </tr>
+        </thead>
+        <tbody id="traceTableBody">
+        </tbody>
     </table>
-    <button onclick="checkTraceTable()">Check Answers</button>
+    <button onclick="completeAlgorithm()">Run Algorithm</button>
+    <button onclick="showHint()">Show Hint</button>
+    
+    <div id="hintBox" class="hint-box">
+        <strong>Hint:</strong> The algorithm starts with <code>start = 3</code> and prints it, then decreases the value by 1 in a loop until <code>start == -1</code>. The final output is "Finished".
+    </div>
 </body>
 </html>
