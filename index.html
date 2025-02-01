@@ -28,7 +28,55 @@
             font-family: monospace;
             border-radius: 5px;
         }
+        .correct {
+            background-color: #d4edda;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+        }
     </style>
+    <script>
+        function checkTraceTable() {
+            const correctValues = [
+                { line: '1', start: '3', output: '' },
+                { line: '3', start: '3', output: '3' },
+                { line: '4', start: '2', output: '' },
+                { line: '3', start: '2', output: '2' },
+                { line: '4', start: '1', output: '' },
+                { line: '3', start: '1', output: '1' },
+                { line: '4', start: '0', output: '' },
+                { line: '3', start: '0', output: '0' },
+                { line: '4', start: '-1', output: '' },
+                { line: '6', start: '-1', output: 'Finished' }
+            ];
+            
+            for (let i = 0; i < correctValues.length; i++) {
+                let lineInput = document.getElementById(`line${i+1}`);
+                let startInput = document.getElementById(`start${i+1}`);
+                let outputInput = document.getElementById(`output${i+1}`);
+                
+                if (lineInput.value == correctValues[i].line && 
+                    startInput.value == correctValues[i].start && 
+                    outputInput.value == correctValues[i].output) {
+                    lineInput.classList.add('correct');
+                    startInput.classList.add('correct');
+                    outputInput.classList.add('correct');
+                    
+                    lineInput.classList.remove('incorrect');
+                    startInput.classList.remove('incorrect');
+                    outputInput.classList.remove('incorrect');
+                } else {
+                    lineInput.classList.add('incorrect');
+                    startInput.classList.add('incorrect');
+                    outputInput.classList.add('incorrect');
+                    
+                    lineInput.classList.remove('correct');
+                    startInput.classList.remove('correct');
+                    outputInput.classList.remove('correct');
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <h2>Analyze the Following Pseudocode Algorithm</h2>
@@ -84,5 +132,6 @@
             <td><input type="text" id="output7"></td>
         </tr>
     </table>
+    <button onclick="checkTraceTable()">Check Answers</button>
 </body>
 </html>
