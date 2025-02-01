@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pseudocode Trace Table</title>
+    <title>Trace Table Checker</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -23,83 +18,57 @@
         th {
             background-color: #f2f2f2;
         }
-        .code-block {
-            background-color: #eee;
-            padding: 10px;
-            font-family: monospace;
-            border-radius: 5px;
-            text-align: left;
-            display: inline-block;
+        .hint {
+            color: blue;
+            display: none;
         }
         .correct {
-            background-color: #d4edda;
+            background-color: lightgreen;
         }
         .incorrect {
-            background-color: #f8d7da;
-        }
-        .hint-box {
-            display: none;
-            background-color: #ffffcc;
-            padding: 10px;
-            border: 1px solid #999;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-        .logo {
-            max-width: 200px;
-            margin-bottom: 20px;
+            background-color: lightcoral;
         }
     </style>
     <script>
-        function completeAlgorithm() {
-            let start = 3;
-            let tableBody = document.getElementById("traceTableBody");
-            tableBody.innerHTML = "";
-            let lineNumber = 1;
-            
-            while (start != -1) {
-                let row = tableBody.insertRow();
-                let lineCell = row.insertCell(0);
-                let startCell = row.insertCell(1);
-                let outputCell = row.insertCell(2);
+        let correctAnswers = [
+            ["01", "3", ""],
+            ["03", "3", "3"],
+            ["04", "2", ""],
+            ["03", "2", "2"],
+            ["04", "1", ""],
+            ["03", "1", "1"],
+            ["04", "0", ""],
+            ["03", "0", "0"],
+            ["04", "-1", ""],
+            ["06", "", "Finished"]
+        ];
+        
+        function checkAnswers() {
+            let rows = document.querySelectorAll("tbody tr");
+            rows.forEach((row, index) => {
+                let inputs = row.querySelectorAll("input");
+                let lineInput = inputs[0].value.trim();
+                let startInput = inputs[1].value.trim();
+                let outputInput = inputs[2].value.trim();
                 
-                lineCell.innerHTML = lineNumber;
-                startCell.innerHTML = start;
-                outputCell.innerHTML = start;
+                let correct = correctAnswers[index];
+                let isCorrect = (lineInput === correct[0]) && (startInput === correct[1]) && (outputInput === correct[2]);
                 
-                start -= 1;
-                lineNumber++;
-            }
-            
-            let finalRow = tableBody.insertRow();
-            let lineCell = finalRow.insertCell(0);
-            let startCell = finalRow.insertCell(1);
-            let outputCell = finalRow.insertCell(2);
-            
-            lineCell.innerHTML = lineNumber;
-            startCell.innerHTML = "-1";
-            outputCell.innerHTML = "Finished";
-        }
-
-        function showHint() {
-            let hintBox = document.getElementById("hintBox");
-            hintBox.style.display = "block";
+                if (isCorrect) {
+                    row.classList.add("correct");
+                    row.classList.remove("incorrect");
+                } else {
+                    row.classList.add("incorrect");
+                    row.classList.remove("correct");
+                    document.getElementById("hint" + index).style.display = "inline";
+                }
+            });
         }
     </script>
 </head>
 <body>
-    <img src="/mnt/data/ComputingLogo - (NoBackground).png" alt="Computing Department Logo" class="logo">
-    <h2>Analyze the Following Pseudocode Algorithm</h2>
-    <div class="code-block">
-        <p>01 start = 3</p>
-        <p>02 do</p>
-        <p>03 &nbsp;&nbsp;&nbsp; print(start)</p>
-        <p>04 &nbsp;&nbsp;&nbsp; start = start - 1</p>
-        <p>05 until start == -1</p>
-        <p>06 print("Finished")</p>
-    </div>
-    
-    <h3>Trace Table</h3>
+    <h2>Trace Table Completion</h2>
+    <p>Fill in the trace table based on the pseudocode provided.</p>
     <table>
         <thead>
             <tr>
@@ -108,14 +77,19 @@
                 <th>Output</th>
             </tr>
         </thead>
-        <tbody id="traceTableBody">
+        <tbody>
+            <script>
+                for (let i = 0; i < 10; i++) {
+                    document.write('<tr>');
+                    document.write('<td><input type="text" size="5"></td>');
+                    document.write('<td><input type="text" size="5"></td>');
+                    document.write('<td><input type="text" size="10"></td>');
+                    document.write('<td class="hint" id="hint' + i + '">Hint: Check the algorithm logic carefully.</td>');
+                    document.write('</tr>');
+                }
+            </script>
         </tbody>
     </table>
-    <button onclick="completeAlgorithm()">Run Algorithm</button>
-    <button onclick="showHint()">Show Hint</button>
-    
-    <div id="hintBox" class="hint-box">
-        <strong>Hint:</strong> The algorithm starts with <code>start = 3</code> and prints it, then decreases the value by 1 in a loop until <code>start == -1</code>. The final output is "Finished".
-    </div>
+    <button onclick="checkAnswers()">Check Answers</button>
 </body>
 </html>
