@@ -14,13 +14,16 @@
     <script>
         function checkAnswers() {
             let correctValues = [
-                ["01", "H", "", "", ""],
-                ["02", "K", "", "", ""],
-                ["03", "", "", "9", ""],
-                ["05", "", "", "90", ""],
-                ["05", "", "", "900", ""],
-                ["07", "", "", "", "HK900"],
-                ["08", "", "", "", "HK900"]
+                ["01", "3", ""],
+                ["03", "3", "3"],
+                ["04", "2", ""],
+                ["03", "2", "2"],
+                ["04", "1", ""],
+                ["03", "1", "1"],
+                ["04", "0", ""],
+                ["03", "0", "0"],
+                ["04", "-1", ""],
+                ["06", "", "Finished"]
             ];
             
             let table = document.getElementById("traceTable");
@@ -45,31 +48,29 @@
     <h2>Interactive Trace Table</h2>
     <p>Complete the trace table based on the given pseudocode:</p>
     <pre>
-01 a = input("Enter first letter of first name")
-02 b = input("Enter first letter of second name")
-03 c = random(1,100)
-04 while c < 100
-05   c = c * 10
-06 endwhile
-07 pilotCode = a + b + str(c)
-08 print(pilotCode)
+01 start = 3
+02 do
+03   print(start)
+04   start = start - 1
+05 until start == -1
+06 print("Finished")
     </pre>
     <table id="traceTable">
         <tr>
             <th>Line Number</th>
-            <th>a</th>
-            <th>b</th>
-            <th>c</th>
-            <th>pilotCode</th>
+            <th>start</th>
             <th>Output</th>
         </tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswers()">Check Answers</button>
 </body>
