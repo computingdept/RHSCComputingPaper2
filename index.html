@@ -43,9 +43,8 @@
     </style>
     <script>
         function showQuestion(questionNumber) {
-            document.getElementById("question1").style.display = questionNumber === 1 ? "block" : "none";
-            document.getElementById("question2").style.display = questionNumber === 2 ? "block" : "none";
-            document.getElementById("question3").style.display = questionNumber === 3 ? "block" : "none";
+            document.querySelectorAll(".question").forEach(div => div.style.display = "none");
+            document.getElementById("question" + questionNumber).style.display = "block";
         }
     </script>
 </head>
@@ -57,7 +56,7 @@
     <button onclick="showQuestion(2)">Question 2</button>
     <button onclick="showQuestion(3)">Question 3</button>
     
-    <div id="question3" style="display: none;">
+    <div id="question3" class="question" style="display: none;">
         <h3>Question 3</h3>
         <p>This algorithm generates a code for each pilot:</p>
         <pre>
