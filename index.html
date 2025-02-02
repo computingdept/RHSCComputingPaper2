@@ -41,50 +41,103 @@
             text-align: center;
         }
     </style>
+    <script>
+        function showQuestion(questionNumber) {
+            document.getElementById("question1").style.display = questionNumber === 1 ? "block" : "none";
+            document.getElementById("question2").style.display = questionNumber === 2 ? "block" : "none";
+        }
+    </script>
 </head>
 <body>
     <h2>Trace Table Completion</h2>
-    <p>Complete the following trace table for the given algorithm when the surname "Kofi" and the year 2021 are entered.</p>
-    <p>You may not need to use all rows in the table.</p>
     
-    <table>
-        <thead>
-            <tr>
-                <th>Line Number</th>
-                <th>surname</th>
-                <th>year</th>
-                <th>staffID</th>
-                <th>Output</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>01</td>
-                <td>Kofi</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td></td>
-                <td>2021</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <script>
-                for (let i = 0; i < 8; i++) {
-                    document.write('<tr>');
-                    document.write('<td><input type="text" size="5"></td>');
-                    document.write('<td><input type="text" size="10"></td>');
-                    document.write('<td><input type="text" size="5"></td>');
-                    document.write('<td><input type="text" size="10"></td>');
-                    document.write('<td><input type="text" size="10"></td>');
-                    document.write('</tr>');
-                }
-            </script>
-        </tbody>
-    </table>
+    <p>Select which question you would like to answer:</p>
+    <button onclick="showQuestion(1)">Question 1</button>
+    <button onclick="showQuestion(2)">Question 2</button>
+    
+    <div id="question1" style="display: none;">
+        <h3>Question 1</h3>
+        <p>Read the following pseudocode algorithm:</p>
+        <pre>
+01  surname = input("Enter surname")
+02  year = input("Enter starting year")
+03  staffID = surname + str(year)
+04  while staffID.length < 10
+05      staffID = staffID + "x"
+06  endwhile
+07  print("ID " + staffID)
+        </pre>
+        <p>Complete the following trace table for the given algorithm.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Line Number</th>
+                    <th>surname</th>
+                    <th>year</th>
+                    <th>staffID</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    for (let i = 0; i < 10; i++) {
+                        document.write('<tr>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('</tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="question2" style="display: none;">
+        <h3>Question 2</h3>
+        <p>Complete the following trace table for the given algorithm when the surname "Kofi" and the year 2021 are entered.</p>
+        <p>You may not need to use all rows in the table.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Line Number</th>
+                    <th>surname</th>
+                    <th>year</th>
+                    <th>staffID</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>Kofi</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td></td>
+                    <td>2021</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <script>
+                    for (let i = 0; i < 8; i++) {
+                        document.write('<tr>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('</tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
+    </div>
+    
     <button onclick="checkAnswers()">Check Answers</button>
     <div id="message" class="message"></div>
     
