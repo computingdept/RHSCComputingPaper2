@@ -31,11 +31,8 @@
                 let correct = correctValues[i - 1];
                 
                 for (let j = 0; j < inputs.length; j++) {
-                    if (inputs[j].value.trim() === correct[j]) {
-                        inputs[j].style.backgroundColor = "lightgreen";
-                    } else {
-                        inputs[j].style.backgroundColor = "lightcoral";
-                    }
+                    inputs[j].value = correct[j];
+                    inputs[j].style.backgroundColor = "lightgreen";
                 }
             }
         }
@@ -63,13 +60,13 @@
             <th>pilotCode</th>
             <th>Output</th>
         </tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>01</td><td>H</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>02</td><td></td><td>K</td><td></td><td></td><td></td></tr>
+        <tr><td>03</td><td></td><td></td><td>9</td><td></td><td></td></tr>
+        <tr><td>05</td><td></td><td></td><td>90</td><td></td><td></td></tr>
+        <tr><td>05</td><td></td><td></td><td>900</td><td></td><td></td></tr>
+        <tr><td>07</td><td></td><td></td><td></td><td>HK900</td><td></td></tr>
+        <tr><td>08</td><td></td><td></td><td></td><td></td><td>HK900</td></tr>
     </table>
     <button onclick="checkAnswers()">Check Answers</button>
     <br>
