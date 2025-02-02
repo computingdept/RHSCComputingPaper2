@@ -56,6 +56,26 @@
     <button onclick="showQuestion(2)">Question 2</button>
     <button onclick="showQuestion(3)">Question 3</button>
     
+    <div id="question1" class="question" style="display: none;">
+        <h3>Question 1</h3>
+        <p>Read the following pseudocode algorithm:</p>
+        <pre>
+01  surname = input("Enter surname")
+02  year = input("Enter starting year")
+03  staffID = surname + str(year)
+04  while staffID.length < 10
+05      staffID = staffID + "x"
+06  endwhile
+07  print("ID " + staffID)
+        </pre>
+        <p>Complete the trace table for the given algorithm.</p>
+    </div>
+    
+    <div id="question2" class="question" style="display: none;">
+        <h3>Question 2</h3>
+        <p>Complete the following trace table for the given algorithm when the surname "Kofi" and the year 2021 are entered.</p>
+    </div>
+    
     <div id="question3" class="question" style="display: none;">
         <h3>Question 3</h3>
         <p>This algorithm generates a code for each pilot:</p>
@@ -70,57 +90,6 @@
 08  print(pilotCode)
         </pre>
         <p>Complete the trace table for the given algorithm.</p>
-        <p>Lines 01 to 03 have already been completed.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Line Number</th>
-                    <th>a</th>
-                    <th>b</th>
-                    <th>c</th>
-                    <th>pilotCode</th>
-                    <th>Output</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>H</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td></td>
-                    <td>K</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td></td>
-                    <td></td>
-                    <td>9</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <script>
-                    for (let i = 0; i < 7; i++) {
-                        document.write('<tr>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('</tr>');
-                    }
-                </script>
-            </tbody>
-        </table>
     </div>
     
     <button onclick="checkAnswers()">Check Answers</button>
