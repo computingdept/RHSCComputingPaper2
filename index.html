@@ -14,9 +14,6 @@
     <script>
         function checkAnswers() {
             let correctValues = [
-                ["01", "H", "", "", ""],
-                ["02", "K", "", "", ""],
-                ["03", "", "", "9", ""],
                 ["05", "", "", "90", ""],
                 ["05", "", "", "900", ""],
                 ["07", "", "", "", "HK900"],
@@ -26,13 +23,16 @@
             let table = document.getElementById("traceTable");
             let rows = table.rows;
             
-            for (let i = 1; i < rows.length; i++) {
+            for (let i = 4; i < rows.length; i++) { // Starting from row 4 to keep first 3 lines static
                 let inputs = rows[i].getElementsByTagName("input");
-                let correct = correctValues[i - 1];
+                let correct = correctValues[i - 4];
                 
                 for (let j = 0; j < inputs.length; j++) {
-                    inputs[j].value = correct[j];
-                    inputs[j].style.backgroundColor = "lightgreen";
+                    if (inputs[j].value.trim() === correct[j]) {
+                        inputs[j].style.backgroundColor = "lightgreen";
+                    } else {
+                        inputs[j].style.backgroundColor = "lightcoral";
+                    }
                 }
             }
         }
@@ -63,10 +63,10 @@
         <tr><td>01</td><td>H</td><td></td><td></td><td></td><td></td></tr>
         <tr><td>02</td><td></td><td>K</td><td></td><td></td><td></td></tr>
         <tr><td>03</td><td></td><td></td><td>9</td><td></td><td></td></tr>
-        <tr><td>05</td><td></td><td></td><td>90</td><td></td><td></td></tr>
-        <tr><td>05</td><td></td><td></td><td>900</td><td></td><td></td></tr>
-        <tr><td>07</td><td></td><td></td><td></td><td>HK900</td><td></td></tr>
-        <tr><td>08</td><td></td><td></td><td></td><td></td><td>HK900</td></tr>
+        <tr><td>05</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>05</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>07</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>08</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswers()">Check Answers</button>
     <br>
