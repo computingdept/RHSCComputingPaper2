@@ -69,11 +69,73 @@
 07  print("ID " + staffID)
         </pre>
         <p>Complete the trace table for the given algorithm.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Line Number</th>
+                    <th>surname</th>
+                    <th>year</th>
+                    <th>staffID</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    for (let i = 0; i < 10; i++) {
+                        document.write('<tr>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('</tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
     </div>
     
     <div id="question2" class="question" style="display: none;">
         <h3>Question 2</h3>
         <p>Complete the following trace table for the given algorithm when the surname "Kofi" and the year 2021 are entered.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Line Number</th>
+                    <th>surname</th>
+                    <th>year</th>
+                    <th>staffID</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>Kofi</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td></td>
+                    <td>2021</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <script>
+                    for (let i = 0; i < 8; i++) {
+                        document.write('<tr>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('</tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
     </div>
     
     <div id="question3" class="question" style="display: none;">
@@ -90,18 +152,32 @@
 08  print(pilotCode)
         </pre>
         <p>Complete the trace table for the given algorithm.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Line Number</th>
+                    <th>a</th>
+                    <th>b</th>
+                    <th>c</th>
+                    <th>pilotCode</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    for (let i = 0; i < 7; i++) {
+                        document.write('<tr>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="5"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><input type="text" size="10"></td>');
+                        document.write('</tr>');
+                    }
+                </script>
+            </tbody>
+        </table>
     </div>
-    
-    <button onclick="checkAnswers()">Check Answers</button>
-    <div id="message" class="message"></div>
-    
-    <script>
-        function checkAnswers() {
-            let rows = document.querySelectorAll("tbody tr");
-            rows.forEach((row) => {
-                row.classList.add("correct");
-            });
-        }
-    </script>
 </body>
 </html>
