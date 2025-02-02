@@ -46,6 +46,11 @@
             document.querySelectorAll(".question").forEach(div => div.style.display = "none");
             document.getElementById("question" + questionNumber).style.display = "block";
         }
+        
+        function checkRow(button) {
+            let row = button.parentElement.parentElement;
+            row.classList.add("correct");
+        }
     </script>
 </head>
 <body>
@@ -77,6 +82,7 @@
                     <th>year</th>
                     <th>staffID</th>
                     <th>Output</th>
+                    <th>Check</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,6 +94,7 @@
                         document.write('<td><input type="text" size="5"></td>');
                         document.write('<td><input type="text" size="10"></td>');
                         document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><button onclick="checkRow(this)">Check</button></td>');
                         document.write('</tr>');
                     }
                 </script>
@@ -97,6 +104,16 @@
     
     <div id="question2" class="question" style="display: none;">
         <h3>Question 2</h3>
+        <p>Each member of staff that works in a restaurant is given a Staff ID. This is calculated using the following algorithm:</p>
+        <pre>
+01  surname = input("Enter surname")
+02  year = input("Enter starting year")
+03  staffID = surname + str(year)
+04  while staffID.length < 10
+05      staffID = staffID + "x"
+06  endwhile
+07  print("ID " + staffID)
+        </pre>
         <p>Complete the following trace table for the given algorithm when the surname "Kofi" and the year 2021 are entered.</p>
         <table>
             <thead>
@@ -106,23 +123,10 @@
                     <th>year</th>
                     <th>staffID</th>
                     <th>Output</th>
+                    <th>Check</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>Kofi</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td></td>
-                    <td>2021</td>
-                    <td></td>
-                    <td></td>
-                </tr>
                 <script>
                     for (let i = 0; i < 8; i++) {
                         document.write('<tr>');
@@ -131,6 +135,7 @@
                         document.write('<td><input type="text" size="5"></td>');
                         document.write('<td><input type="text" size="10"></td>');
                         document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><button onclick="checkRow(this)">Check</button></td>');
                         document.write('</tr>');
                     }
                 </script>
@@ -161,6 +166,7 @@
                     <th>c</th>
                     <th>pilotCode</th>
                     <th>Output</th>
+                    <th>Check</th>
                 </tr>
             </thead>
             <tbody>
@@ -173,6 +179,7 @@
                         document.write('<td><input type="text" size="5"></td>');
                         document.write('<td><input type="text" size="10"></td>');
                         document.write('<td><input type="text" size="10"></td>');
+                        document.write('<td><button onclick="checkRow(this)">Check</button></td>');
                         document.write('</tr>');
                     }
                 </script>
