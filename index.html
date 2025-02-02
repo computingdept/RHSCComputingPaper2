@@ -41,87 +41,28 @@
             text-align: center;
         }
     </style>
-    <script>
-        let correctAnswers = [
-            ["01", "3", ""],
-            ["03", "3", "3"],
-            ["04", "2", ""],
-            ["03", "2", "2"],
-            ["04", "1", ""],
-            ["03", "1", "1"],
-            ["04", "0", ""],
-            ["03", "0", "0"],
-            ["04", "-1", ""],
-            ["06", "", "Finished"]
-        ];
-        
-        function checkAnswers() {
-            let rows = document.querySelectorAll("tbody tr");
-            let allCorrect = true;
-            rows.forEach((row, index) => {
-                let inputs = row.querySelectorAll("input");
-                let lineInput = inputs[0].value.trim();
-                let startInput = inputs[1].value.trim();
-                let outputInput = inputs[2].value.trim();
-                
-                let correct = correctAnswers[index];
-                let isCorrect = (lineInput === correct[0]) && (startInput === correct[1]) && (outputInput === correct[2]);
-                
-                if (isCorrect) {
-                    row.classList.add("correct");
-                    row.classList.remove("incorrect");
-                } else {
-                    row.classList.add("incorrect");
-                    row.classList.remove("correct");
-                    allCorrect = false;
-                }
-            });
-            
-            if (allCorrect) {
-                displayMessage();
-            }
-        }
-        
-        function displayMessage() {
-            let messages = [
-                "Great work, young Padawan!",
-                "The Force is strong with you, Padawan!",
-                "Excellent progress, Padawan!",
-                "A true Jedi learner, you are!",
-                "Master Yoda would be proud, Padawan!"
-            ];
-            let yodaApologies = [
-                "As teachers, failed to protect nature, we have. Responsibility, we must take.",
-                "As educators, harmed the earth, we have. Inspire change, we must.",
-                "Regret the impact, we do. A greener curriculum, we seek as teachers.",
-                "Much waste, schools have caused. As teachers, sustainability, we must embrace.",
-                "Balance lost in education, because of us teachers. Restore harmony, we shall."
-            ];
-            
-            let randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            let randomYoda = yodaApologies[Math.floor(Math.random() * yodaApologies.length)];
-            
-            document.getElementById("message").innerHTML = randomMessage + "<br>" + randomYoda;
-        }
-    </script>
 </head>
 <body>
     <h2>Trace Table Completion</h2>
     <p>Read the following pseudocode algorithm:</p>
     <pre>
-01  start = 3
-02  do
-03      print(start)
-04      start = start - 1
-05  until start == -1
-06  print("Finished")
+01  surname = input("Enter surname")
+02  year = input("Enter starting year")
+03  staffID = surname + str(year)
+04  while staffID.length < 10
+05      staffID = staffID + "x"
+06  endwhile
+07  print("ID " + staffID)
     </pre>
     <p>Complete the following trace table for the given algorithm.</p>
+    
     <table>
         <thead>
             <tr>
                 <th>Line Number</th>
-                <th>start</th>
+                <th>surname</th>
+                <th>year</th>
+                <th>staffID</th>
                 <th>Output</th>
             </tr>
         </thead>
@@ -130,7 +71,9 @@
                 for (let i = 0; i < 10; i++) {
                     document.write('<tr>');
                     document.write('<td><input type="text" size="5"></td>');
+                    document.write('<td><input type="text" size="10"></td>');
                     document.write('<td><input type="text" size="5"></td>');
+                    document.write('<td><input type="text" size="10"></td>');
                     document.write('<td><input type="text" size="10"></td>');
                     document.write('</tr>');
                 }
@@ -139,5 +82,14 @@
     </table>
     <button onclick="checkAnswers()">Check Answers</button>
     <div id="message" class="message"></div>
+    
+    <script>
+        function checkAnswers() {
+            let rows = document.querySelectorAll("tbody tr");
+            rows.forEach((row) => {
+                row.classList.add("correct");
+            });
+        }
+    </script>
 </body>
 </html>
