@@ -3,155 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trace Table Checker</title>
+    <title>Interactive Trace Table</title>
     <style>
-        body {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3a/Lightsaber_green.svg');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        th, td {
-            border: 1px solid white;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        .correct {
-            background-color: lightgreen;
-        }
-        .incorrect {
-            background-color: lightcoral;
-        }
-        .message {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 20px;
-            text-align: center;
-        }
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        button { margin-top: 10px; padding: 10px; }
     </style>
     <script>
-        function showQuestion(questionNumber) {
-            document.querySelectorAll(".question").forEach(div => div.style.display = "none");
-            document.getElementById("question" + questionNumber).style.display = "block";
+        function checkAnswers() {
+            let correctValues = [
+                ["01", "3", ""],
+                ["03", "3", "3"],
+                ["04", "2", ""],
+                ["03", "2", "2"],
+                ["04", "1", ""],
+                ["03", "1", "1"],
+                ["04", "0", ""],
+                ["03", "0", "0"],
+                ["04", "-1", ""],
+                ["06", "", "Finished"]
+            ];
+            
+            let table = document.getElementById("traceTable");
+            let rows = table.rows;
+            
+            for (let i = 1; i < rows.length; i++) {
+                let inputs = rows[i].getElementsByTagName("input");
+                let correct = correctValues[i - 1];
+                
+                for (let j = 0; j < inputs.length; j++) {
+                    if (inputs[j].value.trim() === correct[j]) {
+                        inputs[j].style.backgroundColor = "lightgreen";
+                    } else {
+                        inputs[j].style.backgroundColor = "lightcoral";
+                    }
+                }
+            }
         }
     </script>
 </head>
 <body>
-    <h2>Trace Table Completion</h2>
-    
-    <p>Select which question you would like to answer:</p>
-    <button onclick="showQuestion(1)">Question 1</button>
-    <button onclick="showQuestion(2)">Question 2</button>
-    <button onclick="showQuestion(3)">Question 3</button>
-    
-    <div id="question1" class="question" style="display: none;">
-        <h3>Question 1</h3>
-        <p>Read the following pseudocode algorithm:</p>
-        <pre>
-01  start = 3
-02  do
-03      print(start)
-04      start = start - 1
-05  until start == -1
-06  print("Finished")
-        </pre>
-        <p>Complete the trace table for the given algorithm.</p>
-        <table>
-            <thead>
-                <tr><th>Line Number</th><th>start</th><th>Output</th></tr>
-            </thead>
-            <tbody>
-                <script>
-                    for (let i = 0; i < 10; i++) {
-                        document.write('<tr>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('</tr>');
-                    }
-                </script>
-            </tbody>
-        </table>
-    </div>
-    
-    <div id="question2" class="question" style="display: none;">
-        <h3>Question 2</h3>
-        <p>Each member of staff that works in a restaurant is given a Staff ID. This is calculated using the following algorithm:</p>
-        <pre>
-01  surname = input("Enter surname")
-02  year = input("Enter starting year")
-03  staffID = surname + str(year)
-04  while staffID.length < 10
-05      staffID = staffID + "x"
-06  endwhile
-07  print("ID " + staffID)
-        </pre>
-        <p>Complete the trace table for the given algorithm.</p>
-        <table>
-            <thead>
-                <tr><th>Line Number</th><th>surname</th><th>year</th><th>staffID</th><th>Output</th></tr>
-            </thead>
-            <tbody>
-                <script>
-                    for (let i = 0; i < 10; i++) {
-                        document.write('<tr>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('</tr>');
-                    }
-                </script>
-            </tbody>
-        </table>
-    </div>
-    
-    <div id="question3" class="question" style="display: none;">
-        <h3>Question 3</h3>
-        <p>This algorithm generates a code for each pilot:</p>
-        <pre>
-01  a = input("Enter first letter of first name")
-02  b = input("Enter first letter of second name")
-03  c = random(1,100)
-04  while c < 100
-05      c = c * 10
-06  endwhile
-07  pilotCode = a + b + str(c)
-08  print(pilotCode)
-        </pre>
-        <p>Complete the trace table for the given algorithm.</p>
-        <table>
-            <thead>
-                <tr><th>Line Number</th><th>a</th><th>b</th><th>c</th><th>pilotCode</th><th>Output</th></tr>
-            </thead>
-            <tbody>
-                <script>
-                    for (let i = 0; i < 10; i++) {
-                        document.write('<tr>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('</tr>');
-                    }
-                </script>
-            </tbody>
-        </table>
-    </div>
+    <h2>Interactive Trace Table</h2>
+    <p>Complete the trace table based on the given pseudocode:</p>
+    <pre>
+01 start = 3
+02 do
+03   print(start)
+04   start = start - 1
+05 until start == -1
+06 print("Finished")
+    </pre>
+    <table id="traceTable">
+        <tr>
+            <th>Line Number</th>
+            <th>start</th>
+            <th>Output</th>
+        </tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswers()">Check Answers</button>
 </body>
 </html>
