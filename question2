@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Trace Table</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        button { margin-top: 10px; padding: 10px; }
+    </style>
+    <script>
+        function checkAnswers() {
+            let correctValues = [
+                ["01", "H", "", "", ""],
+                ["02", "K", "", "", ""],
+                ["03", "", "", "9", ""],
+                ["05", "", "", "90", ""],
+                ["05", "", "", "900", ""],
+                ["07", "", "", "", "HK900"],
+                ["08", "", "", "", "HK900"]
+            ];
+            
+            let table = document.getElementById("traceTable");
+            let rows = table.rows;
+            
+            for (let i = 1; i < rows.length; i++) {
+                let inputs = rows[i].getElementsByTagName("input");
+                let correct = correctValues[i - 1];
+                
+                for (let j = 0; j < inputs.length; j++) {
+                    if (inputs[j].value.trim() === correct[j]) {
+                        inputs[j].style.backgroundColor = "lightgreen";
+                    } else {
+                        inputs[j].style.backgroundColor = "lightcoral";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Interactive Trace Table</h2>
+    <p>Complete the trace table based on the given pseudocode:</p>
+    <pre>
+01 a = input("Enter first letter of first name")
+02 b = input("Enter first letter of second name")
+03 c = random(1,100)
+04 while c < 100
+05   c = c * 10
+06 endwhile
+07 pilotCode = a + b + str(c)
+08 print(pilotCode)
+    </pre>
+    <table id="traceTable">
+        <tr>
+            <th>Line Number</th>
+            <th>a</th>
+            <th>b</th>
+            <th>c</th>
+            <th>pilotCode</th>
+            <th>Output</th>
+        </tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswers()">Check Answers</button>
+</body>
+</html>
