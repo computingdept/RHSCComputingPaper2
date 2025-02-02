@@ -44,17 +44,8 @@
 </head>
 <body>
     <h2>Trace Table Completion</h2>
-    <p>Read the following pseudocode algorithm:</p>
-    <pre>
-01  surname = input("Enter surname")
-02  year = input("Enter starting year")
-03  staffID = surname + str(year)
-04  while staffID.length < 10
-05      staffID = staffID + "x"
-06  endwhile
-07  print("ID " + staffID)
-    </pre>
-    <p>Complete the following trace table for the given algorithm.</p>
+    <p>Complete the following trace table for the given algorithm when the surname "Kofi" and the year 2021 are entered.</p>
+    <p>You may not need to use all rows in the table.</p>
     
     <table>
         <thead>
@@ -67,8 +58,22 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>01</td>
+                <td>Kofi</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td></td>
+                <td>2021</td>
+                <td></td>
+                <td></td>
+            </tr>
             <script>
-                for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 8; i++) {
                     document.write('<tr>');
                     document.write('<td><input type="text" size="5"></td>');
                     document.write('<td><input type="text" size="10"></td>');
