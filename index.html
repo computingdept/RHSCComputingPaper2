@@ -42,14 +42,63 @@
         }
     </style>
     <script>
+        const correctAnswersQ1 = [
+            ["01", "3", ""],
+            ["03", "3", "3"],
+            ["04", "2", ""],
+            ["03", "2", "2"],
+            ["04", "1", ""],
+            ["03", "1", "1"],
+            ["04", "0", ""],
+            ["03", "0", "0"],
+            ["04", "-1", ""],
+            ["06", "", "Finished"]
+        ];
+        
+        const correctAnswersQ2 = [
+            ["01", "Kofi", "", "", ""],
+            ["02", "", "2021", "", ""],
+            ["03", "", "", "Kofi2021", ""],
+            ["05", "", "", "Kofi2021x", ""],
+            ["05", "", "", "Kofi2021xx", ""],
+            ["07", "", "", "", "ID Kofi2021xx"]
+        ];
+        
+        const correctAnswersQ3 = [
+            ["01", "H", "", "", "", ""],
+            ["02", "", "K", "", "", ""],
+            ["03", "", "", "9", "", ""],
+            ["05", "", "", "90", "", ""],
+            ["05", "", "", "900", "", ""],
+            ["07", "", "", "", "HK900", ""],
+            ["08", "", "", "", "HK900", ""]
+        ];
+        
         function showQuestion(questionNumber) {
             document.querySelectorAll(".question").forEach(div => div.style.display = "none");
             document.getElementById("question" + questionNumber).style.display = "block";
         }
         
-        function checkRow(button) {
+        function checkRow(button, questionNumber) {
             let row = button.parentElement.parentElement;
-            row.classList.add("correct");
+            let inputs = row.querySelectorAll("input");
+            let rowIndex = Array.from(row.parentElement.children).indexOf(row);
+            let correctAnswers = questionNumber === 1 ? correctAnswersQ1 : questionNumber === 2 ? correctAnswersQ2 : correctAnswersQ3;
+            
+            let isCorrect = true;
+            inputs.forEach((input, index) => {
+                if (correctAnswers[rowIndex] && input.value.trim() !== correctAnswers[rowIndex][index]) {
+                    isCorrect = false;
+                }
+            });
+            
+            if (isCorrect) {
+                row.classList.remove("incorrect");
+                row.classList.add("correct");
+            } else {
+                row.classList.remove("correct");
+                row.classList.add("incorrect");
+            }
         }
     </script>
 </head>
@@ -63,38 +112,18 @@
     
     <div id="question1" class="question" style="display: none;">
         <h3>Question 1</h3>
-        <p>Read the following pseudocode algorithm:</p>
-        <pre>
-01  surname = input("Enter surname")
-02  year = input("Enter starting year")
-03  staffID = surname + str(year)
-04  while staffID.length < 10
-05      staffID = staffID + "x"
-06  endwhile
-07  print("ID " + staffID)
-        </pre>
-        <p>Complete the trace table for the given algorithm.</p>
         <table>
             <thead>
-                <tr>
-                    <th>Line Number</th>
-                    <th>surname</th>
-                    <th>year</th>
-                    <th>staffID</th>
-                    <th>Output</th>
-                    <th>Check</th>
-                </tr>
+                <tr><th>Line Number</th><th>start</th><th>Output</th><th>Check</th></tr>
             </thead>
             <tbody>
                 <script>
-                    for (let i = 0; i < 10; i++) {
+                    for (let i = 0; i < correctAnswersQ1.length; i++) {
                         document.write('<tr>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><button onclick="checkRow(this)">Check</button></td>');
+                        for (let j = 0; j < 3; j++) {
+                            document.write('<td><input type="text" size="5"></td>');
+                        }
+                        document.write('<td><button onclick="checkRow(this, 1)">Check</button></td>');
                         document.write('</tr>');
                     }
                 </script>
@@ -104,82 +133,18 @@
     
     <div id="question2" class="question" style="display: none;">
         <h3>Question 2</h3>
-        <p>Each member of staff that works in a restaurant is given a Staff ID. This is calculated using the following algorithm:</p>
-        <pre>
-01  surname = input("Enter surname")
-02  year = input("Enter starting year")
-03  staffID = surname + str(year)
-04  while staffID.length < 10
-05      staffID = staffID + "x"
-06  endwhile
-07  print("ID " + staffID)
-        </pre>
-        <p>Complete the following trace table for the given algorithm when the surname "Kofi" and the year 2021 are entered.</p>
         <table>
             <thead>
-                <tr>
-                    <th>Line Number</th>
-                    <th>surname</th>
-                    <th>year</th>
-                    <th>staffID</th>
-                    <th>Output</th>
-                    <th>Check</th>
-                </tr>
+                <tr><th>Line Number</th><th>surname</th><th>year</th><th>staffID</th><th>Output</th><th>Check</th></tr>
             </thead>
             <tbody>
                 <script>
-                    for (let i = 0; i < 8; i++) {
+                    for (let i = 0; i < correctAnswersQ2.length; i++) {
                         document.write('<tr>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><button onclick="checkRow(this)">Check</button></td>');
-                        document.write('</tr>');
-                    }
-                </script>
-            </tbody>
-        </table>
-    </div>
-    
-    <div id="question3" class="question" style="display: none;">
-        <h3>Question 3</h3>
-        <p>This algorithm generates a code for each pilot:</p>
-        <pre>
-01  a = input("Enter first letter of first name")
-02  b = input("Enter first letter of second name")
-03  c = random(1,100)
-04  while c < 100
-05      c = c * 10
-06  endwhile
-07  pilotCode = a + b + str(c)
-08  print(pilotCode)
-        </pre>
-        <p>Complete the trace table for the given algorithm.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Line Number</th>
-                    <th>a</th>
-                    <th>b</th>
-                    <th>c</th>
-                    <th>pilotCode</th>
-                    <th>Output</th>
-                    <th>Check</th>
-                </tr>
-            </thead>
-            <tbody>
-                <script>
-                    for (let i = 0; i < 7; i++) {
-                        document.write('<tr>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="5"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><input type="text" size="10"></td>');
-                        document.write('<td><button onclick="checkRow(this)">Check</button></td>');
+                        for (let j = 0; j < 5; j++) {
+                            document.write('<td><input type="text" size="10"></td>');
+                        }
+                        document.write('<td><button onclick="checkRow(this, 2)">Check</button></td>');
                         document.write('</tr>');
                     }
                 </script>
