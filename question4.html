@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Discount Calculator Trace Table</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid black; padding: 8px; text-align: center; }
+    th { background-color: #f2f2f2; }
+    button { margin-top: 10px; padding: 10px; }
+  </style>
+  <script>
+    function checkAnswers() {
+      // Define the expected values for each step (row)
+      let correctValues = [
+        ["01", "70", "", "", ""],
+        ["02", "", "yes", "", ""],
+        ["06", "", "", "10", ""],
+        ["11", "", "", "15", ""],
+        ["13", "", "", "", "The discount is 15"]
+      ];
+      
+      let table = document.getElementById("traceTable");
+      let rows = table.rows;
+      
+      // Skip the header row (i = 0)
+      for (let i = 1; i < rows.length; i++) { 
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        
+        for (let j = 0; j < inputs.length; j++) {
+          if (inputs[j].value.trim() === correct[j]) {
+            inputs[j].style.backgroundColor = "lightgreen";
+          } else {
+            inputs[j].style.backgroundColor = "lightcoral";
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Interactive Trace Table Variation</h2>
+  <p>Complete the trace table based on the following pseudocode:</p>
+  <p>Complete the trace table for the algorithm when a customer spends <strong>$70</strong> and is a <strong>member</strong>.</p>
+  <pre>
+01 purchaseAmount = input("Enter purchase amount")
+02 memberStatus = input("Enter member status (yes/no)")
+03 if purchaseAmount >= 100 then
+04   discount = 20
+05 elseif purchaseAmount >= 50 then
+06   discount = 10
+07 else
+08   discount = 0
+09 endif
+10 if memberStatus == "yes" then
+11   discount = discount + 5
+12 endif
+13 print("The discount is", discount)
+  </pre>
+  <table id="traceTable">
+    <tr>
+      <th>Line Number</th>
+      <th>purchaseAmount</th>
+      <th>memberStatus</th>
+      <th>discount</th>
+      <th>Output</th>
+    </tr>
+    <!-- Five rows for the significant steps -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkAnswers()">Check Answers</button>
+  <br>
+  <button onclick="window.location.href='question2.html'">Next Question</button>
+</body>
+</html>
