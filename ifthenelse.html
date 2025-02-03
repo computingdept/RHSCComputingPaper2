@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
   <script>
     /* ============================
        Task 1: Discount Calculator
-       Scenario: A customer spends $70 and is a member.
+       Scenario: A customer spends £70 and is a member.
        Expected: discount becomes 10 then 15; output "The discount is 15"
     ============================ */
     function checkAnswersTask1() {
@@ -48,7 +48,7 @@
 
     /* ============================
        Task 2: Shipping Cost Calculator
-       Scenario: A package weighs 8kg and the distance is 150km.
+       Scenario: A package weighs 8kg and the shipping distance is 150km.
        Expected: cost becomes 30 then 40; output "The shipping cost is 40"
     ============================ */
     function checkAnswersTask2() {
@@ -78,14 +78,15 @@
        Task 3: Grade Calculator
        Scenario: A student scores 85.
        Expected: Grade "B" is assigned; output "Your grade is B"
+       (Blank column removed.)
     ============================ */
     function checkAnswersTask3() {
       let correctValues = [
-        ["01", "85", "", "", ""],
-        ["02", "", "", "", ""],
-        ["05", "", "", "B", ""],
-        ["", "", "", "", ""],
-        ["11", "", "", "", "Your grade is B"]
+        ["01", "85", "", ""],
+        ["02", "", "B", ""],
+        ["11", "", "", "Your grade is B"],
+        ["", "", "", ""],
+        ["", "", "", ""]
       ];
       let table = document.getElementById("traceTableTask3");
       let rows = table.rows;
@@ -104,16 +105,17 @@
 
     /* ============================
        Task 4: Tax Calculator
-       Scenario: Annual income is 60000.
+       Scenario: Annual income is £60000.
        Expected: tax = 60000*0.2 = 12000; output "The tax to be paid is 12000"
+       (Blank column removed.)
     ============================ */
     function checkAnswersTask4() {
       let correctValues = [
-        ["01", "60000", "", "", ""],
-        ["02", "", "", "", ""],
-        ["03", "", "", "12000", ""],
-        ["", "", "", "", ""],
-        ["07", "", "", "", "The tax to be paid is 12000"]
+        ["01", "60000", "", ""],
+        ["02", "", "", ""],
+        ["03", "", "12000", ""],
+        ["", "", "", ""],
+        ["07", "", "", "The tax to be paid is 12000"]
       ];
       let table = document.getElementById("traceTableTask4");
       let rows = table.rows;
@@ -132,16 +134,17 @@
 
     /* ============================
        Task 5: Bonus Calculator
-       Scenario: Monthly sales are 1500.
+       Scenario: Monthly sales are £1500.
        Expected: bonus = 100; output "The bonus is 100"
+       (Blank column removed.)
     ============================ */
     function checkAnswersTask5() {
       let correctValues = [
-        ["01", "1500", "", "", ""],
-        ["03", "", "", "100", ""],
-        ["07", "", "", "", ""],
-        ["", "", "", "", ""],
-        ["10", "", "", "", "The bonus is 100"]
+        ["01", "1500", "", ""],
+        ["03", "", "100", ""],
+        ["07", "", "", ""],
+        ["", "", "", ""],
+        ["10", "", "", "The bonus is 100"]
       ];
       let table = document.getElementById("traceTableTask5");
       let rows = table.rows;
@@ -160,7 +163,7 @@
 
     /* ============================
        Task 6: Scholarship Eligibility Calculator
-       Scenario: GPA is 3.7 and extracurricular score is 85.
+       Scenario: A student has a GPA of 3.7 and an extracurricular score of 85.
        Expected: eligible = true; output "Scholarship eligibility: true"
     ============================ */
     function checkAnswersTask6() {
@@ -190,14 +193,15 @@
        Task 7: Exam Pass/Fail Checker
        Scenario: A student scores 45.
        Expected: result = "Fail"; output "Result: Fail"
+       (Blank column removed.)
     ============================ */
     function checkAnswersTask7() {
       let correctValues = [
-        ["01", "45", "", "", ""],
-        ["02", "", "", "", ""],
-        ["04", "", "", "Fail", ""],
-        ["", "", "", "", ""],
-        ["07", "", "", "", "Result: Fail"]
+        ["01", "45", "", ""],
+        ["02", "", "", ""],
+        ["04", "", "Fail", ""],
+        ["", "", "", ""],
+        ["07", "", "", "Result: Fail"]
       ];
       let table = document.getElementById("traceTableTask7");
       let rows = table.rows;
@@ -216,16 +220,17 @@
 
     /* ============================
        Task 8: Bank Interest Calculator
-       Scenario: Account balance is 15000.
+       Scenario: An account balance is £15000.
        Expected: interest = 15000*0.05 = 750; output "Interest earned is 750"
+       (Blank column removed.)
     ============================ */
     function checkAnswersTask8() {
       let correctValues = [
-        ["01", "15000", "", "", ""],
-        ["02", "", "", "", ""],
-        ["03", "", "", "750", ""],
-        ["", "", "", "", ""],
-        ["07", "", "", "", "Interest earned is 750"]
+        ["01", "15000", "", ""],
+        ["02", "", "", ""],
+        ["03", "", "750", ""],
+        ["", "", "", ""],
+        ["07", "", "", "Interest earned is 750"]
       ];
       let table = document.getElementById("traceTableTask8");
       let rows = table.rows;
@@ -244,7 +249,7 @@
 
     /* ============================
        Task 9: Order Total Calculator with Tax
-       Scenario: itemTotal is 80 and shipping cost is 25.
+       Scenario: The item total is £80 and the shipping cost is £25.
        Expected: subtotal = 105, tax = 10.5, total = 115.5; output "The total order cost is 115.5"
     ============================ */
     function checkAnswersTask9() {
@@ -272,7 +277,7 @@
 
     /* ============================
        Task 10: Speeding Fine Calculator
-       Scenario: A vehicle’s speed is 80 and the speed limit is 60.
+       Scenario: A vehicle's speed is 80 and the speed limit is 60.
        Expected: fine = (80 - 60)*5 = 100; output "The speeding fine is 100"
     ============================ */
     function checkAnswersTask10() {
@@ -319,7 +324,7 @@
   <!-- Task 1: Discount Calculator -->
   <section id="task1">
     <h2>Task 1: Discount Calculator</h2>
-    <p>Complete the trace table for the algorithm when a customer spends <strong>$70</strong> and is a <strong>member</strong>.</p>
+    <p>Complete the trace table for the algorithm when a customer spends <strong>£70</strong> and is a <strong>member</strong>.</p>
     <pre>
 01 purchaseAmount = input("Enter purchase amount")
 02 memberStatus = input("Enter member status (yes/no)")
@@ -343,7 +348,6 @@
         <th>discount</th>
         <th>Output</th>
       </tr>
-      <!-- Five rows for key steps -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -389,7 +393,7 @@
     <button onclick="checkAnswersTask2()">Check Answers</button>
   </section>
 
-  <!-- Task 3: Grade Calculator -->
+  <!-- Task 3: Grade Calculator (Blank column removed) -->
   <section id="task3">
     <h2>Task 3: Grade Calculator</h2>
     <p>Complete the trace table for the algorithm when a student scores <strong>85</strong>.</p>
@@ -410,23 +414,22 @@
       <tr>
         <th>Line Number</th>
         <th>score</th>
-        <th></th>
         <th>grade</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask3()">Check Answers</button>
   </section>
 
-  <!-- Task 4: Tax Calculator -->
+  <!-- Task 4: Tax Calculator (Blank column removed) -->
   <section id="task4">
     <h2>Task 4: Tax Calculator</h2>
-    <p>Complete the trace table for the algorithm when an annual income is <strong>60000</strong>.</p>
+    <p>Complete the trace table for the algorithm when an annual income is <strong>£60000</strong>.</p>
     <pre>
 01 income = input("Enter annual income")
 02 if income > 50000 then
@@ -440,23 +443,22 @@
       <tr>
         <th>Line Number</th>
         <th>income</th>
-        <th></th>
         <th>tax</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask4()">Check Answers</button>
   </section>
 
-  <!-- Task 5: Bonus Calculator -->
+  <!-- Task 5: Bonus Calculator (Blank column removed) -->
   <section id="task5">
     <h2>Task 5: Bonus Calculator</h2>
-    <p>Complete the trace table for the algorithm when monthly sales are <strong>1500</strong>.</p>
+    <p>Complete the trace table for the algorithm when monthly sales are <strong>£1500</strong>.</p>
     <pre>
 01 sales = input("Enter monthly sales")
 02 if sales >= 1000 then
@@ -473,15 +475,14 @@
       <tr>
         <th>Line Number</th>
         <th>sales</th>
-        <th></th>
         <th>bonus</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask5()">Check Answers</button>
   </section>
@@ -522,7 +523,7 @@
     <button onclick="checkAnswersTask6()">Check Answers</button>
   </section>
 
-  <!-- Task 7: Exam Pass/Fail Checker -->
+  <!-- Task 7: Exam Pass/Fail Checker (Blank column removed) -->
   <section id="task7">
     <h2>Task 7: Exam Pass/Fail Checker</h2>
     <p>Complete the trace table for the algorithm when a student scores <strong>45</strong>.</p>
@@ -539,23 +540,22 @@
       <tr>
         <th>Line Number</th>
         <th>mark</th>
-        <th></th>
         <th>result</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask7()">Check Answers</button>
   </section>
 
-  <!-- Task 8: Bank Interest Calculator -->
+  <!-- Task 8: Bank Interest Calculator (Blank column removed) -->
   <section id="task8">
     <h2>Task 8: Bank Interest Calculator</h2>
-    <p>Complete the trace table for the algorithm when an account balance is <strong>15000</strong>.</p>
+    <p>Complete the trace table for the algorithm when an account balance is <strong>£15000</strong>.</p>
     <pre>
 01 balance = input("Enter account balance")
 02 if balance >= 10000 then
@@ -569,15 +569,14 @@
       <tr>
         <th>Line Number</th>
         <th>balance</th>
-        <th></th>
         <th>interest</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask8()">Check Answers</button>
   </section>
@@ -585,7 +584,7 @@
   <!-- Task 9: Order Total Calculator with Tax -->
   <section id="task9">
     <h2>Task 9: Order Total Calculator with Tax</h2>
-    <p>Complete the trace table for the algorithm when the item total is <strong>80</strong> and the shipping cost is <strong>25</strong>.</p>
+    <p>Complete the trace table for the algorithm when the item total is <strong>£80</strong> and the shipping cost is <strong>£25</strong>.</p>
     <pre>
 01 itemTotal = input("Enter total of items")
 02 shipping = input("Enter shipping cost")
