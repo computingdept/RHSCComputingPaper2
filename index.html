@@ -1,78 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Trace Table</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid black; padding: 8px; text-align: center; }
-        th { background-color: #f2f2f2; }
-        button { margin-top: 10px; padding: 10px; }
-    </style>
-    <script>
-        function checkAnswers() {
-            let correctValues = [
-                ["", "", "90", "", ""],
-                ["", "", "900", "", ""],
-                ["", "", "", "HK900", ""],
-                ["", "", "", "", "HK900"]
-            ];
-            
-            let table = document.getElementById("traceTable");
-            let rows = table.rows;
-            
-            for (let i = 4; i < rows.length; i++) { // Starting from row 4 to keep first 3 lines static
-                let inputs = rows[i].getElementsByTagName("input");
-                let correct = correctValues[i - 4];
-                
-                for (let j = 0; j < inputs.length; j++) {
-                    if (inputs[j].value.trim() === correct[j]) {
-                        inputs[j].style.backgroundColor = "lightgreen";
-                    } else {
-                        inputs[j].style.backgroundColor = "lightcoral";
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff ID Trace Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+    }
+  </style>
+  <script>
+    function checkStaffIDTrace() {
+      // The expected correct answers for each key step are:
+      // Row 1 (Line 01): surname = "Kofi"
+      // Row 2 (Line 02): year = "2021"
+      // Row 3 (Line 03): staffID becomes "Kofi2021"
+      // Row 4 (Line 05, first iteration): staffID becomes "Kofi2021x"
+      // Row 5 (Line 05, second iteration): staffID becomes "Kofi2021xx"
+      // Row 6 (Line 06 / Output): Final Output is "Kofi2021xx"
+      
+      let correctValues = [
+         ["01", "Kofi", "", "", ""],
+         ["02", "", "2021", "", ""],
+         ["03", "", "", "Kofi2021", ""],
+         ["05", "", "", "Kofi2021x", ""],
+         ["05", "", "", "Kofi2021xx", ""],
+         ["06", "", "", "", "Kofi2021xx"]
+      ];
+      
+      let table = document.getElementById("traceTableStaffID");
+      let rows = table.rows;
+      
+      // Loop through each row (skipping the header row)
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+            if (inputs[j].value.trim() === correct[j]) {
+               inputs[j].style.backgroundColor = "lightgreen";
+            } else {
+               inputs[j].style.backgroundColor = "lightcoral";
             }
-        }
-    </script>
+         }
+      }
+    }
+  </script>
 </head>
 <body>
-    <h2>Interactive Trace Table</h2>
-    <p>Complete the trace table based on the given pseudocode:</p>
-    <p>The surname “Kofi” and the year 2021 are entered.:</p>
-    <p>The first three lines have been completed for you:</p>
-    
-    <pre>
-01 a = input("Enter first letter of first name")
-02 b = input("Enter first letter of second name")
-03 c = random(1,100)
-04 while c < 100
-05   c = c * 10
+  <h2>Staff ID Trace Table</h2>
+  <p>
+    Each member of staff in the restaurant is given a Staff ID calculated by the following algorithm:
+  </p>
+  <pre>
+01 surname = input("Enter surname")
+02 year = input("Enter starting year")
+03 staffID = surname + str(year)
+04 while staffID.length < 10
+05     staffID = staffID + "x"
 06 endwhile
-07 pilotCode = a + b + str(c)
-08 print(pilotCode)
-    </pre>
-    <table id="traceTable">
-        <tr>
-            <th>Line Number</th>
-            <th>a</th>
-            <th>b</th>
-            <th>c</th>
-            <th>pilotCode</th>
-            <th>Output</th>
-        </tr>
-        <tr><td>01</td><td>H</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>02</td><td></td><td>K</td><td></td><td></td><td></td></tr>
-        <tr><td>03</td><td></td><td></td><td>9</td><td></td><td></td></tr>
-        <tr><td>05</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td>05</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td>07</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td>08</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswers()">Check Answers</button>
-    <br>
-    <button onclick="window.location.href='question2.html'">Next Question</button>
+  </pre>
+  <p>
+    Complete the trace table for the inputs <strong>Kofi</strong> and <strong>2021</strong>.
+  </p>
+  
+  <table id="traceTableStaffID">
+    <tr>
+      <th>Line Number</th>
+      <th>surname</th>
+      <th>year</th>
+      <th>staffID</th>
+      <th>Output</th>
+    </tr>
+    <!-- Row 1: Line 01 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 2: Line 02 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 3: Line 03 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 4: First iteration of Line 05 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 5: Second iteration of Line 05 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 6: Line 06 / Final Output -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkStaffIDTrace()">Check Answers</button>
 </body>
 </html>
