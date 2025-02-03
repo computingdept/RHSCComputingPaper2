@@ -33,13 +33,13 @@
   </style>
   <script>
     function checkStaffIDTrace() {
-      // The expected correct answers for each key step are:
+      // Expected correct values for each key step:
       // Row 1 (Line 01): surname = "Kofi"
       // Row 2 (Line 02): year = "2021"
       // Row 3 (Line 03): staffID becomes "Kofi2021"
       // Row 4 (Line 05, first iteration): staffID becomes "Kofi2021x"
       // Row 5 (Line 05, second iteration): staffID becomes "Kofi2021xx"
-      // Row 6 (Line 06 / Output): Final Output is "Kofi2021xx"
+      // Row 6 (Line 07): Final Output is "Your staffID is Kofi2021xx"
       
       let correctValues = [
          ["01", "Kofi", "", "", ""],
@@ -47,7 +47,7 @@
          ["03", "", "", "Kofi2021", ""],
          ["05", "", "", "Kofi2021x", ""],
          ["05", "", "", "Kofi2021xx", ""],
-         ["06", "", "", "", "Kofi2021xx"]
+         ["07", "", "", "", "Your staffID is Kofi2021xx"]
       ];
       
       let table = document.getElementById("traceTableStaffID");
@@ -80,6 +80,7 @@
 04 while staffID.length < 10
 05     staffID = staffID + "x"
 06 endwhile
+07 print("Your staffID is " + staffID)
   </pre>
   <p>
     Complete the trace table for the inputs <strong>Kofi</strong> and <strong>2021</strong>.
@@ -133,7 +134,7 @@
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 6: Line 06 / Final Output -->
+    <!-- Row 6: Line 07 / Final Output -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
