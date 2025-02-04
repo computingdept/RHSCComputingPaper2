@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Condition-Controlled Loop Trace Table</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+    h2 { color: #333; }
+    pre { background-color: #eee; padding: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #333; padding: 8px; text-align: center; }
+    th { background-color: #f2f2f2; }
+    button { margin-top: 10px; padding: 10px 20px; font-size: 1em; }
+  </style>
+  <script>
+    function checkAnswersLoop() {
+      // The correct trace values for each executed line (skipping the header row).
+      // Each inner array represents: [Line Number, x, y, Output]
+      let correctValues = [
+        ["01", "15", "", ""],          // x = 15
+        ["02", "", "0", ""],           // y = 0
+        ["04", "", "1", ""],           // Iteration 1: y = y + 1  → y becomes 1
+        ["05", "14", "", ""],          // Iteration 1: x = x - y  → x becomes 15 - 1 = 14
+        ["04", "", "2", ""],           // Iteration 2: y becomes 2
+        ["05", "12", "", ""],          // Iteration 2: x becomes 14 - 2 = 12
+        ["04", "", "3", ""],           // Iteration 3: y becomes 3
+        ["05", "9", "", ""],           // Iteration 3: x becomes 12 - 3 = 9
+        ["04", "", "4", ""],           // Iteration 4: y becomes 4
+        ["05", "5", "", ""],           // Iteration 4: x becomes 9 - 4 = 5
+        ["04", "", "5", ""],           // Iteration 5: y becomes 5
+        ["05", "0", "", ""],           // Iteration 5: x becomes 5 - 5 = 0
+        ["07", "", "", "5"]            // print(y) outputs "5"
+      ];
+      
+      let table = document.getElementById("traceTableLoop");
+      let rows = table.rows;
+      
+      // Start from row index 1 (skipping header row)
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          if (inputs[j].value.trim() === correct[j]) {
+            inputs[j].style.backgroundColor = "lightgreen";
+          } else {
+            inputs[j].style.backgroundColor = "lightcoral";
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Condition-Controlled Loop Trace Table</h2>
+  <p>
+    Complete the trace table for the following pseudocode:
+  </p>
+  <pre>
+01 x = 15
+02 y = 0
+03 while x > 0
+04    y = y + 1
+05    x = x – y
+06 endwhile
+07 print(y)
+  </pre>
+  <table id="traceTableLoop">
+    <tr>
+      <th>Line Number</th>
+      <th>x</th>
+      <th>y</th>
+      <th>Output</th>
+    </tr>
+    <!-- Row 1: Line 01 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 2: Line 02 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 3: Iteration 1, Line 04 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 4: Iteration 1, Line 05 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 5: Iteration 2, Line 04 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 6: Iteration 2, Line 05 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 7: Iteration 3, Line 04 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 8: Iteration 3, Line 05 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 9: Iteration 4, Line 04 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 10: Iteration 4, Line 05 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 11: Iteration 5, Line 04 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 12: Iteration 5, Line 05 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 13: Line 07 (Print Output) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkAnswersLoop()">Check Answers</button>
+</body>
+</html>
