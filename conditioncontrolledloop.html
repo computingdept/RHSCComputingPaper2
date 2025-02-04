@@ -1,62 +1,477 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Condition-Controlled Loop Trace Table</title>
+  <title>10 Condition-Controlled Loop Trace Table Tasks</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-    h2 { color: #333; }
-    pre { background-color: #eee; padding: 10px; }
+    nav ul { list-style: none; padding: 0; display: flex; gap: 10px; }
+    nav ul li { display: inline; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: bold; }
+    section { margin-bottom: 40px; border-top: 2px solid #ccc; padding-top: 20px; }
     table { width: 100%; border-collapse: collapse; margin-top: 10px; }
     th, td { border: 1px solid #333; padding: 8px; text-align: center; }
     th { background-color: #f2f2f2; }
-    button { margin-top: 10px; padding: 10px 20px; font-size: 1em; }
+    pre { background-color: #eee; padding: 10px; }
+    button { margin-top: 10px; padding: 10px 20px; }
   </style>
   <script>
-    function checkAnswersLoop() {
-      // The correct trace values for each executed line (skipping the header row).
-      // Each inner array represents: [Line Number, x, y, Output]
-      let correctValues = [
-        ["01", "15", "", ""],          // x = 15
-        ["02", "", "0", ""],           // y = 0
-        ["04", "", "1", ""],           // Iteration 1: y = y + 1  → y becomes 1
-        ["05", "14", "", ""],          // Iteration 1: x = x - y  → x becomes 15 - 1 = 14
-        ["04", "", "2", ""],           // Iteration 2: y becomes 2
-        ["05", "12", "", ""],          // Iteration 2: x becomes 14 - 2 = 12
-        ["04", "", "3", ""],           // Iteration 3: y becomes 3
-        ["05", "9", "", ""],           // Iteration 3: x becomes 12 - 3 = 9
-        ["04", "", "4", ""],           // Iteration 4: y becomes 4
-        ["05", "5", "", ""],           // Iteration 4: x becomes 9 - 4 = 5
-        ["04", "", "5", ""],           // Iteration 5: y becomes 5
-        ["05", "0", "", ""],           // Iteration 5: x becomes 5 - 5 = 0
-        ["07", "", "", "5"]            // print(y) outputs "5"
+    /* ----------------------------
+       Task 1: Loop Decrementing x by Increasing y
+       Pseudocode:
+         01 x = 15
+         02 y = 0
+         03 while x > 0
+         04    y = y + 1
+         05    x = x – y
+         06 endwhile
+         07 print(y)
+       Expected trace:
+         Row 1: ["01", "15", "", ""]
+         Row 2: ["02", "", "0", ""]
+         Row 3: ["04", "", "1", ""]
+         Row 4: ["05", "14", "", ""]
+         Row 5: ["04", "", "2", ""]
+         Row 6: ["05", "12", "", ""]
+         Row 7: ["04", "", "3", ""]
+         Row 8: ["05", "9", "", ""]
+         Row 9: ["04", "", "4", ""]
+         Row 10: ["05", "5", "", ""]
+         Row 11: ["04", "", "5", ""]
+         Row 12: ["05", "0", "", ""]
+         Row 13: ["07", "", "", "5"]
+    ---------------------------- */
+    function checkAnswersTask1() {
+      let correct = [
+        ["01", "15", "", ""],
+        ["02", "", "0", ""],
+        ["04", "", "1", ""],
+        ["05", "14", "", ""],
+        ["04", "", "2", ""],
+        ["05", "12", "", ""],
+        ["04", "", "3", ""],
+        ["05", "9", "", ""],
+        ["04", "", "4", ""],
+        ["05", "5", "", ""],
+        ["04", "", "5", ""],
+        ["05", "0", "", ""],
+        ["07", "", "", "5"]
       ];
-      
-      let table = document.getElementById("traceTableLoop");
+      let table = document.getElementById("traceTableLoopTask1");
       let rows = table.rows;
-      
-      // Start from row index 1 (skipping header row)
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
         let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 2: Sum of Even Numbers from 1 to 10
+       Pseudocode:
+         01 n = 1
+         02 sum = 0
+         03 while n <= 10
+         04    if n mod 2 == 0 then
+         05       sum = sum + n
+         06    endif
+         07    n = n + 1
+         08 endwhile
+         09 print(sum)
+       (A condensed trace table is provided using an "Iteration" column.)
+       Expected trace:
+         Row 1: ["Init", "1", "0", ""]
+         Row 2: ["1", "2", "0", ""]
+         Row 3: ["2", "3", "2", ""]
+         Row 4: ["3", "4", "2", ""]
+         Row 5: ["4", "5", "6", ""]
+         Row 6: ["5", "6", "6", ""]
+         Row 7: ["6", "7", "12", ""]
+         Row 8: ["7", "8", "12", ""]
+         Row 9: ["8", "9", "20", ""]
+         Row 10: ["9", "10", "20", ""]
+         Row 11: ["10", "11", "30", ""]
+         Row 12: ["Final", "", "", "30"]
+    ---------------------------- */
+    function checkAnswersTask2() {
+      let correct = [
+        ["Init", "1", "0", ""],
+        ["1", "2", "0", ""],
+        ["2", "3", "2", ""],
+        ["3", "4", "2", ""],
+        ["4", "5", "6", ""],
+        ["5", "6", "6", ""],
+        ["6", "7", "12", ""],
+        ["7", "8", "12", ""],
+        ["8", "9", "20", ""],
+        ["9", "10", "20", ""],
+        ["10", "11", "30", ""],
+        ["Final", "", "", "30"]
+      ];
+      let table = document.getElementById("traceTableLoopTask2");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 3: Factorial of 5
+       Pseudocode:
+         01 n = 5
+         02 factorial = 1
+         03 while n > 0
+         04    factorial = factorial * n
+         05    n = n - 1
+         06 endwhile
+         07 print(factorial)
+       Expected trace:
+         Row 1: ["Init", "5", "1", ""]
+         Row 2: ["1", "4", "5", ""]
+         Row 3: ["2", "3", "20", ""]
+         Row 4: ["3", "2", "60", ""]
+         Row 5: ["4", "1", "120", ""]
+         Row 6: ["5", "0", "120", ""]
+         Row 7: ["Final", "", "", "120"]
+    ---------------------------- */
+    function checkAnswersTask3() {
+      let correct = [
+        ["Init", "5", "1", ""],
+        ["1", "4", "5", ""],
+        ["2", "3", "20", ""],
+        ["3", "2", "60", ""],
+        ["4", "1", "120", ""],
+        ["5", "0", "120", ""],
+        ["Final", "", "", "120"]
+      ];
+      let table = document.getElementById("traceTableLoopTask3");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 4: Sum of Numbers Until Sum ≥ 20
+       Pseudocode:
+         01 n = 1
+         02 sum = 0
+         03 while sum < 20
+         04    sum = sum + n
+         05    n = n + 1
+         06 endwhile
+         07 print(sum)
+       Expected trace:
+         Row 1: ["Init", "1", "0", ""]
+         Row 2: ["1", "2", "1", ""]
+         Row 3: ["2", "3", "3", ""]
+         Row 4: ["3", "4", "6", ""]
+         Row 5: ["4", "5", "10", ""]
+         Row 6: ["5", "6", "15", ""]
+         Row 7: ["6", "7", "21", ""]
+         Row 8: ["Final", "", "", "21"]
+    ---------------------------- */
+    function checkAnswersTask4() {
+      let correct = [
+        ["Init", "1", "0", ""],
+        ["1", "2", "1", ""],
+        ["2", "3", "3", ""],
+        ["3", "4", "6", ""],
+        ["4", "5", "10", ""],
+        ["5", "6", "15", ""],
+        ["6", "7", "21", ""],
+        ["Final", "", "", "21"]
+      ];
+      let table = document.getElementById("traceTableLoopTask4");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 5: Count Digits in 12345
+       Pseudocode:
+         01 num = 12345
+         02 count = 0
+         03 while num > 0
+         04    num = num // 10
+         05    count = count + 1
+         06 endwhile
+         07 print(count)
+       Expected trace:
+         Row 1: ["Init", "12345", "0", ""]
+         Row 2: ["1", "1234", "1", ""]
+         Row 3: ["2", "123", "2", ""]
+         Row 4: ["3", "12", "3", ""]
+         Row 5: ["4", "1", "4", ""]
+         Row 6: ["5", "0", "5", ""]
+         Row 7: ["Final", "", "", "5"]
+    ---------------------------- */
+    function checkAnswersTask5() {
+      let correct = [
+        ["Init", "12345", "0", ""],
+        ["1", "1234", "1", ""],
+        ["2", "123", "2", ""],
+        ["3", "12", "3", ""],
+        ["4", "1", "4", ""],
+        ["5", "0", "5", ""],
+        ["Final", "", "", "5"]
+      ];
+      let table = document.getElementById("traceTableLoopTask5");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 6: Greatest Power of 2 ≤ 100
+       Pseudocode:
+         01 n = 1
+         02 while n * 2 <= 100
+         03    n = n * 2
+         04 endwhile
+         05 print(n)
+       Expected trace:
+         Row 1: ["Init", "1", ""]
+         Row 2: ["1", "2", ""]
+         Row 3: ["2", "4", ""]
+         Row 4: ["3", "8", ""]
+         Row 5: ["4", "16", ""]
+         Row 6: ["5", "32", ""]
+         Row 7: ["6", "64", ""]
+         Row 8: ["Final", "", "64"]
+    ---------------------------- */
+    function checkAnswersTask6() {
+      let correct = [
+        ["Init", "1", ""],
+        ["1", "2", ""],
+        ["2", "4", ""],
+        ["3", "8", ""],
+        ["4", "16", ""],
+        ["5", "32", ""],
+        ["6", "64", ""],
+        ["Final", "", "64"]
+      ];
+      let table = document.getElementById("traceTableLoopTask6");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 7: Fibonacci Generator (First Fibonacci > 20)
+       Pseudocode:
+         01 a = 0
+         02 b = 1
+         03 while b <= 20
+         04    temp = b
+         05    b = a + b
+         06    a = temp
+         07 endwhile
+         08 print(b)
+       Expected trace:
+         Row 1: ["Init", "0", "1", ""]
+         Row 2: ["1", "1", "1", ""]
+         Row 3: ["2", "1", "2", ""]
+         Row 4: ["3", "2", "3", ""]
+         Row 5: ["4", "3", "5", ""]
+         Row 6: ["5", "5", "8", ""]
+         Row 7: ["6", "8", "13", ""]
+         Row 8: ["7", "13", "21", ""]
+         Row 9: ["Final", "", "", "21"]
+    ---------------------------- */
+    function checkAnswersTask7() {
+      let correct = [
+        ["Init", "0", "1", ""],
+        ["1", "1", "1", ""],
+        ["2", "1", "2", ""],
+        ["3", "2", "3", ""],
+        ["4", "3", "5", ""],
+        ["5", "5", "8", ""],
+        ["6", "8", "13", ""],
+        ["7", "13", "21", ""],
+        ["Final", "", "", "21"]
+      ];
+      let table = document.getElementById("traceTableLoopTask7");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 8: Sum with Break
+       Pseudocode:
+         01 n = 1
+         02 sum = 0
+         03 while true
+         04    sum = sum + n
+         05    if sum >= 15 then
+         06       break
+         07    endif
+         08    n = n + 1
+         09 endwhile
+         10 print(sum)
+       Expected trace:
+         Row 1: ["Init", "1", "0", ""]
+         Row 2: ["1", "2", "1", ""]
+         Row 3: ["2", "3", "3", ""]
+         Row 4: ["3", "4", "6", ""]
+         Row 5: ["4", "5", "10", ""]
+         Row 6: ["5", "5", "15", ""]
+         Row 7: ["Final", "", "", "15"]
+    ---------------------------- */
+    function checkAnswersTask8() {
+      let correct = [
+        ["Init", "1", "0", ""],
+        ["1", "2", "1", ""],
+        ["2", "3", "3", ""],
+        ["3", "4", "6", ""],
+        ["4", "5", "10", ""],
+        ["5", "5", "15", ""],
+        ["Final", "", "", "15"]
+      ];
+      let table = document.getElementById("traceTableLoopTask8");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 9: Sum of Squares (n*n ≤ 25)
+       Pseudocode:
+         01 n = 1
+         02 sum = 0
+         03 while n*n <= 25
+         04    sum = sum + n*n
+         05    n = n + 1
+         06 endwhile
+         07 print(sum)
+       Expected trace:
+         Row 1: ["Init", "1", "0", ""]
+         Row 2: ["1", "2", "1", ""]
+         Row 3: ["2", "3", "5", ""]
+         Row 4: ["3", "4", "14", ""]
+         Row 5: ["4", "5", "30", ""]
+         Row 6: ["5", "6", "55", ""]
+         Row 7: ["Final", "", "", "55"]
+    ---------------------------- */
+    function checkAnswersTask9() {
+      let correct = [
+        ["Init", "1", "0", ""],
+        ["1", "2", "1", ""],
+        ["2", "3", "5", ""],
+        ["3", "4", "14", ""],
+        ["4", "5", "30", ""],
+        ["5", "6", "55", ""],
+        ["Final", "", "", "55"]
+      ];
+      let table = document.getElementById("traceTableLoopTask9");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    /* ----------------------------
+       Task 10: Restaurant Menu Ordering (Countdown Loop)
+       Pseudocode:
+         01 n = 10
+         02 output = ""
+         03 while n >= 0
+         04    output = output + n + " "
+         05    n = n - 3
+         06 endwhile
+         07 print(output)
+       Expected trace:
+         Row 1: ["Init", "10", "", ""]
+         Row 2: ["1", "7", "10 ", ""]
+         Row 3: ["2", "4", "10 7 ", ""]
+         Row 4: ["3", "1", "10 7 4 ", ""]
+         Row 5: ["4", "-2", "10 7 4 1 ", ""]
+         Row 6: ["Final", "", "", "10 7 4 1"]
+    ---------------------------- */
+    function checkAnswersTask10() {
+      let correct = [
+        ["Init", "10", "", ""],
+        ["1", "7", "10 ", ""],
+        ["2", "4", "10 7 ", ""],
+        ["3", "1", "10 7 4 ", ""],
+        ["4", "-2", "10 7 4 1 ", ""],
+        ["Final", "", "", "10 7 4 1"]
+      ];
+      let table = document.getElementById("traceTableLoopTask10");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++){
+        let inputs = rows[i].getElementsByTagName("input");
+        let expected = correct[i - 1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === expected[j]) ? "lightgreen" : "lightcoral";
         }
       }
     }
   </script>
 </head>
 <body>
-  <h2>Condition-Controlled Loop Trace Table</h2>
-  <p>
-    Complete the trace table for the following pseudocode:
-  </p>
-  <pre>
+  <nav>
+    <ul>
+      <li><a href="#task1">Task 1</a></li>
+      <li><a href="#task2">Task 2</a></li>
+      <li><a href="#task3">Task 3</a></li>
+      <li><a href="#task4">Task 4</a></li>
+      <li><a href="#task5">Task 5</a></li>
+      <li><a href="#task6">Task 6</a></li>
+      <li><a href="#task7">Task 7</a></li>
+      <li><a href="#task8">Task 8</a></li>
+      <li><a href="#task9">Task 9</a></li>
+      <li><a href="#task10">Task 10</a></li>
+    </ul>
+  </nav>
+
+  <!-- Task 1 -->
+  <section id="task1">
+    <h2>Task 1: Decrementing Loop</h2>
+    <p>Complete the trace table for the following pseudocode:</p>
+    <pre>
 01 x = 15
 02 y = 0
 03 while x > 0
@@ -64,106 +479,329 @@
 05    x = x – y
 06 endwhile
 07 print(y)
-  </pre>
-  <table id="traceTableLoop">
-    <tr>
-      <th>Line Number</th>
-      <th>x</th>
-      <th>y</th>
-      <th>Output</th>
-    </tr>
-    <!-- Row 1: Line 01 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 2: Line 02 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 3: Iteration 1, Line 04 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 4: Iteration 1, Line 05 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 5: Iteration 2, Line 04 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 6: Iteration 2, Line 05 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 7: Iteration 3, Line 04 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 8: Iteration 3, Line 05 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 9: Iteration 4, Line 04 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 10: Iteration 4, Line 05 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 11: Iteration 5, Line 04 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 12: Iteration 5, Line 05 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 13: Line 07 (Print Output) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-  </table>
-  <button onclick="checkAnswersLoop()">Check Answers</button>
+    </pre>
+    <table id="traceTableLoopTask1">
+      <tr>
+        <th>Line Number</th>
+        <th>x</th>
+        <th>y</th>
+        <th>Output</th>
+      </tr>
+      <!-- 13 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask1()">Check Answers</button>
+  </section>
+
+  <!-- Task 2 -->
+  <section id="task2">
+    <h2>Task 2: Sum of Even Numbers (1 to 10)</h2>
+    <p>Complete the trace table for the following pseudocode (use "Iteration" for each cycle):</p>
+    <pre>
+01 n = 1
+02 sum = 0
+03 while n <= 10
+04    if n mod 2 == 0 then
+05       sum = sum + n
+06    endif
+07    n = n + 1
+08 endwhile
+09 print(sum)
+    </pre>
+    <table id="traceTableLoopTask2">
+      <tr>
+        <th>Iteration</th>
+        <th>n</th>
+        <th>sum</th>
+        <th>Output</th>
+      </tr>
+      <!-- 12 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask2()">Check Answers</button>
+  </section>
+
+  <!-- Task 3 -->
+  <section id="task3">
+    <h2>Task 3: Factorial of 5</h2>
+    <p>Complete the trace table for the following pseudocode (use "Iteration" for each cycle):</p>
+    <pre>
+01 n = 5
+02 factorial = 1
+03 while n > 0
+04    factorial = factorial * n
+05    n = n - 1
+06 endwhile
+07 print(factorial)
+    </pre>
+    <table id="traceTableLoopTask3">
+      <tr>
+        <th>Iteration</th>
+        <th>n</th>
+        <th>factorial</th>
+        <th>Output</th>
+      </tr>
+      <!-- 7 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask3()">Check Answers</button>
+  </section>
+
+  <!-- Task 4 -->
+  <section id="task4">
+    <h2>Task 4: Sum of Numbers Until Sum ≥ 20</h2>
+    <p>Complete the trace table for the following pseudocode (record each iteration):</p>
+    <pre>
+01 n = 1
+02 sum = 0
+03 while sum < 20
+04    sum = sum + n
+05    n = n + 1
+06 endwhile
+07 print(sum)
+    </pre>
+    <table id="traceTableLoopTask4">
+      <tr>
+        <th>Iteration</th>
+        <th>n</th>
+        <th>sum</th>
+        <th>Output</th>
+      </tr>
+      <!-- 8 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask4()">Check Answers</button>
+  </section>
+
+  <!-- Task 5 -->
+  <section id="task5">
+    <h2>Task 5: Count Digits in 12345</h2>
+    <p>Complete the trace table for the following pseudocode:</p>
+    <pre>
+01 num = 12345
+02 count = 0
+03 while num > 0
+04    num = num // 10
+05    count = count + 1
+06 endwhile
+07 print(count)
+    </pre>
+    <table id="traceTableLoopTask5">
+      <tr>
+        <th>Iteration</th>
+        <th>num</th>
+        <th>count</th>
+        <th>Output</th>
+      </tr>
+      <!-- 7 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask5()">Check Answers</button>
+  </section>
+
+  <!-- Task 6 -->
+  <section id="task6">
+    <h2>Task 6: Greatest Power of 2 ≤ 100</h2>
+    <p>Complete the trace table for the following pseudocode:</p>
+    <pre>
+01 n = 1
+02 while n * 2 <= 100
+03    n = n * 2
+04 endwhile
+05 print(n)
+    </pre>
+    <table id="traceTableLoopTask6">
+      <tr>
+        <th>Iteration</th>
+        <th>n</th>
+        <th>Output</th>
+      </tr>
+      <!-- 8 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask6()">Check Answers</button>
+  </section>
+
+  <!-- Task 7 -->
+  <section id="task7">
+    <h2>Task 7: Fibonacci Generator (First Fibonacci > 20)</h2>
+    <p>Complete the trace table for the following pseudocode:</p>
+    <pre>
+01 a = 0
+02 b = 1
+03 while b <= 20
+04    temp = b
+05    b = a + b
+06    a = temp
+07 endwhile
+08 print(b)
+    </pre>
+    <table id="traceTableLoopTask7">
+      <tr>
+        <th>Iteration</th>
+        <th>a</th>
+        <th>b</th>
+        <th>Output</th>
+      </tr>
+      <!-- 9 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask7()">Check Answers</button>
+  </section>
+
+  <!-- Task 8 -->
+  <section id="task8">
+    <h2>Task 8: Sum with Break</h2>
+    <p>Complete the trace table for the following pseudocode:</p>
+    <pre>
+01 n = 1
+02 sum = 0
+03 while true
+04    sum = sum + n
+05    if sum >= 15 then
+06       break
+07    endif
+08    n = n + 1
+09 endwhile
+10 print(sum)
+    </pre>
+    <table id="traceTableLoopTask8">
+      <tr>
+        <th>Iteration</th>
+        <th>n</th>
+        <th>sum</th>
+        <th>Output</th>
+      </tr>
+      <!-- 7 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask8()">Check Answers</button>
+  </section>
+
+  <!-- Task 9 -->
+  <section id="task9">
+    <h2>Task 9: Sum of Squares (n*n ≤ 25)</h2>
+    <p>Complete the trace table for the following pseudocode:</p>
+    <pre>
+01 n = 1
+02 sum = 0
+03 while n*n <= 25
+04    sum = sum + n*n
+05    n = n + 1
+06 endwhile
+07 print(sum)
+    </pre>
+    <table id="traceTableLoopTask9">
+      <tr>
+        <th>Iteration</th>
+        <th>n</th>
+        <th>sum</th>
+        <th>Output</th>
+      </tr>
+      <!-- 7 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask9()">Check Answers</button>
+  </section>
+
+  <!-- Task 10 -->
+  <section id="task10">
+    <h2>Task 10: Restaurant Menu Ordering (Countdown Loop)</h2>
+    <p>Complete the trace table for the following pseudocode:</p>
+    <pre>
+01 n = 10
+02 output = ""
+03 while n >= 0
+04    output = output + n + " "
+05    n = n - 3
+06 endwhile
+07 print(output)
+    </pre>
+    <table id="traceTableLoopTask10">
+      <tr>
+        <th>Iteration</th>
+        <th>n</th>
+        <th>output</th>
+        <th>Final Output</th>
+      </tr>
+      <!-- 6 data rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersTask10()">Check Answers</button>
+  </section>
 </body>
 </html>
