@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Selection Trace Table Tasks - Switch Case Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0 20px; }
+    nav { background-color: #f2f2f2; padding: 10px; margin-bottom: 20px; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; }
+    nav ul li { display: inline; }
+    nav ul li a { text-decoration: none; color: black; font-weight: bold; }
+    section { margin-bottom: 40px; border-top: 2px solid #ccc; padding-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid black; padding: 8px; text-align: center; }
+    th { background-color: #f2f2f2; }
+    pre { background-color: #eee; padding: 10px; }
+    button { margin-top: 10px; padding: 10px; }
+  </style>
+  <script>
+    // ------------------------------
+    // Task 1: Fruit Price Calculator using Switch-Case
+    // Scenario: The user inputs "banana" as the fruit name.
+    // Expected: price becomes 1.5; output "The price of the fruit is1.5"
+    // ------------------------------
+    function checkAnswersTask11() {
+      // The correct trace steps for the scenario:
+      // Row 1 (Line 01): fruit becomes "banana"
+      // Row 2 (Line 07): price is assigned 1.5 in the "banana" case
+      // Row 3 (Line 16): output is "The price of the fruit is1.5"
+      let correctValues = [
+        ["01", "banana", "", ""],
+        ["07", "", "1.5", ""],
+        ["16", "", "", "The price of the fruit is1.5"]
+      ];
+      let table = document.getElementById("selectionTraceTableTask11");
+      let rows = table.rows;
+      // Skip the header row (row index 0)
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          if (inputs[j].value.trim() === correct[j]) {
+            inputs[j].style.backgroundColor = "lightgreen";
+          } else {
+            inputs[j].style.backgroundColor = "lightcoral";
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Navigation Bar (you can include links to other tasks if desired) -->
+  <nav>
+    <ul>
+      <li><a href="#task11">Task 11</a></li>
+    </ul>
+  </nav>
+
+  <!-- Task 11: Fruit Price Calculator using Switch-Case -->
+  <section id="task11">
+    <h2>Task 11: Fruit Price Calculator using Switch-Case</h2>
+    <p>
+      Complete the selection trace table for the algorithm when the input fruit is
+      <strong>banana</strong>.
+    </p>
+    <pre>
+01 fruit = input("Enter fruit name")
+02 switch (fruit)
+03    case "apple":
+04       price = 2
+05       break
+06    case "banana":
+07       price = 1.5
+08       break
+09    case "orange":
+10       price = 2.5
+11       break
+12    default:
+13       price = 0
+14       break
+15 end switch
+16 print("The price of the fruit is" + price)
+    </pre>
+    <table id="selectionTraceTableTask11">
+      <tr>
+        <th>Line Number</th>
+        <th>fruit</th>
+        <th>price</th>
+        <th>Output</th>
+      </tr>
+      <!-- Only include rows corresponding to the executed steps -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersTask11()">Check Answers</button>
+  </section>
+</body>
+</html>
