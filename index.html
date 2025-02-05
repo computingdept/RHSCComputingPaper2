@@ -1,864 +1,99 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Interactive Selection Trace Table Tasks</title>
+  <title>Reepham High Inspired Sidebar with Gradient</title>
+  <!-- Optional: Google Fonts for a modern look -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0 20px; }
-    nav { background-color: #f2f2f2; padding: 10px; margin-bottom: 20px; }
-    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; }
-    nav ul li { display: inline; }
-    nav ul li a { text-decoration: none; color: black; font-weight: bold; }
-    section { margin-bottom: 40px; border-top: 2px solid #ccc; padding-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    th, td { border: 1px solid black; padding: 8px; text-align: center; }
-    th { background-color: #f2f2f2; }
-    pre { background-color: #eee; padding: 10px; }
-    button { margin-top: 10px; padding: 10px; }
+    /* Reset and basic styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #ffffff; /* Clean white background */
+      display: flex;
+    }
+    /* Sidebar styling */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      /* Using the linear gradient background as requested */
+      background: linear-gradient(to right, #006e51 0%, #006e51 100%);
+      padding-top: 20px;
+      transition: width 0.3s ease;
+      overflow-y: auto;
+    }
+    .sidebar:hover {
+      width: 280px; /* Expand slightly on hover */
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+    .sidebar ul li a {
+      display: block;
+      padding: 15px 20px;
+      color: #ffffff;
+      text-decoration: none;
+      transition: background 0.3s ease, padding-left 0.3s ease;
+    }
+    .sidebar ul li a:hover {
+      /* Use a slightly darker shade on hover */
+      background: #005f45;
+      padding-left: 25px;
+      border-left: 4px solid #ffffff; /* White accent border */
+    }
+    /* Main content styling */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      width: 100%;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+      .content {
+        margin-left: 200px;
+      }
+    }
   </style>
-  <script>
-    /* ============================
-       Task 1: Discount Calculator
-       Scenario: A customer spends £70 and is a member.
-       Expected: discount becomes 10 then 15; output "The discount is" + discount
-    ============================ */
-    function checkAnswersTask1() {
-      let correctValues = [
-        ["01", "70", "", "", ""],
-        ["02", "", "yes", "", ""],
-        ["06", "", "", "10", ""],
-        ["11", "", "", "15", ""],
-        ["13", "", "", "", "The discount is15"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask1");
-      let rows = table.rows;
-      // Skip header row (index 0)
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 2: Shipping Cost Calculator
-       Scenario: A package weighs 8kg and the shipping distance is 150km.
-       Expected: cost becomes 30 then 40; output "The shipping cost is" + cost
-    ============================ */
-    function checkAnswersTask2() {
-      let correctValues = [
-        ["01", "8", "", "", ""],
-        ["02", "", "150", "", ""],
-        ["06", "", "", "30", ""],
-        ["11", "", "", "40", ""],
-        ["13", "", "", "", "The shipping cost is40"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask2");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 3: Grade Calculator
-       Scenario: A student scores 85.
-       Expected: Grade "B" is assigned; output "Your grade is" + grade
-    ============================ */
-    function checkAnswersTask3() {
-      let correctValues = [
-        ["01", "85", "", ""],
-        ["05", "", "B", ""],
-        ["11", "", "", "Your grade isB"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask3");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 4: Tax Calculator
-       Scenario: Annual income is £60000.
-       Expected: tax = 60000*0.2 = 12000; output "The tax to be paid is" + tax
-    ============================ */
-    function checkAnswersTask4() {
-      let correctValues = [
-        ["01", "60000", "", ""],
-        ["02", "", "", ""],
-        ["03", "", "12000", ""],
-        ["07", "", "", "The tax to be paid is12000"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask4");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 5: Bonus Calculator
-       Scenario: Monthly sales are £1500.
-       Expected: bonus = 100; output "The bonus is" + bonus
-    ============================ */
-    function checkAnswersTask5() {
-      let correctValues = [
-        ["01", "1500", "", ""],
-        ["03", "", "100", ""],
-        ["10", "", "", "The bonus is100"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask5");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 6: Scholarship Eligibility Calculator
-       Scenario: A student has a GPA of 3.7 and an extracurricular score of 85.
-       Expected: eligible = true; output "Scholarship eligibility:" + eligible
-    ============================ */
-    function checkAnswersTask6() {
-      let correctValues = [
-        ["01", "3.7", "", "", ""],
-        ["02", "", "85", "", ""],
-        ["04", "", "", "true", ""],
-        ["09", "", "", "true", ""],
-        ["13", "", "", "", "Scholarship eligibility:true"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask6");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 7: Exam Pass/Fail Checker
-       Scenario: A student scores 45.
-       Expected: result = "Fail"; output "Result:" + result
-    ============================ */
-    function checkAnswersTask7() {
-      let correctValues = [
-        ["01", "45", "", ""],
-        ["02", "", "", ""],
-        ["05", "", "Fail", ""],
-        ["07", "", "", "Result:Fail"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask7");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 8: Bank Interest Calculator
-       Scenario: An account balance is £15000.
-       Expected: interest = 15000*0.05 = 750; output "Interest earned is" + interest
-    ============================ */
-    function checkAnswersTask8() {
-      let correctValues = [
-        ["01", "15000", "", ""],
-        ["02", "", "", ""],
-        ["03", "", "750", ""],
-        ["07", "", "", "Interest earned is750"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask8");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 9: Order Total Calculator with Tax
-       Scenario: The item total is £80 and the shipping cost is £25.
-       Expected: subtotal = 105, tax = 10.5, total = 115.5; output "The total order cost is" + total
-    ============================ */
-    function checkAnswersTask9() {
-      let correctValues = [
-        ["01", "80", "", "", ""],
-        ["02", "", "25", "", ""],
-        ["05", "", "", "10.5", ""],
-        ["10", "", "", "", "The total order cost is115.5"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask9");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-
-    /* ============================
-       Task 10: Speeding Fine Calculator
-       Scenario: A vehicle's speed is 80 and the speed limit is 60.
-       Expected: fine = (80 - 60)*5 = 100; output "The speeding fine is" + fine
-    ============================ */
-    function checkAnswersTask10() {
-      let correctValues = [
-        ["01", "80", "", "", ""],
-        ["02", "", "60", "", ""],
-        ["04", "", "", "100", ""],
-        ["08", "", "", "", "The speeding fine is100"]
-      ];
-      let table = document.getElementById("selectionTraceTableTask10");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
-        }
-      }
-    }
-  </script>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
+  <nav class="sidebar">
     <ul>
-      <li><a href="#task1">Task 1</a></li>
-      <li><a href="#task2">Task 2</a></li>
-      <li><a href="#task3">Task 3</a></li>
-      <li><a href="#task4">Task 4</a></li>
-      <li><a href="#task5">Task 5</a></li>
-      <li><a href="#task6">Task 6</a></li>
-      <li><a href="#task7">Task 7</a></li>
-      <li><a href="#task8">Task 8</a></li>
-      <li><a href="#task9">Task 9</a></li>
-      <li><a href="#task10">Task 10</a></li>
+      <li><a href="page1.html">Page 1</a></li>
+      <li><a href="page2.html">Page 2</a></li>
+      <li><a href="page3.html">Page 3</a></li>
+      <li><a href="page4.html">Page 4</a></li>
+      <li><a href="page5.html">Page 5</a></li>
+      <li><a href="page6.html">Page 6</a></li>
+      <li><a href="page7.html">Page 7</a></li>
+      <li><a href="page8.html">Page 8</a></li>
+      <li><a href="page9.html">Page 9</a></li>
+      <li><a href="page10.html">Page 10</a></li>
+      <li><a href="page11.html">Page 11</a></li>
+      <li><a href="page12.html">Page 12</a></li>
+      <li><a href="page13.html">Page 13</a></li>
+      <li><a href="page14.html">Page 14</a></li>
+      <li><a href="page15.html">Page 15</a></li>
     </ul>
   </nav>
 
-  <!-- Task 1: Discount Calculator -->
-  <section id="task1">
-    <h2>Task 1: Discount Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when a customer spends <strong>£70</strong> and is a <strong>member</strong>.</p>
-    <pre>
-01 purchaseAmount = input("Enter purchase amount")
-02 memberStatus = input("Enter member status (yes/no)")
-03 if purchaseAmount >= 100 then
-04   discount = 20
-05 elseif purchaseAmount >= 50 then
-06   discount = 10
-07 else
-08   discount = 0
-09 endif
-10 if memberStatus == "yes" then
-11   discount = discount + 5
-12 endif
-13 print("The discount is" + discount)
-    </pre>
-    <table id="selectionTraceTableTask1">
-      <tr>
-        <th>Line Number</th>
-        <th>purchaseAmount</th>
-        <th>memberStatus</th>
-        <th>discount</th>
-        <th>Output</th>
-      </tr>
-      <!-- 5 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask1()">Check Answers</button>
-  </section>
-
-  <!-- Task 2: Shipping Cost Calculator -->
-  <section id="task2">
-    <h2>Task 2: Shipping Cost Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when a package weighs <strong>8kg</strong> and the shipping distance is <strong>150km</strong>.</p>
-    <pre>
-01 weight = input("Enter package weight (kg)")
-02 distance = input("Enter shipping distance (km)")
-03 if weight > 10 then
-04   cost = 50
-05 elseif weight > 5 then
-06   cost = 30
-07 else
-08   cost = 15
-09 endif
-10 if distance > 100 then
-11   cost = cost + 10
-12 endif
-13 print("The shipping cost is" + cost)
-    </pre>
-    <table id="selectionTraceTableTask2">
-      <tr>
-        <th>Line Number</th>
-        <th>weight</th>
-        <th>distance</th>
-        <th>cost</th>
-        <th>Output</th>
-      </tr>
-      <!-- 5 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask2()">Check Answers</button>
-  </section>
-
-  <!-- Task 3: Grade Calculator -->
-  <section id="task3">
-    <h2>Task 3: Grade Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when a student scores <strong>85</strong>.</p>
-    <pre>
-01 score = input("Enter exam score")
-02 if score >= 90 then
-03   grade = "A"
-04 elseif score >= 80 then
-05   grade = "B"
-06 elseif score >= 70 then
-07   grade = "C"
-08 else
-09   grade = "D"
-10 endif
-11 print("Your grade is" + grade)
-    </pre>
-    <table id="selectionTraceTableTask3">
-      <tr>
-        <th>Line Number</th>
-        <th>score</th>
-        <th>grade</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask3()">Check Answers</button>
-  </section>
-
-  <!-- Task 4: Tax Calculator -->
-  <section id="task4">
-    <h2>Task 4: Tax Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when an annual income is <strong>£60000</strong>.</p>
-    <pre>
-01 income = input("Enter annual income")
-02 if income > 50000 then
-03   tax = income * 0.2
-04 else
-05   tax = income * 0.1
-06 endif
-07 print("The tax to be paid is" + tax)
-    </pre>
-    <table id="selectionTraceTableTask4">
-      <tr>
-        <th>Line Number</th>
-        <th>income</th>
-        <th>tax</th>
-        <th>Output</th>
-      </tr>
-      <!-- 4 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask4()">Check Answers</button>
-  </section>
-
-  <!-- Task 5: Bonus Calculator -->
-  <section id="task5">
-    <h2>Task 5: Bonus Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when monthly sales are <strong>£1500</strong>.</p>
-    <pre>
-01 sales = input("Enter monthly sales")
-02 if sales >= 1000 then
-03   bonus = 100
-04 else
-05   bonus = 50
-06 endif
-07 if sales >= 2000 then
-08   bonus = bonus + 50
-09 endif
-10 print("The bonus is" + bonus)
-    </pre>
-    <table id="selectionTraceTableTask5">
-      <tr>
-        <th>Line Number</th>
-        <th>sales</th>
-        <th>bonus</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask5()">Check Answers</button>
-  </section>
-
-  <!-- Task 6: Scholarship Eligibility Calculator -->
-  <section id="task6">
-    <h2>Task 6: Scholarship Eligibility Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when a student has a GPA of <strong>3.7</strong> and an extracurricular score of <strong>85</strong>.</p>
-    <pre>
-01 gpa = input("Enter GPA")
-02 extracurricular = input("Enter extracurricular score")
-03 if gpa >= 3.5 then
-04   eligible = true
-05 else
-06   eligible = false
-07 endif
-08 if extracurricular >= 80 then
-09   eligible = eligible and true
-10 else
-11   eligible = false
-12 endif
-13 print("Scholarship eligibility:" + eligible)
-    </pre>
-    <table id="selectionTraceTableTask6">
-      <tr>
-        <th>Line Number</th>
-        <th>gpa</th>
-        <th>extracurricular</th>
-        <th>eligible</th>
-        <th>Output</th>
-      </tr>
-      <!-- 5 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask6()">Check Answers</button>
-  </section>
-
-  <!-- Task 7: Exam Pass/Fail Checker -->
-  <section id="task7">
-    <h2>Task 7: Exam Pass/Fail Checker</h2>
-    <p>Complete the selection trace table for the algorithm when a student scores <strong>45</strong>.</p>
-    <pre>
-01 mark = input("Enter exam mark")
-02 if mark >= 50 then
-03   result = "Pass"
-04 else
-05   result = "Fail"
-06 endif
-07 print("Result:" + result)
-    </pre>
-    <table id="selectionTraceTableTask7">
-      <tr>
-        <th>Line Number</th>
-        <th>mark</th>
-        <th>result</th>
-        <th>Output</th>
-      </tr>
-      <!-- 4 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask7()">Check Answers</button>
-  </section>
-
-  <!-- Task 8: Bank Interest Calculator -->
-  <section id="task8">
-    <h2>Task 8: Bank Interest Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when an account balance is <strong>£15000</strong>.</p>
-    <pre>
-01 balance = input("Enter account balance")
-02 if balance >= 10000 then
-03   interest = balance * 0.05
-04 else
-05   interest = balance * 0.02
-06 endif
-07 print("Interest earned is" + interest)
-    </pre>
-    <table id="selectionTraceTableTask8">
-      <tr>
-        <th>Line Number</th>
-        <th>balance</th>
-        <th>interest</th>
-        <th>Output</th>
-      </tr>
-      <!-- 4 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask8()">Check Answers</button>
-  </section>
-
-  <!-- Task 9: Order Total Calculator with Tax -->
-  <section id="task9">
-    <h2>Task 9: Order Total Calculator with Tax</h2>
-    <p>Complete the selection trace table for the algorithm when the item total is <strong>£80</strong> and the shipping cost is <strong>£25</strong>.</p>
-    <pre>
-01 itemTotal = input("Enter total of items")
-02 shipping = input("Enter shipping cost")
-03 subtotal = itemTotal + shipping
-04 if subtotal >= 100 then
-05   tax = subtotal * 0.1
-06 else
-07   tax = 0
-08 endif
-09 total = subtotal + tax
-10 print("The total order cost is" + total)
-    </pre>
-    <table id="selectionTraceTableTask9">
-      <tr>
-        <th>Line Number</th>
-        <th>itemTotal</th>
-        <th>shipping</th>
-        <th>tax</th>
-        <th>Output</th>
-      </tr>
-      <!-- 4 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask9()">Check Answers</button>
-  </section>
-
-  <!-- Task 10: Speeding Fine Calculator -->
-  <section id="task10">
-    <h2>Task 10: Speeding Fine Calculator</h2>
-    <p>Complete the selection trace table for the algorithm when a vehicle's speed is <strong>80</strong> and the speed limit is <strong>60</strong>.</p>
-    <pre>
-01 speed = input("Enter speed of the vehicle")
-02 speedLimit = input("Enter speed limit")
-03 if speed > speedLimit then
-04   fine = (speed - speedLimit) * 5
-05 else
-06   fine = 0
-07 endif
-08 print("The speeding fine is" + fine)
-    </pre>
-    <table id="selectionTraceTableTask10">
-      <tr>
-        <th>Line Number</th>
-        <th>speed</th>
-        <th>speedLimit</th>
-        <th>fine</th>
-        <th>Output</th>
-      </tr>
-      <!-- 4 data rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersTask10()">Check Answers</button>
-  </section>
+  <div class="content">
+    <h1>Welcome!</h1>
+    <p>This page demonstrates a sidebar navigation inspired by the Reepham High website using the specified green linear gradient background.</p>
+  </div>
 </body>
 </html>
