@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cool Sidebar Navigation</title>
+  <!-- Optional: Google Fonts for a modern look -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and basic styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f4f4f4;
+      display: flex;
+    }
+    /* Sidebar styling */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background: #34495e;
+      padding-top: 20px;
+      transition: width 0.3s ease;
+      overflow-y: auto;
+    }
+    .sidebar:hover {
+      width: 280px; /* Slightly wider on hover for a cool effect */
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+    .sidebar ul li a {
+      display: block;
+      padding: 15px 20px;
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: background 0.3s ease, padding-left 0.3s ease;
+    }
+    .sidebar ul li a:hover {
+      background: #2c3e50;
+      padding-left: 25px;
+      border-left: 4px solid #e74c3c;
+    }
+    /* Main content styling */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      width: 100%;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+      .content {
+        margin-left: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <ul>
+      <li><a href="page1.html">Page 1</a></li>
+      <li><a href="page2.html">Page 2</a></li>
+      <li><a href="page3.html">Page 3</a></li>
+      <li><a href="page4.html">Page 4</a></li>
+      <li><a href="page5.html">Page 5</a></li>
+      <li><a href="page6.html">Page 6</a></li>
+      <li><a href="page7.html">Page 7</a></li>
+      <li><a href="page8.html">Page 8</a></li>
+      <li><a href="page9.html">Page 9</a></li>
+      <li><a href="page10.html">Page 10</a></li>
+      <li><a href="page11.html">Page 11</a></li>
+      <li><a href="page12.html">Page 12</a></li>
+      <li><a href="page13.html">Page 13</a></li>
+      <li><a href="page14.html">Page 14</a></li>
+      <li><a href="page15.html">Page 15</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <h1>Welcome!</h1>
+    <p>This is an example page that demonstrates a cool-looking sidebar navigation with links to 15 different pages. Click on any link in the sidebar to navigate to that page.</p>
+  </div>
+</body>
+</html>
