@@ -198,10 +198,10 @@
     function checkAnswersTask7() {
       let correctValues = [
         ["01", "45", "", ""],
-        ["02", "", "", ""],
-        ["04", "", "Fail", ""],
+        ["05", "", "Practice", ""],
+        ["07", "", "", "Result: Practice"],
         ["", "", "", ""],
-        ["07", "", "", "Result: Fail"]
+        ["", "", "", ""]
       ];
       let table = document.getElementById("traceTableTask7");
       let rows = table.rows;
@@ -529,9 +529,9 @@
 02 if mark >= 50 then
 03   result = "Pass"
 04 else
-05   result = "Fail"
+05   result = "Practice questions"
 06 endif
-07 print("Result:", result)
+07 print("Result: ", result)
     </pre>
     <table id="traceTableTask7">
       <tr>
