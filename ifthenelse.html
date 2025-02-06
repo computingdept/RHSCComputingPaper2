@@ -254,11 +254,11 @@
     ============================ */
     function checkAnswersTask9() {
       let correctValues = [
-        ["01", "80", "", "", ""],
-        ["02", "", "25", "", ""],
-        ["05", "", "", "10.5", ""],
-        ["", "", "", "", ""],
-        ["10", "", "", "", "The total order cost is 115.5"]
+        ["01", "80", "", "", "",""],
+        ["02", "", "25", "", "",""],
+        ["03", "", "", "105", "",""],
+        ["05", "", "", "", "10.5",""],
+        ["10", "", "", "","", "The total order cost is 115.5"]
       ];
       let table = document.getElementById("traceTableTask9");
       let rows = table.rows;
@@ -594,21 +594,22 @@
 07   tax = 0
 08 endif
 09 total = subtotal + tax
-10 print("The total order cost is", total)
+10 print("The total order cost is ", total)
     </pre>
     <table id="traceTableTask9">
       <tr>
         <th>Line Number</th>
         <th>itemTotal</th>
+        <th>subTotal</th>
         <th>shipping</th>
         <th>tax</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask9()">Check Answers</button>
   </section>
