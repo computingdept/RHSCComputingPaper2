@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Count-Controlled Loop Trace Table</title>
+  <title>Count-Controlled Loop Trace Table Challenges</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -35,14 +35,29 @@
       font-size: 1em;
       cursor: pointer;
     }
+    hr {
+      margin: 40px 0;
+    }
   </style>
   <script>
+    // --- Shelf Assembly Challenge (Original Scenario) ---
     function checkAnswersLoop() {
       // Expected values for each of the rows:
-      // Each row has 3 columns: 
-      // Column 1 (Line Number): "01", "02", "03"
-      // Column 2 (Value of i): "1", "2", "3"
-      // Column 3 (Output): "1", "2", "3"
+      // The code is:
+      // 01 for i = 1 to 3
+      // 02    print ("Shelf " + i)
+      // 03 next i
+      // 04 print("Shelf assembly is complete")
+      //
+      // Trace table rows:
+      // Row 1: Initialization (line 01) with i = 1.
+      // Row 2: Print at line 02: "Shelf 1"
+      // Row 3: Increment at line 03 with i = 2.
+      // Row 4: Print at line 02: "Shelf 2"
+      // Row 5: Increment at line 03 with i = 3.
+      // Row 6: Print at line 02: "Shelf 3"
+      // Row 7: Increment at line 03 with i = 4.
+      // Row 8: Final print at line 04: "Shelf assembly is complete"
       let correctValues = [
         ["01", "1", ""],
         ["02", "", "Shelf 1"],
@@ -51,14 +66,62 @@
         ["03", "3", ""],
         ["02", "", "Shelf 3"],
         ["03", "4", ""],
-        ["04", "", "Shelf assembly is complete"]       
-        
+        ["04", "", "Shelf assembly is complete"]
       ];
       
       let table = document.getElementById("traceTableLoop");
       let rows = table.rows;
       
-      // Skip the header row (index 0) and then check each of the 5 data rows.
+      // Skip the header row (index 0)
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          if (inputs[j].value.trim() === correct[j]) {
+            inputs[j].style.backgroundColor = "lightgreen";
+          } else {
+            inputs[j].style.backgroundColor = "lightcoral";
+          }
+        }
+      }
+    }
+    
+    // --- Sheep Shearing Challenge (New Scenario for rural Norfolk) ---
+    function checkAnswersSheep() {
+      // For this scenario, the code is:
+      // 01 for i = 1 to 4
+      // 02    print ("Shearing sheep " + i)
+      // 03 next i
+      // 04 print("All sheep are shorn")
+      //
+      // The trace table should capture the following steps:
+      // Row 1: Initialization (line 01) with i = 1.
+      // Row 2: Print at line 02: "Shearing sheep 1"
+      // Row 3: Increment at line 03 with i = 2.
+      // Row 4: Print at line 02: "Shearing sheep 2"
+      // Row 5: Increment at line 03 with i = 3.
+      // Row 6: Print at line 02: "Shearing sheep 3"
+      // Row 7: Increment at line 03 with i = 4.
+      // Row 8: Print at line 02: "Shearing sheep 4"
+      // Row 9: Increment at line 03 with i = 5.
+      // Row 10: Final print at line 04: "All sheep are shorn"
+      let correctValues = [
+        ["01", "1", ""],
+        ["02", "", "Shearing sheep 1"],
+        ["03", "2", ""],
+        ["02", "", "Shearing sheep 2"],
+        ["03", "3", ""],
+        ["02", "", "Shearing sheep 3"],
+        ["03", "4", ""],
+        ["02", "", "Shearing sheep 4"],
+        ["03", "5", ""],
+        ["04", "", "All sheep are shorn"]
+      ];
+      
+      let table = document.getElementById("traceTableSheep");
+      let rows = table.rows;
+      
+      // Skip the header row (index 0)
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i - 1];
@@ -74,20 +137,21 @@
   </script>
 </head>
 <body>
-  <h2>Count-Controlled Loop Trace Table Challenge</h2>
+  <!-- Original Challenge: Shelf Assembly -->
+  <h2>Count-Controlled Loop Trace Table Challenge (Shelf Assembly)</h2>
   <p>
-    Imagine you have 3 shelves to build. This count controlled iteration counts from 1 to 3 and prints each shelf number.
+    Imagine you have 3 shelves to build. This count-controlled iteration counts from 1 to 3 and prints each shelf number.
     In the trace table below, the first column shows the line numbers of your code.
   </p>
   <pre>
 01 for i = 1 to 3
 02    print ("Shelf " + i)
 03 next i
-04 print("Shelf assembly is complete")    
+04 print("Shelf assembly is complete")
   </pre>
   <p>
-    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03.
-    The second column (Value of shelf) should be incremented by 1 on next shelf and the third column (Output) should show the current shelf when print is used
+    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03, or 04 as appropriate.
+    The second column (Value of i) should reflect the value of i at that step, and the third column (Output) should show what is printed.
   </p>
   <table id="traceTableLoop">
     <tr>
@@ -95,7 +159,7 @@
       <th>Value of i</th>
       <th>Output</th>
     </tr>
-    <!-- 6 rows -->
+    <!-- 8 data rows -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -126,17 +190,95 @@
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-     <tr>
+    <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-     <tr>
+    <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
   </table>
   <button onclick="checkAnswersLoop()">Check Answers</button>
+
+  <hr>
+
+  <!-- New Challenge: Sheep Shearing (Rural Norfolk) -->
+  <h2>Count-Controlled Loop Trace Table Challenge (Sheep Shearing)</h2>
+  <p>
+    Imagine you are on a Norfolk farm and have 4 sheep to shear. This count-controlled iteration counts from 1 to 4 and prints the sheep number as you shear each one.
+    In the trace table below, the first column shows the line numbers of your code.
+  </p>
+  <pre>
+01 for i = 1 to 4
+02    print ("Shearing sheep " + i)
+03 next i
+04 print("All sheep are shorn")
+  </pre>
+  <p>
+    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03, or 04 as needed.
+    The second column (Value of i) should reflect the current value of i, and the third column (Output) should show what is printed.
+  </p>
+  <table id="traceTableSheep">
+    <tr>
+      <th>Line Number</th>
+      <th>Value of i</th>
+      <th>Output</th>
+    </tr>
+    <!-- 10 data rows -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkAnswersSheep()">Check Answers</button>
 </body>
 </html>
