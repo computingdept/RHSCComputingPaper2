@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Count-Controlled Loop Trace Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding-bottom: 50px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      font-size: 1.1em;
+      overflow-x: auto;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function checkAnswersLoop() {
+      // Expected values for each of the 5 rows:
+      // Each row has 3 columns: 
+      // Column 1 (Line Number): "01", "02", "03", "04", "05"
+      // Column 2 (Value of i): "1", "2", "3", "4", "5"
+      // Column 3 (Output): "1", "2", "3", "4", "5"
+      let correctValues = [
+        ["01", "1", "1"],
+        ["02", "2", "2"],
+        ["03", "3", "3"],
+        ["04", "4", "4"],
+        ["05", "5", "5"]
+      ];
+      
+      let table = document.getElementById("traceTableLoop");
+      let rows = table.rows;
+      
+      // Skip the header row (index 0) and then check each of the 5 data rows.
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          if (inputs[j].value.trim() === correct[j]) {
+            inputs[j].style.backgroundColor = "lightgreen";
+          } else {
+            inputs[j].style.backgroundColor = "lightcoral";
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Count-Controlled Loop Trace Table Challenge</h2>
+  <p>
+    Imagine you have 5 shelves to label. Write a loop that counts from 1 to 5 and prints each number.
+    In the trace table below, the first column shows the line numbers of your code.
+  </p>
+  <pre>
+01 for i = 1 to 5
+02    print i
+03 next
+  </pre>
+  <p>
+    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03, 04, and 05.
+    The second column (Value of i) and the third column (Output) should show the current number.
+  </p>
+  <table id="traceTableLoop">
+    <tr>
+      <th>Line Number</th>
+      <th>Value of i</th>
+      <th>Output</th>
+    </tr>
+    <!-- 5 rows -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkAnswersLoop()">Check Answers</button>
+</body>
+</html>
