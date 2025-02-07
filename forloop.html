@@ -38,17 +38,19 @@
   </style>
   <script>
     function checkAnswersLoop() {
-      // Expected values for each of the 5 rows:
+      // Expected values for each of the rows:
       // Each row has 3 columns: 
-      // Column 1 (Line Number): "01", "02", "03", "04", "05"
-      // Column 2 (Value of i): "1", "2", "3", "4", "5"
-      // Column 3 (Output): "1", "2", "3", "4", "5"
+      // Column 1 (Line Number): "01", "02", "03"
+      // Column 2 (Value of i): "1", "2", "3"
+      // Column 3 (Output): "1", "2", "3"
       let correctValues = [
-        ["01", "1", "1"],
-        ["02", "2", "2"],
-        ["03", "3", "3"],
-        ["04", "4", "4"],
-        ["05", "5", "5"]
+        ["01", "1", ""],
+        ["02", "", "Shelf 1"],
+        ["03", "2", ""],
+        ["02", "", "Shelf 2"],
+        ["03", "3", ""],
+        ["02", "", "Shelf 3"],
+        ["03", "3", ""]
       ];
       
       let table = document.getElementById("traceTableLoop");
@@ -72,17 +74,17 @@
 <body>
   <h2>Count-Controlled Loop Trace Table Challenge</h2>
   <p>
-    Imagine you have 5 shelves to label. Write a loop that counts from 1 to 5 and prints each number.
+    Imagine you have 5 shelves to label. Write a loop that counts from 1 to 3 and prints each shelf number.
     In the trace table below, the first column shows the line numbers of your code.
   </p>
   <pre>
-01 for i = 1 to 5
-02    print i
-03 next
+01 for i = 1 to 3
+02    print ("shelf " + i)
+03 next i
   </pre>
   <p>
-    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03, 04, and 05.
-    The second column (Value of i) and the third column (Output) should show the current number.
+    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03.
+    The second column (Value of shelf) should be incremented by 1 on next shelf and the third column (Output) should show the current shelf when print is used
   </p>
   <table id="traceTableLoop">
     <tr>
@@ -90,7 +92,12 @@
       <th>Value of i</th>
       <th>Output</th>
     </tr>
-    <!-- 5 rows -->
+    <!-- 6 rows -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
