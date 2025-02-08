@@ -179,40 +179,35 @@
       }
     }
     
-    // --- New Example: Loop with Step (for i = 2 to 10 step 2) ---
-    function checkAnswersStep() {
+    // --- Countdown Challenge (Using for i = 3 to 1 step -1) ---
+    function checkAnswersCountdown() {
       // Code:
-      // 01 for i = 2 to 10 step 2
+      // 01 for i = 3 to 1 step -1 
       // 02    print(i)
-      // 03 next i
+      // 03 next i 
+      // 04 print ("Countdown")
       //
       // Trace table rows:
-      // Row 1: Initialization at line 01, i = 2.
-      // Row 2: Print at line 02: "2"
-      // Row 3: Increment at line 03, i becomes 4.
-      // Row 4: Print at line 02: "4"
-      // Row 5: Increment at line 03, i becomes 6.
-      // Row 6: Print at line 02: "6"
-      // Row 7: Increment at line 03, i becomes 8.
-      // Row 8: Print at line 02: "8"
-      // Row 9: Increment at line 03, i becomes 10.
-      // Row 10: Print at line 02: "10"
-      // Row 11: Increment at line 03, i becomes 12 (loop exits because 12 > 10).
+      // Row 1: Initialization at line 01, i = 3.
+      // Row 2: Print at line 02: "3"
+      // Row 3: Increment at line 03, i becomes 2.
+      // Row 4: Print at line 02: "2"
+      // Row 5: Increment at line 03, i becomes 1.
+      // Row 6: Print at line 02: "1"
+      // Row 7: Increment at line 03, i becomes 0 (loop exits since 0 < 1).
+      // Row 8: Final print at line 04: "Countdown"
       let correctValues = [
-        ["01", "2", ""],
+        ["01", "3", ""],
+        ["02", "", "3"],
+        ["03", "2", ""],
         ["02", "", "2"],
-        ["03", "4", ""],
-        ["02", "", "4"],
-        ["03", "6", ""],
-        ["02", "", "6"],
-        ["03", "8", ""],
-        ["02", "", "8"],
-        ["03", "10", ""],
-        ["02", "", "10"],
-        ["03", "12", ""]
+        ["03", "1", ""],
+        ["02", "", "1"],
+        ["03", "0", ""],
+        ["04", "", "Countdown"]
       ];
       
-      let table = document.getElementById("traceTableStep");
+      let table = document.getElementById("traceTableCountdown");
       let rows = table.rows;
       
       // Skip header row (index 0)
@@ -244,8 +239,10 @@
 04 print("Shelf assembly is complete")
   </pre>
   <p>
-    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03, or 04 as appropriate.
-    The second column (Value of i) shows the current value, and the third column (Output) shows what is printed.
+    Fill in the table below with the correct values for each step.
+    The first column (Line Number) should show 01, 02, 03, or 04,
+    the second column (Value of i) shows the current value,
+    and the third column (Output) shows what is printed.
   </p>
   <table id="traceTableLoop">
     <tr>
@@ -254,46 +251,14 @@
       <th>Output</th>
     </tr>
     <!-- 8 data rows -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
   </table>
   <button onclick="checkAnswersLoop()">Check Answers</button>
 
@@ -312,8 +277,10 @@
 04 print("All sheep are shorn")
   </pre>
   <p>
-    Fill in the table below with the correct values for each step. The first column (Line Number) should be filled with 01, 02, 03, or 04 as needed.
-    The second column (Value of i) shows the current value, and the third column (Output) shows what is printed.
+    Fill in the table below with the correct values for each step.
+    The first column (Line Number) should show 01, 02, 03, or 04,
+    the second column (Value of i) shows the current value,
+    and the third column (Output) shows what is printed.
   </p>
   <table id="traceTableSheep">
     <tr>
@@ -322,56 +289,16 @@
       <th>Output</th>
     </tr>
     <!-- 10 data rows -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
   </table>
   <button onclick="checkAnswersSheep()">Check Answers</button>
 
@@ -389,7 +316,9 @@
 04 print("Cow counting is complete")
   </pre>
   <p>
-    Fill in the table below with the correct values. The first column shows the code line, the second column shows the current value of i,
+    Fill in the table below with the correct values.
+    The first column shows the code line,
+    the second column shows the current value of i,
     and the third column shows what is printed.
   </p>
   <table id="traceTableCows">
@@ -399,128 +328,52 @@
       <th>Output</th>
     </tr>
     <!-- 8 data rows -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
   </table>
   <button onclick="checkAnswersCows()">Check Answers</button>
 
   <hr>
 
-  <!-- New Example: Loop with Step (for i = 2 to 10 step 2) -->
-  <h2>Count-Controlled Loop Trace Table Challenge (Loop with Step)</h2>
+  <!-- New Challenge: Countdown (Using for i = 3 to 1 step -1) -->
+  <h2>Count-Controlled Loop Trace Table Challenge (Countdown)</h2>
   <p>
-    In this challenge, the loop starts at 2 and increments by 2 until it exceeds 10.
+    In this challenge, the loop counts down from 3 to 1 and then prints "Countdown".
   </p>
   <pre>
-01 for i = 2 to 10 step 2
+01 for i = 3 to 1 step -1 
 02    print(i)
-03 next i
+03 next i 
+04 print ("Countdown")
   </pre>
   <p>
-    Fill in the table below with the correct values for each step. The first column shows the code line,
-    the second column shows the current value of i, and the third column shows what is printed.
+    Fill in the table below with the correct values for each step.
+    The first column shows the code line,
+    the second column shows the current value of i,
+    and the third column shows what is printed.
   </p>
-  <table id="traceTableStep">
+  <table id="traceTableCountdown">
     <tr>
       <th>Line Number</th>
       <th>Value of i</th>
       <th>Output</th>
     </tr>
-    <!-- 11 data rows -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
+    <!-- 8 data rows -->
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
   </table>
-  <button onclick="checkAnswersStep()">Check Answers</button>
+  <button onclick="checkAnswersCountdown()">Check Answers</button>
 </body>
 </html>
