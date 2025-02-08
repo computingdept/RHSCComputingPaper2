@@ -42,21 +42,6 @@
   <script>
     // --- Shelf Assembly Challenge (Original Scenario) ---
     function checkAnswersLoop() {
-      // Code:
-      // 01 for i = 1 to 3
-      // 02    print ("Shelf " + i)
-      // 03 next i
-      // 04 print("Shelf assembly is complete")
-      //
-      // Trace table rows:
-      // Row 1: Initialization (line 01) with i = 1.
-      // Row 2: Print at line 02: "Shelf 1"
-      // Row 3: Increment at line 03 with i = 2.
-      // Row 4: Print at line 02: "Shelf 2"
-      // Row 5: Increment at line 03 with i = 3.
-      // Row 6: Print at line 02: "Shelf 3"
-      // Row 7: Increment at line 03 with i = 4.
-      // Row 8: Final print at line 04: "Shelf assembly is complete"
       let correctValues = [
         ["01", "1", ""],
         ["02", "", "Shelf 1"],
@@ -67,43 +52,20 @@
         ["03", "4", ""],
         ["04", "", "Shelf assembly is complete"]
       ];
-      
       let table = document.getElementById("traceTableLoop");
       let rows = table.rows;
-      
-      // Skip header row (index 0)
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i - 1];
         for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
         }
       }
     }
     
     // --- Sheep Shearing Challenge (Rural Norfolk) ---
     function checkAnswersSheep() {
-      // Code:
-      // 01 for i = 1 to 4
-      // 02    print ("Shearing sheep " + i)
-      // 03 next i
-      // 04 print("All sheep are shorn")
-      //
-      // Trace table rows:
-      // Row 1: Initialization (line 01) with i = 1.
-      // Row 2: Print at line 02: "Shearing sheep 1"
-      // Row 3: Increment at line 03 with i = 2.
-      // Row 4: Print at line 02: "Shearing sheep 2"
-      // Row 5: Increment at line 03 with i = 3.
-      // Row 6: Print at line 02: "Shearing sheep 3"
-      // Row 7: Increment at line 03 with i = 4.
-      // Row 8: Print at line 02: "Shearing sheep 4"
-      // Row 9: Increment at line 03 with i = 5.
-      // Row 10: Final print at line 04: "All sheep are shorn"
       let correctValues = [
         ["01", "1", ""],
         ["02", "", "Shearing sheep 1"],
@@ -116,41 +78,20 @@
         ["03", "5", ""],
         ["04", "", "All sheep are shorn"]
       ];
-      
       let table = document.getElementById("traceTableSheep");
       let rows = table.rows;
-      
-      // Skip header row (index 0)
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i - 1];
         for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
         }
       }
     }
     
     // --- Cow Counting Challenge (Using for i = 0 to 5 step 2) ---
     function checkAnswersCows() {
-      // Code:
-      // 01 for i = 0 to 5 step 2
-      // 02    print("There are " + i + " cows")
-      // 03 next i
-      // 04 print("Cow counting is complete")
-      //
-      // Trace table rows:
-      // Row 1: Initialization at line 01, i = 0.
-      // Row 2: Print at line 02: "There are 0 cows".
-      // Row 3: Increment at line 03 with i = 2.
-      // Row 4: Print at line 02: "There are 2 cows".
-      // Row 5: Increment at line 03 with i = 4.
-      // Row 6: Print at line 02: "There are 4 cows".
-      // Row 7: Increment at line 03 with i = 6 (loop exits since 6 > 5).
-      // Row 8: Final print at line 04: "Cow counting is complete"
       let correctValues = [
         ["01", "0", ""],
         ["02", "", "There are 0 cows"],
@@ -161,41 +102,20 @@
         ["03", "6", ""],
         ["04", "", "Cow counting is complete"]
       ];
-      
       let table = document.getElementById("traceTableCows");
       let rows = table.rows;
-      
-      // Skip header row (index 0)
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i - 1];
         for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
         }
       }
     }
     
     // --- Countdown Challenge (Using for i = 3 to 1 step -1) ---
     function checkAnswersCountdown() {
-      // Code:
-      // 01 for i = 3 to 1 step -1 
-      // 02    print(i)
-      // 03 next i 
-      // 04 print ("Countdown")
-      //
-      // Trace table rows:
-      // Row 1: Initialization at line 01, i = 3.
-      // Row 2: Print at line 02: "3"
-      // Row 3: Increment at line 03, i becomes 2.
-      // Row 4: Print at line 02: "2"
-      // Row 5: Increment at line 03, i becomes 1.
-      // Row 6: Print at line 02: "1"
-      // Row 7: Increment at line 03, i becomes 0 (loop exits since 0 < 1).
-      // Row 8: Final print at line 04: "Countdown"
       let correctValues = [
         ["01", "3", ""],
         ["02", "", "3"],
@@ -206,20 +126,76 @@
         ["03", "0", ""],
         ["04", "", "Countdown"]
       ];
-      
       let table = document.getElementById("traceTableCountdown");
       let rows = table.rows;
-      
-      // Skip header row (index 0)
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i - 1];
         for (let j = 0; j < inputs.length; j++) {
-          if (inputs[j].value.trim() === correct[j]) {
-            inputs[j].style.backgroundColor = "lightgreen";
-          } else {
-            inputs[j].style.backgroundColor = "lightcoral";
-          }
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+    
+    // --- Nested Loop Challenge with Separate Columns for i and j ---
+    function checkAnswersNested() {
+      // Code:
+      // 01 for i = 1 to 2
+      // 02    for j = 1 to 3
+      // 03         print("i=" + i + " j=" + j)
+      // 04    next j
+      // 05 next i
+      // 06 print("Nested loop complete")
+      //
+      // Trace table rows with separate columns for i and j:
+      // Row 1: Line 01: Outer loop initialization → i = 1 (j not set)
+      // Row 2: Line 02: Inner loop initialization → j = 1 (for i = 1)
+      // Row 3: Line 03: Print → "i=1 j=1" (i = 1, j = 1)
+      // Row 4: Line 04: Next j → j becomes 2 (i remains 1)
+      // Row 5: Line 03: Print → "i=1 j=2" (i = 1, j = 2)
+      // Row 6: Line 04: Next j → j becomes 3 (i remains 1)
+      // Row 7: Line 03: Print → "i=1 j=3" (i = 1, j = 3)
+      // Row 8: Line 04: Next j → j becomes 4 (inner loop ends for i = 1)
+      // Row 9: Line 05: Next i → i becomes 2 (j not set)
+      // Row 10: Line 02: Inner loop initialization → j = 1 (for i = 2)
+      // Row 11: Line 03: Print → "i=2 j=1" (i = 2, j = 1)
+      // Row 12: Line 04: Next j → j becomes 2 (i remains 2)
+      // Row 13: Line 03: Print → "i=2 j=2" (i = 2, j = 2)
+      // Row 14: Line 04: Next j → j becomes 3 (i remains 2)
+      // Row 15: Line 03: Print → "i=2 j=3" (i = 2, j = 3)
+      // Row 16: Line 04: Next j → j becomes 4 (inner loop ends for i = 2)
+      // Row 17: Line 05: Next i → i becomes 3 (outer loop ends)
+      // Row 18: Line 06: Print → "Nested loop complete" (i = 3)
+      let correctValues = [
+        ["01", "1", "", ""],
+        ["02", "1", "1", ""],
+        ["03", "1", "1", "i=1 j=1"],
+        ["04", "1", "2", ""],
+        ["03", "1", "2", "i=1 j=2"],
+        ["04", "1", "3", ""],
+        ["03", "1", "3", "i=1 j=3"],
+        ["04", "1", "4", ""],
+        ["05", "2", "", ""],
+        ["02", "2", "1", ""],
+        ["03", "2", "1", "i=2 j=1"],
+        ["04", "2", "2", ""],
+        ["03", "2", "2", "i=2 j=2"],
+        ["04", "2", "3", ""],
+        ["03", "2", "3", "i=2 j=3"],
+        ["04", "2", "4", ""],
+        ["05", "3", "", ""],
+        ["06", "3", "", "Nested loop complete"]
+      ];
+      
+      let table = document.getElementById("traceTableNested");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
         }
       }
     }
@@ -228,29 +204,16 @@
 <body>
   <!-- Original Challenge: Shelf Assembly -->
   <h2>Count-Controlled Loop Trace Table Challenge (Shelf Assembly)</h2>
-  <p>
-    Imagine you have 3 shelves to build. This count-controlled iteration counts from 1 to 3 and prints each shelf number.
-    In the trace table below, the first column shows the code line numbers.
-  </p>
   <pre>
 01 for i = 1 to 3
 02    print ("Shelf " + i)
 03 next i
 04 print("Shelf assembly is complete")
   </pre>
-  <p>
-    Fill in the table below with the correct values for each step.
-    The first column (Line Number) should show 01, 02, 03, or 04,
-    the second column (Value of i) shows the current value,
-    and the third column (Output) shows what is printed.
-  </p>
+  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
   <table id="traceTableLoop">
-    <tr>
-      <th>Line Number</th>
-      <th>Value of i</th>
-      <th>Output</th>
-    </tr>
-    <!-- 8 data rows -->
+    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
+    <!-- 8 rows -->
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -266,29 +229,16 @@
 
   <!-- Sheep Shearing Challenge (Rural Norfolk) -->
   <h2>Count-Controlled Loop Trace Table Challenge (Sheep Shearing)</h2>
-  <p>
-    Imagine you are on a Norfolk farm and have 4 sheep to shear. This count-controlled iteration counts from 1 to 4 and prints each sheep's number.
-    In the trace table below, the first column shows the code line numbers.
-  </p>
   <pre>
 01 for i = 1 to 4
 02    print ("Shearing sheep " + i)
 03 next i
 04 print("All sheep are shorn")
   </pre>
-  <p>
-    Fill in the table below with the correct values for each step.
-    The first column (Line Number) should show 01, 02, 03, or 04,
-    the second column (Value of i) shows the current value,
-    and the third column (Output) shows what is printed.
-  </p>
+  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
   <table id="traceTableSheep">
-    <tr>
-      <th>Line Number</th>
-      <th>Value of i</th>
-      <th>Output</th>
-    </tr>
-    <!-- 10 data rows -->
+    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
+    <!-- 10 rows -->
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -306,28 +256,16 @@
 
   <!-- Cow Counting Challenge (Using for i = 0 to 5 step 2) -->
   <h2>Count-Controlled Loop Trace Table Challenge (Cow Counting)</h2>
-  <p>
-    Imagine you are on a farm counting cows. This loop uses a step of 2, starting at 0.
-  </p>
   <pre>
 01 for i = 0 to 5 step 2
 02    print("There are " + i + " cows")
 03 next i
 04 print("Cow counting is complete")
   </pre>
-  <p>
-    Fill in the table below with the correct values.
-    The first column shows the code line,
-    the second column shows the current value of i,
-    and the third column shows what is printed.
-  </p>
+  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
   <table id="traceTableCows">
-    <tr>
-      <th>Line Number</th>
-      <th>Value of i</th>
-      <th>Output</th>
-    </tr>
-    <!-- 8 data rows -->
+    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
+    <!-- 8 rows -->
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -341,30 +279,18 @@
 
   <hr>
 
-  <!-- New Challenge: Countdown (Using for i = 3 to 1 step -1) -->
+  <!-- Countdown Challenge (Using for i = 3 to 1 step -1) -->
   <h2>Count-Controlled Loop Trace Table Challenge (Countdown)</h2>
-  <p>
-    In this challenge, the loop counts down from 3 to 1 and then prints "Countdown".
-  </p>
   <pre>
 01 for i = 3 to 1 step -1 
 02    print(i)
 03 next i 
-04 print ("Countdown")
+04 print("Countdown")
   </pre>
-  <p>
-    Fill in the table below with the correct values for each step.
-    The first column shows the code line,
-    the second column shows the current value of i,
-    and the third column shows what is printed.
-  </p>
+  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
   <table id="traceTableCountdown">
-    <tr>
-      <th>Line Number</th>
-      <th>Value of i</th>
-      <th>Output</th>
-    </tr>
-    <!-- 8 data rows -->
+    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
+    <!-- 8 rows -->
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -375,5 +301,49 @@
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
   </table>
   <button onclick="checkAnswersCountdown()">Check Answers</button>
+
+  <hr>
+
+  <!-- Nested Loop Challenge with Separate Columns for i and j -->
+  <h2>Count-Controlled Loop Trace Table Challenge (Nested Loop)</h2>
+  <pre>
+01 for i = 1 to 2
+02    for j = 1 to 3
+03         print("i=" + i + " j=" + j)
+04    next j
+05 next i
+06 print("Nested loop complete")
+  </pre>
+  <p>
+    Fill in the table below. (Columns: Line Number, Value of i, Value of j, Output)
+  </p>
+  <table id="traceTableNested">
+    <tr>
+      <th>Line Number</th>
+      <th>Value of i</th>
+      <th>Value of j</th>
+      <th>Output</th>
+    </tr>
+    <!-- 18 rows -->
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+  </table>
+  <button onclick="checkAnswersNested()">Check Answers</button>
 </body>
 </html>
