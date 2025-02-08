@@ -140,55 +140,93 @@
     
     // --- Nested Loop Challenge with Separate Columns for i and j ---
     function checkAnswersNested() {
+      let correctValues = [
+        ["01", "1", "", "", ""] ,
+        ["02", "1", "1", "", ""] ,
+        ["03", "1", "1", "", "i=1 j=1"],
+        ["04", "1", "2", "", ""] ,
+        ["03", "1", "2", "", "i=1 j=2"],
+        ["04", "1", "3", "", ""] ,
+        ["03", "1", "3", "", "i=1 j=3"],
+        ["04", "1", "4", "", ""] ,
+        ["05", "2", "", "", ""] ,
+        ["02", "2", "1", "", ""] ,
+        ["03", "2", "1", "", "i=2 j=1"],
+        ["04", "2", "2", "", ""] ,
+        ["03", "2", "2", "", "i=2 j=2"],
+        ["04", "2", "3", "", ""] ,
+        ["03", "2", "3", "", "i=2 j=3"],
+        ["04", "2", "4", "", ""] ,
+        ["05", "3", "", "", ""] ,
+        ["06", "3", "", "", "Nested loop complete"]
+      ];
+      let table = document.getElementById("traceTableNested");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+    
+    // --- Nested Loop Challenge Using MOD and DIV ---
+    function checkAnswersModDiv() {
       // Code:
-      // 01 for i = 1 to 2
-      // 02    for j = 1 to 3
-      // 03         print("i=" + i + " j=" + j)
+      // 01 for i = 10 to 12
+      // 02    for j = 2 to 3
+      // 03         print("i=" + i + " j=" + j + " quotient=" + (i DIV j) + " remainder=" + (i MOD j))
       // 04    next j
       // 05 next i
-      // 06 print("Nested loop complete")
+      // 06 print("Mod and Div example complete")
       //
-      // Trace table rows with separate columns for i and j:
-      // Row 1: Line 01: Outer loop initialization → i = 1 (j not set)
-      // Row 2: Line 02: Inner loop initialization → j = 1 (for i = 1)
-      // Row 3: Line 03: Print → "i=1 j=1" (i = 1, j = 1)
-      // Row 4: Line 04: Next j → j becomes 2 (i remains 1)
-      // Row 5: Line 03: Print → "i=1 j=2" (i = 1, j = 2)
-      // Row 6: Line 04: Next j → j becomes 3 (i remains 1)
-      // Row 7: Line 03: Print → "i=1 j=3" (i = 1, j = 3)
-      // Row 8: Line 04: Next j → j becomes 4 (inner loop ends for i = 1)
-      // Row 9: Line 05: Next i → i becomes 2 (j not set)
-      // Row 10: Line 02: Inner loop initialization → j = 1 (for i = 2)
-      // Row 11: Line 03: Print → "i=2 j=1" (i = 2, j = 1)
-      // Row 12: Line 04: Next j → j becomes 2 (i remains 2)
-      // Row 13: Line 03: Print → "i=2 j=2" (i = 2, j = 2)
-      // Row 14: Line 04: Next j → j becomes 3 (i remains 2)
-      // Row 15: Line 03: Print → "i=2 j=3" (i = 2, j = 3)
-      // Row 16: Line 04: Next j → j becomes 4 (inner loop ends for i = 2)
-      // Row 17: Line 05: Next i → i becomes 3 (outer loop ends)
-      // Row 18: Line 06: Print → "Nested loop complete" (i = 3)
+      // Trace table (6 iterations of the inner loop plus initialization and loop end steps):
+      // Row  1: Line 01: Outer loop initialization → i = 10 (j not set)
+      // Row  2: Line 02: Inner loop initialization → for i = 10, j = 2
+      // Row  3: Line 03: Print → "i=10 j=2 quotient=5 remainder=0"
+      // Row  4: Line 04: Next j → j becomes 3 (i remains 10)
+      // Row  5: Line 03: Print → "i=10 j=3 quotient=3 remainder=1"
+      // Row  6: Line 04: Next j → j becomes 4 (inner loop ends for i = 10)
+      // Row  7: Line 05: Next i → i becomes 11
+      // Row  8: Line 02: Inner loop initialization → for i = 11, j = 2
+      // Row  9: Line 03: Print → "i=11 j=2 quotient=5 remainder=1"
+      // Row 10: Line 04: Next j → j becomes 3 (i remains 11)
+      // Row 11: Line 03: Print → "i=11 j=3 quotient=3 remainder=2"
+      // Row 12: Line 04: Next j → j becomes 4 (inner loop ends for i = 11)
+      // Row 13: Line 05: Next i → i becomes 12
+      // Row 14: Line 02: Inner loop initialization → for i = 12, j = 2
+      // Row 15: Line 03: Print → "i=12 j=2 quotient=6 remainder=0"
+      // Row 16: Line 04: Next j → j becomes 3 (i remains 12)
+      // Row 17: Line 03: Print → "i=12 j=3 quotient=4 remainder=0"
+      // Row 18: Line 04: Next j → j becomes 4 (inner loop ends for i = 12)
+      // Row 19: Line 05: Next i → i becomes 13 (outer loop ends)
+      // Row 20: Line 06: Print → "Mod and Div example complete"
       let correctValues = [
-        ["01", "1", "", ""],
-        ["02", "", "1", ""],
-        ["03", "", "", "i=1 j=1"],
-        ["04", "", "2", ""],
-        ["03", "", "", "i=1 j=2"],
-        ["04", "", "3", ""],
-        ["03", "", "", "i=1 j=3"],
-        ["04", "", "4", ""],
-        ["05", "2", "", ""],
-        ["02", "", "1", ""],
-        ["03", "", "", "i=2 j=1"],
-        ["04", "", "2", ""],
-        ["03", "", "", "i=2 j=2"],
-        ["04", "", "3", ""],
-        ["03", "", "", "i=2 j=3"],
-        ["04", "", "4", ""],
-        ["05", "3", "", ""],
-        ["06", "", "", "Nested loop complete"]
+        ["01", "10", "", "", "", ""],
+        ["02", "10", "2", "", "", ""],
+        ["03", "10", "2", "5", "0", "i=10 j=2 quotient=5 remainder=0"],
+        ["04", "10", "3", "", "", ""],
+        ["03", "10", "3", "3", "1", "i=10 j=3 quotient=3 remainder=1"],
+        ["04", "10", "4", "", "", ""],
+        ["05", "11", "", "", "", ""],
+        ["02", "11", "2", "", "", ""],
+        ["03", "11", "2", "5", "1", "i=11 j=2 quotient=5 remainder=1"],
+        ["04", "11", "3", "", "", ""],
+        ["03", "11", "3", "3", "2", "i=11 j=3 quotient=3 remainder=2"],
+        ["04", "11", "4", "", "", ""],
+        ["05", "12", "", "", "", ""],
+        ["02", "12", "2", "", "", ""],
+        ["03", "12", "2", "6", "0", "i=12 j=2 quotient=6 remainder=0"],
+        ["04", "12", "3", "", "", ""],
+        ["03", "12", "3", "4", "0", "i=12 j=3 quotient=4 remainder=0"],
+        ["04", "12", "4", "", "", ""],
+        ["05", "13", "", "", "", ""],
+        ["06", "13", "", "", "", "Mod and Div example complete"]
       ];
       
-      let table = document.getElementById("traceTableNested");
+      let table = document.getElementById("traceTableModDiv");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
@@ -345,5 +383,54 @@
     <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
   </table>
   <button onclick="checkAnswersNested()">Check Answers</button>
+
+  <hr>
+
+  <!-- Nested Loop Challenge Using MOD and DIV -->
+  <h2>Count-Controlled Loop Trace Table Challenge (Nested Loop: MOD and DIV)</h2>
+  <pre>
+01 for i = 10 to 12
+02    for j = 2 to 3
+03         print("i=" + i + " j=" + j + " quotient=" + (i DIV j) + " remainder=" + (i MOD j))
+04    next j
+05 next i
+06 print("Mod and Div example complete")
+  </pre>
+  <p>
+    Fill in the table below. (Columns: Line Number, Value of i, Value of j, Quotient, Remainder, Output)
+  </p>
+  <table id="traceTableModDiv">
+    <tr>
+      <th>Line Number</th>
+      <th>Value of i</th>
+      <th>Value of j</th>
+      <th>Quotient</th>
+      <th>Remainder</th>
+      <th>Output</th>
+    </tr>
+    <!-- 20 rows -->
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+  </table>
+  <button onclick="checkAnswersModDiv()">Check Answers</button>
 </body>
 </html>
