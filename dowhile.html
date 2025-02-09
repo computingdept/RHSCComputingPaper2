@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Factorial Calculator Trace Table Challenge</title>
+  <title>3 Factorial Trace Table Challenge</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -41,47 +41,42 @@
       // The expected trace values for each row.
       // Each row corresponds to:
       // [Line Number, n, i, factorial, Condition, Output]
+      // There are 14 rows in this trace table.
       let correctValues = [
-        // Row 1: Line 01 – Set n = 4
-        ["01", "4", "", "", "", ""],
+        // Row 1: Line 01 – Set n = 3
+        ["01", "3", "", "", "", ""],
         // Row 2: Line 02 – Set factorial = 1
-        ["02", "4", "", "1", "", ""],
+        ["02", "3", "", "1", "", ""],
         // Row 3: Line 03 – Set i = 1
-        ["03", "4", "1", "1", "", ""],
-        // Row 4: First evaluation of while (line 04): 1 <= 4 is true
-        ["04", "4", "1", "1", "true", ""],
+        ["03", "3", "1", "1", "", ""],
+        // Row 4: First evaluation of while (line 04): i=1; 1 <= 3 is true
+        ["04", "3", "1", "1", "true", ""],
         // Row 5: First iteration (line 05): factorial = 1 * 1 = 1
-        ["05", "4", "1", "1", "", ""],
+        ["05", "3", "1", "1", "", ""],
         // Row 6: First iteration (line 06): i becomes 1 + 1 = 2
-        ["06", "4", "2", "1", "", ""],
-        // Row 7: Second evaluation of while (line 04): 2 <= 4 is true
-        ["04", "4", "2", "1", "true", ""],
+        ["06", "3", "2", "1", "", ""],
+        // Row 7: Second evaluation of while (line 04): i=2; 2 <= 3 is true
+        ["04", "3", "2", "1", "true", ""],
         // Row 8: Second iteration (line 05): factorial = 1 * 2 = 2
-        ["05", "4", "2", "2", "", ""],
+        ["05", "3", "2", "2", "", ""],
         // Row 9: Second iteration (line 06): i becomes 2 + 1 = 3
-        ["06", "4", "3", "2", "", ""],
-        // Row 10: Third evaluation of while (line 04): 3 <= 4 is true
-        ["04", "4", "3", "2", "true", ""],
+        ["06", "3", "3", "2", "", ""],
+        // Row 10: Third evaluation of while (line 04): i=3; 3 <= 3 is true
+        ["04", "3", "3", "2", "true", ""],
         // Row 11: Third iteration (line 05): factorial = 2 * 3 = 6
-        ["05", "4", "3", "6", "", ""],
+        ["05", "3", "3", "6", "", ""],
         // Row 12: Third iteration (line 06): i becomes 3 + 1 = 4
-        ["06", "4", "4", "6", "", ""],
-        // Row 13: Fourth evaluation of while (line 04): 4 <= 4 is true
-        ["04", "4", "4", "6", "true", ""],
-        // Row 14: Fourth iteration (line 05): factorial = 6 * 4 = 24
-        ["05", "4", "4", "24", "", ""],
-        // Row 15: Fourth iteration (line 06): i becomes 4 + 1 = 5
-        ["06", "4", "5", "24", "", ""],
-        // Row 16: Fifth evaluation of while (line 04): 5 <= 4 is false
-        ["04", "4", "5", "24", "false", ""],
-        // Row 17: Print statement (line 08): Output "Factorial is 24"
-        ["08", "4", "5", "24", "", "Factorial is 24"]
+        ["06", "3", "4", "6", "", ""],
+        // Row 13: Fourth evaluation of while (line 04): i=4; 4 <= 3 is false
+        ["04", "3", "4", "6", "false", ""],
+        // Row 14: Print statement (line 08): Output "Factorial is 6"
+        ["08", "3", "4", "6", "", "Factorial is 6"]
       ];
       
       let table = document.getElementById("traceTableFactorial");
       let rows = table.rows;
       
-      // Skip the header row (index 0) and then check each subsequent row.
+      // Skip the header row (index 0) and then check each data row.
       for (let i = 1; i < rows.length; i++) {
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
@@ -94,14 +89,14 @@
   </script>
 </head>
 <body>
-  <h2>Factorial Calculator Trace Table Challenge</h2>
+  <h2>3 Factorial Trace Table Challenge</h2>
   <p>
     Your program calculates the factorial of a number using a loop.
-    The variable <strong>n</strong> is set to <strong>4</strong> and the factorial is computed by multiplying 
-    all positive integers from 1 to n. For example, 4! = 4 × 3 × 2 × 1 = 24.
+    The variable <strong>n</strong> is set to <strong>3</strong> and the factorial is computed by multiplying 
+    all positive integers from 1 to n. For example, 3! = 3 × 2 × 1 = 6.
   </p>
   <pre>
-01 n = 4
+01 n = 3
 02 factorial = 1
 03 i = 1
 04 while (i <= n)
@@ -239,34 +234,7 @@
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 14: Fourth iteration (line 05) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 15: Fourth iteration (line 06) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 16: Fifth evaluation of while (line 04) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 17: Print statement (line 08) -->
+    <!-- Row 14: Print statement (line 08) -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
