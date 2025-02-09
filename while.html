@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passcode Trace Table Challenge</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding-bottom: 50px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      font-size: 1.1em;
+      overflow-x: auto;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function checkAnswersTruth() {
+      // Expected values for each row:
+      // Row 1:  Line "01": (no change to tracked variables)
+      // Row 2:  Line "02": exit = "false"
+      // Row 3:  Line "03": attempts = "0"
+      // Row 4:  Line "04": (loop start, no tracked variable changes)
+      // Row 5:  Line "05": attempts becomes "1"
+      // Row 6:  Line "06": password becomes "Computer"
+      // Row 7:  Line "07": (if check, no change)
+      // Row 8:  Line "09": output "Incorrect"
+      // Row 9:  Line "05": attempts becomes "2"
+      // Row 10: Line "06": password becomes "Science"
+      // Row 11: Line "07": (if check, no change)
+      // Row 12: Line "09": output "Incorrect"
+      // Row 13: Line "05": attempts becomes "3"
+      // Row 14: Line "06": password becomes "J277"
+      // Row 15: Line "07": (if check, condition true; no output)
+      // Row 16: Line "08": exit becomes "true"
+      // Row 17: Line "13": output "3 guesses", attempts = "3"
+      
+      let correctValues = [
+        ["01", "", "", "", ""],
+        ["02", "", "", "false", ""],
+        ["03", "0", "", "", ""],
+        ["04", "", "", "", ""],
+        ["05", "1", "", "", ""],
+        ["06", "", "Computer", "", ""],
+        ["07", "", "", "", ""],
+        ["09", "", "", "", "Incorrect"],
+        ["05", "2", "", "", ""],
+        ["06", "", "Science", "", ""],
+        ["07", "", "", "", ""],
+        ["09", "", "", "", "Incorrect"],
+        ["05", "3", "", "", ""],
+        ["06", "", "J277", "", ""],
+        ["07", "", "", "", ""],
+        ["08", "", "", "true", ""],
+        ["13", "3", "", "", "3 guesses"]
+      ];
+      
+      let table = document.getElementById("traceTableTruth");
+      let rows = table.rows;
+      
+      // Skip header row (index 0) and then check each data row.
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+            inputs[j].style.backgroundColor = 
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Passcode Trace Table Challenge</h2>
+  <p>
+    In this challenge, your program asks a user to enter a passcode until the correct passcode is entered.
+    The correct passcode is <strong>J277</strong>. For example, the user’s first attempt is <strong>Computer</strong>,
+    the second is <strong>Science</strong>, and the third is <strong>J277</strong>. Then the program prints the total number of guesses.
+  </p>
+  <pre>
+// First attempt "Computer"
+// Second attempt "Science"
+// Third attempt "J277"
+correctcode = "J277"
+exit = false
+attempts = 0
+while (exit == false)
+    attempts = attempts + 1
+    password = input("Enter passcode:")
+    if password == correctcode then 
+         exit = true
+    else 
+         print("Incorrect")
+    endif
+endwhile
+print( attempts + " guesses")
+  </pre>
+  <p>
+    Fill in the table below with the values for each line as the code runs.
+  </p>
+  <table id="traceTableTruth">
+    <tr>
+      <th>Line Number</th>
+      <th>attempts</th>
+      <th>password</th>
+      <th>exit</th>
+      <th>Output</th>
+    </tr>
+    <!-- Row 1: Line 01 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 2: Line 02 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 3: Line 03 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 4: Line 04 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 5: Line 05 (first iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 6: Line 06 (first iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 7: Line 07 (first iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 8: Line 09 (first iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 9: Line 05 (second iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 10: Line 06 (second iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 11: Line 07 (second iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 12: Line 09 (second iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 13: Line 05 (third iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 14: Line 06 (third iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 15: Line 07 (third iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 16: Line 08 (third iteration) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 17: Line 13 (Final output) -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkAnswersTruth()">Check Answers</button>
+</body>
+</html>
