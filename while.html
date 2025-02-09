@@ -70,6 +70,280 @@
          }
       }
     }
+        // Example 1: Sum of First 5 Numbers
+    function checkAnswersExample1() {
+      // Each row: [Line Number, i, sum, Output]
+      let correctValues = [
+        ["02", "", "0", ""],
+        ["03", "1", "", ""],
+        ["05", "", "1", ""],
+        ["06", "2", "", ""],
+        ["05", "", "3", ""],
+        ["06", "3", "", ""],
+        ["05", "", "6", ""],
+        ["06", "4", "", ""],
+        ["05", "", "10", ""],
+        ["06", "5", "", ""],
+        ["05", "", "15", ""],
+        ["06", "6", "", ""],
+        ["08", "", "", "Sum is 15"]
+      ];
+      let table = document.getElementById("traceTableExample1");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    // Example 2: Product of Even Numbers from 2 to 8
+    function checkAnswersExample2() {
+      // Each row: [Line Number, i, product, Output]
+      let correctValues = [
+        ["02", "", "1", ""],
+        ["03", "2", "", ""],
+        ["05", "", "2", ""],
+        ["06", "4", "", ""],
+        ["05", "", "8", ""],
+        ["06", "6", "", ""],
+        ["05", "", "48", ""],
+        ["06", "8", "", ""],
+        ["05", "", "384", ""],
+        ["06", "10", "", ""],
+        ["08", "", "", "Product is 384"]
+      ];
+      let table = document.getElementById("traceTableExample2");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    // Example 3: Countdown from 5 to 1
+    function checkAnswersExample3() {
+      // Each row: [Line Number, i, Output]
+      let correctValues = [
+        ["01", "5", ""],
+        ["03", "", "5"],
+        ["04", "4", ""],
+        ["03", "", "4"],
+        ["04", "3", ""],
+        ["03", "", "3"],
+        ["04", "2", ""],
+        ["03", "", "2"],
+        ["04", "1", ""],
+        ["03", "", "1"],
+        ["04", "0", ""],
+        ["06", "", "Blast off!"]
+      ];
+      let table = document.getElementById("traceTableExample3");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    // Example 4: Sum of Odd Numbers between 1 and 9
+    function checkAnswersExample4() {
+      // Each row: [Line Number, i, sum, Output]
+      let correctValues = [
+        ["02", "", "0", ""],
+        ["03", "1", "", ""],
+        ["06", "", "1", ""],
+        ["08", "2", "", ""],
+        ["08", "3", "", ""],
+        ["06", "", "4", ""],
+        ["08", "4", "", ""],
+        ["08", "5", "", ""],
+        ["06", "", "9", ""],
+        ["08", "6", "", ""],
+        ["08", "7", "", ""],
+        ["06", "", "16", ""],
+        ["08", "8", "", ""],
+        ["08", "9", "", ""],
+        ["06", "", "25", ""],
+        ["08", "10", "", ""],
+        ["10", "", "", "Sum is 25"]
+      ];
+      let table = document.getElementById("traceTableExample4");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    // Example 5: Multiplication Table for 1 to 3 (Nested While)
+    function checkAnswersExample5() {
+      // Each row: [Line Number, i, j, Output]
+      let correctValues = [
+        ["01", "1", "", ""],
+        ["03", "", "1", ""],
+        ["05", "", "", "1"],
+        ["06", "", "2", ""],
+        ["05", "", "", "2"],
+        ["06", "", "3", ""],
+        ["05", "", "", "3"],
+        ["06", "", "4", ""],
+        ["08", "2", "", ""],
+        ["03", "", "1", ""],
+        ["05", "", "", "2"],
+        ["06", "", "2", ""],
+        ["05", "", "", "4"],
+        ["06", "", "3", ""],
+        ["05", "", "", "6"],
+        ["06", "", "4", ""],
+        ["08", "3", "", ""],
+        ["03", "", "1", ""],
+        ["05", "", "", "3"],
+        ["06", "", "2", ""],
+        ["05", "", "", "6"],
+        ["06", "", "3", ""],
+        ["05", "", "", "9"],
+        ["06", "", "4", ""],
+        ["08", "4", "", ""]
+      ];
+      let table = document.getElementById("traceTableExample5");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    // Example 6: Right Triangle Pattern (Nested While)
+    function checkAnswersExample6() {
+      // Each row: [Line Number, i, j, line, Output]
+      let correctValues = [
+        ["02", "1", "", "", ""],
+        ["04", "", "1", "", ""],
+        ["07", "", "", "*", ""],
+        ["08", "", "2", "", ""],
+        ["10", "", "", "", "*"],
+        ["11", "2", "", "", ""],
+        ["04", "", "1", "", ""],
+        ["07", "", "", "*", ""],
+        ["08", "", "2", "", ""],
+        ["07", "", "", "**", ""],
+        ["08", "", "3", "", ""],
+        ["10", "", "", "", "**"],
+        ["11", "3", "", "", ""],
+        ["04", "", "1", "", ""],
+        ["07", "", "", "*", ""],
+        ["08", "", "2", "", ""],
+        ["07", "", "", "**", ""],
+        ["08", "", "3", "", ""],
+        ["07", "", "", "***", ""],
+        ["08", "", "4", "", ""],
+        ["10", "", "", "", "***"],
+        ["11", "4", "", "", ""]
+      ];
+      let table = document.getElementById("traceTableExample6");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    // Example 7: Sum in a 2D Grid (Nested While)
+    function checkAnswersExample7() {
+      // Each row: [Line Number, i, j, value, total, Output]
+      let correctValues = [
+        ["04", "", "", "", "0", ""],
+        ["03", "1", "", "", "", ""],
+        ["06", "", "1", "", "", ""],
+        ["08", "", "", "1", "", ""],
+        ["09", "", "", "", "1", ""],
+        ["10", "", "2", "", "", ""],
+        ["08", "", "", "2", "", ""],
+        ["09", "", "", "", "3", ""],
+        ["10", "", "3", "", "", ""],
+        ["12", "2", "", "", "", ""],
+        ["06", "", "1", "", "", ""],
+        ["08", "", "", "2", "", ""],
+        ["09", "", "", "", "5", ""],
+        ["10", "", "2", "", "", ""],
+        ["08", "", "", "4", "", ""],
+        ["09", "", "", "", "9", ""],
+        ["10", "", "3", "", "", ""],
+        ["12", "3", "", "", "", ""],
+        ["14", "", "", "", "", "Total is 9"]
+      ];
+      let table = document.getElementById("traceTableExample7");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+
+    // Example 8: Nested Countdown (Double While)
+    function checkAnswersExample8() {
+      // Each row: [Line Number, i, j, Output]
+      let correctValues = [
+        ["01", "3", "", ""],
+        ["03", "", "3", ""],
+        ["05", "", "", "3"],
+        ["06", "", "2", ""],
+        ["05", "", "", "2"],
+        ["06", "", "1", ""],
+        ["05", "", "", "1"],
+        ["06", "", "0", ""],
+        ["08", "2", "", ""],
+        ["03", "", "2", ""],
+        ["05", "", "", "2"],
+        ["06", "", "1", ""],
+        ["05", "", "", "1"],
+        ["06", "", "0", ""],
+        ["08", "1", "", ""],
+        ["03", "", "1", ""],
+        ["05", "", "", "1"],
+        ["06", "", "0", ""],
+        ["08", "0", "", ""],
+        ["10", "", "", "Done"]
+      ];
+      let table = document.getElementById("traceTableExample8");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
   </script>
 </head>
 <body>
