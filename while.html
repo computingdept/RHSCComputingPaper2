@@ -38,49 +38,32 @@
   </style>
   <script>
     function checkAnswersTruth() {
-      // Expected values for each row:
-      // Row 1:  Line "01": (no change to tracked variables)
-      // Row 2:  Line "02": exit = "false"
-      // Row 3:  Line "03": attempts = "0"
-      // Row 4:  Line "04": (loop start, no tracked variable changes)
-      // Row 5:  Line "05": attempts becomes "1"
-      // Row 6:  Line "06": password becomes "Computer"
-      // Row 7:  Line "07": (if check, no change)
-      // Row 8:  Line "09": output "Incorrect"
-      // Row 9:  Line "05": attempts becomes "2"
-      // Row 10: Line "06": password becomes "Science"
-      // Row 11: Line "07": (if check, no change)
-      // Row 12: Line "09": output "Incorrect"
-      // Row 13: Line "05": attempts becomes "3"
-      // Row 14: Line "06": password becomes "J277"
-      // Row 15: Line "07": (if check, condition true; no output)
-      // Row 16: Line "08": exit becomes "true"
-      // Row 17: Line "13": output "3 guesses", attempts = "3"
-      
+      // Expected trace values for each row:
+      // Each row is an array of 6 values corresponding to:
+      // [Line Number, attempts, password, correctcode, exit, Output]
       let correctValues = [
-        ["01", "", "", "", ""],
-        ["02", "", "", "false", ""],
-        ["03", "0", "", "", ""],
-        ["04", "", "", "", ""],
-        ["05", "1", "", "", ""],
-        ["06", "", "Computer", "", ""],
-        ["07", "", "", "", ""],
-        ["09", "", "", "", "Incorrect"],
-        ["05", "2", "", "", ""],
-        ["06", "", "Science", "", ""],
-        ["07", "", "", "", ""],
-        ["09", "", "", "", "Incorrect"],
-        ["05", "3", "", "", ""],
-        ["06", "", "J277", "", ""],
-        ["07", "", "", "", ""],
-        ["08", "", "", "true", ""],
-        ["13", "3", "", "", "3 guesses"]
+        ["01", "", "", "J277", "", ""],
+        ["02", "", "", "", "false", ""],
+        ["03", "0", "", "", "", ""],
+        ["04", "", "", "", "", ""],
+        ["05", "1", "", "", "", ""],
+        ["06", "", "Computer", "", "", ""],
+        ["07", "", "", "", "", ""],
+        ["09", "", "", "", "", "Incorrect"],
+        ["05", "2", "", "", "", ""],
+        ["06", "", "Science", "", "", ""],
+        ["07", "", "", "", "", ""],
+        ["09", "", "", "", "", "Incorrect"],
+        ["05", "3", "", "", "", ""],
+        ["06", "", "J277", "", "", ""],
+        ["08", "", "", "J277", "true", ""],
+        ["13", "3", "", "", "", "3 guesses"]
       ];
       
       let table = document.getElementById("traceTableTruth");
       let rows = table.rows;
       
-      // Skip header row (index 0) and then check each data row.
+      // Skip the header row (index 0) and then check each data row.
       for (let i = 1; i < rows.length; i++) {
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
@@ -95,9 +78,11 @@
 <body>
   <h2>Passcode Trace Table Challenge</h2>
   <p>
-    In this challenge, your program asks a user to enter a passcode until the correct passcode is entered.
-    The correct passcode is <strong>J277</strong>. For example, the user’s first attempt is <strong>Computer</strong>,
-    the second is <strong>Science</strong>, and the third is <strong>J277</strong>. Then the program prints the total number of guesses.
+    Your program asks a user to enter a passcode until the correct one is entered.
+    The correct passcode is <strong>J277</strong>.
+    For example, the user’s first attempt is <strong>Computer</strong>,
+    the second is <strong>Science</strong>, and the third is <strong>J277</strong>.
+    Then the program prints the total number of guesses.
   </p>
   <pre>
 // First attempt "Computer"
@@ -118,18 +103,20 @@ endwhile
 print( attempts + " guesses")
   </pre>
   <p>
-    Fill in the table below with the values for each line as the code runs.
+    Fill in the table below with the correct values for each line.
   </p>
   <table id="traceTableTruth">
     <tr>
       <th>Line Number</th>
       <th>attempts</th>
       <th>password</th>
+      <th>correctcode</th>
       <th>exit</th>
       <th>Output</th>
     </tr>
     <!-- Row 1: Line 01 -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -143,9 +130,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 3: Line 03 -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -159,9 +148,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 5: Line 05 (first iteration) -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -175,9 +166,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 7: Line 07 (first iteration) -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -191,9 +184,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 9: Line 05 (second iteration) -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -207,9 +202,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 11: Line 07 (second iteration) -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -223,9 +220,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 13: Line 05 (third iteration) -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -239,9 +238,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 15: Line 07 (third iteration) -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -255,9 +256,11 @@ print( attempts + " guesses")
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
+      <td><input type="text"></td>
     </tr>
     <!-- Row 17: Line 13 (Final output) -->
     <tr>
+      <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
