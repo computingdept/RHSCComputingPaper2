@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sequence Trace Table Challenges</title>
+  <title>Sequence Trace Table Challenges (with Casting)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -44,18 +44,16 @@
   </style>
   <script>
     // ============================
-    // Example 1: Add Two Numbers
+    // Examples 1 - 7: Basic Arithmetic & Boolean (Sequential)
     // ============================
+
+    // Example 1: Add Two Numbers
     function checkAnswersEx1() {
       // Each row: [Line Number, a, b, sum, Output]
       let correctValues = [
-        // Line 01: a becomes 5.
         ["01", "5", "", "", ""],
-        // Line 02: b becomes 3.
         ["02", "", "3", "", ""],
-        // Line 03: sum becomes a + b = 5 + 3 = 8.
         ["03", "", "", "8", ""],
-        // Line 04: Output "Sum is 8".
         ["04", "", "", "", "Sum is 8"]
       ];
       let table = document.getElementById("traceTableEx1");
@@ -70,46 +68,34 @@
       }
     }
 
-    // ================================
     // Example 2: Subtract Two Numbers
-    // ================================
     function checkAnswersEx2() {
       // Each row: [Line Number, a, b, diff, Output]
       let correctValues = [
-        // Line 01: a becomes 10.
         ["01", "10", "", "", ""],
-        // Line 02: b becomes 4.
         ["02", "", "4", "", ""],
-        // Line 03: diff becomes a - b = 10 - 4 = 6.
         ["03", "", "", "6", ""],
-        // Line 04: Output "Difference is 6".
         ["04", "", "", "", "Difference is 6"]
       ];
       let table = document.getElementById("traceTableEx2");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor =
-             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
 
-    // ================================
     // Example 3: Multiply Two Numbers
-    // ================================
     function checkAnswersEx3() {
       // Each row: [Line Number, a, b, product, Output]
       let correctValues = [
-        // Line 01: a becomes 7.
         ["01", "7", "", "", ""],
-        // Line 02: b becomes 6.
         ["02", "", "6", "", ""],
-        // Line 03: product becomes a * b = 7 * 6 = 42.
         ["03", "", "", "42", ""],
-        // Line 04: Output "Product is 42".
         ["04", "", "", "", "Product is 42"]
       ];
       let table = document.getElementById("traceTableEx3");
@@ -124,19 +110,13 @@
       }
     }
 
-    // ===============================
     // Example 4: Divide Two Numbers
-    // ===============================
     function checkAnswersEx4() {
       // Each row: [Line Number, a, b, quotient, Output]
       let correctValues = [
-        // Line 01: a becomes 20.
         ["01", "20", "", "", ""],
-        // Line 02: b becomes 4.
         ["02", "", "4", "", ""],
-        // Line 03: quotient becomes a / b = 20 / 4 = 5.
         ["03", "", "", "5", ""],
-        // Line 04: Output "Quotient is 5".
         ["04", "", "", "", "Quotient is 5"]
       ];
       let table = document.getElementById("traceTableEx4");
@@ -151,19 +131,13 @@
       }
     }
 
-    // ================================
     // Example 5: Exponentiation
-    // ================================
     function checkAnswersEx5() {
       // Each row: [Line Number, base, exponent, result, Output]
       let correctValues = [
-        // Line 01: base becomes 3.
         ["01", "3", "", "", ""],
-        // Line 02: exponent becomes 4.
         ["02", "", "4", "", ""],
-        // Line 03: result becomes base ^ exponent = 3^4 = 81.
         ["03", "", "", "81", ""],
-        // Line 04: Output "Result is 81".
         ["04", "", "", "", "Result is 81"]
       ];
       let table = document.getElementById("traceTableEx5");
@@ -178,23 +152,15 @@
       }
     }
 
-    // ================================================
     // Example 6: Mixed Arithmetic Expression with MOD and DIV
-    // ================================================
     function checkAnswersEx6() {
       // Each row: [Line Number, a, b, modResult, divResult, result, Output]
       let correctValues = [
-        // Line 01: a becomes 17.
         ["01", "17", "", "", "", "", ""],
-        // Line 02: b becomes 5.
         ["02", "", "5", "", "", "", ""],
-        // Line 03: modResult becomes a MOD b = 17 MOD 5 = 2.
         ["03", "", "", "2", "", "", ""],
-        // Line 04: divResult becomes a DIV b = 17 DIV 5 = 3.
         ["04", "", "", "", "3", "", ""],
-        // Line 05: result becomes (a - b) * modResult + divResult = (17 - 5) * 2 + 3 = (12 * 2) + 3 = 27.
         ["05", "", "", "", "", "27", ""],
-        // Line 06: Output "Result is 27".
         ["06", "", "", "", "", "", "Result is 27"]
       ];
       let table = document.getElementById("traceTableEx6");
@@ -209,22 +175,95 @@
       }
     }
 
-    // =====================================
     // Example 7: Boolean Expression Evaluation
-    // =====================================
     function checkAnswersEx7() {
       // Each row: [Line Number, p, q, r, Output]
       let correctValues = [
-        // Line 01: p becomes true.
         ["01", "true", "", "", ""],
-        // Line 02: q becomes false.
         ["02", "", "false", "", ""],
-        // Line 03: r becomes p AND (NOT q) = true AND (true) = true.
         ["03", "", "", "true", ""],
-        // Line 04: Output "Result is true".
         ["04", "", "", "", "Result is true"]
       ];
       let table = document.getElementById("traceTableEx7");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    // ============================
+    // Examples 8 - 10: Casting Operations
+    // ============================
+
+    // Example 8: Cast Integer to String
+    function checkAnswersEx8() {
+      // Each row: [Line Number, a, s, Output]
+      let correctValues = [
+        // Line 01: a becomes 345.
+        ["01", "345", "", ""],
+        // Line 02: s becomes str(a) → "345".
+        ["02", "", "345", ""],
+        // Line 03: Output "s is 345".
+        ["03", "", "", "s is 345"]
+      ];
+      let table = document.getElementById("traceTableEx8");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    // Example 9: Cast String to Integer
+    function checkAnswersEx9() {
+      // Each row: [Line Number, s, n, Output]
+      let correctValues = [
+        // Line 01: s becomes "3".
+        ["01", "3", "", ""],
+        // Line 02: n becomes int(s) → 3.
+        ["02", "", "3", ""],
+        // Line 03: Output "n is 3".
+        ["03", "", "", "n is 3"]
+      ];
+      let table = document.getElementById("traceTableEx9");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    // Example 10: Mixed Casting: float, real, and bool
+    function checkAnswersEx10() {
+      // Each row: [Line Number, s1, f, r, s2, b, Output]
+      let correctValues = [
+        // Line 01: s1 becomes "4.52".
+        ["01", "4.52", "", "", "", "", ""],
+        // Line 02: f becomes float(s1) → 4.52.
+        ["02", "", "4.52", "", "", "", ""],
+        // Line 03: r becomes real(s1) → 4.52.
+        ["03", "", "", "4.52", "", "", ""],
+        // Line 04: s2 becomes "true".
+        ["04", "", "", "", "true", "", ""],
+        // Line 05: b becomes bool(s2) → true.
+        ["05", "", "", "", "", "true", ""],
+        // Line 06: Output "f is 4.52, r is 4.52, b is true".
+        ["06", "", "", "", "", "", "f is 4.52, r is 4.52, b is true"]
+      ];
+      let table = document.getElementById("traceTableEx10");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
          let inputs = rows[i].getElementsByTagName("input");
@@ -239,7 +278,7 @@
 </head>
 <body>
   <h1>Sequence Trace Table Challenges</h1>
-  <p>These examples involve only sequential (straight‐line) execution: assignments and output statements. No selection (if) or iteration (loops) are used.</p>
+  <p>These examples involve only sequential (straight‐line) execution—assignments and output statements (no selection or iteration).</p>
 
   <hr>
 
@@ -253,7 +292,7 @@
 03 sum = a + b
 04 print("Sum is " + sum)
     </pre>
-    <p>Fill in the trace table only when a value changes or output is produced.</p>
+    <p>Record the trace only when a value changes or output is produced.</p>
     <table id="traceTableEx1">
       <tr>
         <th>Line Number</th>
@@ -283,7 +322,7 @@
 03 diff = a - b
 04 print("Difference is " + diff)
     </pre>
-    <p>Fill in the trace table.</p>
+    <p>Record the changes.</p>
     <table id="traceTableEx2">
       <tr>
         <th>Line Number</th>
@@ -313,7 +352,7 @@
 03 product = a * b
 04 print("Product is " + product)
     </pre>
-    <p>Fill in the trace table.</p>
+    <p>Record the changes.</p>
     <table id="traceTableEx3">
       <tr>
         <th>Line Number</th>
@@ -343,7 +382,7 @@
 03 quotient = a / b
 04 print("Quotient is " + quotient)
     </pre>
-    <p>Fill in the trace table.</p>
+    <p>Record the changes.</p>
     <table id="traceTableEx4">
       <tr>
         <th>Line Number</th>
@@ -373,7 +412,7 @@
 03 result = base ^ exponent
 04 print("Result is " + result)
     </pre>
-    <p>Fill in the trace table.</p>
+    <p>Record the changes.</p>
     <table id="traceTableEx5">
       <tr>
         <th>Line Number</th>
@@ -405,7 +444,7 @@
 05 result = (a - b) * modResult + divResult
 06 print("Result is " + result)
     </pre>
-    <p>Fill in the trace table.</p>
+    <p>Record the changes.</p>
     <table id="traceTableEx6">
       <tr>
         <th>Line Number</th>
@@ -451,7 +490,7 @@
 03 r = p AND (NOT q)
 04 print("Result is " + r)
     </pre>
-    <p>Fill in the trace table.</p>
+    <p>Record the changes.</p>
     <table id="traceTableEx7">
       <tr>
         <th>Line Number</th>
@@ -471,6 +510,108 @@
           <td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersEx7()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- Example 8: Cast Integer to String -->
+  <section id="ex8">
+    <h2>Example 8: Cast Integer to String</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 a = 345
+02 s = str(a)
+03 print("s is " + s)
+    </pre>
+    <p>Record the changes.</p>
+    <table id="traceTableEx8">
+      <tr>
+        <th>Line Number</th>
+        <th>a</th>
+        <th>s</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersEx8()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- Example 9: Cast String to Integer -->
+  <section id="ex9">
+    <h2>Example 9: Cast String to Integer</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 s = "3"
+02 n = int(s)
+03 print("n is " + str(n))
+    </pre>
+    <p>Record the changes.</p>
+    <table id="traceTableEx9">
+      <tr>
+        <th>Line Number</th>
+        <th>s</th>
+        <th>n</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersEx9()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- Example 10: Mixed Casting: float, real, and bool -->
+  <section id="ex10">
+    <h2>Example 10: Mixed Casting (float, real, bool)</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 s1 = "4.52"
+02 f = float(s1)
+03 r = real(s1)
+04 s2 = "true"
+05 b = bool(s2)
+06 print("f is " + str(f) + ", r is " + str(r) + ", b is " + str(b))
+    </pre>
+    <p>Record the changes.</p>
+    <table id="traceTableEx10">
+      <tr>
+        <th>Line Number</th>
+        <th>s1</th>
+        <th>f</th>
+        <th>r</th>
+        <th>s2</th>
+        <th>b</th>
+        <th>Output</th>
+      </tr>
+      <!-- 6 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersEx10()">Check Answers</button>
   </section>
 
 </body>
