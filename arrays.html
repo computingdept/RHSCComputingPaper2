@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Array Trace Table Challenges</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding-bottom: 50px;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    hr {
+      margin: 40px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 6px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      font-size: 1em;
+      overflow-x: auto;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    /* ==========================================================
+       Example A1: Declare and Assign a 1D Array
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array colours[5]
+       02 colours = ["Blue", "Pink", "Green", "Yellow", "Red"]
+       03 print("colours declared")
+       ========================================================== */
+    function checkAnswersA1() {
+      // Columns: [Line Number, colours, Output]
+      let correctValues = [
+        // Line 01: Array declared (we assume no assigned values yet)
+        ["01", "declared", ""],
+        // Line 02: Array is now assigned its values.
+        ["02", "[Blue, Pink, Green, Yellow, Red]", ""],
+        // Line 03: Output message.
+        ["03", "", "colours declared"]
+      ];
+      let table = document.getElementById("traceTableA1");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A2: Print an Element from a 1D Array
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
+       02 print(colours[2])
+       (Remember: index 2 holds "Green")
+       ========================================================== */
+    function checkAnswersA2() {
+      // Columns: [Line Number, colours, Output]
+      let correctValues = [
+        ["01", "[Blue, Pink, Green, Yellow, Red]", ""],
+        ["02", "", "Green"]
+      ];
+      let table = document.getElementById("traceTableA2");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A3: Change an Element in a 1D Array
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
+       02 colours[3] = "Noni"
+       03 print("New colour: " + colours[3])
+       (Index 3 changes from "Yellow" to "Noni")
+       ========================================================== */
+    function checkAnswersA3() {
+      // Columns: [Line Number, colours, Output]
+      let correctValues = [
+        ["01", "[Blue, Pink, Green, Yellow, Red]", ""],
+        ["02", "[Blue, Pink, Green, Noni, Red]", ""],
+        ["03", "", "New colour: Noni"]
+      ];
+      let table = document.getElementById("traceTableA3");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A4: 2D Array Assignment and Access
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array gameboard[8,8]
+       02 gameboard[1,0] = "Pawn"
+       03 print("Position (1,0): " + gameboard[1,0])
+       ========================================================== */
+    function checkAnswersA4() {
+      // Columns: [Line Number, gameboard (changed cell), Output]
+      let correctValues = [
+        ["01", "declared", ""],
+        ["02", "gameboard[1,0] = Pawn", ""],
+        ["03", "", "Position (1,0): Pawn"]
+      ];
+      let table = document.getElementById("traceTableA4");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A5: Assign to an Array Element in a Names Array
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array names[5]
+       02 names[3] = "Noni"
+       03 print("names[3] is " + names[3])
+       ========================================================== */
+    function checkAnswersA5() {
+      // Columns: [Line Number, names, Output]
+      let correctValues = [
+        ["01", "declared", ""],
+        ["02", "[-, -, -, Noni, -]", ""],
+        ["03", "", "names[3] is Noni"]
+      ];
+      let table = document.getElementById("traceTableA5");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A6: Sum of Elements from a 1D Array
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array numbers[4] = [2, 4, 6, 8]
+       02 sum = numbers[0] + numbers[1] + numbers[2] + numbers[3]
+       03 print("Sum is " + sum)
+       ========================================================== */
+    function checkAnswersA6() {
+      // Columns: [Line Number, numbers, sum, Output]
+      let correctValues = [
+        ["01", "[2, 4, 6, 8]", "", ""],
+        ["02", "", "20", ""],
+        ["03", "", "", "Sum is 20"]
+      ];
+      let table = document.getElementById("traceTableA6");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A7: 2D Array – Corner Pieces on a Board
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array board[3,3]
+       02 board[0,0] = "Rook"
+       03 board[2,2] = "King"
+       04 print("Corner pieces: " + board[0,0] + " and " + board[2,2])
+       ========================================================== */
+    function checkAnswersA7() {
+      // Columns: [Line Number, board (changed cells), Output]
+      let correctValues = [
+        ["01", "declared", ""],
+        ["02", "board[0,0] = Rook", ""],
+        ["03", "board[2,2] = King", ""],
+        ["04", "", "Corner pieces: Rook and King"]
+      ];
+      let table = document.getElementById("traceTableA7");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A8: Concatenation of Array Elements
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
+       02 message = colours[0] + ", " + colours[1] + ", " + colours[2]
+       03 print("Message: " + message)
+       ========================================================== */
+    function checkAnswersA8() {
+      // Columns: [Line Number, colours, message, Output]
+      let correctValues = [
+        ["01", "[Blue, Pink, Green, Yellow, Red]", "", ""],
+        ["02", "", "Blue, Pink, Green", ""],
+        ["03", "", "", "Message: Blue, Pink, Green"]
+      ];
+      let table = document.getElementById("traceTableA8");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A9: Replace an Element in a 2D Array
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array board[4,4]
+       02 board[1,1] = "Knight"
+       03 board[1,1] = "Bishop"
+       04 print("Piece at (1,1): " + board[1,1])
+       ========================================================== */
+    function checkAnswersA9() {
+      // Columns: [Line Number, board, Output]
+      let correctValues = [
+        ["01", "declared", ""],
+        ["02", "board[1,1] = Knight", ""],
+        ["03", "board[1,1] = Bishop", ""],
+        ["04", "", "Piece at (1,1): Bishop"]
+      ];
+      let table = document.getElementById("traceTableA9");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+
+    /* ==========================================================
+       Example A10: Update a Pre-assigned 1D Array
+       ----------------------------------------------------------
+       Pseudocode:
+       01 array fruits[3] = ["Apple", "Banana", "Cherry"]
+       02 fruits[1] = "Orange"
+       03 print("Fruits: " + fruits[0] + ", " + fruits[1] + ", " + fruits[2])
+       ========================================================== */
+    function checkAnswersA10() {
+      // Columns: [Line Number, fruits, Output]
+      let correctValues = [
+        ["01", "[Apple, Banana, Cherry]", ""],
+        ["02", "[Apple, Orange, Cherry]", ""],
+        ["03", "", "Fruits: Apple, Orange, Cherry"]
+      ];
+      let table = document.getElementById("traceTableA10");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Array Trace Table Challenges</h1>
+  <p>
+    These 10 sequential challenges demonstrate basic operations with arrays—including 1D and 2D arrays. In each example, arrays are declared (or assigned initial values), elements are accessed or updated, and output is printed. Remember that arrays are 0‑indexed and can store only one data type.
+  </p>
+  
+  <hr>
+
+  <!-- Example A1: Declare and Assign a 1D Array -->
+  <section id="A1">
+    <h2>Example A1: Declare and Assign a 1D Array</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array colours[5]
+02 colours = ["Blue", "Pink", "Green", "Yellow", "Red"]
+03 print("colours declared")
+    </pre>
+    <table id="traceTableA1">
+      <tr>
+        <th>Line Number</th>
+        <th>colours</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA1()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A2: Print an Element from a 1D Array -->
+  <section id="A2">
+    <h2>Example A2: Print an Element from a 1D Array</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
+02 print(colours[2])
+    </pre>
+    <table id="traceTableA2">
+      <tr>
+        <th>Line Number</th>
+        <th>colours</th>
+        <th>Output</th>
+      </tr>
+      <!-- 2 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA2()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A3: Change an Element in a 1D Array -->
+  <section id="A3">
+    <h2>Example A3: Change an Element in a 1D Array</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
+02 colours[3] = "Noni"
+03 print("New colour: " + colours[3])
+    </pre>
+    <table id="traceTableA3">
+      <tr>
+        <th>Line Number</th>
+        <th>colours</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA3()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A4: 2D Array Assignment and Access -->
+  <section id="A4">
+    <h2>Example A4: 2D Array Assignment and Access</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array gameboard[8,8]
+02 gameboard[1,0] = "Pawn"
+03 print("Position (1,0): " + gameboard[1,0])
+    </pre>
+    <table id="traceTableA4">
+      <tr>
+        <th>Line Number</th>
+        <th>gameboard</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA4()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A5: Assign to an Element in a Names Array -->
+  <section id="A5">
+    <h2>Example A5: Assign to an Element in a Names Array</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array names[5]
+02 names[3] = "Noni"
+03 print("names[3] is " + names[3])
+    </pre>
+    <table id="traceTableA5">
+      <tr>
+        <th>Line Number</th>
+        <th>names</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA5()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A6: Sum of Elements from a 1D Array -->
+  <section id="A6">
+    <h2>Example A6: Sum of Elements from a 1D Array</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array numbers[4] = [2, 4, 6, 8]
+02 sum = numbers[0] + numbers[1] + numbers[2] + numbers[3]
+03 print("Sum is " + sum)
+    </pre>
+    <table id="traceTableA6">
+      <tr>
+        <th>Line Number</th>
+        <th>numbers</th>
+        <th>sum</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA6()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A7: 2D Array – Corner Pieces on a Board -->
+  <section id="A7">
+    <h2>Example A7: 2D Array – Corner Pieces on a Board</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array board[3,3]
+02 board[0,0] = "Rook"
+03 board[2,2] = "King"
+04 print("Corner pieces: " + board[0,0] + " and " + board[2,2])
+    </pre>
+    <table id="traceTableA7">
+      <tr>
+        <th>Line Number</th>
+        <th>board</th>
+        <th>Output</th>
+      </tr>
+      <!-- 4 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA7()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A8: Concatenation of Array Elements -->
+  <section id="A8">
+    <h2>Example A8: Concatenation of Array Elements</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
+02 message = colours[0] + ", " + colours[1] + ", " + colours[2]
+03 print("Message: " + message)
+    </pre>
+    <table id="traceTableA8">
+      <tr>
+        <th>Line Number</th>
+        <th>colours</th>
+        <th>message</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA8()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A9: Replace an Element in a 2D Array -->
+  <section id="A9">
+    <h2>Example A9: Replace an Element in a 2D Array</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array board[4,4]
+02 board[1,1] = "Knight"
+03 board[1,1] = "Bishop"
+04 print("Piece at (1,1): " + board[1,1])
+    </pre>
+    <table id="traceTableA9">
+      <tr>
+        <th>Line Number</th>
+        <th>board</th>
+        <th>Output</th>
+      </tr>
+      <!-- 4 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA9()">Check Answers</button>
+  </section>
+  
+  <hr>
+
+  <!-- Example A10: Update a Pre-assigned 1D Array -->
+  <section id="A10">
+    <h2>Example A10: Update a Pre-assigned 1D Array</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 array fruits[3] = ["Apple", "Banana", "Cherry"]
+02 fruits[1] = "Orange"
+03 print("Fruits: " + fruits[0] + ", " + fruits[1] + ", " + fruits[2])
+    </pre>
+    <table id="traceTableA10">
+      <tr>
+        <th>Line Number</th>
+        <th>fruits</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersA10()">Check Answers</button>
+  </section>
+
+</body>
+</html>
