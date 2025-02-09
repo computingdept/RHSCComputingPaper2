@@ -38,45 +38,31 @@
   </style>
   <script>
     function checkAnswersFactorial() {
-      // The expected trace values for each row.
-      // Each row corresponds to:
-      // [Line Number, i, factorial, Output]
-      // Only include values that change from the previous row.
+      // Each row is: [Line Number, i, factorial, Output]
+      // Only steps where a value changes or output is produced are included.
       let correctValues = [
-        // Row 1: Line 01: n = 3 (n is constant and not shown)
-        ["01", "", "", ""],
-        // Row 2: Line 02: factorial = 1
+        // Line 02: factorial is set to 1.
         ["02", "", "1", ""],
-        // Row 3: Line 03: i = 1
+        // Line 03: i is set to 1.
         ["03", "1", "", ""],
-        // Row 4: First evaluation of while (line 04); no change in i or factorial
-        ["04", "", "", ""],
-        // Row 5: First iteration (line 05): factorial = factorial * i, but 1 * 1 = 1 (no change)
-        ["05", "", "", ""],
-        // Row 6: First iteration (line 06): i = i + 1, so i becomes 2
+        // First iteration, Line 06: i is incremented from 1 to 2.
         ["06", "2", "", ""],
-        // Row 7: Second evaluation of while (line 04); no change
-        ["04", "", "", ""],
-        // Row 8: Second iteration (line 05): factorial becomes 1 * 2 = 2
+        // Second iteration, Line 05: factorial becomes 1 * 2 = 2.
         ["05", "", "2", ""],
-        // Row 9: Second iteration (line 06): i = i + 1, so i becomes 3
+        // Second iteration, Line 06: i is incremented from 2 to 3.
         ["06", "3", "", ""],
-        // Row 10: Third evaluation of while (line 04); no change
-        ["04", "", "", ""],
-        // Row 11: Third iteration (line 05): factorial becomes 2 * 3 = 6
+        // Third iteration, Line 05: factorial becomes 2 * 3 = 6.
         ["05", "", "6", ""],
-        // Row 12: Third iteration (line 06): i = i + 1, so i becomes 4
+        // Third iteration, Line 06: i is incremented from 3 to 4.
         ["06", "4", "", ""],
-        // Row 13: Fourth evaluation of while (line 04); no change
-        ["04", "", "", ""],
-        // Row 14: Print statement (line 08): output "Factorial is 6"
-        ["08", "", "", "Factorial is 6"]
+        // Line 08: Output is printed ("Factorial is 6").
+        ["08", "", "6", "Factorial is 6"]
       ];
       
       let table = document.getElementById("traceTableFactorial");
       let rows = table.rows;
       
-      // Skip the header row (index 0) and then check each data row.
+      // Skip the header row (index 0) and check each data row.
       for (let i = 1; i < rows.length; i++) {
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
@@ -91,8 +77,8 @@
 <body>
   <h2>3 Factorial Trace Table Challenge</h2>
   <p>
-    This program computes the factorial of 3. The variable <strong>n</strong> is set to 3 (and is constant, so it’s not shown).
-    The pseudocode is as follows:
+    This program computes the factorial of 3. The variable <strong>n</strong> is set to 3 and remains constant (so it isn’t shown).
+    Record only the steps where a value changes or output is produced.
   </p>
   <pre>
 01 n = 3
@@ -105,8 +91,7 @@
 08 print("Factorial is " + factorial)
   </pre>
   <p>
-    Fill in the table below with the correct values <em>only when a value changes</em>. For example, after line 03, enter the value of <strong>i</strong> (which becomes 1),
-    but if a value remains the same from the previous step, leave that cell blank.
+    Fill in the table below only when a value changes. For example, after line 02, record that factorial becomes 1; after line 03, record that i becomes 1; etc.
   </p>
   <table id="traceTableFactorial">
     <tr>
@@ -115,98 +100,56 @@
       <th>factorial</th>
       <th>Output</th>
     </tr>
-    <!-- Row 1: Line 01 -->
+    <!-- Row 1: Line 02: factorial becomes 1 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 2: Line 02 -->
+    <!-- Row 2: Line 03: i becomes 1 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 3: Line 03 -->
+    <!-- Row 3: First iteration, Line 06: i becomes 2 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 4: First evaluation of while (line 04) -->
+    <!-- Row 4: Second iteration, Line 05: factorial becomes 2 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 5: First iteration (line 05) -->
+    <!-- Row 5: Second iteration, Line 06: i becomes 3 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 6: First iteration (line 06) -->
+    <!-- Row 6: Third iteration, Line 05: factorial becomes 6 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 7: Second evaluation of while (line 04) -->
+    <!-- Row 7: Third iteration, Line 06: i becomes 4 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 8: Second iteration (line 05) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 9: Second iteration (line 06) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 10: Third evaluation of while (line 04) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 11: Third iteration (line 05) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 12: Third iteration (line 06) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 13: Fourth evaluation of while (line 04) -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <!-- Row 14: Print statement (line 08) -->
+    <!-- Row 8: Line 08: Output "Factorial is 6" -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
