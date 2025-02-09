@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>String Operations & Casting Trace Table Challenges</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding-bottom: 50px;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    hr {
+      margin: 40px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 6px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      font-size: 1em;
+      overflow-x: auto;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    // ===============================
+    // ST1: String Length
+    // ===============================
+    function checkAnswersST1() {
+      // Each row: [Line Number, subject, length, Output]
+      let correctValues = [
+        // Line 01: subject becomes "ComputerScience"
+        ["01", "ComputerScience", "", ""],
+        // Line 02: length becomes subject.length → 15
+        ["02", "", "15", ""],
+        // Line 03: Output "Length is 15"
+        ["03", "", "", "Length is 15"]
+      ];
+      let table = document.getElementById("traceTableST1");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST2: Substring Extraction
+    // ===============================
+    function checkAnswersST2() {
+      // Each row: [Line Number, subject, subStr, Output]
+      let correctValues = [
+        // Line 01: subject becomes "ComputerScience"
+        ["01", "ComputerScience", "", ""],
+        // Line 02: subStr becomes subject.substring(3,5) → "puter"
+        ["02", "", "puter", ""],
+        // Line 03: Output "Substring is puter"
+        ["03", "", "", "Substring is puter"]
+      ];
+      let table = document.getElementById("traceTableST2");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST3: Left Substring
+    // ===============================
+    function checkAnswersST3() {
+      // Each row: [Line Number, subject, leftPart, Output]
+      let correctValues = [
+        // Line 01: subject becomes "ComputerScience"
+        ["01", "ComputerScience", "", ""],
+        // Line 02: leftPart becomes subject.left(4) → "Comp"
+        ["02", "", "Comp", ""],
+        // Line 03: Output "Left part is Comp"
+        ["03", "", "", "Left part is Comp"]
+      ];
+      let table = document.getElementById("traceTableST3");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST4: Right Substring
+    // ===============================
+    function checkAnswersST4() {
+      // Each row: [Line Number, subject, rightPart, Output]
+      let correctValues = [
+        // Line 01: subject becomes "ComputerScience"
+        ["01", "ComputerScience", "", ""],
+        // Line 02: rightPart becomes subject.right(3) → "nce"
+        ["02", "", "nce", ""],
+        // Line 03: Output "Right part is nce"
+        ["03", "", "", "Right part is nce"]
+      ];
+      let table = document.getElementById("traceTableST4");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST5: Concatenation of Two Strings
+    // ===============================
+    function checkAnswersST5() {
+      // Each row: [Line Number, stringA, stringB, result, Output]
+      let correctValues = [
+        // Line 01: stringA becomes "Hello, "
+        ["01", "Hello, ", "", "", ""],
+        // Line 02: stringB becomes "World"
+        ["02", "", "World", "", ""],
+        // Line 03: result becomes stringA + stringB → "Hello, World"
+        ["03", "", "", "Hello, World", ""],
+        // Line 04: Output "Hello, World"
+        ["04", "", "", "", "Hello, World"]
+      ];
+      let table = document.getElementById("traceTableST5");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST6: Concatenation with Literal
+    // ===============================
+    function checkAnswersST6() {
+      // Each row: [Line Number, name, message, Output]
+      let correctValues = [
+        // Line 01: name becomes "Alice"
+        ["01", "Alice", "", ""],
+        // Line 02: message becomes "Hello, your name is: Alice"
+        ["02", "", "Hello, your name is: Alice", ""],
+        // Line 03: Output "Hello, your name is: Alice"
+        ["03", "", "", "Hello, your name is: Alice"]
+      ];
+      let table = document.getElementById("traceTableST6");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST7: Uppercase Conversion
+    // ===============================
+    function checkAnswersST7() {
+      // Each row: [Line Number, subject, upperSubject, Output]
+      let correctValues = [
+        // Line 01: subject becomes "ComputerScience"
+        ["01", "ComputerScience", "", ""],
+        // Line 02: upperSubject becomes subject.upper → "COMPUTERSCIENCE"
+        ["02", "", "COMPUTERSCIENCE", ""],
+        // Line 03: Output "Uppercase: COMPUTERSCIENCE"
+        ["03", "", "", "Uppercase: COMPUTERSCIENCE"]
+      ];
+      let table = document.getElementById("traceTableST7");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST8: Lowercase Conversion
+    // ===============================
+    function checkAnswersST8() {
+      // Each row: [Line Number, subject, lowerSubject, Output]
+      let correctValues = [
+        // Line 01: subject becomes "ComputerScience"
+        ["01", "ComputerScience", "", ""],
+        // Line 02: lowerSubject becomes subject.lower → "computerscience"
+        ["02", "", "computerscience", ""],
+        // Line 03: Output "Lowercase: computerscience"
+        ["03", "", "", "Lowercase: computerscience"]
+      ];
+      let table = document.getElementById("traceTableST8");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST9: ASCII Conversion (ASC)
+    // ===============================
+    function checkAnswersST9() {
+      // Each row: [Line Number, ch, asciiVal, Output]
+      let correctValues = [
+        // Line 01: ch becomes "A"
+        ["01", "A", "", ""],
+        // Line 02: asciiVal becomes ASC(ch) → 65
+        ["02", "", "65", ""],
+        // Line 03: Output "ASCII of A is 65"
+        ["03", "", "", "ASCII of A is 65"]
+      ];
+      let table = document.getElementById("traceTableST9");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+    // ===============================
+    // ST10: CHR Conversion (CHR)
+    // ===============================
+    function checkAnswersST10() {
+      // Each row: [Line Number, num, charVal, Output]
+      let correctValues = [
+        // Line 01: num becomes 97
+        ["01", "97", "", ""],
+        // Line 02: charVal becomes CHR(num) → "a"
+        ["02", "", "a", ""],
+        // Line 03: Output "Character for 97 is a"
+        ["03", "", "", "Character for 97 is a"]
+      ];
+      let table = document.getElementById("traceTableST10");
+      let rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>String Operations & Casting Trace Table Challenges</h1>
+  <p>
+    These sequential challenges involve various string operations (length, substring extraction, left/right, concatenation, case conversion) and type‐casting operations (casting numbers to strings and vice versa, as well as ASCII conversions). Fill in the trace table only when a variable’s value changes or when output is produced.
+  </p>
+
+  <hr>
+
+  <!-- ST1: String Length -->
+  <section id="st1">
+    <h2>ST1: String Length</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 subject = "ComputerScience"
+02 length = subject.length
+03 print("Length is " + length)
+    </pre>
+    <table id="traceTableST1">
+      <tr>
+        <th>Line Number</th>
+        <th>subject</th>
+        <th>length</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST1()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST2: Substring Extraction -->
+  <section id="st2">
+    <h2>ST2: Substring Extraction</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 subject = "ComputerScience"
+02 subStr = subject.substring(3,5)
+03 print("Substring is " + subStr)
+    </pre>
+    <table id="traceTableST2">
+      <tr>
+        <th>Line Number</th>
+        <th>subject</th>
+        <th>subStr</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST2()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST3: Left Substring -->
+  <section id="st3">
+    <h2>ST3: Left Substring</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 subject = "ComputerScience"
+02 leftPart = subject.left(4)
+03 print("Left part is " + leftPart)
+    </pre>
+    <table id="traceTableST3">
+      <tr>
+        <th>Line Number</th>
+        <th>subject</th>
+        <th>leftPart</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST3()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST4: Right Substring -->
+  <section id="st4">
+    <h2>ST4: Right Substring</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 subject = "ComputerScience"
+02 rightPart = subject.right(3)
+03 print("Right part is " + rightPart)
+    </pre>
+    <table id="traceTableST4">
+      <tr>
+        <th>Line Number</th>
+        <th>subject</th>
+        <th>rightPart</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST4()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST5: Concatenation of Two Strings -->
+  <section id="st5">
+    <h2>ST5: Concatenation of Two Strings</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 stringA = "Hello, "
+02 stringB = "World"
+03 result = stringA + stringB
+04 print(result)
+    </pre>
+    <table id="traceTableST5">
+      <tr>
+        <th>Line Number</th>
+        <th>stringA</th>
+        <th>stringB</th>
+        <th>result</th>
+        <th>Output</th>
+      </tr>
+      <!-- 4 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST5()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST6: Concatenation with Literal -->
+  <section id="st6">
+    <h2>ST6: Concatenation with Literal</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 name = "Alice"
+02 message = "Hello, your name is: " + name
+03 print(message)
+    </pre>
+    <table id="traceTableST6">
+      <tr>
+        <th>Line Number</th>
+        <th>name</th>
+        <th>message</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST6()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST7: Uppercase Conversion -->
+  <section id="st7">
+    <h2>ST7: Uppercase Conversion</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 subject = "ComputerScience"
+02 upperSubject = subject.upper
+03 print("Uppercase: " + upperSubject)
+    </pre>
+    <table id="traceTableST7">
+      <tr>
+        <th>Line Number</th>
+        <th>subject</th>
+        <th>upperSubject</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST7()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST8: Lowercase Conversion -->
+  <section id="st8">
+    <h2>ST8: Lowercase Conversion</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 subject = "ComputerScience"
+02 lowerSubject = subject.lower
+03 print("Lowercase: " + lowerSubject)
+    </pre>
+    <table id="traceTableST8">
+      <tr>
+        <th>Line Number</th>
+        <th>subject</th>
+        <th>lowerSubject</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST8()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST9: ASCII Conversion using ASC -->
+  <section id="st9">
+    <h2>ST9: ASCII Conversion using ASC</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 ch = "A"
+02 asciiVal = ASC(ch)
+03 print("ASCII of A is " + asciiVal)
+    </pre>
+    <table id="traceTableST9">
+      <tr>
+        <th>Line Number</th>
+        <th>ch</th>
+        <th>asciiVal</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST9()">Check Answers</button>
+  </section>
+
+  <hr>
+
+  <!-- ST10: CHR Conversion -->
+  <section id="st10">
+    <h2>ST10: CHR Conversion</h2>
+    <p><strong>Pseudocode:</strong></p>
+    <pre>
+01 num = 97
+02 charVal = CHR(num)
+03 print("Character for 97 is " + charVal)
+    </pre>
+    <table id="traceTableST10">
+      <tr>
+        <th>Line Number</th>
+        <th>num</th>
+        <th>charVal</th>
+        <th>Output</th>
+      </tr>
+      <!-- 3 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersST10()">Check Answers</button>
+  </section>
+
+</body>
+</html>
