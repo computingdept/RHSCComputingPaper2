@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Super Cool Index with Icons</title>
+  <title>My Super Cool Index with Icons (Apple Style)</title>
   
   <!-- Font Awesome (CDN) -->
   <link
@@ -22,8 +22,12 @@
     }
     html, body {
       height: 100%;
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      /* Apple system font stack */
+      font-family: -apple-system, BlinkMacSystemFont, 
+                   "Segoe UI", Roboto, Oxygen-Sans, 
+                   Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #F9F9F9;
+      color: #333;
     }
 
     /* Main container to hold sidebar and content */
@@ -35,11 +39,13 @@
 
     /* Sidebar styling */
     .sidebar {
-      background-color: #333;
-      width: 60px;                /* Collapsed width */
+      /* Light gradient background to give a subtle depth */
+      background: linear-gradient(to bottom, #F2F2F2, #E8E8E8);
+      width: 60px;               /* Collapsed width */
       transition: width 0.3s;
-      overflow-x: hidden;         /* hide horizontal scroll */
-      overflow-y: auto;           /* allow vertical scroll if needed */
+      overflow-x: hidden;
+      overflow-y: auto;
+      border-right: 1px solid #DDD;
     }
     /* Expand sidebar on hover */
     .sidebar:hover {
@@ -48,20 +54,22 @@
 
     /* Sidebar links */
     .sidebar a {
-      display: flex;             /* So icon and text can be side-by-side */
+      display: flex;             /* so icon and text can be side-by-side */
       align-items: center;
-      color: #fff;
+      color: #333;
       text-decoration: none;
       padding: 15px;
-      border-bottom: 1px solid #444;
-      white-space: nowrap;       /* keep text on one line */
-      overflow: hidden;          /* hide text if the sidebar is collapsed */
-      text-overflow: ellipsis;   /* show "..." if text is too long */
-      transition: background 0.2s;
+      border-bottom: 1px solid #DDD;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background 0.2s, color 0.2s;
     }
     .sidebar a:hover {
-      background-color: #555;
+      background-color: #E0E0E0;
+      color: #000;
     }
+
     /* The icon itself */
     .sidebar a i {
       min-width: 20px;           /* ensures icon doesn't collapse */
@@ -95,7 +103,7 @@
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Example links with icons; replace icons/text with your own as desired -->
+      <!-- Adjust the links and icons to match your filenames and desired icons -->
       <a href="#" onclick="document.getElementById('myFrame').src='arrays.html'">
         <i class="fas fa-th-list"></i>
         <span>Arrays</span>
