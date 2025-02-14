@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sequence Trace Table Challenges (with Casting)</title>
   <style>
+    /* Use Apple system fonts for a consistent look */
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, Oxygen-Sans,
+                   Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #F9F9F9; /* matches the sidebar style */
+      color: #333;
       margin: 20px;
       padding-bottom: 50px;
     }
@@ -204,11 +209,8 @@
     function checkAnswersEx8() {
       // Each row: [Line Number, a, s, Output]
       let correctValues = [
-        // Line 01: a becomes 345.
         ["01", "345", "", ""],
-        // Line 02: s becomes str(a) → "345".
         ["02", "", "345", ""],
-        // Line 03: Output "s is 345".
         ["03", "", "", "s is 345"]
       ];
       let table = document.getElementById("traceTableEx8");
@@ -227,11 +229,8 @@
     function checkAnswersEx9() {
       // Each row: [Line Number, s, n, Output]
       let correctValues = [
-        // Line 01: s becomes "3".
         ["01", "3", "", ""],
-        // Line 02: n becomes int(s) → 3.
         ["02", "", "3", ""],
-        // Line 03: Output "n is 3".
         ["03", "", "", "n is 3"]
       ];
       let table = document.getElementById("traceTableEx9");
@@ -250,17 +249,11 @@
     function checkAnswersEx10() {
       // Each row: [Line Number, s1, f, r, s2, b, Output]
       let correctValues = [
-        // Line 01: s1 becomes "4.52".
         ["01", "4.52", "", "", "", "", ""],
-        // Line 02: f becomes float(s1) → 4.52.
         ["02", "", "4.52", "", "", "", ""],
-        // Line 03: r becomes real(s1) → 4.52.
         ["03", "", "", "4.52", "", "", ""],
-        // Line 04: s2 becomes "true".
         ["04", "", "", "", "true", "", ""],
-        // Line 05: b becomes bool(s2) → true.
         ["05", "", "", "", "", "true", ""],
-        // Line 06: Output "f is 4.52, r is 4.52, b is true".
         ["06", "", "", "", "", "", "f is 4.52, r is 4.52, b is true"]
       ];
       let table = document.getElementById("traceTableEx10");
@@ -284,7 +277,7 @@
 
   <!-- Example 1: Add Two Numbers First number is 5 and secondnumber is 3 -->
   <section id="ex1">
-    <h2>Example 1: Add Two Numbers First number is 5 and secondnumber is 3 </h2>
+    <h2>Example 1: Add Two Numbers First number is 5 and secondnumber is 3</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 a = int(input("First number"))
@@ -434,7 +427,7 @@
 
   <!-- Example 6: Mixed Arithmetic Expression (MOD and DIV) -->
   <section id="ex6">
-    <h2>Example 6: Mixed Arithmetic Expression with MOD and DIV a=17 b=5 </h2>
+    <h2>Example 6: Mixed Arithmetic Expression with MOD and DIV a=17 b=5</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 a = int(input("First number"))
@@ -561,58 +554,4 @@
       <!-- 3 rows -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersEx9()">Check Answers</button>
-  </section>
-
-  <hr>
-
-  <!-- Example 10: Mixed Casting: float, real, and bool -->
-  <section id="ex10">
-    <h2>Example 10: Mixed Casting (float, real, bool)</h2>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 s1 = "4.52"
-02 f = float(s1)
-03 r = real(s1)
-04 s2 = "true"
-05 b = bool(s2)
-06 print("f is " + str(f) + ", r is " + str(r) + ", b is " + str(b))
-    </pre>
-    <p>Record the changes.</p>
-    <table id="traceTableEx10">
-      <tr>
-        <th>Line Number</th>
-        <th>s1</th>
-        <th>f</th>
-        <th>r</th>
-        <th>s2</th>
-        <th>b</th>
-        <th>Output</th>
-      </tr>
-      <!-- 6 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersEx10()">Check Answers</button>
-  </section>
-
-</body>
-</html>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></
