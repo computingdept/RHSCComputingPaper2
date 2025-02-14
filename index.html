@@ -2,7 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Super Cool Index</title>
+  <title>My Super Cool Index with Icons</title>
+  
+  <!-- Font Awesome (CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-acDgR2THBY+e4iQ2S4C7nAPVcB1RqWu/nClFhHpy3zL+VpF54GaHeZh2W+q9FZ/WaOmWwZUrDDeJfoC3kAzggA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
   <style>
     /* Reset and basic styling */
     * {
@@ -26,19 +36,20 @@
     /* Sidebar styling */
     .sidebar {
       background-color: #333;
-      width: 60px;               /* collapsed width */
+      width: 60px;                /* Collapsed width */
       transition: width 0.3s;
-      overflow-x: hidden;        /* hide horizontal scroll */
-      overflow-y: auto;          /* allow vertical scroll if needed */
+      overflow-x: hidden;         /* hide horizontal scroll */
+      overflow-y: auto;           /* allow vertical scroll if needed */
     }
     /* Expand sidebar on hover */
     .sidebar:hover {
-      width: 200px;             /* expanded width */
+      width: 200px;              /* Expanded width */
     }
 
     /* Sidebar links */
     .sidebar a {
-      display: block;
+      display: flex;             /* So icon and text can be side-by-side */
+      align-items: center;
       color: #fff;
       text-decoration: none;
       padding: 15px;
@@ -50,6 +61,21 @@
     }
     .sidebar a:hover {
       background-color: #555;
+    }
+    /* The icon itself */
+    .sidebar a i {
+      min-width: 20px;           /* ensures icon doesn't collapse */
+      text-align: center;
+      font-size: 18px;
+    }
+    /* The text label next to the icon */
+    .sidebar a span {
+      margin-left: 10px;
+      display: none;             /* Hide text in collapsed state */
+    }
+    /* On hover, show the text */
+    .sidebar:hover a span {
+      display: inline;
     }
 
     /* Content area (iframe container) */
@@ -69,45 +95,58 @@
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Adjust the links and text to match your filenames and titles -->
+      <!-- Example links with icons; replace icons/text with your own as desired -->
       <a href="#" onclick="document.getElementById('myFrame').src='arrays.html'">
-        Arrays
+        <i class="fas fa-th-list"></i>
+        <span>Arrays</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='1DArrays.html'">
-        1D Arrays
+        <i class="fas fa-list-ul"></i>
+        <span>1D Arrays</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='2DArrays.html'">
-        2D Arrays
+        <i class="fas fa-table"></i>
+        <span>2D Arrays</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='dowhile.html'">
-        Do While
+        <i class="fas fa-repeat"></i>
+        <span>Do While</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='forloop.html'">
-        For Loop
+        <i class="fas fa-sync-alt"></i>
+        <span>For Loop</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='ifthenelse.html'">
-        If Then Else
+        <i class="fas fa-code"></i>
+        <span>If Then Else</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='selectionifthenelse.html'">
-        Selection If Then Else
+        <i class="fas fa-code-branch"></i>
+        <span>Selection If Then Else</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='sequence.html'">
-        Sequence
+        <i class="fas fa-stream"></i>
+        <span>Sequence</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='strings.html'">
-        Strings
+        <i class="fas fa-font"></i>
+        <span>Strings</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='sub.html'">
-        Sub
+        <i class="fas fa-code"></i>
+        <span>Sub</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='subparmas.html'">
-        Sub Params
+        <i class="fas fa-cogs"></i>
+        <span>Sub Params</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='switchcase.html'">
-        Switch Case
+        <i class="fas fa-random"></i>
+        <span>Switch Case</span>
       </a>
       <a href="#" onclick="document.getElementById('myFrame').src='while.html'">
-        While
+        <i class="fas fa-arrow-circle-right"></i>
+        <span>While</span>
       </a>
       <!-- Add more links as needed -->
     </div>
