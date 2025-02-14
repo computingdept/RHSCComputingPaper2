@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Super Cool Index with Icons (Apple Style)</title>
+  <title>My Super Cool Index with a Custom Icon</title>
   
-  <!-- Font Awesome (CDN) -->
+  <!-- Font Awesome (CDN) for other icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -39,7 +39,6 @@
 
     /* Sidebar styling */
     .sidebar {
-      /* Light gradient background to give a subtle depth */
       background: linear-gradient(to bottom, #F2F2F2, #E8E8E8);
       width: 60px;               /* Collapsed width */
       transition: width 0.3s;
@@ -70,12 +69,19 @@
       color: #000;
     }
 
-    /* The icon itself */
+    /* The icon (Font Awesome or custom image) */
     .sidebar a i {
-      min-width: 20px;  /* ensures icon doesn't collapse */
+      min-width: 20px;  /* ensures FA icon doesn't collapse */
       text-align: center;
       font-size: 18px;
     }
+    .sidebar a img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain; /* ensure the image scales nicely */
+      margin-right: 0;     /* override if needed */
+    }
+
     /* The text label next to the icon */
     .sidebar a span {
       margin-left: 10px;
@@ -103,7 +109,7 @@
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Example links with icons; replace icons/text with your own as desired -->
+      <!-- Other links still use Font Awesome icons -->
       <a href="#" onclick="document.getElementById('myFrame').src='arrays.html'">
         <i class="fas fa-th-list"></i>
         <span>Arrays</span>
@@ -124,45 +130,15 @@
         <i class="fas fa-sync-alt"></i>
         <span>For Loop</span>
       </a>
+      
+      <!-- Use your custom icon for If Then Else -->
       <a href="#" onclick="document.getElementById('myFrame').src='ifthenelse.html'">
-        <i class="fas fa-code"></i>
+        <!-- Replace `img/ifthenelse.png` with your actual path/filename -->
+        <img src="img/ifthenelse.png" alt="If Then Else Icon" />
         <span>If Then Else</span>
       </a>
+      
+      <!-- Continue with other links using Font Awesome if desired -->
       <a href="#" onclick="document.getElementById('myFrame').src='selectionifthenelse.html'">
         <i class="fas fa-code-branch"></i>
-        <span>Selection If Then Else</span>
-      </a>
-      <a href="#" onclick="document.getElementById('myFrame').src='sequence.html'">
-        <i class="fas fa-stream"></i>
-        <span>Sequence</span>
-      </a>
-      <a href="#" onclick="document.getElementById('myFrame').src='strings.html'">
-        <i class="fas fa-font"></i>
-        <span>Strings</span>
-      </a>
-      <a href="#" onclick="document.getElementById('myFrame').src='sub.html'">
-        <i class="fas fa-code"></i>
-        <span>Sub</span>
-      </a>
-      <a href="#" onclick="document.getElementById('myFrame').src='subparmas.html'">
-        <i class="fas fa-cogs"></i>
-        <span>Sub Params</span>
-      </a>
-      <a href="#" onclick="document.getElementById('myFrame').src='switchcase.html'">
-        <i class="fas fa-random"></i>
-        <span>Switch Case</span>
-      </a>
-      <a href="#" onclick="document.getElementById('myFrame').src='while.html'">
-        <i class="fas fa-arrow-circle-right"></i>
-        <span>While</span>
-      </a>
-    </div>
-
-    <!-- Main Content Area -->
-    <div class="content">
-      <!-- Iframe that displays the selected page -->
-      <iframe id="myFrame" src="arrays.html"></iframe>
-    </div>
-  </div>
-</body>
-</html>
+ 
