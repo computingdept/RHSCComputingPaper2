@@ -1,102 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TraceTables by Computing@RHSC</title>
-  <!-- Optional: Google Fonts for a modern look -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>My Super Cool Index</title>
   <style>
     /* Reset and basic styling */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #ffffff; /* Clean white background */
-      display: flex;
-    }
-    /* Sidebar styling */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
+    html, body {
       height: 100%;
-      width: 250px;
-      /* Using the linear gradient background as requested */
-      background: linear-gradient(to right, #006e51 0%, #006e51 100%);
-      padding-top: 20px;
-      transition: width 0.3s ease;
-      overflow-y: auto;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
     }
-    .sidebar:hover {
-      width: 280px; /* Expand slightly on hover */
-    }
-    .sidebar ul {
-      list-style: none;
-    }
-    .sidebar ul li {
-      margin-bottom: 10px;
-    }
-    .sidebar ul li a {
-      display: block;
-      padding: 15px 20px;
-      color: #ffffff;
-      text-decoration: none;
-      transition: background 0.3s ease, padding-left 0.3s ease;
-    }
-    .sidebar ul li a:hover {
-      /* Use a slightly darker shade on hover */
-      background: #005f45;
-      padding-left: 25px;
-      border-left: 4px solid #ffffff; /* White accent border */
-    }
-    /* Main content styling */
-    .content {
-      margin-left: 250px;
-      padding: 20px;
+
+    /* Main container to hold sidebar and content */
+    .container {
+      display: flex;
+      height: 100vh;
       width: 100%;
     }
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 200px;
-      }
-      .content {
-        margin-left: 200px;
-      }
+
+    /* Sidebar styling */
+    .sidebar {
+      background-color: #333;
+      width: 60px;               /* collapsed width */
+      transition: width 0.3s;
+      overflow-x: hidden;        /* hide horizontal scroll */
+      overflow-y: auto;          /* allow vertical scroll if needed */
+    }
+    /* Expand sidebar on hover */
+    .sidebar:hover {
+      width: 200px;             /* expanded width */
+    }
+
+    /* Sidebar links */
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px;
+      border-bottom: 1px solid #444;
+      white-space: nowrap;       /* keep text on one line */
+      overflow: hidden;          /* hide text if the sidebar is collapsed */
+      text-overflow: ellipsis;   /* show "..." if text is too long */
+      transition: background 0.2s;
+    }
+    .sidebar a:hover {
+      background-color: #555;
+    }
+
+    /* Content area (iframe container) */
+    .content {
+      flex: 1;
+      background: #fff;
+    }
+    /* The iframe itself should fill the content area */
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <nav class="sidebar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="sequence.html">Sequence</a></li>
-      <li><a href="ifthenelse.html">Selection IF THEN ELSE</a></li>
-      <li><a href="switchcase.html">Selection CASE</a></li>
-      <li><a href="forloop.html">Iteration-Count  FOR</a></li>
-      <li><a href="while.html">Iteration-Condition WHILE </a></li>
-      <li><a href="dowhile.html">Iteration Condition DO</a></li>
-      <li><a href="strings.html">String Handling</a></li>
-      <li><a href="1DArrays.html">1D Arrays</a></li>
-      <li><a href="sub.html">Subprograms</a></li>
-      <li><a href="subparmas.html">Subprograms with Parameters</a></li>
-      <li><a href="2DArrays.html">2D Arrays</a></li>
-      <li><a href="FileHandling.html">File Handling</a></li>
-      
-    </ul>
-  </nav>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Adjust the links and text to match your filenames and titles -->
+      <a href="#" onclick="document.getElementById('myFrame').src='arrays.html'">
+        Arrays
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='1DArrays.html'">
+        1D Arrays
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='2DArrays.html'">
+        2D Arrays
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='dowhile.html'">
+        Do While
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='forloop.html'">
+        For Loop
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='ifthenelse.html'">
+        If Then Else
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='selectionifthenelse.html'">
+        Selection If Then Else
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='sequence.html'">
+        Sequence
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='strings.html'">
+        Strings
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='sub.html'">
+        Sub
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='subparmas.html'">
+        Sub Params
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='switchcase.html'">
+        Switch Case
+      </a>
+      <a href="#" onclick="document.getElementById('myFrame').src='while.html'">
+        While
+      </a>
+      <!-- Add more links as needed -->
+    </div>
 
-  <div class="content">
-    <h1>Hiya 2B OR NOT 2B Thats a hex!</h1>
-    <p>Using a trace table is like breaking a big, mysterious puzzle into tiny, easy-to-understand pieces. It makes even the trickiest code much clearer, helping you spot mistakes and learn how everything fits together.
-
-Just like reading a great book helps you learn new words and ideas, reading code is important because it shows you how programmes work. Just like practicing a sport or playing an instrument, the more you practice writing code, the better you'll get. Every time you read or write a bit of code, you're training your brain to think like a programmer.
-
-So remember: Reading is important, and practice makes perfect. Keep reading code to understand how it works, and keep practising to eventually create your own brilliant programmes. Happy coding.</p>
+    <!-- Main Content Area -->
+    <div class="content">
+      <!-- Iframe that displays the selected page -->
+      <iframe id="myFrame" src="arrays.html"></iframe>
+    </div>
   </div>
 </body>
 </html>
