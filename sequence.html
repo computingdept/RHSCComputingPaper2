@@ -5,56 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sequence Trace Table Challenges (with Casting)</title>
   <style>
-    /* Use Apple system fonts for a consistent look */
+    /* Base styling using Apple-like system fonts and a modern, airy look */
     body {
-      font-family: -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", Roboto, Oxygen-Sans,
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
                    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-      background: #F9F9F9; /* matches the sidebar style */
+      background: #F9F9F9;
       color: #333;
-      margin: 20px;
-      padding-bottom: 50px;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 40px;
     }
     section {
-      margin-bottom: 50px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     hr {
+      border: none;
+      height: 1px;
+      background: #ddd;
       margin: 40px 0;
+    }
+    h2 {
+      font-size: 1.6em;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      color: #222;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      font-size: 0.95em;
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      margin-top: 15px;
     }
     th, td {
-      border: 1px solid #000;
-      padding: 6px;
+      border: 1px solid #ddd;
+      padding: 10px;
       text-align: center;
     }
     th {
-      background-color: #f2f2f2;
+      background-color: #fafafa;
+      font-weight: 600;
     }
-    pre {
-      background: #eee;
-      padding: 10px;
-      font-size: 1em;
-      overflow-x: auto;
+    input[type="text"] {
+      width: 90%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95em;
     }
     button {
-      margin-top: 10px;
-      padding: 8px;
+      margin-top: 15px;
+      padding: 10px 20px;
       font-size: 1em;
       cursor: pointer;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
     }
-    h2 {
-      font-size: 1.5em;
-      line-height: 1.4;
-      margin-bottom: 0;
+    button:hover {
+      background: #005bb5;
     }
   </style>
   <script>
     // ============================
-    // Examples 1 - 7: Basic Arithmetic & Boolean (Sequential)
+    // Examples 1 - 9: Basic Arithmetic, Boolean & Casting
     // ============================
 
     // Example 1: Add Two Numbers
@@ -162,7 +196,7 @@
       }
     }
 
-    // Example 6: Mixed Arithmetic Expression with MOD and DIV
+    // Example 6: Mixed Arithmetic Expression (MOD and DIV)
     function checkAnswersEx6() {
       // Each row: [Line Number, a, b, modResult, divResult, result, Output]
       let correctValues = [
@@ -206,10 +240,6 @@
       }
     }
 
-    // ============================
-    // Examples 8 - 10: Casting Operations
-    // ============================
-
     // Example 8: Cast Integer to String
     function checkAnswersEx8() {
       // Each row: [Line Number, a, s, Output]
@@ -249,41 +279,21 @@
          }
       }
     }
-
-    // Example 10: Mixed Casting: float, real, and bool
-    function checkAnswersEx10() {
-      // Each row: [Line Number, s1, f, r, s2, b, Output]
-      let correctValues = [
-        ["01", "4.52", "", "", "", "", ""],
-        ["02", "", "4.52", "", "", "", ""],
-        ["03", "", "", "4.52", "", "", ""],
-        ["04", "", "", "", "true", "", ""],
-        ["05", "", "", "", "", "true", ""],
-        ["06", "", "", "", "", "", "f is 4.52, r is 4.52, b is true"]
-      ];
-      let table = document.getElementById("traceTableEx10");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor =
-             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
-    }
   </script>
 </head>
 <body>
   <h1>Sequence Trace Table Challenges</h1>
-  <p>These challenges show how a program runs line by line in <b>SEQUENCE</b>, without any <b>SELECTION</b> (like “if” / "switch/case" ) or <b>ITERATION</b> (for...while do...while) <br>
-    Each line happens in order, and we keep track of the values and outputs at each step..</p>
+  <p>
+    These challenges show how a program runs line by line in <strong>SEQUENCE</strong>—without any <strong>SELECTION</strong> (like “if” or switch/case) or <strong>ITERATION</strong> (for/while loops). Each line happens in order, and we keep track of the values and outputs at each step.
+  </p>
 
   <hr>
 
-  <!-- Example 1: Add Two Numbers First number is 5 and secondnumber is 3 -->
+  <!-- Example 1: Add Two Numbers -->
   <section id="ex1">
-    <h2> A local café is developing a self-service till system that allows customers to enter the quantity of two different items they are purchasing. The system then calculates and displays the total number of items.A customer enters the number of two items they wish to buy. In one example, they enter 5 for the first item and 3 for the second item.</h2>
+    <h2>
+      A local café is developing a self-service till system that allows customers to enter the quantity of two different items they are purchasing. In one example, a customer enters 5 for the first item and 3 for the second item.
+    </h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 a = int(input("First number"))
@@ -300,11 +310,34 @@
         <th>sum</th>
         <th>Output</th>
       </tr>
-      <!-- 4 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx1()">Check Answers</button>
   </section>
@@ -313,7 +346,7 @@
 
   <!-- Example 2: Subtract Two Numbers -->
   <section id="ex2">
-    <h2>Example 2: Subtract Two Numbers First number is 10 and secondnumber is 4</h2>
+    <h2>Example 2: Subtract Two Numbers (First number is 10 and second number is 4)</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 a = int(input("First number"))
@@ -330,11 +363,34 @@
         <th>diff</th>
         <th>Output</th>
       </tr>
-      <!-- 4 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx2()">Check Answers</button>
   </section>
@@ -343,7 +399,7 @@
 
   <!-- Example 3: Multiply Two Numbers -->
   <section id="ex3">
-    <h2>Example 3: Multiply Two Numbers First number is 7 and secondnumber is 6</h2>
+    <h2>Example 3: Multiply Two Numbers (First number is 7 and second number is 6)</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 a = int(input("First number"))
@@ -360,20 +416,43 @@
         <th>product</th>
         <th>Output</th>
       </tr>
-      <!-- 4 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx3()">Check Answers</button>
   </section>
 
   <hr>
 
-  <!-- Example 4: Divide Two Numbers 20 and 4-->
+  <!-- Example 4: Divide Two Numbers -->
   <section id="ex4">
-    <h2>Example 4: Divide Two Numbers 20 and 4</h2>
+    <h2>Example 4: Divide Two Numbers (20 and 4)</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 a = int(input("First number"))
@@ -390,11 +469,34 @@
         <th>quotient</th>
         <th>Output</th>
       </tr>
-      <!-- 4 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx4()">Check Answers</button>
   </section>
@@ -403,11 +505,11 @@
 
   <!-- Example 5: Exponentiation -->
   <section id="ex5">
-    <h2>Example 5: Exponentiation base is 3 exponent is 4</h2>
+    <h2>Example 5: Exponentiation (Base is 3, Exponent is 4)</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 base = int(input("Base"))
-02 exponent == int(input("Exponent"))
+02 exponent = int(input("Exponent"))
 03 result = base ^ exponent
 04 print("Result is " + result)
     </pre>
@@ -420,11 +522,34 @@
         <th>result</th>
         <th>Output</th>
       </tr>
-      <!-- 4 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx5()">Check Answers</button>
   </section>
@@ -433,11 +558,11 @@
 
   <!-- Example 6: Mixed Arithmetic Expression (MOD and DIV) -->
   <section id="ex6">
-    <h2>Example 6: Mixed Arithmetic Expression with MOD and DIV a=17 b=5</h2>
+    <h2>Example 6: Mixed Arithmetic Expression with MOD and DIV (a = 17, b = 5)</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 a = int(input("First number"))
-02 b == int(input("Second number"))
+02 b = int(input("Second number"))
 03 modResult = a MOD b
 04 divResult = a DIV b
 05 result = (a - b) * modResult + divResult
@@ -454,25 +579,60 @@
         <th>result</th>
         <th>Output</th>
       </tr>
-      <!-- 6 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx6()">Check Answers</button>
   </section>
@@ -498,15 +658,34 @@
         <th>r</th>
         <th>Output</th>
       </tr>
-      <!-- 4 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx7()">Check Answers</button>
   </section>
@@ -530,10 +709,24 @@
         <th>s</th>
         <th>Output</th>
       </tr>
-      <!-- 3 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersEx8()">Check Answers</button>
   </section>
@@ -557,7 +750,29 @@
         <th>n</th>
         <th>Output</th>
       </tr>
-      <!-- 3 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button onclick="checkAnswersEx9()">Check Answers</button>
+  </section>
+  
+  <!-- Additional examples (e.g., Example 10) can be added below following the same structure -->
+
+</body>
+</html>
