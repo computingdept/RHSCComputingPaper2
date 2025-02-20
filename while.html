@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Passcode Trace Table Challenge</title>
   <style>
-    /* Apple-like styling using system fonts and a modern, airy look */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
                    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -59,8 +58,6 @@
   </style>
   <script>
     function checkAnswersTruth() {
-      // Expected trace values for each row:
-      // Each row: [Line Number, attempts, password, correctcode, exit, Output]
       let correctValues = [
         ["01", "", "", "J277", "", ""],
         ["02", "", "", "", "false", ""],
@@ -91,7 +88,6 @@
     }
     
     function checkAnswersExample1() {
-      // Each row: [Line Number, i, sum, Output]
       let correctValues = [
         ["02", "", "0", ""],
         ["03", "1", "", ""],
@@ -110,17 +106,16 @@
       let table = document.getElementById("traceTableExample1");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          inputs[j].style.backgroundColor =
-            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-        }
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
     function checkAnswersExample2() {
-      // Each row: [Line Number, i, product, Output]
       let correctValues = [
         ["02", "", "1", ""],
         ["03", "2", "", ""],
@@ -140,14 +135,13 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     function checkAnswersExample3() {
-      // Each row: [Line Number, i, Output]
       let correctValues = [
         ["01", "5", ""],
         ["03", "", "5"],
@@ -168,14 +162,13 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     function checkAnswersExample4() {
-      // Each row: [Line Number, i, sum, Output]
       let correctValues = [
         ["02", "", "0", ""],
         ["03", "1", "", ""],
@@ -201,14 +194,13 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     function checkAnswersExample5() {
-      // Each row: [Line Number, i, j, Output]
       let correctValues = [
         ["01", "1", "", ""],
         ["03", "", "1", ""],
@@ -242,14 +234,13 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     function checkAnswersExample6() {
-      // Each row: [Line Number, i, j, line, Output]
       let correctValues = [
         ["02", "1", "", "", ""],
         ["04", "", "1", "", ""],
@@ -280,34 +271,34 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     function checkAnswersExample7() {
-      // Each row: [Line Number, i, j, value, total, Output]
       let correctValues = [
-        ["04", "", "", "", "0", ""],
-        ["03", "1", "", "", "", ""],
-        ["06", "", "1", "", "", ""],
-        ["08", "", "", "1", "", ""],
-        ["09", "", "", "", "1", ""],
-        ["10", "", "2", "", "", ""],
-        ["08", "", "", "2", "", ""],
-        ["09", "", "", "", "3", ""],
-        ["10", "", "3", "", "", ""],
-        ["12", "2", "", "", "", ""],
-        ["06", "", "1", "", "", ""],
-        ["08", "", "", "2", "", ""],
-        ["09", "", "", "", "5", ""],
-        ["10", "", "2", "", "", ""],
-        ["08", "", "", "4", "", ""],
-        ["09", "", "", "", "9", ""],
-        ["10", "", "3", "", "", ""],
-        ["12", "3", "", "", "", ""],
-        ["14", "", "", "", "", "Total is 9"]
+        ["04", "", "", "", "0"],
+        ["03", "1", "", "", ""],
+        ["06", "", "1", "", ""],
+        ["08", "", "", "1", ""],
+        ["09", "", "", "", "1"],
+        ["10", "", "2", "", ""],
+        ["08", "", "", "2", ""],
+        ["09", "", "", "", "3"],
+        ["10", "", "3", "", ""],
+        ["12", "2", "", "", ""],
+        ["06", "", "1", "", ""],
+        ["08", "", "", "2", ""],
+        ["09", "", "", "", "5"],
+        ["10", "", "2", "", ""],
+        ["08", "", "", "4", ""],
+        ["09", "", "", "", "9"],
+        ["10", "", "3", "", ""],
+        ["12", "3", "", "", ""],
+        ["14", "", "", "", ""],
+        ["", "", "", "", "Total is 9"]
       ];
       let table = document.getElementById("traceTableExample7");
       let rows = table.rows;
@@ -315,14 +306,13 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     function checkAnswersExample8() {
-      // Each row: [Line Number, i, j, Output]
       let correctValues = [
         ["01", "3", "", ""],
         ["03", "", "3", ""],
@@ -351,8 +341,8 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+             inputs[j].style.backgroundColor =
+               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
@@ -363,11 +353,9 @@
   <section id="passcodeChallenge">
     <h2>Passcode Trace Table Challenge</h2>
     <p>
-      Your program asks a user to enter a passcode until the correct one is entered.
-      The correct passcode is <strong>J277</strong>.
-      For example, the user’s first attempt is <strong>Computer</strong>,
-      the second is <strong>Science</strong>, and the third is <strong>J277</strong>.
-      Then the program prints the total number of guesses.
+      Your school locker requires a passcode to open. The correct locker passcode is <strong>J277</strong>.
+      For example, a student first types <strong>Computer</strong>, then <strong>Science</strong>, and finally <strong>J277</strong>.
+      The program then prints the total number of attempts.
     </p>
     <pre>
 // First attempt "Computer"
@@ -376,7 +364,7 @@
 01 correctcode = "J277"
 02 exit = false
 03 attempts = 0
-04 while (exit == false)
+04 do
 05    attempts = attempts + 1
 06    password = input("Enter passcode:")
 07    if password == correctcode then 
@@ -384,7 +372,7 @@
 09    else 
 10         print("Incorrect")
 11    endif
-12 endwhile
+12 while (exit == false)
 13 print( attempts + " guesses")
     </pre>
     <p>Fill in the table below with the correct values for each line.</p>
@@ -397,85 +385,114 @@
         <th>exit</th>
         <th>Output</th>
       </tr>
-      <!-- 13 data rows -->
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
     </table>
     <button onclick="checkAnswersTruth()">Check Answers</button>
   </section>
-
+  
   <hr>
-
-  <!-- Example 1: Sum of First 5 Numbers -->
+  
+  <!-- Example 1: Total Marks Calculator -->
   <section id="example1">
-    <h2>Example 1: Sum of First 5 Numbers</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 1: Total Marks Calculator</h2>
+    <p>
+      A high school student receives marks in 5 subjects. Use the pseudocode to calculate the total marks.
+    </p>
     <pre>
 01 n = 5
 02 sum = 0
 03 i = 1
-04 while (i <= n)
+04 do
 05     sum = sum + i
 06     i = i + 1
-07 endwhile
+07 while (i <= n)
 08 print("Sum is " + sum)
     </pre>
     <p>Record only the steps where a variable’s value changes or output is produced.</p>
@@ -486,7 +503,6 @@
         <th>sum</th>
         <th>Output</th>
       </tr>
-      <!-- 13 rows -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -506,18 +522,20 @@
   
   <hr>
   
-  <!-- Example 2: Product of Even Numbers from 2 to 8 -->
+  <!-- Example 2: Team Jersey Code -->
   <section id="example2">
-    <h2>Example 2: Product of Even Numbers from 2 to 8</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 2: Team Jersey Code</h2>
+    <p>
+      A high school sports team multiplies the even jersey numbers (from 2 to 8) to generate a lucky team code.
+    </p>
     <pre>
 01 n = 8
 02 product = 1
 03 i = 2
-04 while (i <= n)
+04 do
 05     product = product * i
 06     i = i + 2
-07 endwhile
+07 while (i <= n)
 08 print("Product is " + product)
     </pre>
     <p>Record only the changes.</p>
@@ -528,7 +546,6 @@
         <th>product</th>
         <th>Output</th>
       </tr>
-      <!-- 11 rows -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -546,16 +563,18 @@
   
   <hr>
   
-  <!-- Example 3: Countdown from 5 to 1 -->
+  <!-- Example 3: Countdown to the School Bell -->
   <section id="example3">
-    <h2>Example 3: Countdown from 5 to 1</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 3: Countdown to the School Bell</h2>
+    <p>
+      Before the school bell rings, a countdown from 5 to 1 is performed.
+    </p>
     <pre>
 01 i = 5
-02 while (i > 0)
+02 do
 03     print(i)
 04     i = i - 1
-05 endwhile
+05 while (i > 0)
 06 print("Blast off!")
     </pre>
     <p>Record the changes.</p>
@@ -565,7 +584,6 @@
         <th>i</th>
         <th>Output</th>
       </tr>
-      <!-- 12 rows -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -584,23 +602,25 @@
   
   <hr>
   
-  <!-- Example 4: Sum of Odd Numbers between 1 and 9 -->
+  <!-- Example 4: Math Club Challenge -->
   <section id="example4">
-    <h2>Example 4: Sum of Odd Numbers between 1 and 9</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 4: Math Club Challenge</h2>
+    <p>
+      In a math club challenge, a student calculates the sum of odd numbers between 1 and 9.
+    </p>
     <pre>
 01 n = 9
 02 sum = 0
 03 i = 1
-04 while (i <= n)
+04 do
 05     if (i mod 2 != 0)
 06         sum = sum + i
 07     endif
 08     i = i + 1
-09 endwhile
+09 while (i <= n)
 10 print("Sum is " + sum)
     </pre>
-    <p>Record only the steps with a change.</p>
+    <p>Record only the steps where a value changes.</p>
     <table id="traceTableExample4">
       <tr>
         <th>Line Number</th>
@@ -608,7 +628,6 @@
         <th>sum</th>
         <th>Output</th>
       </tr>
-      <!-- 17 rows -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -632,20 +651,22 @@
   
   <hr>
   
-  <!-- Example 5: Multiplication Table for 1 to 3 (Nested While) -->
+  <!-- Example 5: Classroom Multiplication Table -->
   <section id="example5">
-    <h2>Example 5: Multiplication Table for 1 to 3 (Nested While)</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 5: Classroom Multiplication Table</h2>
+    <p>
+      A math teacher asks students to generate the multiplication table for numbers 1 to 3.
+    </p>
     <pre>
 01 i = 1
-02 while (i <= 3)
+02 do
 03     j = 1
-04     while (j <= 3)
+04     do
 05         print(i * j)
 06         j = j + 1
-07     endwhile
+07     while (j <= 3)
 08     i = i + 1
-09 endwhile
+09 while (i <= 3)
     </pre>
     <p>Record only when values change.</p>
     <table id="traceTableExample5">
@@ -655,8 +676,6 @@
         <th>j</th>
         <th>Output</th>
       </tr>
-      <!-- 25 rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -686,23 +705,25 @@
   
   <hr>
   
-  <!-- Example 6: Right Triangle Pattern (Nested While) -->
+  <!-- Example 6: Star Pattern for the School Magazine -->
   <section id="example6">
-    <h2>Example 6: Right Triangle Pattern (Nested While)</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 6: Star Pattern for the School Magazine</h2>
+    <p>
+      To celebrate the football team's wins, a student creates a right triangle star pattern for the school magazine.
+    </p>
     <pre>
 01 rows = 3
 02 i = 1
-03 while (i <= rows)
+03 do
 04     j = 1
 05     line = ""
-06     while (j <= i)
+06     do
 07         line = line + "*"
 08         j = j + 1
-09     endwhile
+09     while (j <= i)
 10     print(line)
 11     i = i + 1
-12 endwhile
+12 while (i <= rows)
     </pre>
     <p>Record only the steps where values change.</p>
     <table id="traceTableExample6">
@@ -713,33 +734,53 @@
         <th>line</th>
         <th>Output</th>
       </tr>
-      <!-- 22 rows (adjust as needed) -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <!-- Additional rows here -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersExample6()">Check Answers</button>
   </section>
   
   <hr>
   
-  <!-- Example 7: Sum in a 2D Grid (Nested While) -->
+  <!-- Example 7: Test Score Summation -->
   <section id="example7">
-    <h2>Example 7: Sum in a 2D Grid (Nested While)</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 7: Test Score Summation</h2>
+    <p>
+      A student enters marks for 2 subjects over 2 terms in a grid and calculates the total score.
+    </p>
     <pre>
 01 rows = 2
 02 cols = 2
 03 i = 1
 04 total = 0
-05 while (i <= rows)
+05 do
 06     j = 1
-07     while (j <= cols)
+07     do
 08         value = i * j
 09         total = total + value
 10         j = j + 1
-11     endwhile
+11     while (j <= cols)
 12     i = i + 1
-13 endwhile
+13 while (i <= rows)
 14 print("Total is " + total)
     </pre>
     <p>Record only the steps where a value changes.</p>
@@ -752,29 +793,100 @@
         <th>total</th>
         <th>Output</th>
       </tr>
-      <!-- 10 rows (adjust as needed) -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <!-- Additional rows here -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersExample7()">Check Answers</button>
   </section>
   
   <hr>
   
-  <!-- Example 8: Nested Countdown (Double While) -->
+  <!-- Example 8: Nested Countdown for the School Dance -->
   <section id="example8">
-    <h2>Example 8: Nested Countdown (Double While)</h2>
-    <p>The pseudocode:</p>
+    <h2>Example 8: Nested Countdown for the School Dance</h2>
+    <p>
+      As part of the school dance preparations, a nested countdown is performed.
+    </p>
     <pre>
 01 i = 3
-02 while (i > 0)
+02 do
 03     j = i
-04     while (j > 0)
+04     do
 05         print(j)
 06         j = j - 1
-07     endwhile
+07     while (j > 0)
 08     i = i - 1
-09 endwhile
+09 while (i > 0)
 10 print("Done")
     </pre>
     <p>Record only the steps where values change.</p>
@@ -785,62 +897,28 @@
         <th>j</th>
         <th>Output</th>
       </tr>
-      <!-- 19 rows (adjust as needed) -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <!-- Additional rows here -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersExample8()">Check Answers</button>
   </section>
-  
-  <hr>
-  
-  <!-- Passcode Trace Table Challenge -->
-  <section id="passcodeChallenge">
-    <h2>Passcode Trace Table Challenge</h2>
-    <p>
-      Your program asks a user to enter a passcode until the correct one is entered.
-      The correct passcode is <strong>J277</strong>.
-      For example, the user’s first attempt is <strong>Computer</strong>,
-      the second is <strong>Science</strong>, and the third is <strong>J277</strong>.
-      Then the program prints the total number of guesses.
-    </p>
-    <pre>
-// First attempt "Computer"
-// Second attempt "Science"
-// Third attempt "J277"
-01 correctcode = "J277"
-02 exit = false
-03 attempts = 0
-04 while (exit == false)
-05    attempts = attempts + 1
-06    password = input("Enter passcode:")
-07    if password == correctcode then 
-08         exit = true
-09    else 
-10         print("Incorrect")
-11    endif
-12 endwhile
-13 print( attempts + " guesses")
-    </pre>
-    <p>Fill in the table below with the correct values for each line.</p>
-    <table id="traceTableTruth">
-      <tr>
-        <th>Line Number</th>
-        <th>attempts</th>
-        <th>password</th>
-        <th>correctcode</th>
-        <th>exit</th>
-        <th>Output</th>
-      </tr>
-      <!-- 13 data rows -->
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <!-- Additional rows as needed -->
-    </table>
-    <button onclick="checkAnswersTruth()">Check Answers</button>
-  </section>
-  
-  <!-- Additional examples (Examples 1,2,3,4,5,6,7,8) are above -->
   
 </body>
 </html>
