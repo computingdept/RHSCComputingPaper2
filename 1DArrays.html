@@ -159,30 +159,29 @@
       }
     }
     
-    // Q5: Array Element Search (Fruits)
     function checkAnswersQ5() {
-      // Expected trace:
-      // Row 1: Line 01: fruits = "banana, orange, apple, kiwi, grape"
-      // Row 2: Line 02: found = false
-      // Row 3: Line 05 (i=2): found updated to true
-      // Row 4: Line 09: Output = "Found apple: true"
-      let correctValues = [
-        ["01", "banana, orange, apple, kiwi, grape", "", ""],
-        ["02", "", "false", "found = false"],
-        ["05", "i=2", "true", "found updated to true"],
-        ["09", "", "true", "Found apple: true"]
-      ];
-      let table = document.getElementById("traceTableQ5");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
-    }
+  // Expected trace values:
+  // Row 1 (Line 01): fruits = "banana, orange, apple, kiwi, grape"
+  // Row 2 (Line 02): found = false
+  // Row 3 (Line 06): found becomes true (when fruits[2] is "apple")
+  // Row 4 (Line 10): Output "Found apple: true"
+  let correctValues = [
+    ["01", "banana, orange, apple, kiwi, grape", "", ""],
+    ["02", "", "false", ""],
+    ["06", "", "true", ""],
+    ["10", "", "", "Found apple: true"]
+  ];
+  let table = document.getElementById("traceTableQ5");
+  let rows = table.rows;
+  for (let i = 1; i < rows.length; i++) {
+     let inputs = rows[i].getElementsByTagName("input");
+     let correct = correctValues[i - 1];
+     for (let j = 0; j < inputs.length; j++) {
+        inputs[j].style.backgroundColor =
+          (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+     }
+  }
+}
     
     // Q6: Array Reversal (Club Names)
     function checkAnswersQ6() {
@@ -467,36 +466,59 @@
   
   <hr>
   
-  <!-- Q5: Array Element Search -->
-  <section id="q5">
-    <h2>Q5: Array Element Search</h2>
-    <p><strong>Scenario:</strong> A student searches for the word "apple" in the array: <code>["banana", "orange", "apple", "kiwi", "grape"]</code>.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
+<!-- Q5: Array Element Search (Updated with while loop) -->
+<section id="q5">
+  <h2>Q5: Array Element Search</h2>
+  <p><strong>Scenario:</strong> In an English class, a student searches for the word "apple" in the array of fruits: <code>["banana", "orange", "apple", "kiwi", "grape"]</code>.</p>
+  <p><strong>Pseudocode:</strong></p>
+  <pre>
 01 fruits = ["banana", "orange", "apple", "kiwi", "grape"]
 02 found = false
-03 for i = 0 to 4
-04     if fruits[i] == "apple" then
-05         found = true
-06         break
+03 i = 0
+04 while (i < 5 and found == false)
+05     if fruits[i] == "apple" then
+06         found = true
 07     endif
-08 endfor
-09 print("Found apple: " + found)
-    </pre>
-    <table id="traceTableQ5">
-      <tr>
-        <th>Line Number</th>
-        <th>fruits</th>
-        <th>found</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ5()">Check Answers</button>
-  </section>
+08     i = i + 1
+09 endwhile
+10 print("Found apple: " + found)
+  </pre>
+  <table id="traceTableQ5">
+    <tr>
+      <th>Line Number</th>
+      <th>fruits</th>
+      <th>found</th>
+      <th>Output</th>
+    </tr>
+    <!-- The following rows represent key trace steps -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkAnswersQ5()">Check Answers</button>
+</section>
+
   
   <hr>
   
