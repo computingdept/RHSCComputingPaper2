@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SELECTION if..then...elseif...else....endif</title>
   <style>
-    /* Use Apple system fonts and a light background */
+    /* Apple-like styling using system fonts and a modern, airy look */
     body {
-      font-family: -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", Roboto, Oxygen-Sans,
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
                    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
       background: #F9F9F9;
       color: #333;
       margin: 0;
-      padding: 0 20px;
+      padding: 20px;
     }
     nav {
       background-color: #f2f2f2;
@@ -27,40 +26,76 @@
       display: flex;
       gap: 10px;
     }
-    nav ul li {
-      display: inline;
-    }
     nav ul li a {
       text-decoration: none;
       color: black;
       font-weight: bold;
     }
     section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px 30px;
       margin-bottom: 40px;
-      border-top: 2px solid #ccc;
-      padding-top: 20px;
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background: #ddd;
+      margin: 40px 0;
+    }
+    h2 {
+      font-size: 1.6em;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      color: #222;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      font-size: 0.95em;
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      margin-top: 15px;
     }
     th, td {
-      border: 1px solid black;
-      padding: 8px;
+      border: 1px solid #ddd;
+      padding: 10px;
       text-align: center;
     }
     th {
-      background-color: #f2f2f2;
+      background-color: #fafafa;
+      font-weight: 600;
     }
-    pre {
-      background-color: #eee;
-      padding: 10px;
+    input[type="text"] {
+      width: 90%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95em;
     }
     button {
-      margin-top: 10px;
-      padding: 10px;
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
       cursor: pointer;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #005bb5;
     }
   </style>
   <script>
@@ -292,15 +327,18 @@
   </script>
 </head>
 <body>
-  <body>
   <h1>Sequence Trace Table Challenges</h1>
-  <p>These challenges show how a <b>SELECTION</b> steatements do <b>NOT</b> complete the instructions in <b>sequence order </b> </p>
-
+  <p>
+    These challenges show how a <b>SELECTION</b> statement does <b>NOT</b> run in a strict sequence.
+  </p>
   <hr>
+
   <!-- Task 1: Discount Calculator -->
   <section id="task1">
-    <h2>Task 1: Discount Calculator</h2>
-    <p>Complete the trace table for the algorithm when a customer spends <strong>£70</strong> and is a <strong>member</strong>.</p>
+    <h2>
+      Task 1: Shop Discount – In a local shop, a customer spends £70 and is a member. What discount do they get?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 purchaseAmount = input("Enter purchase amount")
 02 memberStatus = input("Enter member status (yes/no)")
@@ -314,7 +352,7 @@
 10 if memberStatus == "yes" then
 11   discount = discount + 5
 12 endif
-13 print("The discount is"+ discount)
+13 print("The discount is" + discount)
     </pre>
     <table id="traceTableTask1">
       <tr>
@@ -324,34 +362,31 @@
         <th>discount</th>
         <th>Output</th>
       </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask1()">Check Answers</button>
   </section>
 
   <!-- Task 2: Shipping Cost Calculator -->
   <section id="task2">
-    <h2>Task 2: Shipping Cost Calculator</h2>
-    <p>Complete the trace table for the algorithm when a package weighs <strong>8kg</strong> and the shipping distance is <strong>150km</strong>.</p>
+    <h2>
+      Task 2: Delivery Cost – A delivery service sends a package weighing 8kg over 150km. What is the shipping cost?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 weight = input("Enter package weight (kg)")
 02 distance = input("Enter shipping distance (km)")
@@ -365,7 +400,7 @@
 10 if distance > 100 then
 11   cost = cost + 10
 12 endif
-13 print("The shipping cost is"+ cost)
+13 print("The shipping cost is" + cost)
     </pre>
     <table id="traceTableTask2">
       <tr>
@@ -375,34 +410,31 @@
         <th>cost</th>
         <th>Output</th>
       </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-      </tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask2()">Check Answers</button>
   </section>
 
   <!-- Task 3: Grade Calculator -->
   <section id="task3">
-    <h2>Task 3: Grade Calculator</h2>
-    <p>Complete the trace table for the algorithm when a student scores <strong>85</strong>.</p>
+    <h2>
+      Task 3: Exam Grading – A student scores 85 in an exam. What grade do they get?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 score = input("Enter exam score")
 02 if score >= 90 then
@@ -414,7 +446,7 @@
 08 else
 09   grade = "D"
 10 endif
-11 print("Your grade is"+ grade)
+11 print("Your grade is" + grade)
     </pre>
     <table id="traceTableTask3">
       <tr>
@@ -423,19 +455,26 @@
         <th>grade</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask3()">Check Answers</button>
   </section>
 
   <!-- Task 4: Tax Calculator -->
   <section id="task4">
-    <h2>Task 4: Tax Calculator</h2>
-    <p>Complete the trace table for the algorithm when an annual income is <strong>£60000</strong>.</p>
+    <h2>
+      Task 4: Income Tax – A person earns £60,000 a year. How much tax do they pay?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 income = input("Enter annual income")
 02 if income > 50000 then
@@ -452,19 +491,26 @@
         <th>tax</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask4()">Check Answers</button>
   </section>
 
   <!-- Task 5: Bonus Calculator -->
   <section id="task5">
-    <h2>Task 5: Bonus Calculator</h2>
-    <p>Complete the trace table for the algorithm when monthly sales are <strong>£1500</strong>.</p>
+    <h2>
+      Task 5: Shop Bonus – A shop makes £1500 in sales in a month. What bonus is given?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 sales = input("Enter monthly sales")
 02 if sales >= 1000 then
@@ -475,7 +521,7 @@
 07 if sales >= 2000 then
 08   bonus = bonus + 50
 09 endif
-10 print("The bonus is-"+ bonus)
+10 print("The bonus is-" + bonus)
     </pre>
     <table id="traceTableTask5">
       <tr>
@@ -484,18 +530,24 @@
         <th>bonus</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask5()">Check Answers</button>
   </section>
 
   <!-- Task 6: Scholarship Eligibility Calculator -->
   <section id="task6">
-    <h2>Task 6: Scholarship Eligibility Calculator</h2>
-    <p>Complete the trace table for the algorithm when a student has a GPA of <strong>3.7</strong> and an extracurricular score of <strong>85</strong>.</p>
+    <h2>
+      Task 6: Scholarship Check – A student has a GPA of 3.7 and scores 85 in activities. Are they eligible for a scholarship?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 gpa = input("Enter GPA")
 02 extracurricular = input("Enter extracurricular score")
@@ -509,7 +561,7 @@
 10 else
 11   eligible = false
 12 endif
-13 print("Scholarship eligibility:"+ eligible)
+13 print("Scholarship eligibility:" + eligible)
     </pre>
     <table id="traceTableTask6">
       <tr>
@@ -519,19 +571,31 @@
         <th>eligible</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask6()">Check Answers</button>
   </section>
 
   <!-- Task 7: Exam Pass/Fail Checker -->
   <section id="task7">
-    <h2>Task 7: Exam Pass/Fail Checker</h2>
-    <p>Complete the trace table for the algorithm when a student scores <strong>45</strong>.</p>
+    <h2>
+      Task 7: Exam Result – A student scores 45 in an exam. Do they pass or need more practice?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 mark = input("Enter exam mark")
 02 if mark >= 50 then
@@ -539,7 +603,7 @@
 04 else
 05   result = "Practice questions"
 06 endif
-07 print("Result: "+ result)
+07 print("Result: " + result)
     </pre>
     <table id="traceTableTask7">
       <tr>
@@ -548,19 +612,26 @@
         <th>result</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask7()">Check Answers</button>
   </section>
 
   <!-- Task 8: Bank Interest Calculator -->
   <section id="task8">
-    <h2>Task 8: Bank Interest Calculator</h2>
-    <p>Complete the trace table for the algorithm when an account balance is <strong>£15000</strong>.</p>
+    <h2>
+      Task 8: Bank Interest – A bank account has £15,000. How much interest is earned?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 balance = input("Enter account balance")
 02 if balance >= 10000 then
@@ -568,7 +639,7 @@
 04 else
 05   interest = balance * 0.02
 06 endif
-07 print("Interest earned is *** "+ interest)
+07 print("Interest earned is *** " + interest)
     </pre>
     <table id="traceTableTask8">
       <tr>
@@ -577,17 +648,22 @@
         <th>interest</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask8()">Check Answers</button>
   </section>
 
   <!-- Task 9: Order Total Calculator with Tax -->
   <section id="task9">
-    <h2>Task 9: Order Total Calculator with Tax</h2>
-    <p>Complete the trace table for the algorithm when the item total is <strong>£80</strong> and the shipping cost is <strong>£25</strong>.</p>
+    <h2>
+      Task 9: Order Total – An online order has items costing £80 and a shipping fee of £25. What is the total cost?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 itemTotal = input("Enter total of items")
 02 shipping = input("Enter shipping cost")
@@ -598,7 +674,7 @@
 07   tax = 0
 08 endif
 09 total = subtotal + tax
-10 print("The total order cost is "+ total)
+10 print("The total order cost is " + total)
     </pre>
     <table id="traceTableTask9">
       <tr>
@@ -610,33 +686,40 @@
         <th>Output</th>
       </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        </tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+      </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        </tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+      </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        </tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+      </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        </tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+      </tr>
       <tr>
-        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-        </tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersTask9()">Check Answers</button>
   </section>
 
   <!-- Task 10: Speeding Fine Calculator -->
   <section id="task10">
-    <h2>Task 10: Speeding Fine Calculator</h2>
-    <p>Complete the trace table for the algorithm when a vehicle's speed is <strong>80</strong> and the speed limit is <strong>60</strong>.</p>
+    <h2>
+      Task 10: Speeding Fine – A car is going 80 in a 60 zone. What is the fine?
+    </h2>
+    <p><strong>Pseudocode:</strong></p>
     <pre>
 01 speed = input("Enter speed of the vehicle")
 02 speedLimit = input("Enter speed limit")
@@ -645,7 +728,7 @@
 05 else
 06   fine = 0
 07 endif
-08 print("The speeding fine is "+ fine)
+08 print("The speeding fine is " + fine)
     </pre>
     <table id="traceTableTask10">
       <tr>
@@ -655,10 +738,26 @@
         <th>fine</th>
         <th>Output</th>
       </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td><td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
     </table>
     <button onclick="checkAnswersTask10()">Check Answers</button>
   </section>
