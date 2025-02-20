@@ -6,15 +6,25 @@
   <title>String Operations & Casting Trace Table Challenges</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+                   Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #F9F9F9;
+      color: #333;
       margin: 20px;
       padding-bottom: 50px;
     }
     section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px 30px;
       margin-bottom: 50px;
     }
     hr {
       margin: 40px 0;
+      border: none;
+      height: 1px;
+      background: #ddd;
     }
     table {
       width: 100%;
@@ -40,21 +50,30 @@
       padding: 8px;
       font-size: 1em;
       cursor: pointer;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #005bb5;
     }
   </style>
   <script>
     // ===============================
     // ST1: String Length
+    // Scenario: A student’s course title is stored.
     // ===============================
     function checkAnswersST1() {
-      // Each row: [Line Number, subject, length, Output]
+      // Expected:
+      // Line 01: subject becomes "EnglishLiterature"
+      // Line 02: length becomes subject.length → 17
+      // Line 03: Output "Length is 17"
       let correctValues = [
-        // Line 01: subject becomes "ComputerScience"
-        ["01", "ComputerScience", "", ""],
-        // Line 02: length becomes subject.length → 15
-        ["02", "", "15", ""],
-        // Line 03: Output "Length is 15"
-        ["03", "", "", "Length is 15"]
+        ["01", "EnglishLiterature", "", ""],
+        ["02", "", "17", ""],
+        ["03", "", "", "Length is 17"]
       ];
       let table = document.getElementById("traceTableST1");
       let rows = table.rows;
@@ -69,16 +88,17 @@
     }
     // ===============================
     // ST2: Substring Extraction
+    // Scenario: Extract part of a high school course title.
     // ===============================
     function checkAnswersST2() {
-      // Each row: [Line Number, subject, subStr, Output]
+      // Expected:
+      // Line 01: subject becomes "EnglishLiterature"
+      // Line 02: subStr becomes subject.substring(3,7) → "lish"
+      // Line 03: Output "Substring is lish"
       let correctValues = [
-        // Line 01: subject becomes "ComputerScience"
-        ["01", "ComputerScience", "", ""],
-        // Line 02: subStr becomes subject.substring(3,5) → "puter"
-        ["02", "", "puter", ""],
-        // Line 03: Output "Substring is puter"
-        ["03", "", "", "Substring is puter"]
+        ["01", "EnglishLiterature", "", ""],
+        ["02", "", "lish", ""],
+        ["03", "", "", "Substring is lish"]
       ];
       let table = document.getElementById("traceTableST2");
       let rows = table.rows;
@@ -93,16 +113,17 @@
     }
     // ===============================
     // ST3: Left Substring
+    // Scenario: Get the left part of the course title.
     // ===============================
     function checkAnswersST3() {
-      // Each row: [Line Number, subject, leftPart, Output]
+      // Expected:
+      // Line 01: subject becomes "EnglishLiterature"
+      // Line 02: leftPart becomes subject.left(4) → "Engl"
+      // Line 03: Output "Left part is Engl"
       let correctValues = [
-        // Line 01: subject becomes "ComputerScience"
-        ["01", "ComputerScience", "", ""],
-        // Line 02: leftPart becomes subject.left(4) → "Comp"
-        ["02", "", "Comp", ""],
-        // Line 03: Output "Left part is Comp"
-        ["03", "", "", "Left part is Comp"]
+        ["01", "EnglishLiterature", "", ""],
+        ["02", "", "Engl", ""],
+        ["03", "", "", "Left part is Engl"]
       ];
       let table = document.getElementById("traceTableST3");
       let rows = table.rows;
@@ -117,16 +138,17 @@
     }
     // ===============================
     // ST4: Right Substring
+    // Scenario: Get the right part of the course title.
     // ===============================
     function checkAnswersST4() {
-      // Each row: [Line Number, subject, rightPart, Output]
+      // Expected:
+      // Line 01: subject becomes "EnglishLiterature"
+      // Line 02: rightPart becomes subject.right(3) → "ure"
+      // Line 03: Output "Right part is ure"
       let correctValues = [
-        // Line 01: subject becomes "ComputerScience"
-        ["01", "ComputerScience", "", ""],
-        // Line 02: rightPart becomes subject.right(3) → "nce"
-        ["02", "", "nce", ""],
-        // Line 03: Output "Right part is nce"
-        ["03", "", "", "Right part is nce"]
+        ["01", "EnglishLiterature", "", ""],
+        ["02", "", "ure", ""],
+        ["03", "", "", "Right part is ure"]
       ];
       let table = document.getElementById("traceTableST4");
       let rows = table.rows;
@@ -141,18 +163,19 @@
     }
     // ===============================
     // ST5: Concatenation of Two Strings
+    // Scenario: A morning announcement is concatenated.
     // ===============================
     function checkAnswersST5() {
-      // Each row: [Line Number, stringA, stringB, result, Output]
+      // Expected:
+      // Line 01: stringA becomes "Good morning, "
+      // Line 02: stringB becomes "class"
+      // Line 03: result becomes "Good morning, class"
+      // Line 04: Output "Good morning, class"
       let correctValues = [
-        // Line 01: stringA becomes "Hello, "
-        ["01", "Hello, ", "", "", ""],
-        // Line 02: stringB becomes "World"
-        ["02", "", "World", "", ""],
-        // Line 03: result becomes stringA + stringB → "Hello, World"
-        ["03", "", "", "Hello, World", ""],
-        // Line 04: Output "Hello, World"
-        ["04", "", "", "", "Hello, World"]
+        ["01", "Good morning, ", "", "", ""],
+        ["02", "", "class", "", ""],
+        ["03", "", "", "Good morning, class", ""],
+        ["04", "", "", "", "Good morning, class"]
       ];
       let table = document.getElementById("traceTableST5");
       let rows = table.rows;
@@ -167,16 +190,17 @@
     }
     // ===============================
     // ST6: Concatenation with Literal
+    // Scenario: A school welcome message is created.
     // ===============================
     function checkAnswersST6() {
-      // Each row: [Line Number, name, message, Output]
+      // Expected:
+      // Line 01: name becomes "Alex"
+      // Line 02: message becomes "Welcome, Alex"
+      // Line 03: Output "Welcome, Alex"
       let correctValues = [
-        // Line 01: name becomes "Alice"
-        ["01", "Alice", "", ""],
-        // Line 02: message becomes "Hello, your name is: Alice"
-        ["02", "", "Hello, your name is: Alice", ""],
-        // Line 03: Output "Hello, your name is: Alice"
-        ["03", "", "", "Hello, your name is: Alice"]
+        ["01", "Alex", "", ""],
+        ["02", "", "Welcome, Alex", ""],
+        ["03", "", "", "Welcome, Alex"]
       ];
       let table = document.getElementById("traceTableST6");
       let rows = table.rows;
@@ -191,16 +215,17 @@
     }
     // ===============================
     // ST7: Uppercase Conversion
+    // Scenario: A course title is converted to uppercase.
     // ===============================
     function checkAnswersST7() {
-      // Each row: [Line Number, subject, upperSubject, Output]
+      // Expected:
+      // Line 01: subject becomes "EnglishLiterature"
+      // Line 02: upperSubject becomes "ENGLISHLITERATURE"
+      // Line 03: Output "Uppercase: ENGLISHLITERATURE"
       let correctValues = [
-        // Line 01: subject becomes "ComputerScience"
-        ["01", "ComputerScience", "", ""],
-        // Line 02: upperSubject becomes subject.upper → "COMPUTERSCIENCE"
-        ["02", "", "COMPUTERSCIENCE", ""],
-        // Line 03: Output "Uppercase: COMPUTERSCIENCE"
-        ["03", "", "", "Uppercase: COMPUTERSCIENCE"]
+        ["01", "EnglishLiterature", "", ""],
+        ["02", "", "ENGLISHLITERATURE", ""],
+        ["03", "", "", "Uppercase: ENGLISHLITERATURE"]
       ];
       let table = document.getElementById("traceTableST7");
       let rows = table.rows;
@@ -215,16 +240,17 @@
     }
     // ===============================
     // ST8: Lowercase Conversion
+    // Scenario: A course title is converted to lowercase.
     // ===============================
     function checkAnswersST8() {
-      // Each row: [Line Number, subject, lowerSubject, Output]
+      // Expected:
+      // Line 01: subject becomes "EnglishLiterature"
+      // Line 02: lowerSubject becomes "englishliterature"
+      // Line 03: Output "Lowercase: englishliterature"
       let correctValues = [
-        // Line 01: subject becomes "ComputerScience"
-        ["01", "ComputerScience", "", ""],
-        // Line 02: lowerSubject becomes subject.lower → "computerscience"
-        ["02", "", "computerscience", ""],
-        // Line 03: Output "Lowercase: computerscience"
-        ["03", "", "", "Lowercase: computerscience"]
+        ["01", "EnglishLiterature", "", ""],
+        ["02", "", "englishliterature", ""],
+        ["03", "", "", "Lowercase: englishliterature"]
       ];
       let table = document.getElementById("traceTableST8");
       let rows = table.rows;
@@ -238,16 +264,17 @@
       }
     }
     // ===============================
-    // ST9: ASCII Conversion (ASC)
+    // ST9: ASCII Conversion using ASC
+    // Scenario: Determine the ASCII value for a character.
     // ===============================
     function checkAnswersST9() {
-      // Each row: [Line Number, ch, asciiVal, Output]
+      // Expected:
+      // Line 01: ch becomes "A"
+      // Line 02: asciiVal becomes "65"
+      // Line 03: Output "ASCII of A is 65"
       let correctValues = [
-        // Line 01: ch becomes "A"
         ["01", "A", "", ""],
-        // Line 02: asciiVal becomes ASC(ch) → 65
         ["02", "", "65", ""],
-        // Line 03: Output "ASCII of A is 65"
         ["03", "", "", "ASCII of A is 65"]
       ];
       let table = document.getElementById("traceTableST9");
@@ -262,16 +289,17 @@
       }
     }
     // ===============================
-    // ST10: CHR Conversion (CHR)
+    // ST10: CHR Conversion
+    // Scenario: Convert an ASCII number to its character.
     // ===============================
     function checkAnswersST10() {
-      // Each row: [Line Number, num, charVal, Output]
+      // Expected:
+      // Line 01: num becomes "97"
+      // Line 02: charVal becomes "a"
+      // Line 03: Output "Character for 97 is a"
       let correctValues = [
-        // Line 01: num becomes 97
         ["01", "97", "", ""],
-        // Line 02: charVal becomes CHR(num) → "a"
         ["02", "", "a", ""],
-        // Line 03: Output "Character for 97 is a"
         ["03", "", "", "Character for 97 is a"]
       ];
       let table = document.getElementById("traceTableST10");
@@ -290,7 +318,8 @@
 <body>
   <h1>String Operations & Casting Trace Table Challenges</h1>
   <p>
-    These sequential challenges involve various string operations (length, substring extraction, left/right, concatenation, case conversion) and type‐casting operations (casting numbers to strings and vice versa, as well as ASCII conversions). Fill in the trace table only when a variable’s value changes or when output is produced.
+    These challenges involve various string operations and type‐casting tasks, set in a high school context.
+    Fill in the trace table only when a variable’s value changes or output is produced.
   </p>
 
   <hr>
@@ -300,7 +329,7 @@
     <h2>ST1: String Length</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 subject = "ComputerScience"
+01 subject = "EnglishLiterature"
 02 length = subject.length
 03 print("Length is " + length)
     </pre>
@@ -326,8 +355,8 @@
     <h2>ST2: Substring Extraction</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 subject = "ComputerScience"
-02 subStr = subject.substring(3,5)
+01 subject = "EnglishLiterature"
+02 subStr = subject.substring(3,7)
 03 print("Substring is " + subStr)
     </pre>
     <table id="traceTableST2">
@@ -352,7 +381,7 @@
     <h2>ST3: Left Substring</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 subject = "ComputerScience"
+01 subject = "EnglishLiterature"
 02 leftPart = subject.left(4)
 03 print("Left part is " + leftPart)
     </pre>
@@ -378,7 +407,7 @@
     <h2>ST4: Right Substring</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 subject = "ComputerScience"
+01 subject = "EnglishLiterature"
 02 rightPart = subject.right(3)
 03 print("Right part is " + rightPart)
     </pre>
@@ -404,8 +433,8 @@
     <h2>ST5: Concatenation of Two Strings</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 stringA = "Hello, "
-02 stringB = "World"
+01 stringA = "Good morning, "
+02 stringB = "class"
 03 result = stringA + stringB
 04 print(result)
     </pre>
@@ -433,8 +462,8 @@
     <h2>ST6: Concatenation with Literal</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 name = "Alice"
-02 message = "Hello, your name is: " + name
+01 name = "Alex"
+02 message = "Welcome, " + name
 03 print(message)
     </pre>
     <table id="traceTableST6">
@@ -459,7 +488,7 @@
     <h2>ST7: Uppercase Conversion</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 subject = "ComputerScience"
+01 subject = "EnglishLiterature"
 02 upperSubject = subject.upper
 03 print("Uppercase: " + upperSubject)
     </pre>
@@ -485,7 +514,7 @@
     <h2>ST8: Lowercase Conversion</h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 subject = "ComputerScience"
+01 subject = "EnglishLiterature"
 02 lowerSubject = subject.lower
 03 print("Lowercase: " + lowerSubject)
     </pre>
@@ -555,6 +584,9 @@
     </table>
     <button onclick="checkAnswersST10()">Check Answers</button>
   </section>
-
+  
+  <hr>
+  
+  <!-- End of Challenges -->
 </body>
 </html>
