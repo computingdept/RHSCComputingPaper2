@@ -63,18 +63,11 @@
   <script>
     // Q1: Simple Procedure Call (agePass)
     function checkAnswersQ1() {
-      // Pseudocode:
-      // 01 Procedure agePass()
-      // 02     print("You are old enough to ride")
-      // 03 endprocedure
-      // 04 
-      // 05 Call:
-      // 06 agePass()
       // Expected trace:
-      // Row 1 (Line 06): "agePass() called"
-      // Row 2 (Line 02): Output "You are old enough to ride"
+      // 06: Subprogram called: "procedure agePass"
+      // 02: Output: "You are old enough to ride"
       let correctValues = [
-        ["06", "agePass() called", ""],
+        ["06", "procedure agePass", ""],
         ["02", "", "You are old enough to ride"]
       ];
       let table = document.getElementById("traceTableQ1");
@@ -83,25 +76,19 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q2: Procedure with Parameter (printName)
     function checkAnswersQ2() {
-      // Pseudocode:
-      // 01 Procedure printName(name)
-      // 02     print(name)
-      // 03 endprocedure
-      // 04 
-      // 05 Call:
-      // 06 printName("Alice")
       // Expected trace:
-      // Row 1 (Line 06): "printName(Alice) called"
-      // Row 2 (Line 02): Output "Alice"
+      // 06: "procedure printName(Alice)" called
+      // 02: Output: "Alice"
       let correctValues = [
-        ["06", "printName(Alice) called", ""],
+        ["06", "procedure printName(Alice)", ""],
         ["02", "", "Alice"]
       ];
       let table = document.getElementById("traceTableQ2");
@@ -110,25 +97,19 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+           inputs[j].style.backgroundColor =
+             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q3: Procedure with Multiple Parameters (multiply)
     function checkAnswersQ3() {
-      // Pseudocode:
-      // 01 Procedure multiply(num1, num2)
-      // 02     print(num1 * num2)
-      // 03 endprocedure
-      // 04 
-      // 05 Call:
-      // 06 multiply(5,4)
       // Expected trace:
-      // Row 1 (Line 06): "multiply(5,4) called"
-      // Row 2 (Line 02): Output "20"
+      // 06: "procedure multiply(5,4)" called
+      // 02: Output: "20"
       let correctValues = [
-        ["06", "multiply(5,4) called", ""],
+        ["06", "procedure multiply(5,4)", ""],
         ["02", "", "20"]
       ];
       let table = document.getElementById("traceTableQ3");
@@ -137,26 +118,19 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q4: Function Call (squared)
     function checkAnswersQ4() {
-      // Pseudocode:
-      // 01 Function squared(number)
-      // 02     squared = number^2
-      // 03     return squared
-      // 04 endfunction
-      // 05 
-      // 06 Call:
-      // 07 print(squared(3))
       // Expected trace:
-      // Row 1 (Line 07): "squared(3) called" with return value 9
-      // Row 2 (Line 03): Output "9"
+      // 07: "function squared(3)" called, returning 9
+      // 03: Output: "9"
       let correctValues = [
-        ["07", "squared(3) called", "9", ""],
+        ["07", "function squared(3)", "9", ""],
         ["03", "", "", "9"]
       ];
       let table = document.getElementById("traceTableQ4");
@@ -165,23 +139,20 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    // Q5: Combining Procedure Calls (printName and multiply)
+    // Q5: Combining Procedure Calls
     function checkAnswersQ5() {
-      // Pseudocode:
-      // 01 Call:
-      // 02 printName("Bob")
-      // 03 multiply(7,8)
       // Expected trace:
-      // Row 1 (Line 02): "printName(Bob) called" → Output "Bob"
-      // Row 2 (Line 03): "multiply(7,8) called" → Output "56"
+      // 02: "procedure printName(Bob)" called → Output "Bob"
+      // 03: "procedure multiply(7,8)" called → Output "56"
       let correctValues = [
-        ["02", "printName(Bob) called", ""],
-        ["03", "multiply(7,8) called", "56"]
+        ["02", "procedure printName(Bob)", ""],
+        ["03", "procedure multiply(7,8)", "56"]
       ];
       let table = document.getElementById("traceTableQ5");
       let rows = table.rows;
@@ -189,22 +160,19 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q6: Function Call with Assignment (squared)
     function checkAnswersQ6() {
-      // Pseudocode:
-      // 01 Call:
-      // 02 newValue = squared(4)
-      // 03 print("Square is " + newValue)
       // Expected trace:
-      // Row 1 (Line 02): "newValue = squared(4) called" with return value 16
-      // Row 2 (Line 03): Output "Square is 16"
+      // 02: "newValue = function squared(4)" called and returns "16"
+      // 03: Output: "Square is 16"
       let correctValues = [
-        ["02", "newValue = squared(4) called", "16", ""],
+        ["02", "newValue = function squared(4)", "16", ""],
         ["03", "", "", "Square is 16"]
       ];
       let table = document.getElementById("traceTableQ6");
@@ -213,43 +181,28 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q7: Procedure Calling Another Procedure (greetStudent)
     function checkAnswersQ7() {
-      // Pseudocode:
-      // 01 Procedure printName(name)
-      // 02     print(name)
-      // 03 endprocedure
-      // 04 
-      // 05 Procedure agePass()
-      // 06     print("You are old enough to ride")
-      // 07 endprocedure
-      // 08 
-      // 09 Procedure greetStudent(name)
-      // 10     printName(name)
-      // 11     agePass()
-      // 12 endprocedure
-      // 13 
-      // 14 Call:
-      // 15 greetStudent("Charlie")
       // Expected trace:
-      // Row 1 (Line 15): "greetStudent(Charlie) called"
-      // Row 2 (Line 10): "printName(Charlie) called" 
-      // Row 3 (Line 02): Output "Charlie"
-      // Row 4 (Line 11): "agePass() called"
-      // Row 5 (Line 06): Output "You are old enough to ride"
-      // Row 6 (Line 12): "greetStudent completed"
+      // 15: "procedure greetStudent(Charlie)" called
+      // 10: "procedure printName(Charlie)" called
+      // 02: Output: "Charlie"
+      // 11: "procedure agePass" called
+      // 06: Output: "You are old enough to ride"
+      // 12: "procedure greetStudent completed" (or similar)
       let correctValues = [
-        ["15", "greetStudent(Charlie) called", ""],
-        ["10", "printName(Charlie) called", ""],
+        ["15", "procedure greetStudent(Charlie)", ""],
+        ["10", "procedure printName(Charlie)", ""],
         ["02", "", "Charlie"],
-        ["11", "agePass() called", ""],
+        ["11", "procedure agePass", ""],
         ["06", "", "You are old enough to ride"],
-        ["12", "", "", "greetStudent completed"]
+        ["12", "procedure greetStudent completed", "",""]
       ];
       let table = document.getElementById("traceTableQ7");
       let rows = table.rows;
@@ -257,31 +210,20 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q8: Function and Procedure Combination (area and printResult)
     function checkAnswersQ8() {
-      // Pseudocode:
-      // 01 Function area(side)
-      // 02     area = side * side
-      // 03     return area
-      // 04 endfunction
-      // 05 
-      // 06 Procedure printResult(result)
-      // 07     print("Area is " + result)
-      // 08 endprocedure
-      // 09 
-      // 10 Call:
-      // 11 printResult(area(5))
       // Expected trace:
-      // Row 1 (Line 11): "area(5) called" returns 25
-      // Row 2 (Line 07): "printResult(25) called" → Output "Area is 25"
+      // 11: "function area(5)" called, returns "25"
+      // 07: "procedure printResult(25)" called → Output "Area is 25"
       let correctValues = [
-        ["11", "area(5) called", "25", ""],
-        ["07", "printResult(25) called", "", "Area is 25"]
+        ["11", "function area(5)", "25", ""],
+        ["07", "procedure printResult(25)", "", "Area is 25"]
       ];
       let table = document.getElementById("traceTableQ8");
       let rows = table.rows;
@@ -289,35 +231,20 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q9: Conditional Function Call (checkGrade)
     function checkAnswersQ9() {
-      // Pseudocode:
-      // 01 Procedure printResult(msg)
-      // 02     print(msg)
-      // 03 endprocedure
-      // 04 
-      // 05 Function checkGrade(grade)
-      // 06     if grade >= 40 then
-      // 07         result = "Pass"
-      // 08     else
-      // 09         result = "Fail"
-      // 10     endif
-      // 11     return result
-      // 12 endfunction
-      // 13 
-      // 14 Call:
-      // 15 printResult(checkGrade(35))
       // Expected trace:
-      // Row 1 (Line 15): "checkGrade(35) called" returns "Fail"
-      // Row 2 (Line 02): "printResult(Fail) called" → Output "Fail"
+      // 15: "function checkGrade(35)" called, returns "Fail"
+      // 02: "procedure printResult(Fail)" called → Output "Fail"
       let correctValues = [
-        ["15", "checkGrade(35) called", "Fail", ""],
-        ["02", "printResult(Fail) called", "", "Fail"]
+        ["15", "function checkGrade(35)", "Fail", ""],
+        ["02", "procedure printResult(Fail)", "", "Fail"]
       ];
       let table = document.getElementById("traceTableQ9");
       let rows = table.rows;
@@ -325,31 +252,22 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
     
     // Q10: Procedure with Global Variable Modification (markPresent)
     function checkAnswersQ10() {
-      // Pseudocode:
-      // 01 Global attendance = 0
-      // 02 
-      // 03 Procedure markPresent()
-      // 04     attendance = attendance + 1
-      // 05     print("Attendance is " + attendance)
-      // 06 endprocedure
-      // 07 
-      // 08 Call:
-      // 09 markPresent()
       // Expected trace:
-      // Row 1 (Line 01): "attendance = 0"
-      // Row 2 (Line 09): "markPresent() called"
-      // Row 3 (Line 04): "attendance updated" becomes 1
-      // Row 4 (Line 05): Output "Attendance is 1"
+      // 01: "attendance = 0" (global variable initialization)
+      // 09: "procedure markPresent" called
+      // 04: "attendance updated" becomes 1
+      // 05: Output "Attendance is 1"
       let correctValues = [
         ["01", "attendance = 0", "", "Global attendance initialized"],
-        ["09", "markPresent() called", "", ""],
+        ["09", "procedure markPresent", "", ""],
         ["04", "attendance updated", "1", ""],
         ["05", "", "", "Attendance is 1"]
       ];
@@ -359,7 +277,8 @@
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
     }
@@ -369,8 +288,8 @@
   <h1>Subroutine Trace Table Challenges</h1>
   <p>
     These 10 challenges involve procedures and functions commonly used in high school programming.
-    Each question includes pseudocode with explicit line numbers and a trace table.
-    Fill in the trace table when a variable’s value changes or when output is produced.
+    Each question shows pseudocode with explicit line numbers. In the trace tables, enter the subprogram call
+    (prefixed with "procedure" or "function" and with parameters if needed) and any outputs produced.
   </p>
   
   <hr>
@@ -391,7 +310,7 @@
     <table id="traceTableQ1">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Output</th>
       </tr>
       <tr>
@@ -426,7 +345,7 @@
     <table id="traceTableQ2">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Output</th>
       </tr>
       <tr>
@@ -461,7 +380,7 @@
     <table id="traceTableQ3">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Output</th>
       </tr>
       <tr>
@@ -497,7 +416,7 @@
     <table id="traceTableQ4">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Return Value</th>
         <th>Output</th>
       </tr>
@@ -522,7 +441,7 @@
   <!-- Q5: Combining Procedure Calls -->
   <section id="q5">
     <h2>Q5: Combining Procedure Calls</h2>
-    <p><strong>Scenario:</strong> In a morning assembly, a student calls two procedures: <code>printName("Bob")</code> to display their name and <code>multiply(7,8)</code> to calculate a product for a class activity.</p>
+    <p><strong>Scenario:</strong> During the morning assembly, a student calls two procedures: <code>printName("Bob")</code> to display their name and <code>multiply(7,8)</code> to calculate a product for a class activity.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 Call:
@@ -532,7 +451,7 @@
     <table id="traceTableQ5">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Output</th>
       </tr>
       <tr>
@@ -564,7 +483,7 @@
     <table id="traceTableQ6">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Return/Value</th>
         <th>Output</th>
       </tr>
@@ -589,7 +508,7 @@
   <!-- Q7: Procedure Calling Another Procedure -->
   <section id="q7">
     <h2>Q7: Procedure Calling Another Procedure</h2>
-    <p><strong>Scenario:</strong> A new procedure <code>greetStudent(name)</code> calls two subroutines—one to print the student's name and another to check if they are old enough to ride. When <code>greetStudent("Charlie")</code> is called, it prints "Charlie" and "You are old enough to ride".</p>
+    <p><strong>Scenario:</strong> A new procedure <code>greetStudent(name)</code> calls two subroutines—one to print the student's name and another to check their age eligibility. When <code>greetStudent("Charlie")</code> is called, it prints "Charlie" and "You are old enough to ride".</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 Procedure printName(name)
@@ -611,7 +530,7 @@
     <table id="traceTableQ7">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Output</th>
       </tr>
       <tr>
@@ -643,7 +562,7 @@
   <!-- Q8: Function and Procedure Combination -->
   <section id="q8">
     <h2>Q8: Function and Procedure Combination</h2>
-    <p><strong>Scenario:</strong> A student calculates the area of a square by calling a function <code>area(side)</code> and then uses a procedure <code>printResult(result)</code> to display "Area is 25".</p>
+    <p><strong>Scenario:</strong> A student calculates the area of a square by calling the function <code>area(side)</code> and then uses the procedure <code>printResult(result)</code> to display "Area is 25".</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 Function area(side)
@@ -661,7 +580,7 @@
     <table id="traceTableQ8">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Return/Value</th>
         <th>Output</th>
       </tr>
@@ -708,7 +627,7 @@
     <table id="traceTableQ9">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Return/Value</th>
         <th>Output</th>
       </tr>
@@ -749,7 +668,7 @@
     <table id="traceTableQ10">
       <tr>
         <th>Line Number</th>
-        <th>Action/Variable</th>
+        <th>Subprogram (Procedure/Function) called</th>
         <th>Value</th>
         <th>Output</th>
       </tr>
