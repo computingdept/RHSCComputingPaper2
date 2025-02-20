@@ -5,29 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>10 Switch-Case Trace Table Tasks</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0 20px; }
-    nav { background-color: #f2f2f2; padding: 10px; margin-bottom: 20px; }
-    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; }
-    nav ul li { display: inline; }
-    nav ul li a { text-decoration: none; color: black; font-weight: bold; }
-    section { margin-bottom: 40px; border-top: 2px solid #ccc; padding-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    th, td { border: 1px solid black; padding: 8px; text-align: center; }
-    th { background-color: #f2f2f2; }
-    pre { background-color: #eee; padding: 10px; }
-    button { margin-top: 10px; padding: 10px; }
+    /* Apple-like styling using system fonts and a modern, airy look */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+                   Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #F9F9F9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    nav {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px 30px;
+      margin-bottom: 40px;
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background: #ddd;
+      margin: 40px 0;
+    }
+    h2 {
+      font-size: 1.6em;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      color: #222;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      font-size: 0.95em;
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #fafafa;
+      font-weight: 600;
+    }
+    input[type="text"] {
+      width: 90%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95em;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #005bb5;
+    }
   </style>
   <script>
     /* ----------------------------
        Task 1: Fruit Price Calculator
-       Scenario: Input fruit = "banana"
+       Scenario: The fruit is "banana" at a local stall.
        Expected: price = 1.5; Output: "The price of the fruit is1.5"
     ---------------------------- */
     function checkAnswersTask1() {
-      // Correct trace steps:
-      // Row 1 (Line 01): fruit = "banana"
-      // Row 2 (Line 07): price = 1.5 (banana case)
-      // Row 3 (Line 16): output "The price of the fruit is1.5"
       let correctValues = [
         ["01", "banana", "", ""],
         ["07", "", "1.5", ""],
@@ -35,7 +113,6 @@
       ];
       let table = document.getElementById("selectionTraceTableTask1");
       let rows = table.rows;
-      // Skip header row (index 0)
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i - 1];
@@ -47,7 +124,7 @@
 
     /* ----------------------------
        Task 2: Day of Week Calculator
-       Scenario: Input day number = "3"
+       Scenario: A day number "3" is entered.
        Expected: day = "Wednesday"; Output: "The day isWednesday"
     ---------------------------- */
     function checkAnswersTask2() {
@@ -69,7 +146,7 @@
 
     /* ----------------------------
        Task 3: Month Name Calculator
-       Scenario: Input month number = "7"
+       Scenario: A month number "7" is given.
        Expected: month = "July"; Output: "The month isJuly"
     ---------------------------- */
     function checkAnswersTask3() {
@@ -115,7 +192,7 @@
 
     /* ----------------------------
        Task 5: Traffic Light Instruction
-       Scenario: Input color = "red"
+       Scenario: The traffic light colour is "red".
        Expected: instruction = "Stop"; Output: "Instruction:Stop"
     ---------------------------- */
     function checkAnswersTask5() {
@@ -137,7 +214,7 @@
 
     /* ----------------------------
        Task 6: Letter Grade Evaluator
-       Scenario: Input grade = "B"
+       Scenario: The letter grade entered is "B".
        Expected: remark = "Good"; Output: "Remark:Good"
     ---------------------------- */
     function checkAnswersTask6() {
@@ -182,7 +259,7 @@
 
     /* ----------------------------
        Task 8: Days in a Month (Grouping Cases)
-       Scenario: Input monthNum = "4"
+       Scenario: The month number is "4".
        Expected: days = 30; Output: "Days:30"
     ---------------------------- */
     function checkAnswersTask8() {
@@ -204,7 +281,7 @@
 
     /* ----------------------------
        Task 9: Shape Name by Number of Sides
-       Scenario: Input sides = "5"
+       Scenario: The number of sides is "5".
        Expected: shape = "Pentagon"; Output: "Shape:Pentagon"
     ---------------------------- */
     function checkAnswersTask9() {
@@ -226,12 +303,9 @@
 
     /* ----------------------------
        Task 10: Restaurant Menu Ordering (Nested Switch-Case)
-       Scenario:
-         dish = "pizza"
-         drinkSize = "large"
-       Expected:
-         basePrice = 8, drinkPrice = 2, total = 10;
-         Output: "Total cost is10"
+       Scenario: dish = "pizza" and drinkSize = "large"
+       Expected: basePrice = 8, drinkPrice = 2, total = 10;
+                 Output: "Total cost is10"
     ---------------------------- */
     function checkAnswersTask10() {
       let correctValues = [
@@ -275,7 +349,7 @@
   <section id="task1">
     <h2>Task 1: Fruit Price Calculator</h2>
     <p>
-      Complete the selection trace table for the algorithm when the fruit is <strong>banana</strong>.
+      Complete the selection trace table for the algorithm when the fruit is <strong>banana</strong> at a local stall.
     </p>
     <pre>
 01 fruit = input("Enter fruit name")
@@ -472,12 +546,12 @@
     <button onclick="checkAnswersTask3()">Check Answers</button>
   </section>
 
-  <!-- Task 4: Simple Calculator -->
+  <!-- Task 4: Simple Calculator Using Switch-Case -->
   <section id="task4">
     <h2>Task 4: Simple Calculator Using Switch-Case</h2>
     <p>
-      Complete the selection trace table for the algorithm when the inputs are:
-      num1 = <strong>10</strong>, num2 = <strong>5</strong>, op = <strong>"*"</strong>.
+      Complete the selection trace table for the algorithm when the inputs are: 
+      num1 = <strong>10</strong>, num2 = <strong>5</strong>, and op = <strong>"*"</strong>.
     </p>
     <pre>
 01 num1 = input("Enter first number")
@@ -560,7 +634,7 @@
   <section id="task5">
     <h2>Task 5: Traffic Light Instruction</h2>
     <p>
-      Complete the selection trace table for the algorithm when the traffic light color is <strong>red</strong>.
+      Complete the selection trace table for the algorithm when the traffic light colour is <strong>red</strong>.
     </p>
     <pre>
 01 color = input("Enter traffic light color")
@@ -760,7 +834,7 @@
     <button onclick="checkAnswersTask7()">Check Answers</button>
   </section>
 
-  <!-- Task 8: Days in a Month -->
+  <!-- Task 8: Days in a Month (Grouping Cases) -->
   <section id="task8">
     <h2>Task 8: Days in a Month</h2>
     <p>
