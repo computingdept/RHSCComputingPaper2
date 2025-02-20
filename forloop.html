@@ -5,10 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Count-Controlled Loop Trace Table Challenges</title>
   <style>
+    /* Apple-like styling using system fonts and a modern, airy look */
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+                   Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #F9F9F9;
+      color: #333;
       margin: 20px;
       padding-bottom: 50px;
+    }
+    section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px 30px;
+      margin-bottom: 40px;
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background: #ddd;
+      margin: 40px 0;
+    }
+    h2 {
+      font-size: 1.6em;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      color: #222;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      font-size: 1.1em;
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
     }
     table {
       width: 100%;
@@ -16,31 +51,49 @@
       margin-top: 20px;
     }
     th, td {
-      border: 1px solid #000;
-      padding: 8px;
+      border: 1px solid #ddd;
+      padding: 10px;
       text-align: center;
     }
     th {
-      background-color: #f2f2f2;
+      background-color: #fafafa;
+      font-weight: 600;
     }
-    pre {
-      background: #eee;
-      padding: 10px;
-      font-size: 1.1em;
-      overflow-x: auto;
+    input[type="text"] {
+      width: 90%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95em;
     }
     button {
       margin-top: 10px;
-      padding: 10px;
+      padding: 10px 20px;
       font-size: 1em;
       cursor: pointer;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
     }
-    hr {
-      margin: 40px 0;
+    button:hover {
+      background: #005bb5;
     }
   </style>
   <script>
-    // --- Shelf Assembly Challenge (Original Scenario) ---
+    // ----------------------------
+    // Shelf Assembly Challenge
+    // Scenario: In a DIY furniture shop, a worker assembles 3 shelves.
+    // Expected Trace:
+    //   Row 1 (Line 01): for i = 1
+    //   Row 2 (Line 02): output "Shelf 1"
+    //   Row 3 (Line 03): for i = 2
+    //   Row 4 (Line 02): output "Shelf 2"
+    //   Row 5 (Line 03): for i = 3
+    //   Row 6 (Line 02): output "Shelf 3"
+    //   Row 7 (Line 04): output "Shelf assembly is complete"
+    // ----------------------------
     function checkAnswersLoop() {
       let correctValues = [
         ["01", "1", ""],
@@ -64,7 +117,10 @@
       }
     }
     
-    // --- Sheep Shearing Challenge (Rural Norfolk) ---
+    // ----------------------------
+    // Sheep Shearing Challenge (Rural Norfolk)
+    // Scenario: A shearer in Norfolk shears 4 sheep.
+    // ----------------------------
     function checkAnswersSheep() {
       let correctValues = [
         ["01", "1", ""],
@@ -90,7 +146,10 @@
       }
     }
     
-    // --- Cow Counting Challenge (Using for i = 0 to 5 step 2) ---
+    // ----------------------------
+    // Cow Counting Challenge
+    // Scenario: On a farm, a farmer counts cows in steps of 2.
+    // ----------------------------
     function checkAnswersCows() {
       let correctValues = [
         ["01", "0", ""],
@@ -114,7 +173,10 @@
       }
     }
     
-    // --- Countdown Challenge (Using for i = 3 to 1 step -1) ---
+    // ----------------------------
+    // Countdown Challenge
+    // Scenario: A simple countdown from 3 to 0.
+    // ----------------------------
     function checkAnswersCountdown() {
       let correctValues = [
         ["01", "3", ""],
@@ -138,35 +200,11 @@
       }
     }
     
-    // --- Nested Loop Challenge with Separate Columns for i and j ---
+    // ----------------------------
+    // Nested Loop Challenge
+    // Scenario: A nested loop prints values for two counters i and j.
+    // ----------------------------
     function checkAnswersNested() {
-      // Code:
-      // 01 for i = 1 to 2
-      // 02    for j = 1 to 3
-      // 03         print("i=" + i + " j=" + j)
-      // 04    next j
-      // 05 next i
-      // 06 print("Nested loop complete")
-      //
-      // Trace table rows with separate columns for i and j:
-      // Row 1: Line 01: Outer loop initialization → i = 1 (j not set)
-      // Row 2: Line 02: Inner loop initialization → j = 1 (for i = 1)
-      // Row 3: Line 03: Print → "i=1 j=1" (i = 1, j = 1)
-      // Row 4: Line 04: Next j → j becomes 2 (i remains 1)
-      // Row 5: Line 03: Print → "i=1 j=2" (i = 1, j = 2)
-      // Row 6: Line 04: Next j → j becomes 3 (i remains 1)
-      // Row 7: Line 03: Print → "i=1 j=3" (i = 1, j = 3)
-      // Row 8: Line 04: Next j → j becomes 4 (inner loop ends for i = 1)
-      // Row 9: Line 05: Next i → i becomes 2 (j not set)
-      // Row 10: Line 02: Inner loop initialization → j = 1 (for i = 2)
-      // Row 11: Line 03: Print → "i=2 j=1" (i = 2, j = 1)
-      // Row 12: Line 04: Next j → j becomes 2 (i remains 2)
-      // Row 13: Line 03: Print → "i=2 j=2" (i = 2, j = 2)
-      // Row 14: Line 04: Next j → j becomes 3 (i remains 2)
-      // Row 15: Line 03: Print → "i=2 j=3" (i = 2, j = 3)
-      // Row 16: Line 04: Next j → j becomes 4 (inner loop ends for i = 2)
-      // Row 17: Line 05: Next i → i becomes 3 (outer loop ends)
-      // Row 18: Line 06: Print → "Nested loop complete" (i = 3)
       let correctValues = [
         ["01", "1", "", ""],
         ["02", "", "1", ""],
@@ -202,148 +240,187 @@
   </script>
 </head>
 <body>
-  <!-- Original Challenge: Shelf Assembly -->
-  <h2>Count-Controlled Loop Trace Table Challenge (Shelf Assembly)</h2>
-  <pre>
+  <!-- Shelf Assembly Challenge -->
+  <section id="shelfAssembly">
+    <h2>Count-Controlled Loop: Shelf Assembly</h2>
+    <p>
+      In a DIY furniture shop, a worker assembles 3 shelves. For each shelf, the shelf number is printed.
+    </p>
+    <pre>
 01 for i = 1 to 3
-02    print ("Shelf " + i)
+02    print("Shelf " + i)
 03 next i
 04 print("Shelf assembly is complete")
-  </pre>
-  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
-  <table id="traceTableLoop">
-    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
-    <!-- 8 rows -->
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-  </table>
-  <button onclick="checkAnswersLoop()">Check Answers</button>
+    </pre>
+    <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
+    <table id="traceTableLoop">
+      <tr>
+        <th>Line Number</th>
+        <th>Value of i</th>
+        <th>Output</th>
+      </tr>
+      <!-- 8 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersLoop()">Check Answers</button>
+  </section>
 
   <hr>
 
-  <!-- Sheep Shearing Challenge (Rural Norfolk) -->
-  <h2>Count-Controlled Loop Trace Table Challenge (Sheep Shearing)</h2>
-  <pre>
+  <!-- Sheep Shearing Challenge -->
+  <section id="sheepShearing">
+    <h2>Count-Controlled Loop: Sheep Shearing</h2>
+    <p>
+      On a rural Norfolk farm, a shearer shears 4 sheep.
+    </p>
+    <pre>
 01 for i = 1 to 4
-02    print ("Shearing sheep " + i)
+02    print("Shearing sheep " + i)
 03 next i
 04 print("All sheep are shorn")
-  </pre>
-  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
-  <table id="traceTableSheep">
-    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
-    <!-- 10 rows -->
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-  </table>
-  <button onclick="checkAnswersSheep()">Check Answers</button>
+    </pre>
+    <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
+    <table id="traceTableSheep">
+      <tr>
+        <th>Line Number</th>
+        <th>Value of i</th>
+        <th>Output</th>
+      </tr>
+      <!-- 10 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersSheep()">Check Answers</button>
+  </section>
 
   <hr>
 
-  <!-- Cow Counting Challenge (Using for i = 0 to 5 step 2) -->
-  <h2>Count-Controlled Loop Trace Table Challenge (Cow Counting)</h2>
-  <pre>
+  <!-- Cow Counting Challenge -->
+  <section id="cowCounting">
+    <h2>Count-Controlled Loop: Cow Counting</h2>
+    <p>
+      On a farm, the farmer counts cows in steps of 2.
+    </p>
+    <pre>
 01 for i = 0 to 5 step 2
 02    print("There are " + i + " cows")
 03 next i
 04 print("Cow counting is complete")
-  </pre>
-  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
-  <table id="traceTableCows">
-    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
-    <!-- 8 rows -->
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-  </table>
-  <button onclick="checkAnswersCows()">Check Answers</button>
+    </pre>
+    <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
+    <table id="traceTableCows">
+      <tr>
+        <th>Line Number</th>
+        <th>Value of i</th>
+        <th>Output</th>
+      </tr>
+      <!-- 8 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersCows()">Check Answers</button>
+  </section>
 
   <hr>
 
-  <!-- Countdown Challenge (Using for i = 3 to 1 step -1) -->
-  <h2>Count-Controlled Loop Trace Table Challenge (Countdown)</h2>
-  <pre>
+  <!-- Countdown Challenge -->
+  <section id="countdown">
+    <h2>Count-Controlled Loop: Countdown</h2>
+    <p>
+      A simple countdown from 3 to 0 is performed.
+    </p>
+    <pre>
 01 for i = 3 to 1 step -1 
 02    print(i)
 03 next i 
 04 print("Countdown")
-  </pre>
-  <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
-  <table id="traceTableCountdown">
-    <tr><th>Line Number</th><th>Value of i</th><th>Output</th></tr>
-    <!-- 8 rows -->
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-  </table>
-  <button onclick="checkAnswersCountdown()">Check Answers</button>
+    </pre>
+    <p>Fill in the table below. (Columns: Line Number, Value of i, Output)</p>
+    <table id="traceTableCountdown">
+      <tr>
+        <th>Line Number</th>
+        <th>Value of i</th>
+        <th>Output</th>
+      </tr>
+      <!-- 8 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersCountdown()">Check Answers</button>
+  </section>
 
   <hr>
 
-  <!-- Nested Loop Challenge with Separate Columns for i and j -->
-  <h2>Count-Controlled Loop Trace Table Challenge (Nested Loop)</h2>
-  <pre>
+  <!-- Nested Loop Challenge -->
+  <section id="nestedLoop">
+    <h2>Count-Controlled Loop: Nested Loop</h2>
+    <p>
+      A nested loop prints pairs of numbers for two counters, i and j.
+    </p>
+    <pre>
 01 for i = 1 to 2
 02    for j = 1 to 3
 03         print("i=" + i + " j=" + j)
 04    next j
 05 next i
 06 print("Nested loop complete")
-  </pre>
-  <p>
-    Fill in the table below. (Columns: Line Number, Value of i, Value of j, Output)
-  </p>
-  <table id="traceTableNested">
-    <tr>
-      <th>Line Number</th>
-      <th>Value of i</th>
-      <th>Value of j</th>
-      <th>Output</th>
-    </tr>
-    <!-- 18 rows -->
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-  </table>
-  <button onclick="checkAnswersNested()">Check Answers</button>
+    </pre>
+    <p>Fill in the table below. (Columns: Line Number, Value of i, Value of j, Output)</p>
+    <table id="traceTableNested">
+      <tr>
+        <th>Line Number</th>
+        <th>Value of i</th>
+        <th>Value of j</th>
+        <th>Output</th>
+      </tr>
+      <!-- 18 rows -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    </table>
+    <button onclick="checkAnswersNested()">Check Answers</button>
+  </section>
 </body>
 </html>
