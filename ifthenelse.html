@@ -214,7 +214,7 @@
     }
 
     /* ============================
-       Task 6: Scholarship Eligibility Calculator
+       Task 6: Bursary Eligibility Calculator
        ============================ */
     function checkAnswersTask6() {
       let correctValues = [
@@ -222,7 +222,7 @@
         ["02", "", "85", "", ""],
         ["04", "", "", "true", ""],
         ["09", "", "", "true", ""],
-        ["13", "", "", "", "Scholarship eligibility: true"]
+        ["13", "", "", "", "Bursary eligibility: true"]
       ];
       let table = document.getElementById("traceTableTask6");
       let rows = table.rows;
@@ -542,10 +542,10 @@
     <button onclick="checkAnswersTask5()">Check Answers</button>
   </section>
 
-  <!-- Task 6: Scholarship Eligibility Calculator -->
+  <!-- Task 6: Bursary Eligibility Calculator -->
   <section id="task6">
     <h2>
-      Task 6: Scholarship Check – A student has a GPA of 3.7 and scores 85 in activities. Are they eligible for a scholarship?
+      Task 6: Bursary Eligibility – A pupil at a secondary school has a grade point average of 3.7 and an extracurricular score of 85. Are they eligible for a bursary?
     </h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
@@ -561,7 +561,7 @@
 10 else
 11   eligible = false
 12 endif
-13 print("Scholarship eligibility:" + eligible)
+13 print("Bursary eligibility:" + eligible)
     </pre>
     <table id="traceTableTask6">
       <tr>
@@ -717,7 +717,7 @@
   <!-- Task 10: Speeding Fine Calculator -->
   <section id="task10">
     <h2>
-      Task 10: Speeding Fine – A car is going 80 in a 60 zone. What is the fine?
+      Task 10: Speeding Fine – A car is travelling at 80 in a 60 zone. What is the fine?
     </h2>
     <p><strong>Pseudocode:</strong></p>
     <pre>
@@ -738,26 +738,18 @@
         <th>fine</th>
         <th>Output</th>
       </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td><td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td><td><input type="text"></td>
+          <td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersTask10()">Check Answers</button>
   </section>
