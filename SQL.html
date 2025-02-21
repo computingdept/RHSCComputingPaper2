@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SQL Searching Trace Table Challenges</title>
+  <title>SQL Query Result Trace Table Challenges</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+                   Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
       background: #F9F9F9;
       color: #333;
       margin: 20px;
@@ -18,6 +19,9 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       padding: 20px 30px;
       margin-bottom: 50px;
+    }
+    h2 {
+      margin-top: 0;
     }
     hr {
       margin: 40px 0;
@@ -43,10 +47,11 @@
       padding: 10px;
       font-size: 1em;
       overflow-x: auto;
+      border-radius: 6px;
     }
     button {
       margin-top: 10px;
-      padding: 8px;
+      padding: 8px 16px;
       font-size: 1em;
       cursor: pointer;
       background: #007aff;
@@ -58,268 +63,292 @@
     button:hover {
       background: #005bb5;
     }
+    .data-table {
+      margin-bottom: 20px;
+    }
   </style>
   <script>
-    /* Q1: Select StudentID and TeamName for YearGroup 11 */
+    /* Sample database table (TblResult)
+       Columns: StudentID, YearGroup, TeamName, Time
+       Data:
+         11GC1 | 11 | Valiants     | 20.3
+         10VE1 | 10 | Super-Team   | 19.7
+         10SM1 | 10 | Super-Team   | 19.2
+         11JP2 | 11 | Champions    | 19.65
+    */
+    
+    /* Q1: Show StudentID and TeamName for YearGroup 11 */
     function checkAnswersQ1() {
-      // Expected trace:
-      // 01: SELECT StudentID, TeamName
-      // 02: FROM TblResult
-      // 03: WHERE YearGroup = 11
+      // Expected result (2 rows):
+      // Row 1: 11GC1 , Valiants
+      // Row 2: 11JP2 , Champions
       let correctValues = [
-        ["01", "SELECT StudentID, TeamName"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE YearGroup = 11"]
+        ["11GC1", "Valiants"],
+        ["11JP2", "Champions"]
       ];
-      let table = document.getElementById("traceTableQ1");
+      let table = document.getElementById("resultTableQ1");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) 
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q2: Select StudentID and Time for Team 'Super-Team' */
+    /* Q2: Show StudentID and Time for Team 'Super-Team' */
     function checkAnswersQ2() {
-      // Expected:
-      // 01: SELECT StudentID, Time
-      // 02: FROM TblResult
-      // 03: WHERE TeamName = 'Super-Team'
+      // Expected result (2 rows):
+      // Row 1: 10VE1 , 19.7
+      // Row 2: 10SM1 , 19.2
       let correctValues = [
-        ["01", "SELECT StudentID, Time"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE TeamName = 'Super-Team'"]
+        ["10VE1", "19.7"],
+        ["10SM1", "19.2"]
       ];
-      let table = document.getElementById("traceTableQ2");
+      let table = document.getElementById("resultTableQ2");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q3: Select TeamName and Time for Times < 20 */
+    /* Q3: Show TeamName and Time for students with Time < 20 */
     function checkAnswersQ3() {
-      // Expected:
-      // 01: SELECT TeamName, Time
-      // 02: FROM TblResult
-      // 03: WHERE Time < 20
+      // Expected result (3 rows):
+      // Row 1: Super-Team , 19.7
+      // Row 2: Super-Team , 19.2
+      // Row 3: Champions  , 19.65
       let correctValues = [
-        ["01", "SELECT TeamName, Time"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE Time < 20"]
+        ["Super-Team", "19.7"],
+        ["Super-Team", "19.2"],
+        ["Champions", "19.65"]
       ];
-      let table = document.getElementById("traceTableQ3");
+      let table = document.getElementById("resultTableQ3");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q4: Select All Details for YearGroup 10 */
+    /* Q4: Show all details for YearGroup 10 */
     function checkAnswersQ4() {
-      // Expected:
-      // 01: SELECT *
-      // 02: FROM TblResult
-      // 03: WHERE YearGroup = 10
+      // Expected result (2 rows, all 4 columns):
+      // Row 1: 10VE1 , 10 , Super-Team , 19.7
+      // Row 2: 10SM1 , 10 , Super-Team , 19.2
       let correctValues = [
-        ["01", "SELECT *"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE YearGroup = 10"]
+        ["10VE1", "10", "Super-Team", "19.7"],
+        ["10SM1", "10", "Super-Team", "19.2"]
       ];
-      let table = document.getElementById("traceTableQ4");
+      let table = document.getElementById("resultTableQ4");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q5: Select StudentID and YearGroup for Times > 20 */
+    /* Q5: Show StudentID and YearGroup for students with Time > 20 */
     function checkAnswersQ5() {
-      // Expected:
-      // 01: SELECT StudentID, YearGroup
-      // 02: FROM TblResult
-      // 03: WHERE Time > 20
+      // Expected result (1 row):
+      // Row 1: 11GC1 , 11
       let correctValues = [
-        ["01", "SELECT StudentID, YearGroup"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE Time > 20"]
+        ["11GC1", "11"]
       ];
-      let table = document.getElementById("traceTableQ5");
+      let table = document.getElementById("resultTableQ5");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q6: Select StudentID and TeamName for IDs Starting with '10' */
+    /* Q6: Show StudentID and TeamName for StudentIDs starting with '10' */
     function checkAnswersQ6() {
-      // Expected:
-      // 01: SELECT StudentID, TeamName
-      // 02: FROM TblResult
-      // 03: WHERE StudentID LIKE '10%'
+      // Expected result (2 rows):
+      // Row 1: 10VE1 , Super-Team
+      // Row 2: 10SM1 , Super-Team
       let correctValues = [
-        ["01", "SELECT StudentID, TeamName"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE StudentID LIKE '10%'"]
+        ["10VE1", "Super-Team"],
+        ["10SM1", "Super-Team"]
       ];
-      let table = document.getElementById("traceTableQ6");
+      let table = document.getElementById("resultTableQ6");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q7: Select TeamName and Time for 'Champions' */
+    /* Q7: Show TeamName and Time for students in team 'Champions' */
     function checkAnswersQ7() {
-      // Expected:
-      // 01: SELECT TeamName, Time
-      // 02: FROM TblResult
-      // 03: WHERE TeamName = 'Champions'
+      // Expected result (1 row):
+      // Row 1: Champions , 19.65
       let correctValues = [
-        ["01", "SELECT TeamName, Time"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE TeamName = 'Champions'"]
+        ["Champions", "19.65"]
       ];
-      let table = document.getElementById("traceTableQ7");
+      let table = document.getElementById("resultTableQ7");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q8: Select StudentID and YearGroup for Times BETWEEN 19 AND 20 */
+    /* Q8: Show StudentID and YearGroup for students with Time BETWEEN 19 AND 20 */
     function checkAnswersQ8() {
-      // Expected:
-      // 01: SELECT StudentID, YearGroup
-      // 02: FROM TblResult
-      // 03: WHERE Time BETWEEN 19 AND 20
+      // Expected result (3 rows):
+      // Row 1: 10VE1 , 10
+      // Row 2: 10SM1 , 10
+      // Row 3: 11JP2 , 11
       let correctValues = [
-        ["01", "SELECT StudentID, YearGroup"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE Time BETWEEN 19 AND 20"]
+        ["10VE1", "10"],
+        ["10SM1", "10"],
+        ["11JP2", "11"]
       ];
-      let table = document.getElementById("traceTableQ8");
+      let table = document.getElementById("resultTableQ8");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q9: Select StudentID and TeamName for YearGroup 11 with Time < 20 */
+    /* Q9: Show StudentID and TeamName for YearGroup 11 with Time < 20 */
     function checkAnswersQ9() {
-      // Expected:
-      // 01: SELECT StudentID, TeamName
-      // 02: FROM TblResult
-      // 03: WHERE YearGroup = 11 AND Time < 20
+      // Expected result (1 row):
+      // Row 1: 11JP2 , Champions
       let correctValues = [
-        ["01", "SELECT StudentID, TeamName"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE YearGroup = 11 AND Time < 20"]
+        ["11JP2", "Champions"]
       ];
-      let table = document.getElementById("traceTableQ9");
+      let table = document.getElementById("resultTableQ9");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
     
-    /* Q10: Select Time for Students Not in 'Super-Team' */
+    /* Q10: Show Time for Students Not in 'Super-Team' */
     function checkAnswersQ10() {
-      // Expected:
-      // 01: SELECT Time
-      // 02: FROM TblResult
-      // 03: WHERE TeamName <> 'Super-Team'
+      // Expected result (2 rows):
+      // Row 1: 20.3
+      // Row 2: 19.65
       let correctValues = [
-        ["01", "SELECT Time"],
-        ["02", "FROM TblResult"],
-        ["03", "WHERE TeamName <> 'Super-Team'"]
+        ["20.3"],
+        ["19.65"]
       ];
-      let table = document.getElementById("traceTableQ10");
+      let table = document.getElementById("resultTableQ10");
       let rows = table.rows;
-      for(let i = 1; i < rows.length; i++){
-        let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i-1];
-        for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
-            ? "lightgreen" : "lightcoral";
-        }
+      for (let i = 1; i < rows.length; i++){
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
       }
     }
   </script>
 </head>
 <body>
-  <h1>SQL Searching Trace Table Challenges</h1>
+  <h1>SQL Query Result Trace Table Challenges</h1>
   <p>
-    These 10 challenges involve using SQL commands (SELECT, FROM, WHERE) to search for data in a high school sports database.
-    The table <code>TblResult</code> stores details about students’ performance in the 100 m race.
-    Complete the SQL statement for each scenario by filling in the blanks in the pseudocode.
+    In each of the following 10 challenges, you are given a database table (TblResult) and an SQL query.
+    Your task is to determine the result set (the rows and columns that the query returns) and fill in the result table accordingly.
   </p>
   
   <hr>
   
+  <!-- For each question, the sample database table is repeated -->
+  <!-- Sample Database Table (TblResult) -->
+  <div class="data-table">
+    <h3>Database Table: TblResult</h3>
+    <table>
+      <tr>
+        <th>StudentID</th>
+        <th>YearGroup</th>
+        <th>TeamName</th>
+        <th>Time</th>
+      </tr>
+      <tr>
+        <td>11GC1</td>
+        <td>11</td>
+        <td>Valiants</td>
+        <td>20.3</td>
+      </tr>
+      <tr>
+        <td>10VE1</td>
+        <td>10</td>
+        <td>Super-Team</td>
+        <td>19.7</td>
+      </tr>
+      <tr>
+        <td>10SM1</td>
+        <td>10</td>
+        <td>Super-Team</td>
+        <td>19.2</td>
+      </tr>
+      <tr>
+        <td>11JP2</td>
+        <td>11</td>
+        <td>Champions</td>
+        <td>19.65</td>
+      </tr>
+    </table>
+  </div>
+  
   <!-- Q1 -->
   <section id="q1">
     <h2>Q1: Select StudentID and TeamName for YearGroup 11</h2>
-    <p><strong>Scenario:</strong> The table TblResult stores race data. Show the StudentID and TeamName for all students in year group 11.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT StudentID, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT StudentID, TeamName
+02 FROM TblResult
+03 WHERE YearGroup = 11
     </pre>
-    <table id="traceTableQ1">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ1">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>StudentID</th>
+        <th>TeamName</th>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <!-- Two rows expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -337,22 +366,19 @@
   <!-- Q2 -->
   <section id="q2">
     <h2>Q2: Select StudentID and Time for Team 'Super-Team'</h2>
-    <p><strong>Scenario:</strong> Display the StudentID and Time for students in the team 'Super-Team'.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT StudentID, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT StudentID, Time
+02 FROM TblResult
+03 WHERE TeamName = 'Super-Team'
     </pre>
-    <table id="traceTableQ2">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ2">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>StudentID</th>
+        <th>Time</th>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <!-- Two rows expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -369,19 +395,20 @@
   
   <!-- Q3 -->
   <section id="q3">
-    <h2>Q3: Select TeamName and Time for Times &lt; 20</h2>
-    <p><strong>Scenario:</strong> List the TeamName and Time for students whose race time is less than 20 seconds.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <h2>Q3: Select TeamName and Time for Students with Time &lt; 20</h2>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT TeamName, Time
+02 FROM TblResult
+03 WHERE Time < 20
     </pre>
-    <table id="traceTableQ3">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ3">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>TeamName</th>
+        <th>Time</th>
       </tr>
+      <!-- Three rows expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -403,27 +430,30 @@
   <!-- Q4 -->
   <section id="q4">
     <h2>Q4: Select All Details for YearGroup 10</h2>
-    <p><strong>Scenario:</strong> Show all columns for students in year group 10.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT *
+02 FROM TblResult
+03 WHERE YearGroup = 10
     </pre>
-    <table id="traceTableQ4">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query; include all 4 columns)</p>
+    <table id="resultTableQ4">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>StudentID</th>
+        <th>YearGroup</th>
+        <th>TeamName</th>
+        <th>Time</th>
+      </tr>
+      <!-- Two rows expected -->
+      <tr>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -435,27 +465,20 @@
   
   <!-- Q5 -->
   <section id="q5">
-    <h2>Q5: Select StudentID and YearGroup for Times &gt; 20</h2>
-    <p><strong>Scenario:</strong> Retrieve the StudentID and YearGroup of students whose race time is greater than 20 seconds.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <h2>Q5: Select StudentID and YearGroup for Students with Time &gt; 20</h2>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT StudentID, YearGroup
+02 FROM TblResult
+03 WHERE Time > 20
     </pre>
-    <table id="traceTableQ5">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ5">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>StudentID</th>
+        <th>YearGroup</th>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <!-- One row expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -469,22 +492,19 @@
   <!-- Q6 -->
   <section id="q6">
     <h2>Q6: Select StudentID and TeamName for IDs Starting with '10'</h2>
-    <p><strong>Scenario:</strong> Retrieve the StudentID and TeamName for students whose ID begins with '10'.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT StudentID, TeamName
+02 FROM TblResult
+03 WHERE StudentID LIKE '10%'
     </pre>
-    <table id="traceTableQ6">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ6">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>StudentID</th>
+        <th>TeamName</th>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <!-- Two rows expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -501,27 +521,20 @@
   
   <!-- Q7 -->
   <section id="q7">
-    <h2>Q7: Select TeamName and Time for 'Champions'</h2>
-    <p><strong>Scenario:</strong> Display the TeamName and Time for students who belong to the 'Champions' team.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <h2>Q7: Select TeamName and Time for Students in Team 'Champions'</h2>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT TeamName, Time
+02 FROM TblResult
+03 WHERE TeamName = 'Champions'
     </pre>
-    <table id="traceTableQ7">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ7">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>TeamName</th>
+        <th>Time</th>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <!-- One row expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -534,19 +547,20 @@
   
   <!-- Q8 -->
   <section id="q8">
-    <h2>Q8: Select StudentID and YearGroup for Times BETWEEN 19 AND 20</h2>
-    <p><strong>Scenario:</strong> Retrieve the StudentID and YearGroup for students whose race time is between 19 and 20 seconds.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <h2>Q8: Select StudentID and YearGroup for Students with Time BETWEEN 19 AND 20</h2>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT StudentID, YearGroup
+02 FROM TblResult
+03 WHERE Time BETWEEN 19 AND 20
     </pre>
-    <table id="traceTableQ8">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ8">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>StudentID</th>
+        <th>YearGroup</th>
       </tr>
+      <!-- Three rows expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -568,26 +582,19 @@
   <!-- Q9 -->
   <section id="q9">
     <h2>Q9: Select StudentID and TeamName for YearGroup 11 with Time &lt; 20</h2>
-    <p><strong>Scenario:</strong> Retrieve the StudentID and TeamName for students in year group 11 who ran the race in less than 20 seconds.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________, _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT StudentID, TeamName
+02 FROM TblResult
+03 WHERE YearGroup = 11 AND Time < 20
     </pre>
-    <table id="traceTableQ9">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ9">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>StudentID</th>
+        <th>TeamName</th>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <!-- One row expected -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -601,28 +608,22 @@
   <!-- Q10 -->
   <section id="q10">
     <h2>Q10: Select Time for Students Not in 'Super-Team'</h2>
-    <p><strong>Scenario:</strong> Retrieve the race time for all students whose team is not 'Super-Team'.</p>
-    <p><strong>Pseudocode:</strong></p>
+    <p><strong>SQL Statement:</strong></p>
     <pre>
-01 SELECT _______________
-02 FROM _______________
-03 WHERE _______________
+01 SELECT Time
+02 FROM TblResult
+03 WHERE TeamName <> 'Super-Team'
     </pre>
-    <table id="traceTableQ10">
+    <p><strong>Result Table:</strong> (Fill in the rows returned by the query)</p>
+    <table id="resultTableQ10">
       <tr>
-        <th>Line Number</th>
-        <th>SQL statement</th>
+        <th>Time</th>
       </tr>
+      <!-- Two rows expected -->
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
     </table>
