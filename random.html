@@ -3,18 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Array Trace Table Challenges</title>
+  <title>Random Numbers Trace Table Challenges</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #F9F9F9;
+      color: #333;
       margin: 20px;
       padding-bottom: 50px;
     }
     section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px 30px;
       margin-bottom: 50px;
     }
-    hr {
-      margin: 40px 0;
+    h2 {
+      margin-top: 0;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 1em;
+      overflow-x: auto;
+      border-radius: 6px;
     }
     table {
       width: 100%;
@@ -29,687 +43,663 @@
     th {
       background-color: #f2f2f2;
     }
-    pre {
-      background: #eee;
-      padding: 10px;
-      font-size: 1em;
-      overflow-x: auto;
+    input {
+      width: 90%;
+      padding: 4px;
+      text-align: center;
     }
     button {
       margin-top: 10px;
-      padding: 8px;
+      padding: 8px 16px;
       font-size: 1em;
       cursor: pointer;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+    .flex-container {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .content {
+      flex: 1;
+    }
+    .diagram {
+      flex: 0 0 300px;
+      border: 1px solid #000;
+      padding: 10px;
+      background: #f9f9f9;
+      font-family: monospace;
+      white-space: pre;
     }
   </style>
   <script>
-    /* ==========================================================
-       Example A1: Declare and Assign a 1D Array
-       ----------------------------------------------------------
+    /* Q1: Dice Roll Simulation
        Pseudocode:
-       01 array colours[5]
-       02 colours = ["Blue", "Pink", "Green", "Yellow", "Red"]
-       03 print("colours declared")
-       ========================================================== */
-    function checkAnswersA1() {
-      // Columns: [Line Number, colours, Output]
-      let correctValues = [
-        // Line 01: Array declared (we assume no assigned values yet)
-        ["01", "declared", ""],
-        // Line 02: Array is now assigned its values.
-        ["02", "[Blue, Pink, Green, Yellow, Red]", ""],
-        // Line 03: Output message.
-        ["03", "", "colours declared"]
+         01 roll = random(1,6)
+         02 print("You rolled " + roll)
+       Assume random(1,6) returns 4.
+       Expected trace:
+         Row 1 (Line 01): "roll = 4"
+         Row 2 (Line 02): "Output: You rolled 4"
+    */
+    function checkAnswersQ1() {
+      const correctValues = [
+        ["roll = 4"],
+        ["Output: You rolled 4"]
       ];
-      let table = document.getElementById("traceTableA1");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor =
-             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ1").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A2: Print an Element from a 1D Array
-       ----------------------------------------------------------
+    
+    /* Q2: Random Real Number Generation
        Pseudocode:
-       01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
-       02 print(colours[2])
-       (Remember: index 2 holds "Green")
-       ========================================================== */
-    function checkAnswersA2() {
-      // Columns: [Line Number, colours, Output]
-      let correctValues = [
-        ["01", "[Blue, Pink, Green, Yellow, Red]", ""],
-        ["02", "", "Green"]
+         01 x = random(-1.0, 10.0)
+         02 print("x is " + x)
+       Assume random(-1.0,10.0) returns 3.7.
+       Expected trace:
+         Row 1 (Line 01): "x = 3.7"
+         Row 2 (Line 02): "Output: x is 3.7"
+    */
+    function checkAnswersQ2() {
+      const correctValues = [
+        ["x = 3.7"],
+        ["Output: x is 3.7"]
       ];
-      let table = document.getElementById("traceTableA2");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ2").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A3: Change an Element in a 1D Array
-       ----------------------------------------------------------
+    
+    /* Q3: Random Score Update
        Pseudocode:
-       01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
-       02 colours[3] = "Noni"
-       03 print("New colour: " + colours[3])
-       (Index 3 changes from "Yellow" to "Noni")
-       ========================================================== */
-    function checkAnswersA3() {
-      // Columns: [Line Number, colours, Output]
-      let correctValues = [
-        ["01", "[Blue, Pink, Green, Yellow, Red]", ""],
-        ["02", "[Blue, Pink, Green, Noni, Red]", ""],
-        ["03", "", "New colour: Noni"]
+         01 score = random(50,100)
+         02 bonus = 5
+         03 total = score + bonus
+         04 print("Total score: " + total)
+       Assume random(50,100) returns 85.
+       Expected trace:
+         Row 1 (Line 01): "score = 85"
+         Row 2 (Line 03): "total = 90"
+         Row 3 (Line 04): "Output: Total score: 90"
+    */
+    function checkAnswersQ3() {
+      const correctValues = [
+        ["score = 85"],
+        ["total = 90"],
+        ["Output: Total score: 90"]
       ];
-      let table = document.getElementById("traceTableA3");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ3").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A4: 2D Array Assignment and Access
-       ----------------------------------------------------------
+    
+    /* Q4: Random Choice from a List (Fruit Selector)
        Pseudocode:
-       01 array gameboard[8,8]
-       02 gameboard[1,0] = "Pawn"
-       03 print("Position (1,0): " + gameboard[1,0])
-       ========================================================== */
-    function checkAnswersA4() {
-      // Columns: [Line Number, gameboard (changed cell), Output]
-      let correctValues = [
-        ["01", "declared", ""],
-        ["02", "gameboard[1,0] = Pawn", ""],
-        ["03", "", "Position (1,0): Pawn"]
+         01 choice = random(1,3)
+         02 if choice = 1 then
+         03    fruit = "apple"
+         04 elseif choice = 2 then
+         05    fruit = "banana"
+         06 else
+         07    fruit = "cherry"
+         08 endif
+         09 print("You got " + fruit)
+       Assume random(1,3) returns 2.
+       Expected trace:
+         Row 1 (Line 01): "choice = 2"
+         Row 2 (Line 05): "fruit = banana"
+         Row 3 (Line 09): "Output: You got banana"
+    */
+    function checkAnswersQ4() {
+      const correctValues = [
+        ["choice = 2"],
+        ["fruit = banana"],
+        ["Output: You got banana"]
       ];
-      let table = document.getElementById("traceTableA4");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ4").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A5: Assign to an Array Element in a Names Array
-       ----------------------------------------------------------
+    
+    /* Q5: Random Loop Iteration
        Pseudocode:
-       01 array names[5]
-       02 names[3] = "Noni"
-       03 print("names[3] is " + names[3])
-       ========================================================== */
-    function checkAnswersA5() {
-      // Columns: [Line Number, names, Output]
-      let correctValues = [
-        ["01", "declared", ""],
-        ["02", "[-, -, -, Noni, -]", ""],
-        ["03", "", "names[3] is Noni"]
+         01 count = 0
+         02 n = random(1,5)
+         03 do
+         04    count = count + 1
+         05    print("Iteration " + count)
+         06 while (count < n)
+         07 print("Loop finished after " + count + " iterations")
+       Assume random(1,5) returns 3.
+       Expected trace:
+         Row 1 (Line 02): "n = 3"
+         Row 2 (Line 04): "Iteration 1"
+         Row 3 (Line 04): "Iteration 2"
+         Row 4 (Line 04): "Iteration 3"
+         Row 5 (Line 07): "Output: Loop finished after 3 iterations"
+    */
+    function checkAnswersQ5() {
+      const correctValues = [
+        ["n = 3"],
+        ["Iteration 1"],
+        ["Iteration 2"],
+        ["Iteration 3"],
+        ["Output: Loop finished after 3 iterations"]
       ];
-      let table = document.getElementById("traceTableA5");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ5").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A6: Sum of Elements from a 1D Array
-       ----------------------------------------------------------
+    
+    /* Q6: Random Die Roll Game
        Pseudocode:
-       01 array numbers[4] = [2, 4, 6, 8]
-       02 sum = numbers[0] + numbers[1] + numbers[2] + numbers[3]
-       03 print("Sum is " + sum)
-       ========================================================== */
-    function checkAnswersA6() {
-      // Columns: [Line Number, numbers, sum, Output]
-      let correctValues = [
-        ["01", "[2, 4, 6, 8]", "", ""],
-        ["02", "", "20", ""],
-        ["03", "", "", "Sum is 20"]
+         01 die = random(1,6)
+         02 if die >= 4 then
+         03    result = "win"
+         04 else
+         05    result = "lose"
+         06 endif
+         07 print("You " + result + " with a roll of " + die)
+       Assume random(1,6) returns 5.
+       Expected trace:
+         Row 1 (Line 01): "die = 5"
+         Row 2 (Line 03): "result = win"
+         Row 3 (Line 07): "Output: You win with a roll of 5"
+    */
+    function checkAnswersQ6() {
+      const correctValues = [
+        ["die = 5"],
+        ["result = win"],
+        ["Output: You win with a roll of 5"]
       ];
-      let table = document.getElementById("traceTableA6");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ6").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A7: 2D Array – Corner Pieces on a Board
-       ----------------------------------------------------------
+    
+    /* Q7: Random Discount Percentage
        Pseudocode:
-       01 array board[3,3]
-       02 board[0,0] = "Rook"
-       03 board[2,2] = "King"
-       04 print("Corner pieces: " + board[0,0] + " and " + board[2,2])
-       ========================================================== */
-    function checkAnswersA7() {
-      // Columns: [Line Number, board (changed cells), Output]
-      let correctValues = [
-        ["01", "declared", ""],
-        ["02", "board[0,0] = Rook", ""],
-        ["03", "board[2,2] = King", ""],
-        ["04", "", "Corner pieces: Rook and King"]
+         01 discount = random(5,20)
+         02 print("Discount is " + discount + "%")
+       Assume random(5,20) returns 12.
+       Expected trace:
+         Row 1 (Line 01): "discount = 12"
+         Row 2 (Line 02): "Output: Discount is 12%"
+    */
+    function checkAnswersQ7() {
+      const correctValues = [
+        ["discount = 12"],
+        ["Output: Discount is 12%"]
       ];
-      let table = document.getElementById("traceTableA7");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ7").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A8: Concatenation of Array Elements
-       ----------------------------------------------------------
+    
+    /* Q8: Random Temperature Reading
        Pseudocode:
-       01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
-       02 message = colours[0] + ", " + colours[1] + ", " + colours[2]
-       03 print("Message: " + message)
-       ========================================================== */
-    function checkAnswersA8() {
-      // Columns: [Line Number, colours, message, Output]
-      let correctValues = [
-        ["01", "[Blue, Pink, Green, Yellow, Red]", "", ""],
-        ["02", "", "Blue, Pink, Green", ""],
-        ["03", "", "", "Message: Blue, Pink, Green"]
+         01 temperature = random(-5.0,35.0)
+         02 print("Today's temperature is " + temperature + "°C")
+       Assume random(-5.0,35.0) returns 22.3.
+       Expected trace:
+         Row 1 (Line 01): "temperature = 22.3"
+         Row 2 (Line 02): "Output: Today's temperature is 22.3°C"
+    */
+    function checkAnswersQ8() {
+      const correctValues = [
+        ["temperature = 22.3"],
+        ["Output: Today's temperature is 22.3°C"]
       ];
-      let table = document.getElementById("traceTableA8");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ8").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A9: Replace an Element in a 2D Array
-       ----------------------------------------------------------
+    
+    /* Q9: Random Student Selector
        Pseudocode:
-       01 array board[4,4]
-       02 board[1,1] = "Knight"
-       03 board[1,1] = "Bishop"
-       04 print("Piece at (1,1): " + board[1,1])
-       ========================================================== */
-    function checkAnswersA9() {
-      // Columns: [Line Number, board, Output]
-      let correctValues = [
-        ["01", "declared", ""],
-        ["02", "board[1,1] = Knight", ""],
-        ["03", "board[1,1] = Bishop", ""],
-        ["04", "", "Piece at (1,1): Bishop"]
+         01 student = random(1,4)   // 1: Alice, 2: Bob, 3: Charlie, 4: Diana
+         02 if student = 1 then
+         03    name = "Alice"
+         04 elseif student = 2 then
+         05    name = "Bob"
+         06 elseif student = 3 then
+         07    name = "Charlie"
+         08 else
+         09    name = "Diana"
+         10 endif
+         11 print("Selected student: " + name)
+       Assume random(1,4) returns 3.
+       Expected trace:
+         Row 1 (Line 01): "student = 3"
+         Row 2 (Line 07): "name = Charlie"
+         Row 3 (Line 11): "Output: Selected student: Charlie"
+    */
+    function checkAnswersQ9() {
+      const correctValues = [
+        ["student = 3"],
+        ["name = Charlie"],
+        ["Output: Selected student: Charlie"]
       ];
-      let table = document.getElementById("traceTableA9");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ9").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
-
-    /* ==========================================================
-       Example A10: Update a Pre-assigned 1D Array
-       ----------------------------------------------------------
+    
+    /* Q10: Sum of Two Dice Rolls
        Pseudocode:
-       01 array fruits[3] = ["Apple", "Banana", "Cherry"]
-       02 fruits[1] = "Orange"
-       03 print("Fruits: " + fruits[0] + ", " + fruits[1] + ", " + fruits[2])
-       ========================================================== */
-    function checkAnswersA10() {
-      // Columns: [Line Number, fruits, Output]
-      let correctValues = [
-        ["01", "[Apple, Banana, Cherry]", ""],
-        ["02", "[Apple, Orange, Cherry]", ""],
-        ["03", "", "Fruits: Apple, Orange, Cherry"]
+         01 die1 = random(1,6)
+         02 die2 = random(1,6)
+         03 sum = die1 + die2
+         04 print("Sum of dice: " + sum)
+       Assume random(1,6) returns 2 for die1 and 5 for die2.
+       Expected trace:
+         Row 1 (Line 01): "die1 = 2"
+         Row 2 (Line 02): "die2 = 5"
+         Row 3 (Line 03): "sum = 7"
+         Row 4 (Line 04): "Output: Sum of dice: 7"
+    */
+    function checkAnswersQ10() {
+      const correctValues = [
+        ["die1 = 2"],
+        ["die2 = 5"],
+        ["sum = 7"],
+        ["Output: Sum of dice: 7"]
       ];
-      let table = document.getElementById("traceTableA10");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+      let rows = document.getElementById("traceTableQ10").rows;
+      for (let i = 1; i < rows.length; i++){
+         let cell = rows[i].getElementsByTagName("input")[0];
+         cell.style.backgroundColor = (cell.value.trim() === correctValues[i-1][0]) ? "lightgreen" : "lightcoral";
       }
     }
   </script>
 </head>
 <body>
-  <h1>Array Trace Table Challenges</h1>
+  <h1>Random Numbers Trace Table Challenges</h1>
   <p>
-    These 10 sequential challenges demonstrate basic operations with arrays—including 1D and 2D arrays. In each example, arrays are declared (or assigned initial values), elements are accessed or updated, and output is printed. Remember that arrays are 0‑indexed and can store only one data type.
+    Each challenge below uses a random number in a simple program. For the purpose of these exercises, assume that the random() function returns a specific value as indicated in the expected answers. Complete the trace table by entering the value of the variable or the output at each step.
   </p>
   
   <hr>
-
-  <!-- Example A1: Declare and Assign a 1D Array -->
-  <section id="A1">
-    <h2>Example A1: Declare and Assign a 1D Array</h2>
+  
+  <!-- Q1 -->
+  <section id="q1">
+    <h2>Q1: Dice Roll Simulation</h2>
+    <p><strong>Scenario:</strong> A school security system simulates a dice roll to generate a code. The program creates a random integer between 1 and 6, then prints the result.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array colours[5]
-02 colours = ["Blue", "Pink", "Green", "Yellow", "Red"]
-03 print("colours declared")
+01 roll = random(1,6)
+02 print("You rolled " + roll)
     </pre>
-    <table id="traceTableA1">
+    <p><strong>Trace Table:</strong> (Assume random(1,6) returns 4)</p>
+    <table id="traceTableQ1">
       <tr>
         <th>Line Number</th>
-        <th>colours</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="roll = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>02</td>
+        <td><input type="text" placeholder="Output: You rolled ?"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA1()">Check Answers</button>
+    <button onclick="checkAnswersQ1()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A2: Print an Element from a 1D Array -->
-  <section id="A2">
-    <h2>Example A2: Print an Element from a 1D Array</h2>
+  
+  <!-- Q2 -->
+  <section id="q2">
+    <h2>Q2: Random Real Number</h2>
+    <p><strong>Scenario:</strong> A science experiment records a random temperature reading. The program generates a random real number between -1.0 and 10.0 and prints it.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
-02 print(colours[2])
+01 x = random(-1.0,10.0)
+02 print("x is " + x)
     </pre>
-    <table id="traceTableA2">
+    <p><strong>Trace Table:</strong> (Assume random(-1.0,10.0) returns 3.7)</p>
+    <table id="traceTableQ2">
       <tr>
         <th>Line Number</th>
-        <th>colours</th>
-        <th>Output</th>
-      </tr>
-      <!-- 2 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="x = ?"></td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td><input type="text" placeholder="Output: x is ?"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA2()">Check Answers</button>
+    <button onclick="checkAnswersQ2()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A3: Change an Element in a 1D Array -->
-  <section id="A3">
-    <h2>Example A3: Change an Element in a 1D Array</h2>
+  
+  <!-- Q3 -->
+  <section id="q3">
+    <h2>Q3: Random Score Update</h2>
+    <p><strong>Scenario:</strong> A teacher calculates a student's total score by generating a random base score between 50 and 100, then adding a bonus of 5.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
-02 colours[3] = "Noni"
-03 print("New colour: " + colours[3])
+01 score = random(50,100)
+02 bonus = 5
+03 total = score + bonus
+04 print("Total score: " + total)
     </pre>
-    <table id="traceTableA3">
+    <p><strong>Trace Table:</strong> (Assume random(50,100) returns 85)</p>
+    <table id="traceTableQ3">
       <tr>
         <th>Line Number</th>
-        <th>colours</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="score = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>03</td>
+        <td><input type="text" placeholder="total = ?"></td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td><input type="text" placeholder="Output: Total score: ?"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA3()">Check Answers</button>
+    <button onclick="checkAnswersQ3()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A4: 2D Array Assignment and Access -->
-  <section id="A4">
-    <h2>Example A4: 2D Array Assignment and Access</h2>
+  
+  <!-- Q4 -->
+  <section id="q4">
+    <h2>Q4: Fruit Selector</h2>
+    <p><strong>Scenario:</strong> In a school cafeteria, a random selection chooses a fruit from a list (1 = apple, 2 = banana, 3 = cherry). The program prints the chosen fruit.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array gameboard[8,8]
-02 gameboard[1,0] = "Pawn"
-03 print("Position (1,0): " + gameboard[1,0])
+01 choice = random(1,3)
+02 if choice = 1 then
+03    fruit = "apple"
+04 elseif choice = 2 then
+05    fruit = "banana"
+06 else
+07    fruit = "cherry"
+08 endif
+09 print("You got " + fruit)
     </pre>
-    <table id="traceTableA4">
+    <p><strong>Trace Table:</strong> (Assume random(1,3) returns 2)</p>
+    <table id="traceTableQ4">
       <tr>
         <th>Line Number</th>
-        <th>gameboard</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="choice = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>05</td>
+        <td><input type="text" placeholder="fruit = ?"></td>
+      </tr>
+      <tr>
+        <td>09</td>
+        <td><input type="text" placeholder="Output: You got ?"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA4()">Check Answers</button>
+    <button onclick="checkAnswersQ4()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A5: Assign to an Element in a Names Array -->
-  <section id="A5">
-    <h2>Example A5: Assign to an Element in a Names Array</h2>
+  
+  <!-- Q5 -->
+  <section id="q5">
+    <h2>Q5: Loop Iteration Count</h2>
+    <p><strong>Scenario:</strong> A school simulation runs a loop a random number of times (between 1 and 5). In each iteration it prints the iteration count, and after the loop it prints the total number of iterations.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array names[5]
-02 names[3] = "Noni"
-03 print("names[3] is " + names[3])
+01 count = 0
+02 n = random(1,5)
+03 do
+04    count = count + 1
+05    print("Iteration " + count)
+06 while (count < n)
+07 print("Loop finished after " + count + " iterations")
     </pre>
-    <table id="traceTableA5">
+    <p><strong>Trace Table:</strong> (Assume random(1,5) returns 3)</p>
+    <table id="traceTableQ5">
       <tr>
         <th>Line Number</th>
-        <th>names</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>02</td>
+        <td><input type="text" placeholder="n = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>04</td>
+        <td><input type="text" placeholder="Iteration 1"></td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td><input type="text" placeholder="Iteration 2"></td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td><input type="text" placeholder="Iteration 3"></td>
+      </tr>
+      <tr>
+        <td>07</td>
+        <td><input type="text" placeholder="Output: Loop finished after 3 iterations"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA5()">Check Answers</button>
+    <button onclick="checkAnswersQ5()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A6: Sum of Elements from a 1D Array -->
-  <section id="A6">
-    <h2>Example A6: Sum of Elements from a 1D Array</h2>
+  
+  <!-- Q6 -->
+  <section id="q6">
+    <h2>Q6: Die Roll Game</h2>
+    <p><strong>Scenario:</strong> In a classroom game, a die is rolled and if the value is 4 or higher the student wins.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array numbers[4] = [2, 4, 6, 8]
-02 sum = numbers[0] + numbers[1] + numbers[2] + numbers[3]
-03 print("Sum is " + sum)
+01 die = random(1,6)
+02 if die >= 4 then
+03    result = "win"
+04 else
+05    result = "lose"
+06 endif
+07 print("You " + result + " with a roll of " + die)
     </pre>
-    <table id="traceTableA6">
+    <p><strong>Trace Table:</strong> (Assume random(1,6) returns 5)</p>
+    <table id="traceTableQ6">
       <tr>
         <th>Line Number</th>
-        <th>numbers</th>
-        <th>sum</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="die = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>03</td>
+        <td><input type="text" placeholder="result = ?"></td>
+      </tr>
+      <tr>
+        <td>07</td>
+        <td><input type="text" placeholder="Output: You win with a roll of ?"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA6()">Check Answers</button>
+    <button onclick="checkAnswersQ6()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A7: 2D Array – Corner Pieces on a Board -->
-  <section id="A7">
-    <h2>Example A7: 2D Array – Corner Pieces on a Board</h2>
+  
+  <!-- Q7 -->
+  <section id="q7">
+    <h2>Q7: Random Discount</h2>
+    <p><strong>Scenario:</strong> A school store gives a random discount percentage between 5% and 20% off. The program prints the discount.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array board[3,3]
-02 board[0,0] = "Rook"
-03 board[2,2] = "King"
-04 print("Corner pieces: " + board[0,0] + " and " + board[2,2])
+01 discount = random(5,20)
+02 print("Discount is " + discount + "%")
     </pre>
-    <table id="traceTableA7">
+    <p><strong>Trace Table:</strong> (Assume random(5,20) returns 12)</p>
+    <table id="traceTableQ7">
       <tr>
         <th>Line Number</th>
-        <th>board</th>
-        <th>Output</th>
-      </tr>
-      <!-- 4 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="discount = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>02</td>
+        <td><input type="text" placeholder="Output: Discount is ?%"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA7()">Check Answers</button>
+    <button onclick="checkAnswersQ7()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A8: Concatenation of Array Elements -->
-  <section id="A8">
-    <h2>Example A8: Concatenation of Array Elements</h2>
+  
+  <!-- Q8 -->
+  <section id="q8">
+    <h2>Q8: Temperature Reading</h2>
+    <p><strong>Scenario:</strong> A weather station at school measures temperature by generating a random real number between -5.0 and 35.0 and displays it.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array colours[5] = ["Blue", "Pink", "Green", "Yellow", "Red"]
-02 message = colours[0] + ", " + colours[1] + ", " + colours[2]
-03 print("Message: " + message)
+01 temperature = random(-5.0,35.0)
+02 print("Today's temperature is " + temperature + "°C")
     </pre>
-    <table id="traceTableA8">
+    <p><strong>Trace Table:</strong> (Assume random(-5.0,35.0) returns 22.3)</p>
+    <table id="traceTableQ8">
       <tr>
         <th>Line Number</th>
-        <th>colours</th>
-        <th>message</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="temperature = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>02</td>
+        <td><input type="text" placeholder="Output: Today's temperature is ?°C"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA8()">Check Answers</button>
+    <button onclick="checkAnswersQ8()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A9: Replace an Element in a 2D Array -->
-  <section id="A9">
-    <h2>Example A9: Replace an Element in a 2D Array</h2>
+  
+  <!-- Q9 -->
+  <section id="q9">
+    <h2>Q9: Random Student Selector</h2>
+    <p><strong>Scenario:</strong> A teacher randomly selects a student from a list (1 = Alice, 2 = Bob, 3 = Charlie, 4 = Diana) to answer a question.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array board[4,4]
-02 board[1,1] = "Knight"
-03 board[1,1] = "Bishop"
-04 print("Piece at (1,1): " + board[1,1])
+01 student = random(1,4)
+02 if student = 1 then
+03    name = "Alice"
+04 elseif student = 2 then
+05    name = "Bob"
+06 elseif student = 3 then
+07    name = "Charlie"
+08 else
+09    name = "Diana"
+10 endif
+11 print("Selected student: " + name)
     </pre>
-    <table id="traceTableA9">
+    <p><strong>Trace Table:</strong> (Assume random(1,4) returns 3)</p>
+    <table id="traceTableQ9">
       <tr>
         <th>Line Number</th>
-        <th>board</th>
-        <th>Output</th>
-      </tr>
-      <!-- 4 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="student = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>07</td>
+        <td><input type="text" placeholder="name = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>11</td>
+        <td><input type="text" placeholder="Output: Selected student: ?"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA9()">Check Answers</button>
+    <button onclick="checkAnswersQ9()">Check Answers</button>
   </section>
   
   <hr>
-
-  <!-- Example A10: Update a Pre-assigned 1D Array -->
-  <section id="A10">
-    <h2>Example A10: Update a Pre-assigned 1D Array</h2>
+  
+  <!-- Q10 -->
+  <section id="q10">
+    <h2>Q10: Sum of Two Dice Rolls</h2>
+    <p><strong>Scenario:</strong> In a classroom game, two dice are rolled and their sum is calculated.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
-01 array fruits[3] = ["Apple", "Banana", "Cherry"]
-02 fruits[1] = "Orange"
-03 print("Fruits: " + fruits[0] + ", " + fruits[1] + ", " + fruits[2])
+01 die1 = random(1,6)
+02 die2 = random(1,6)
+03 sum = die1 + die2
+04 print("Sum of dice: " + sum)
     </pre>
-    <table id="traceTableA10">
+    <p><strong>Trace Table:</strong> (Assume random(1,6) returns 2 for die1 and 5 for die2)</p>
+    <table id="traceTableQ10">
       <tr>
         <th>Line Number</th>
-        <th>fruits</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>Trace</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>01</td>
+        <td><input type="text" placeholder="die1 = ?"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td>02</td>
+        <td><input type="text" placeholder="die2 = ?"></td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td><input type="text" placeholder="sum = ?"></td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td><input type="text" placeholder="Output: Sum of dice: ?"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersA10()">Check Answers</button>
+    <button onclick="checkAnswersQ10()">Check Answers</button>
   </section>
-
+  
 </body>
 </html>
