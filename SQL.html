@@ -60,16 +60,16 @@
     }
   </style>
   <script>
-    /* Q1: Show StudentID and TeamName for YearGroup 11 */
+    /* Q1: Select StudentID and TeamName for YearGroup 11 */
     function checkAnswersQ1() {
-      // Expected:
+      // Expected trace:
       // 01: SELECT StudentID, TeamName
       // 02: FROM TblResult
       // 03: WHERE YearGroup = 11
       let correctValues = [
-        ["01", "SELECT StudentID, TeamName", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE YearGroup = 11", ""]
+        ["01", "SELECT StudentID, TeamName"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE YearGroup = 11"]
       ];
       let table = document.getElementById("traceTableQ1");
       let rows = table.rows;
@@ -77,206 +77,216 @@
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i-1];
         for(let j = 0; j < inputs.length; j++){
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) 
+            ? "lightgreen" : "lightcoral";
         }
       }
     }
     
-    /* Q2: Show StudentID and Time for Team 'Super-Team' */
+    /* Q2: Select StudentID and Time for Team 'Super-Team' */
     function checkAnswersQ2() {
       // Expected:
       // 01: SELECT StudentID, Time
       // 02: FROM TblResult
       // 03: WHERE TeamName = 'Super-Team'
       let correctValues = [
-        ["01", "SELECT StudentID, Time", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE TeamName = 'Super-Team'", ""]
+        ["01", "SELECT StudentID, Time"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE TeamName = 'Super-Team'"]
       ];
       let table = document.getElementById("traceTableQ2");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q3: Show TeamName and Time for students with Time < 20 */
+    /* Q3: Select TeamName and Time for Times < 20 */
     function checkAnswersQ3() {
       // Expected:
       // 01: SELECT TeamName, Time
       // 02: FROM TblResult
       // 03: WHERE Time < 20
       let correctValues = [
-        ["01", "SELECT TeamName, Time", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE Time < 20", ""]
+        ["01", "SELECT TeamName, Time"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE Time < 20"]
       ];
       let table = document.getElementById("traceTableQ3");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q4: Show all columns for YearGroup 10 */
+    /* Q4: Select All Details for YearGroup 10 */
     function checkAnswersQ4() {
       // Expected:
       // 01: SELECT *
       // 02: FROM TblResult
       // 03: WHERE YearGroup = 10
       let correctValues = [
-        ["01", "SELECT *", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE YearGroup = 10", ""]
+        ["01", "SELECT *"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE YearGroup = 10"]
       ];
       let table = document.getElementById("traceTableQ4");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q5: Show StudentID and YearGroup for students with Time > 20 */
+    /* Q5: Select StudentID and YearGroup for Times > 20 */
     function checkAnswersQ5() {
       // Expected:
       // 01: SELECT StudentID, YearGroup
       // 02: FROM TblResult
       // 03: WHERE Time > 20
       let correctValues = [
-        ["01", "SELECT StudentID, YearGroup", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE Time > 20", ""]
+        ["01", "SELECT StudentID, YearGroup"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE Time > 20"]
       ];
       let table = document.getElementById("traceTableQ5");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q6: Show StudentID and TeamName for StudentIDs starting with '10' */
+    /* Q6: Select StudentID and TeamName for IDs Starting with '10' */
     function checkAnswersQ6() {
       // Expected:
       // 01: SELECT StudentID, TeamName
       // 02: FROM TblResult
       // 03: WHERE StudentID LIKE '10%'
       let correctValues = [
-        ["01", "SELECT StudentID, TeamName", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE StudentID LIKE '10%'", ""]
+        ["01", "SELECT StudentID, TeamName"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE StudentID LIKE '10%'"]
       ];
       let table = document.getElementById("traceTableQ6");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q7: Show TeamName and Time for students in Team 'Champions' */
+    /* Q7: Select TeamName and Time for 'Champions' */
     function checkAnswersQ7() {
       // Expected:
       // 01: SELECT TeamName, Time
       // 02: FROM TblResult
       // 03: WHERE TeamName = 'Champions'
       let correctValues = [
-        ["01", "SELECT TeamName, Time", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE TeamName = 'Champions'", ""]
+        ["01", "SELECT TeamName, Time"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE TeamName = 'Champions'"]
       ];
       let table = document.getElementById("traceTableQ7");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q8: Show StudentID and YearGroup for students with Time BETWEEN 19 AND 20 */
+    /* Q8: Select StudentID and YearGroup for Times BETWEEN 19 AND 20 */
     function checkAnswersQ8() {
       // Expected:
       // 01: SELECT StudentID, YearGroup
       // 02: FROM TblResult
       // 03: WHERE Time BETWEEN 19 AND 20
       let correctValues = [
-        ["01", "SELECT StudentID, YearGroup", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE Time BETWEEN 19 AND 20", ""]
+        ["01", "SELECT StudentID, YearGroup"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE Time BETWEEN 19 AND 20"]
       ];
       let table = document.getElementById("traceTableQ8");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q9: Show StudentID and TeamName for YearGroup 11 with Time < 20 */
+    /* Q9: Select StudentID and TeamName for YearGroup 11 with Time < 20 */
     function checkAnswersQ9() {
       // Expected:
       // 01: SELECT StudentID, TeamName
       // 02: FROM TblResult
       // 03: WHERE YearGroup = 11 AND Time < 20
       let correctValues = [
-        ["01", "SELECT StudentID, TeamName", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE YearGroup = 11 AND Time < 20", ""]
+        ["01", "SELECT StudentID, TeamName"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE YearGroup = 11 AND Time < 20"]
       ];
       let table = document.getElementById("traceTableQ9");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    /* Q10: Show Time for Students Not in 'Super-Team' */
+    /* Q10: Select Time for Students Not in 'Super-Team' */
     function checkAnswersQ10() {
       // Expected:
       // 01: SELECT Time
       // 02: FROM TblResult
       // 03: WHERE TeamName <> 'Super-Team'
       let correctValues = [
-        ["01", "SELECT Time", ""],
-        ["02", "FROM TblResult", ""],
-        ["03", "WHERE TeamName <> 'Super-Team'", ""]
+        ["01", "SELECT Time"],
+        ["02", "FROM TblResult"],
+        ["03", "WHERE TeamName <> 'Super-Team'"]
       ];
       let table = document.getElementById("traceTableQ10");
       let rows = table.rows;
       for(let i = 1; i < rows.length; i++){
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i-1];
-         for(let j = 0; j < inputs.length; j++){
-            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i-1];
+        for(let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
+        }
       }
     }
   </script>
@@ -304,21 +314,17 @@
     <table id="traceTableQ1">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -341,21 +347,17 @@
     <table id="traceTableQ2">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -378,21 +380,17 @@
     <table id="traceTableQ3">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -415,21 +413,17 @@
     <table id="traceTableQ4">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -452,21 +446,17 @@
     <table id="traceTableQ5">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -489,21 +479,17 @@
     <table id="traceTableQ6">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -526,21 +512,17 @@
     <table id="traceTableQ7">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -552,7 +534,7 @@
   
   <!-- Q8 -->
   <section id="q8">
-    <h2>Q8: Select StudentID and YearGroup for Times BETWEEN 19 and 20</h2>
+    <h2>Q8: Select StudentID and YearGroup for Times BETWEEN 19 AND 20</h2>
     <p><strong>Scenario:</strong> Retrieve the StudentID and YearGroup for students whose race time is between 19 and 20 seconds.</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
@@ -563,21 +545,17 @@
     <table id="traceTableQ8">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -600,21 +578,17 @@
     <table id="traceTableQ9">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
@@ -637,21 +611,17 @@
     <table id="traceTableQ10">
       <tr>
         <th>Line Number</th>
-        <th>Subprogram (Procedure/Function) called</th>
-        <th>Output</th>
+        <th>SQL statement</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
       <tr>
         <td><input type="text"></td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
