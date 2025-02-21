@@ -3,44 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>String Manipulation Password Generation</title>
+  <title>Boolean Logic Truth Table Challenges</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+                   Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #F9F9F9;
+      color: #333;
       margin: 20px;
       padding-bottom: 50px;
     }
-    nav {
-      background-color: #f2f2f2;
-      padding: 10px;
-      margin-bottom: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    nav ul li {
-      display: inline;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      padding: 5px 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
     section {
-      margin-bottom: 40px;
-      border-top: 2px solid #ccc;
-      padding-top: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px 30px;
+      margin-bottom: 50px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    hr {
+      margin: 40px 0;
+      border: none;
+      height: 1px;
+      background: #ddd;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      font-size: 1em;
+      overflow-x: auto;
+      border-radius: 6px;
     }
     table {
       width: 100%;
@@ -55,942 +49,819 @@
     th {
       background-color: #f2f2f2;
     }
-    pre {
-      background: #eee;
-      padding: 10px;
-      overflow-x: auto;
+    input {
+      width: 90%;
+      padding: 4px;
+      text-align: center;
     }
     button {
       margin-top: 10px;
-      padding: 10px;
+      padding: 8px 16px;
+      font-size: 1em;
       cursor: pointer;
+      background: #007aff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #005bb5;
     }
   </style>
   <script>
-    /* ==========================================================================
-       For Tasks 1–10, each task’s algorithm (pseudocode) is shown within its section.
-       They use different string manipulation rules to create a password.
-    ========================================================================== */
-    
-    /* ---------------------------
-       Task 1 – Use left(x)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 password = subject.left(4)
-         03 print("Your password is " + password)
-       For input: subject = "Computer"
-       Expected Trace:
-         Row 1: [ "01", "Computer", "", "", "", "" ]
-         Row 2: [ "02", "", "left(4)", "Comp", "" ]
-         Row 3: [ "03", "", "", "", "", "Your password is Comp" ]
-    --------------------------- */
-    function checkAnswersTask1() {
-      let correctValues = [
-        ["01", "Computer", "", "", "", ""],
-        ["02", "", "left(4)", "Comp", ""],
-        ["03", "", "", "", "", "Your password is Comp"]
+    /* Q1: Expression: A AND B
+       Scenario: In a digital security system, the door opens only if both sensor A and sensor B are triggered.
+       Truth table for A AND B:
+         A   B   (A AND B)
+         0   0      0
+         0   1      0
+         1   0      0
+         1   1      1
+    */
+    function checkAnswersQ1() {
+      const correctValues = [
+        ["0", "0", "0"],
+        ["0", "1", "0"],
+        ["1", "0", "0"],
+        ["1", "1", "1"]
       ];
-      let table = document.getElementById("traceTableTask1");
+      let table = document.getElementById("truthTableQ1");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
         let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        let correct = correctValues[i-1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) 
+            ? "lightgreen" : "lightcoral";
         }
       }
     }
     
-    /* ---------------------------
-       Task 2 – Use right(x)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 password = subject.right(3)
-         03 print("Your password is " + password)
-       For input: subject = "Science"
-       Expected Trace:
-         Row 1: [ "01", "Science", "", "", "", "" ]
-         Row 2: [ "02", "", "right(3)", "nce", "" ]
-         Row 3: [ "03", "", "", "", "", "Your password is nce" ]
-    --------------------------- */
-    function checkAnswersTask2() {
-      let correctValues = [
-        ["01", "Science", "", "", "", ""],
-        ["02", "", "right(3)", "nce", ""],
-        ["03", "", "", "", "", "Your password is nce"]
+    /* Q2: Expression: A OR B
+       Scenario: A school club’s alarm sounds if either sensor A or sensor B is triggered.
+       Truth table for A OR B:
+         A   B   (A OR B)
+         0   0      0
+         0   1      1
+         1   0      1
+         1   1      1
+    */
+    function checkAnswersQ2() {
+      const correctValues = [
+        ["0", "0", "0"],
+        ["0", "1", "1"],
+        ["1", "0", "1"],
+        ["1", "1", "1"]
       ];
-      let table = document.getElementById("traceTableTask2");
+      let table = document.getElementById("truthTableQ2");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
         let inputs = rows[i].getElementsByTagName("input");
-        let correct = correctValues[i - 1];
-        for (let j = 0; j < inputs.length; j++) {
-          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        let correct = correctValues[i-1];
+        for (let j = 0; j < inputs.length; j++){
+          inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+            ? "lightgreen" : "lightcoral";
         }
       }
     }
     
-    /* ---------------------------
-       Task 3 – Use substring(x,y)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 password = subject.substring(3,5)
-         03 print("Your password is " + password)
-       For input: subject = "Computer"
-       (Assuming substring(3,5) returns 5 characters starting at index 3: "puter")
-       Expected Trace:
-         Row 1: [ "01", "Computer", "", "", "", "" ]
-         Row 2: [ "02", "", "substring(3,5)", "puter", "" ]
-         Row 3: [ "03", "", "", "", "", "Your password is puter" ]
-    --------------------------- */
-    function checkAnswersTask3() {
-      let correctValues = [
-        ["01", "Computer", "", "", "", ""],
-        ["02", "", "substring(3,5)", "puter", ""],
-        ["03", "", "", "", "", "Your password is puter"]
+    /* Q3: Expression: NOT A
+       Scenario: A school digital display shows the opposite of sensor A's state.
+       Truth table for NOT A:
+         A   (NOT A)
+         0      1
+         1      0
+    */
+    function checkAnswersQ3() {
+      const correctValues = [
+        ["0", "1"],
+        ["1", "0"]
       ];
-      let table = document.getElementById("traceTableTask3");
+      let table = document.getElementById("truthTableQ3");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+             ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    /* ---------------------------
-       Task 4 – Combine left(x) and right(x)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 part1 = subject.left(4)
-         03 part2 = subject.right(3)
-         04 password = part1 + part2
-         05 print("Your password is " + password)
-       For input: subject = "Computer"
-       Expected Trace:
-         Row 1: [ "01", "Computer", "", "", "", "" ]
-         Row 2: [ "02", "", "left(4)", "Comp", "" ]
-         Row 3: [ "03", "", "right(3)", "ter", "" ]
-         Row 4: [ "04", "", "Concatenate", "Compter", "" ]
-         Row 5: [ "05", "", "", "", "", "Your password is Compter" ]
-    --------------------------- */
-    function checkAnswersTask4() {
-      let correctValues = [
-        ["01", "Computer", "", "", "", ""],
-        ["02", "", "left(4)", "Comp", ""],
-        ["03", "", "right(3)", "ter", ""],
-        ["04", "", "Concatenate", "Compter", ""],
-        ["05", "", "", "", "", "Your password is Compter"]
+    /* Q4: Expression: (A AND B) OR C
+       Scenario: A school laboratory system turns on a light if both sensors A and B detect motion OR if sensor C detects an emergency.
+       Truth table for (A AND B) OR C (three inputs, 8 rows):
+         A B C | A AND B | (A AND B) OR C
+         0 0 0   0           0
+         0 0 1   0           1
+         0 1 0   0           0
+         0 1 1   0           1
+         1 0 0   0           0
+         1 0 1   0           1
+         1 1 0   1           1
+         1 1 1   1           1
+    */
+    function checkAnswersQ4() {
+      const correctValues = [
+        ["0", "0", "0", "0"],
+        ["0", "0", "1", "1"],
+        ["0", "1", "0", "0"],
+        ["0", "1", "1", "1"],
+        ["1", "0", "0", "0"],
+        ["1", "0", "1", "1"],
+        ["1", "1", "0", "1"],
+        ["1", "1", "1", "1"]
       ];
-      let table = document.getElementById("traceTableTask4");
+      let table = document.getElementById("truthTableQ4");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+              ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    /* ---------------------------
-       Task 5 – Combine substring(x,y) and left(x)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 part1 = subject.substring(1,3)
-         03 part2 = subject.left(3)
-         04 password = part1 + part2
-         05 print("Your password is " + password)
-       For input: subject = "Science"
-       For "Science": substring(1,3) → "cie", left(3) → "Sci"
-       Expected Trace:
-         Row 1: [ "01", "Science", "", "", "", "" ]
-         Row 2: [ "02", "", "substring(1,3)", "cie", "" ]
-         Row 3: [ "03", "", "left(3)", "Sci", "" ]
-         Row 4: [ "04", "", "Concatenate", "cieSci", "" ]
-         Row 5: [ "05", "", "", "", "", "Your password is cieSci" ]
-    --------------------------- */
-    function checkAnswersTask5() {
-      let correctValues = [
-        ["01", "Science", "", "", "", ""],
-        ["02", "", "substring(1,3)", "cie", ""],
-        ["03", "", "left(3)", "Sci", ""],
-        ["04", "", "Concatenate", "cieSci", ""],
-        ["05", "", "", "", "", "Your password is cieSci"]
+    /* Q5: Expression: A AND (NOT B)
+       Scenario: A digital lock requires that sensor A is active and sensor B is not active.
+       Truth table for A AND (NOT B):
+         A B | NOT B | A AND (NOT B)
+         0 0   1         0
+         0 1   0         0
+         1 0   1         1
+         1 1   0         0
+    */
+    function checkAnswersQ5() {
+      const correctValues = [
+        ["0", "0", "0"],
+        ["0", "1", "0"],
+        ["1", "0", "1"],
+        ["1", "1", "0"]
       ];
-      let table = document.getElementById("traceTableTask5");
+      let table = document.getElementById("truthTableQ5");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+              ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    /* ---------------------------
-       Task 6 – Combine substring(x,y) and right(x)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 part1 = subject.substring(4,3)
-         03 part2 = subject.right(4)
-         04 password = part1 + part2
-         05 print("Your password is " + password)
-       For input: subject = "Computer Science"
-       For "Computer Science": substring(4,3) → "ute", right(4) → "ence"
-       Expected Trace:
-         Row 1: [ "01", "Computer Science", "", "", "", "" ]
-         Row 2: [ "02", "", "substring(4,3)", "ute", "" ]
-         Row 3: [ "03", "", "right(4)", "ence", "" ]
-         Row 4: [ "04", "", "Concatenate", "uteence", "" ]
-         Row 5: [ "05", "", "", "", "", "Your password is uteence" ]
-    --------------------------- */
-    function checkAnswersTask6() {
-      let correctValues = [
-        ["01", "Computer Science", "", "", "", ""],
-        ["02", "", "substring(4,3)", "ute", ""],
-        ["03", "", "right(4)", "ence", ""],
-        ["04", "", "Concatenate", "uteence", ""],
-        ["05", "", "", "", "", "Your password is uteence"]
+    /* Q6: Expression: (A OR B) AND NOT C
+       Scenario: In a school project, a system activates an alert if either sensor A or B is triggered, but only if sensor C is off.
+       Truth table for (A OR B) AND NOT C (three inputs, 8 rows):
+         A B C | A OR B | NOT C | (A OR B) AND NOT C
+         0 0 0: 0 OR 0 = 0; NOT 0 = 1; 0 AND 1 = 0
+         0 0 1: 0; NOT 1 = 0; 0 AND 0 = 0
+         0 1 0: 1; NOT 0 = 1; 1 AND 1 = 1
+         0 1 1: 1; NOT 1 = 0; 1 AND 0 = 0
+         1 0 0: 1; NOT 0 = 1; 1 AND 1 = 1
+         1 0 1: 1; NOT 1 = 0; 1 AND 0 = 0
+         1 1 0: 1; NOT 0 = 1; 1 AND 1 = 1
+         1 1 1: 1; NOT 1 = 0; 1 AND 0 = 0
+    */
+    function checkAnswersQ6() {
+      const correctValues = [
+        ["0", "0", "0", "0"],
+        ["0", "0", "1", "0"],
+        ["0", "1", "0", "1"],
+        ["0", "1", "1", "0"],
+        ["1", "0", "0", "1"],
+        ["1", "0", "1", "0"],
+        ["1", "1", "0", "1"],
+        ["1", "1", "1", "0"]
       ];
-      let table = document.getElementById("traceTableTask6");
+      let table = document.getElementById("truthTableQ6");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+              ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    /* ---------------------------
-       Task 7 – Use left(x), substring(x,y), and right(x) together
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 part1 = subject.left(3)
-         03 part2 = subject.substring(3,4)
-         04 part3 = subject.right(2)
-         05 password = part1 + part2 + part3
-         06 print("Your password is " + password)
-       For input: subject = "Mathematics"
-       For "Mathematics": left(3) → "Mat"; substring(3,4) → "hema"; right(2) → "cs"
-       Expected Trace:
-         Row 1: [ "01", "Mathematics", "", "", "", "" ]
-         Row 2: [ "02", "", "left(3)", "Mat", "" ]
-         Row 3: [ "03", "", "substring(3,4)", "hema", "" ]
-         Row 4: [ "04", "", "right(2)", "cs", "" ]
-         Row 5: [ "05", "", "Concatenate", "Mathemacs", "" ]
-         Row 6: [ "06", "", "", "", "", "Your password is Mathemacs" ]
-    --------------------------- */
-    function checkAnswersTask7() {
-      let correctValues = [
-        ["01", "Mathematics", "", "", "", ""],
-        ["02", "", "left(3)", "Mat", ""],
-        ["03", "", "substring(3,4)", "hema", ""],
-        ["04", "", "right(2)", "cs", ""],
-        ["05", "", "Concatenate", "Mathemacs", ""],
-        ["06", "", "", "", "", "Your password is Mathemacs"]
+    /* Q7: Expression: NOT (A OR B)
+       Scenario: A simple digital inverter returns the opposite of the OR of two signals.
+       Truth table for NOT (A OR B):
+         A B | A OR B | NOT (A OR B)
+         0 0: 0 → 1
+         0 1: 1 → 0
+         1 0: 1 → 0
+         1 1: 1 → 0
+    */
+    function checkAnswersQ7() {
+      const correctValues = [
+        ["0", "0", "1"],
+        ["0", "1", "0"],
+        ["1", "0", "0"],
+        ["1", "1", "0"]
       ];
-      let table = document.getElementById("traceTableTask7");
+      let table = document.getElementById("truthTableQ7");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+              ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    /* ---------------------------
-       Task 8 – Use substring(x,y) then left(x)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 part1 = subject.substring(2,5)
-         03 part2 = subject.left(2)
-         04 password = part1 + part2
-         05 print("Your password is " + password)
-       For input: subject = "Engineering"
-       For "Engineering": substring(2,5) → "ginee", left(2) → "En"
-       Expected Trace:
-         Row 1: [ "01", "Engineering", "", "", "", "" ]
-         Row 2: [ "02", "", "substring(2,5)", "ginee", "" ]
-         Row 3: [ "03", "", "left(2)", "En", "" ]
-         Row 4: [ "04", "", "Concatenate", "gineeEn", "" ]
-         Row 5: [ "05", "", "", "", "", "Your password is gineeEn" ]
-    --------------------------- */
-    function checkAnswersTask8() {
-      let correctValues = [
-        ["01", "Engineering", "", "", "", ""],
-        ["02", "", "substring(2,5)", "ginee", ""],
-        ["03", "", "left(2)", "En", ""],
-        ["04", "", "Concatenate", "gineeEn", ""],
-        ["05", "", "", "", "", "Your password is gineeEn"]
+    /* Q8: Expression: (A AND NOT B) OR (NOT A AND B) [XOR]
+       Scenario: A digital circuit computes the exclusive OR (XOR) of two signals.
+       Truth table for XOR:
+         A B | A AND NOT B | NOT A AND B | XOR
+         0 0: 0 AND 1 = 0; 1 AND 0 = 0; 0 OR 0 = 0
+         0 1: 0 AND 0 = 0; 1 AND 1 = 1; 0 OR 1 = 1
+         1 0: 1 AND 1 = 1; 0 AND 0 = 0; 1 OR 0 = 1
+         1 1: 1 AND 0 = 0; 0 AND 1 = 0; 0 OR 0 = 0
+    */
+    function checkAnswersQ8() {
+      const correctValues = [
+        ["0", "0", "0", "0"],
+        ["0", "1", "0", "1"],
+        ["1", "0", "0", "1"],
+        ["1", "1", "0", "0"]
       ];
-      let table = document.getElementById("traceTableTask8");
+      let table = document.getElementById("truthTableQ8");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+            inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+              ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    /* ---------------------------
-       Task 9 – Use right(x) then substring(x,y)
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 part1 = subject.right(4)
-         03 part2 = subject.substring(1,3)
-         04 password = part1 + part2
-         05 print("Your password is " + password)
-       For input: subject = "Programming"
-       For "Programming": right(4) → "ming", substring(1,3) → "rog"
-       Expected Trace:
-         Row 1: [ "01", "Programming", "", "", "", "" ]
-         Row 2: [ "02", "", "right(4)", "ming", "" ]
-         Row 3: [ "03", "", "substring(1,3)", "rog", "" ]
-         Row 4: [ "04", "", "Concatenate", "mingrog", "" ]
-         Row 5: [ "05", "", "", "", "", "Your password is mingrog" ]
-    --------------------------- */
-    function checkAnswersTask9() {
-      let correctValues = [
-        ["01", "Programming", "", "", "", ""],
-        ["02", "", "right(4)", "ming", ""],
-        ["03", "", "substring(1,3)", "rog", ""],
-        ["04", "", "Concatenate", "mingrog", ""],
-        ["05", "", "", "", "", "Your password is mingrog"]
+    /* Q9: Expression: (A OR (NOT B)) AND C
+       Scenario: In a school project, a system activates an alert if either sensor A is on or sensor B is off, and sensor C confirms the signal.
+       Truth table for (A OR (NOT B)) AND C (three inputs, 8 rows):
+         A B C | NOT B | A OR (NOT B) | Result
+         0 0 0: 1; 0 OR 1 = 1; 1 AND 0 = 0
+         0 0 1: 1; 1; 1 AND 1 = 1
+         0 1 0: 0; 0 OR 0 = 0; 0
+         0 1 1: 0; 0; 0
+         1 0 0: 1; 1 OR 1 = 1; 0
+         1 0 1: 1; 1; 1
+         1 1 0: 0; 1 OR 0 = 1; 0
+         1 1 1: 0; 1; 1
+    */
+    function checkAnswersQ9() {
+      const correctValues = [
+        ["0", "0", "0", "0"],
+        ["0", "0", "1", "1"],
+        ["0", "1", "0", "0"],
+        ["0", "1", "1", "0"],
+        ["1", "0", "0", "0"],
+        ["1", "0", "1", "1"],
+        ["1", "1", "0", "0"],
+        ["1", "1", "1", "1"]
       ];
-      let table = document.getElementById("traceTableTask9");
+      let table = document.getElementById("truthTableQ9");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+             ? "lightgreen" : "lightcoral";
          }
       }
     }
     
-    /* ---------------------------
-       Task 10 – Use left(x), substring(x,y), and right(x) together
-       Pseudocode:
-         01 subject = input("Enter subject")
-         02 part1 = subject.left(2)
-         03 part2 = subject.substring(2,4)
-         04 part3 = subject.right(2)
-         05 password = part1 + part2 + part3
-         06 print("Your password is " + password)
-       For input: subject = "Technology"
-       For "Technology": left(2) → "Te"; substring(2,4) → "chno"; right(2) → "gy"
-       Expected Trace:
-         Row 1: [ "01", "Technology", "", "", "", "" ]
-         Row 2: [ "02", "", "left(2)", "Te", "" ]
-         Row 3: [ "03", "", "substring(2,4)", "chno", "" ]
-         Row 4: [ "04", "", "right(2)", "gy", "" ]
-         Row 5: [ "05", "", "Concatenate", "Technogy", "" ]
-         Row 6: [ "06", "", "", "", "", "Your password is Technogy" ]
-    --------------------------- */
-    function checkAnswersTask10() {
-      let correctValues = [
-        ["01", "Technology", "", "", "", ""],
-        ["02", "", "left(2)", "Te", ""],
-        ["03", "", "substring(2,4)", "chno", ""],
-        ["04", "", "right(2)", "gy", ""],
-        ["05", "", "Concatenate", "Technogy", ""],
-        ["06", "", "", "", "", "Your password is Technogy"]
+    /* Q10: Expression: (A AND B) OR (NOT C)
+       Scenario: A school control system activates if both sensors A and B are on or if sensor C is off.
+       Truth table for (A AND B) OR (NOT C) (three inputs, 8 rows):
+         A B C | A AND B | NOT C | Result
+         0 0 0: 0; 1; 0 OR 1 = 1
+         0 0 1: 0; 0; 0
+         0 1 0: 0; 1; 1
+         0 1 1: 0; 0; 0
+         1 0 0: 0; 1; 1
+         1 0 1: 0; 0; 0
+         1 1 0: 1; 1; 1
+         1 1 1: 1; 0; 1
+    */
+    function checkAnswersQ10() {
+      const correctValues = [
+        ["0", "0", "0", "1"],
+        ["0", "0", "1", "0"],
+        ["0", "1", "0", "1"],
+        ["0", "1", "1", "0"],
+        ["1", "0", "0", "1"],
+        ["1", "0", "1", "0"],
+        ["1", "1", "0", "1"],
+        ["1", "1", "1", "1"]
       ];
-      let table = document.getElementById("traceTableTask10");
+      let table = document.getElementById("truthTableQ10");
       let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
+      for (let i = 1; i < rows.length; i++){
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         let correct = correctValues[i-1];
+         for (let j = 0; j < inputs.length; j++){
+           inputs[j].style.backgroundColor = (inputs[j].value.trim() === correct[j])
+             ? "lightgreen" : "lightcoral";
          }
       }
     }
   </script>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="#task1">Task 1</a></li>
-      <li><a href="#task2">Task 2</a></li>
-      <li><a href="#task3">Task 3</a></li>
-      <li><a href="#task4">Task 4</a></li>
-      <li><a href="#task5">Task 5</a></li>
-      <li><a href="#task6">Task 6</a></li>
-      <li><a href="#task7">Task 7</a></li>
-      <li><a href="#task8">Task 8</a></li>
-      <li><a href="#task9">Task 9</a></li>
-      <li><a href="#task10">Task 10</a></li>
-    </ul>
-  </nav>
-
-  <!-- Task 1 -->
-  <section id="task1">
-    <h2>Task 1: Password Trace (Using left(x))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 password = subject.left(4)
-03 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask1">
+  <h1>Boolean Logic Truth Table Challenges</h1>
+  <p>
+    Each question below provides a high school–themed scenario along with a Boolean expression using AND, OR, and NOT.
+    Complete the truth table by filling in the missing values (use 0 for false and 1 for true) for each combination of inputs.
+  </p>
+  
+  <hr>
+  
+  <!-- Q1 -->
+  <section id="q1">
+    <h2>Q1: Security System (A AND B)</h2>
+    <p><strong>Scenario:</strong> A school security door opens only if both sensor A and sensor B are activated.</p>
+    <p><strong>Expression:</strong> A AND B</p>
+    <table id="truthTableQ1">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>A</th>
+        <th>B</th>
+        <th>A AND B</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask1()">Check Answers</button>
+    <button onclick="checkAnswersQ1()">Check Answers</button>
   </section>
-
-  <!-- Task 2 -->
-  <section id="task2">
-    <h2>Task 2: Password Trace (Using right(x))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 password = subject.right(3)
-03 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask2">
+  
+  <hr>
+  
+  <!-- Q2 -->
+  <section id="q2">
+    <h2>Q2: Club Alarm (A OR B)</h2>
+    <p><strong>Scenario:</strong> A club’s alarm sounds if either sensor A or sensor B detects movement.</p>
+    <p><strong>Expression:</strong> A OR B</p>
+    <table id="truthTableQ2">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>A</th>
+        <th>B</th>
+        <th>A OR B</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask2()">Check Answers</button>
+    <button onclick="checkAnswersQ2()">Check Answers</button>
   </section>
-
-  <!-- Task 3 -->
-  <section id="task3">
-    <h2>Task 3: Password Trace (Using substring(3,5))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 password = subject.substring(3,5)
-03 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask3">
+  
+  <hr>
+  
+  <!-- Q3 -->
+  <section id="q3">
+    <h2>Q3: Digital Inverter (NOT A)</h2>
+    <p><strong>Scenario:</strong> A school display shows the opposite of sensor A’s state.</p>
+    <p><strong>Expression:</strong> NOT A</p>
+    <table id="truthTableQ3">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
-      </tr>
-      <!-- 3 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <th>A</th>
+        <th>NOT A</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask3()">Check Answers</button>
+    <button onclick="checkAnswersQ3()">Check Answers</button>
   </section>
-
-  <!-- Task 4 -->
-  <section id="task4">
-    <h2>Task 4: Password Trace (Combine left(4) and right(3))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 part1 = subject.left(4)
-03 part2 = subject.right(3)
-04 password = part1 + part2
-05 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask4">
+  
+  <hr>
+  
+  <!-- Q4 -->
+  <section id="q4">
+    <h2>Q4: Lab Alert ( (A AND B) OR C )</h2>
+    <p><strong>Scenario:</strong> In a school lab, a light turns on if both sensors A and B detect motion OR if sensor C detects an emergency.</p>
+    <p><strong>Expression:</strong> (A AND B) OR C</p>
+    <table id="truthTableQ4">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>(A AND B) OR C</th>
       </tr>
-      <!-- 5 rows -->
+      <!-- 8 rows for 3 inputs -->
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask4()">Check Answers</button>
+    <button onclick="checkAnswersQ4()">Check Answers</button>
   </section>
-
-  <!-- Task 5 -->
-  <section id="task5">
-    <h2>Task 5: Password Trace (Combine substring(1,3) and left(3))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 part1 = subject.substring(1,3)
-03 part2 = subject.left(3)
-04 password = part1 + part2
-05 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask5">
+  
+  <hr>
+  
+  <!-- Q5 -->
+  <section id="q5">
+    <h2>Q5: Digital Lock (A AND (NOT B))</h2>
+    <p><strong>Scenario:</strong> A digital lock opens if sensor A is active and sensor B is not active.</p>
+    <p><strong>Expression:</strong> A AND (NOT B)</p>
+    <table id="truthTableQ5">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
-      </tr>
-      <!-- 5 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
+        <th>A</th>
+        <th>B</th>
+        <th>A AND (NOT B)</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask5()">Check Answers</button>
+    <button onclick="checkAnswersQ5()">Check Answers</button>
   </section>
-
-  <!-- Task 6 -->
-  <section id="task6">
-    <h2>Task 6: Password Trace (Combine substring(4,3) and right(4))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 part1 = subject.substring(4,3)
-03 part2 = subject.right(4)
-04 password = part1 + part2
-05 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask6">
+  
+  <hr>
+  
+  <!-- Q6 -->
+  <section id="q6">
+    <h2>Q6: Alert System ( (A OR B) AND NOT C )</h2>
+    <p><strong>Scenario:</strong> A school project activates an alert if either sensor A or B is triggered, but only if sensor C is off.</p>
+    <p><strong>Expression:</strong> (A OR B) AND NOT C</p>
+    <table id="truthTableQ6">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>(A OR B) AND NOT C</th>
       </tr>
-      <!-- 5 rows -->
+      <!-- 8 rows -->
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask6()">Check Answers</button>
+    <button onclick="checkAnswersQ6()">Check Answers</button>
   </section>
-
-  <!-- Task 7 -->
-  <section id="task7">
-    <h2>Task 7: Password Trace (Use left(3), substring(3,4) & right(2))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 part1 = subject.left(3)
-03 part2 = subject.substring(3,4)
-04 part3 = subject.right(2)
-05 password = part1 + part2 + part3
-06 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask7">
+  
+  <hr>
+  
+  <!-- Q7 -->
+  <section id="q7">
+    <h2>Q7: Inverter Circuit (NOT (A OR B))</h2>
+    <p><strong>Scenario:</strong> A simple inverter outputs the opposite of the OR of two inputs.</p>
+    <p><strong>Expression:</strong> NOT (A OR B)</p>
+    <table id="truthTableQ7">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
-      </tr>
-      <!-- 6 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
+        <th>A</th>
+        <th>B</th>
+        <th>NOT (A OR B)</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td>Concatenate</td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask7()">Check Answers</button>
+    <button onclick="checkAnswersQ7()">Check Answers</button>
   </section>
-    
-  <!-- Task 8 -->
-  <section id="task8">
-    <h2>Task 8: Password Trace (Use substring(2,5) then left(2))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 part1 = subject.substring(2,5)
-03 part2 = subject.left(2)
-04 password = part1 + part2
-05 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask8">
+  
+  <hr>
+  
+  <!-- Q8 -->
+  <section id="q8">
+    <h2>Q8: Exclusive OR (XOR) Circuit</h2>
+    <p><strong>Scenario:</strong> A digital circuit calculates the exclusive OR (XOR) of two inputs using the expression (A AND NOT B) OR (NOT A AND B).</p>
+    <p><strong>Expression:</strong> (A AND NOT B) OR (NOT A AND B)</p>
+    <table id="truthTableQ8">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
-      </tr>
-      <!-- 5 rows -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
+        <th>A</th>
+        <th>B</th>
+        <th>XOR</th>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td>Concatenate</td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask8()">Check Answers</button>
+    <button onclick="checkAnswersQ8()">Check Answers</button>
   </section>
-
-  <!-- Task 9 -->
-  <section id="task9">
-    <h2>Task 9: Password Trace (Use right(4) then substring(1,3))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 part1 = subject.right(4)
-03 part2 = subject.substring(1,3)
-04 password = part1 + part2
-05 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask9">
+  
+  <hr>
+  
+  <!-- Q9 -->
+  <section id="q9">
+    <h2>Q9: Mixed Logic ( (A OR (NOT B)) AND C )</h2>
+    <p><strong>Scenario:</strong> In a school project, an alert is triggered if either sensor A is on or sensor B is off, and sensor C confirms the condition.</p>
+    <p><strong>Expression:</strong> (A OR (NOT B)) AND C</p>
+    <table id="truthTableQ9">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>Result</th>
       </tr>
-      <!-- 5 rows -->
+      <!-- 8 rows -->
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td>Concatenate</td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask9()">Check Answers</button>
+    <button onclick="checkAnswersQ9()">Check Answers</button>
   </section>
-    
-  <!-- Task 10 -->
-  <section id="task10">
-    <h2>Task 10: Password Trace (Use left(2), substring(2,4) & right(2))</h2>
-    <p>Pseudocode:</p>
-    <pre>
-01 subject = input("Enter subject")
-02 part1 = subject.left(2)
-03 part2 = subject.substring(2,4)
-04 part3 = subject.right(2)
-05 password = part1 + part2 + part3
-06 print("Your password is " + password)
-    </pre>
-    <table id="traceTableTask10">
+  
+  <hr>
+  
+  <!-- Q10 -->
+  <section id="q10">
+    <h2>Q10: Control System ( (A AND B) OR (NOT C) )</h2>
+    <p><strong>Scenario:</strong> A school control system activates if both sensors A and B are on or if sensor C is off.</p>
+    <p><strong>Expression:</strong> (A AND B) OR (NOT C)</p>
+    <table id="truthTableQ10">
       <tr>
-        <th>Line Number</th>
-        <th>subject</th>
-        <th>function call</th>
-        <th>password</th>
-        <th>Output</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>Result</th>
       </tr>
-      <!-- 6 rows -->
+      <!-- 8 rows -->
       <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td>Concatenate</td>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
       <tr>
-        <td><input type="text"></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><!-- leave blank --></td>
-        <td><input type="text"></td>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="A"></td>
+        <td><input type="text" placeholder="B"></td>
+        <td><input type="text" placeholder="C"></td>
+        <td><input type="text" placeholder="Output"></td>
       </tr>
     </table>
-    <button onclick="checkAnswersTask10()">Check Answers</button>
+    <button onclick="checkAnswersQ10()">Check Answers</button>
   </section>
+  
 </body>
 </html>
