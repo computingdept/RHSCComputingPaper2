@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>2D Array Trace Table Tasks</title>
+  <title>2D Array Trace Table Tasks (Autofill Line 1 Example)</title>
   <style>
     body {
       font-family: sans-serif;
@@ -45,6 +45,12 @@
       box-sizing: border-box;
       padding: 4px;
     }
+    /* A subtle style for read-only fields */
+    input[readonly] {
+      background: #f0f0f0;
+      color: #666;
+      border: 1px solid #ccc;
+    }
     button {
       margin-top: 10px;
       padding: 8px 16px;
@@ -64,10 +70,8 @@
      * Q1: Chessboard Setup
      **********************************************/
     function checkAnswersQ1() {
-      // Suppose we only expect a few lines.
-      // We'll keep it short for demonstration.
-      // Each subarray: [Line, row, col, arrayValue, Output]
       let correctValues = [
+        // [Line, row, col, gameboard[row,col], Output]
         ["01", "", "", "Initialize array", ""],
         ["02", "1", "0", "Pawn", ""],
         ["03", "6", "7", "Pawn", ""],
@@ -75,8 +79,6 @@
         ["05", "0", "7", "Rook", ""],
         ["06", "7", "0", "Rook", ""],
         ["07", "7", "7", "Rook", ""],
-        // We won't fully check the nested loop output
-        // but let's show a row for line 10
         ["10", "", "", "", "All cells printed"]
       ];
       let table = document.getElementById("traceTableQ1");
@@ -87,9 +89,8 @@
      * Q2: Student Database Table
      **********************************************/
     function checkAnswersQ2() {
-      // Each row: [Line, rowIndex, ???, ???]
-      // For simplicity, we'll just store a few lines
       let correctValues = [
+        // [Line, row, col, Value/Output]
         ["01", "", "", ""],
         ["03", "0", "0", "Alice"],
         ["04", "0", "1", "Year10"],
@@ -106,8 +107,8 @@
      * Q3: Summing a 2D Array of Marks
      **********************************************/
     function checkAnswersQ3() {
-      // [Line, r, c, arrayValue, sum/Output]
       let correctValues = [
+        // [Line, r, c, marks[r,c], studentTotal/Output]
         ["02", "0", "0", "10", ""],
         ["02", "0", "1", "12", ""],
         ["02", "0", "2", "9",  ""],
@@ -125,8 +126,8 @@
      * Q4: Searching a 2D Library Catalog
      **********************************************/
     function checkAnswersQ4() {
-      // [Line, i, libraryValue, found, Output]
       let correctValues = [
+        // [Line, i, library[i,0..2], found?, Output]
         ["01", "", "Initialize 5x3", "", ""],
         ["02", "", "", "false", ""],
         ["04", "0", "", "", ""],
@@ -142,8 +143,8 @@
      * Q5: Updating a Stock Inventory
      **********************************************/
     function checkAnswersQ5() {
-      // [Line, i, stockVal, oldQty, newQty, Output]
       let correctValues = [
+        // [Line, i, stock[i,0..2], oldQty, newQty, Output]
         ["02", "0", "Burger,50,2.99", "", "", ""],
         ["03", "1", "Fries,100,1.50", "", "", ""],
         ["04", "2", "Soda,80,1.20", "", "", ""],
@@ -161,13 +162,10 @@
      * HELPER: Validate user input vs correctValues
      **********************************************/
     function validateTable(table, correctValues) {
-      // For each row (minus the header), compare inputs
       let rows = table.getElementsByTagName("tr");
-      // i=1 because row[0] is the table header
       for (let i = 1; i < rows.length; i++) {
         let inputs = rows[i].getElementsByTagName("input");
         let correct = correctValues[i - 1] || []; 
-        // compare each cell
         for (let j = 0; j < inputs.length; j++) {
           let userVal = inputs[j].value.trim();
           let corVal = correct[j] || "";
@@ -183,8 +181,10 @@
 </head>
 <body>
   <h1>2D Array Interactive Trace Tables</h1>
-  <p>Below are five tasks that demonstrate how to trace a 2D array's line-by-line execution. 
-     Fill in the tables, then click "Check Answers" to see if you match the expected values.</p>
+  <p>
+    Each question includes pseudocode for a 2D-array scenario and a trace table with <code>&lt;input&gt;</code> fields.
+    Some lines may be autofilled. Fill in the rest, then click “Check Answers.”
+  </p>
 
   <!-- Q1: Chessboard Setup -->
   <section id="q1">
@@ -211,14 +211,15 @@
         <th>gameboard[row,col]</th>
         <th>Output</th>
       </tr>
-      <!-- Provide enough rows for user input -->
+      <!-- Autofill line 1 with "01" and make it read-only -->
       <tr>
+        <td><input type="text" value="01" readonly></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td><input type="text" ></td>
         <td><input type="text"></td>
       </tr>
+      <!-- Additional rows for lines 2..12 -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -302,25 +303,13 @@
         <th>col</th>
         <th>Value/Output</th>
       </tr>
-      <!-- Provide enough rows for user input -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <!-- Add more rows as needed -->
       <tr>
         <td><input type="text"></td>
         <td><input type="text"></td>
@@ -368,11 +357,8 @@
         <th>marks[r,c]</th>
         <th>studentTotal/Output</th>
       </tr>
-      <!-- Provide enough rows for user input -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <!-- More rows as needed -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
@@ -392,8 +378,8 @@
 04 for i = 0 to 4
 05     if library[i,0] == searchTitle then
 06         found = true
-07         print(library[i,0] + " by " + 
-                library[i,1] + " (" + 
+07         print(library[i,0] + " by " +
+                library[i,1] + " (" +
                 library[i,2] + ")")
 08         exit loop
 09     endif
@@ -410,11 +396,8 @@
         <th>found?</th>
         <th>Output</th>
       </tr>
-      <!-- Provide enough rows for user input -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <!-- More rows as needed -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
@@ -449,15 +432,11 @@
         <th>newQty</th>
         <th>Output</th>
       </tr>
-      <!-- Provide enough rows for user input -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <!-- More rows as needed -->
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersQ5()">Check Answers</button>
   </section>
-
 </body>
 </html>
