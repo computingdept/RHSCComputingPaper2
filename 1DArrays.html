@@ -62,95 +62,78 @@
   </style>
   <script>
     // Q1: Basic Array Access (Colours)
+    // 3 columns: [LineNumber, colours, Output]
+    // For line 02, we only want the raw output "Green" in final column.
     function checkAnswersQ1() {
       let correctValues = [
-        ["01", "Blue, Pink, Green, Yellow, Red", ""],
+        ["01", "Blue, Pink, Green, Yellow, Red", "colours assigned"],
         ["02", "", "Green"]
       ];
       let table = document.getElementById("traceTableQ1");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor =
-             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q2: Array Element Modification (Scores)
+    // 3 columns: [LineNumber, scores, Output]
+    // For line 03, we only want the raw final array in final column: "65, 70, 75, 90, 85"
     function checkAnswersQ2() {
       let correctValues = [
-        ["01", "65, 70, 75, 80, 85", ""],
-        ["02", "65, 70, 75, 90, 85", ""],
+        ["01", "65, 70, 75, 80, 85", "scores assigned"],
+        ["02", "65, 70, 75, 90, 85", "index 3 updated to 90"],
         ["03", "", "65, 70, 75, 90, 85"]
       ];
       let table = document.getElementById("traceTableQ2");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor =
-             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
-    // Q3: Sum of Array Elements (Marks) - UPDATED
-    // - Column for 'marks' only changes on line 01.
-    // - No iteration for line 03, only line 04 repeats (i=0..4).
-    // - 'endfor' replaced by 'next i' in pseudocode.
+    // Q3: Sum of Array Elements (Marks)
+    // 5 columns: [LineNumber, marks, i, total, Output]
+    // For line 06, only want raw output "Total marks: 150".
     function checkAnswersQ3() {
-      // We have 8 rows total:
-      //  1) line 01 => array assigned
-      //  2) line 02 => total=0
-      //  3) line 04 i=0 => i=0, total=10
-      //  4) line 04 i=1 => i=1, total=30
-      //  5) line 04 i=2 => i=2, total=60
-      //  6) line 04 i=3 => i=3, total=100
-      //  7) line 04 i=4 => i=4, total=150
-      //  8) line 06 => output => "Total marks: 150"
-      //
-      // The "marks" column only changes on line 01, so the rest are blank or no changes.
-      
       let correctValues = [
-        // (lineNumber, marks, i, total, output)
-        // 1) line 01
-        ["01", "10,20,30,40,50", "", "", ""],
-        // 2) line 02
-        ["02", "", "", "0", ""],
-        // 3) line 04 i=0
-        ["04", "", "0", "10", ""],
-        // 4) line 04 i=1
-        ["04", "", "1", "30", ""],
-        // 5) line 04 i=2
-        ["04", "", "2", "60", ""],
-        // 6) line 04 i=3
-        ["04", "", "3", "100", ""],
-        // 7) line 04 i=4
-        ["04", "", "4", "150", ""],
-        // 8) line 06
+        ["01", "10,20,30,40,50", "", "", "marks assigned"],
+        ["02", "", "", "0", "total = 0"],
+        ["04", "", "0", "10", "total updated to 10"],
+        ["04", "", "1", "30", "total updated to 30"],
+        ["04", "", "2", "60", "total updated to 60"],
+        ["04", "", "3", "100", "total updated to 100"],
+        ["04", "", "4", "150", "total updated to 150"],
         ["06", "", "", "150", "Total marks: 150"]
       ];
-      
       let table = document.getElementById("traceTableQ3");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor =
-             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q4: Finding Maximum in an Array (Scores)
+    // 4 columns: [LineNumber, i, max, Output]
+    // For line 08, only want raw output "Max score is 90"
     function checkAnswersQ4() {
       let correctValues = [
-        ["01", "[55,78,82,67,90]", "", "scores assigned"],
+        ["01", "", "[55,78,82,67,90]", "scores assigned"],
         ["02", "", "55", "max = 55"],
         ["05", "i=1", "78", "max updated to 78"],
         ["05", "i=2", "82", "max updated to 82"],
@@ -160,58 +143,67 @@
       let table = document.getElementById("traceTableQ4");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-           inputs[j].style.backgroundColor =
-             (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q5: Array Element Search
+    // 4 columns: [LineNumber, fruits, found, Output]
+    // For line 10, only want raw output "Found apple: true"
     function checkAnswersQ5() {
       let correctValues = [
-        ["01", "banana, orange, apple, kiwi, grape", "", ""],
-        ["02", "", "false", ""],
-        ["06", "", "true", ""],
+        ["01", "banana, orange, apple, kiwi, grape", "", "fruits assigned"],
+        ["02", "", "false", "found = false"],
+        ["06", "", "true", "found updated to true"],
         ["10", "", "", "Found apple: true"]
       ];
       let table = document.getElementById("traceTableQ5");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q6: Array Reversal (Club Names)
+    // 3 columns: [LineNumber, clubs, Output]
+    // For line 11, only want the raw reversed array, e.g. "Science, Debate, Art, Music, Drama"
+    // or you can keep an explanation if you like.
     function checkAnswersQ6() {
       let correctValues = [
-        ["01", "Drama, Music, Art, Debate, Science", "", ""],
-        ["02", "i=0", "", ""],
-        ["03", "j=4", "", ""],
-        ["05", "temp = Drama", "", ""],
-        ["06", "clubs[0] = Science", "", ""],
-        ["07", "clubs[4] = Drama", "", ""]
+        ["01", "Drama, Music, Art, Debate, Science", "clubs assigned"],
+        ["02", "", "i=0"],
+        ["03", "", "j=4"],
+        ["05", "", "temp = Drama"],
+        ["06", "", "clubs[0] = Science"],
+        ["07", "", "clubs[4] = Drama"],
+        // If you'd like to track line 11 printing the final reversed array, add a row here:
+        // e.g. ["11", "Science, Debate, Art, Music, Drama", ""]
       ];
       let table = document.getElementById("traceTableQ6");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1] || [];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === (correct[j]||"")) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1] || [];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === (correct[j] || "")) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q7: Array Copy (Exam Subjects)
+    // 4 columns: [LineNumber, subjects, copy, Output]
+    // For line 03, only want raw array in final column: "Math, English, History, Biology, Chemistry"
     function checkAnswersQ7() {
       let correctValues = [
         ["01", "Math, English, History, Biology, Chemistry", "", "subjects assigned"],
@@ -221,35 +213,39 @@
       let table = document.getElementById("traceTableQ7");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q8: Array Index Update (Weekdays)
+    // 3 columns: [LineNumber, days, Output]
+    // For line 03, only want "Monday, Tues, Wednesday, Thursday, Friday" in final column.
     function checkAnswersQ8() {
       let correctValues = [
-        ["01", "Monday, Tuesday, Wednesday, Thursday, Friday", "", ""],
-        ["02", "", "Monday, Tues, Wednesday, Thursday, Friday", ""],
-        ["03", "", "", "Monday, Tues, Wednesday, Thursday, Friday"]
+        ["01", "Monday, Tuesday, Wednesday, Thursday, Friday", "days assigned"],
+        ["02", "Monday, Tues, Wednesday, Thursday, Friday", "index 1 updated to Tues"],
+        ["03", "", "Monday, Tues, Wednesday, Thursday, Friday"]
       ];
       let table = document.getElementById("traceTableQ8");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q9: Counting Occurrences (Exam Outcomes)
+    // 4 columns: [LineNumber, outcomes, count, Output]
+    // For line 08, only want the raw output "Pass count: 3"
     function checkAnswersQ9() {
       let correctValues = [
         ["01", "pass, fail, pass, pass, fail", "", "outcomes assigned"],
@@ -262,420 +258,18 @@
       let table = document.getElementById("traceTableQ9");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1];
+        for (let j = 0; j < inputs.length; j++) {
+          inputs[j].style.backgroundColor =
+            (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+        }
       }
     }
     
     // Q10: Array Summation with Casting (Marks as Strings)
+    // 4 columns: [LineNumber, strNums, sum, Output]
+    // For line 06, only want "Sum is 150" in final column
     function checkAnswersQ10() {
       let correctValues = [
-        ["01", "10, 20, 30, 40, 50", "", "strNums assigned"],
-        ["02", "", "0", "sum = 0"],
-        ["04", "i=0 to 4", "150", ""],
-        ["06", "", "150", "Sum is 150"]
-      ];
-      let table = document.getElementById("traceTableQ10");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
-    }
-  </script>
-</head>
-<body>
-  <h1>1D Array Trace Table Challenges</h1>
-  <p>
-    Below are 10 trace table challenges related to 1D arrays, each set in an English high school context.
-    Fill in the trace table only when a variable’s value changes or when output is produced.
-  </p>
-  
-  <hr>
-  
-  <!-- Q1: Basic Array Access -->
-  <section id="q1">
-    <h2>Q1: Basic Array Access</h2>
-    <p><strong>Scenario:</strong> In an art class, a teacher has prepared a palette of colours: <code>["Blue", "Pink", "Green", "Yellow", "Red"]</code>. The program prints the colour at index 2.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 colours = ["Blue", "Pink", "Green", "Yellow", "Red"]
-02 print(colours[2])
-    </pre>
-    <table id="traceTableQ1">
-      <tr>
-        <th>Line Number</th>
-        <th>colours</th>
-        <th>Output</th>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersQ1()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q2: Array Element Modification -->
-  <section id="q2">
-    <h2>Q2: Array Element Modification</h2>
-    <p><strong>Scenario:</strong> A student has an array of scores: <code>[65, 70, 75, 80, 85]</code>. They update the score at index 3 to 90 and then print the modified array.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 scores = [65, 70, 75, 80, 85]
-02 scores[3] = 90
-03 print(scores)
-    </pre>
-    <table id="traceTableQ2">
-      <tr>
-        <th>Line Number</th>
-        <th>scores</th>
-        <th>Output</th>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersQ2()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q3: Sum of Array Elements (UPDATED) -->
-  <section id="q3">
-    <h2>Q3: Sum of Array Elements</h2>
-    <p><strong>Scenario:</strong> A student calculates the total marks from an array of marks: <code>[10, 20, 30, 40, 50]</code>. The program only changes the array on line 01, so we only show the array once. Then line 04 repeats for each iteration (<em>i=0..4</em>).</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 marks = [10,20,30,40,50]
-02 total = 0
-03 for i = 0 to 4
-04     total = total + marks[i]
-05 next i
-06 print("Total marks: " + total)
-    </pre>
-    <table id="traceTableQ3">
-      <tr>
-        <th>Line<br>Number</th>
-        <th>marks</th>
-        <th>i</th>
-        <th>total</th>
-        <th>Output</th>
-      </tr>
-      <!-- 1) line 01 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- 2) line 02 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- 3) line 04 i=0 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- 4) line 04 i=1 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- 5) line 04 i=2 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- 6) line 04 i=3 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- 7) line 04 i=4 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- 8) line 06 -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-    </table>
-    <button onclick="checkAnswersQ3()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q4: Finding Maximum in an Array -->
-  <section id="q4">
-    <h2>Q4: Finding Maximum in an Array</h2>
-    <p><strong>Scenario:</strong> A student finds the highest score from the array: <code>[55, 78, 82, 67, 90]</code>.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 scores = [55,78,82,67,90]
-02 max = scores[0]
-03 for i = 1 to 4
-04     if scores[i] > max then
-05         max = scores[i]
-06     endif
-07 next i
-08 print("Max score is " + max)
-    </pre>
-    <table id="traceTableQ4">
-      <tr>
-        <th>Line Number</th>
-        <th>i</th>
-        <th>max</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ4()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q5: Array Element Search -->
-  <section id="q5">
-    <h2>Q5: Array Element Search</h2>
-    <p><strong>Scenario:</strong> In an English class, a student searches for the word "apple" in the array of fruits: <code>["banana", "orange", "apple", "kiwi", "grape"]</code>.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 fruits = ["banana", "orange", "apple", "kiwi", "grape"]
-02 found = false
-03 i = 0
-04 while (i < 5 and found == false)
-05     if fruits[i] == "apple" then
-06         found = true
-07     endif
-08     i = i + 1
-09 endwhile
-10 print("Found apple: " + found)
-    </pre>
-    <table id="traceTableQ5">
-      <tr>
-        <th>Line Number</th>
-        <th>fruits</th>
-        <th>found</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ5()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q6: Array Reversal -->
-  <section id="q6">
-    <h2>Q6: Array Reversal</h2>
-    <p><strong>Scenario:</strong> A student reverses the order of club names in an array: <code>["Drama", "Music", "Art", "Debate", "Science"]</code>.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 clubs = ["Drama", "Music", "Art", "Debate", "Science"]
-02 i = 0
-03 j = 4
-04 do
-05     temp = clubs[i]
-06     clubs[i] = clubs[j]
-07     clubs[j] = temp
-08     i = i + 1
-09     j = j - 1
-10 while (i < j)
-11 print(clubs)
-    </pre>
-    <table id="traceTableQ6">
-      <tr>
-        <th>Line Number</th>
-        <th>clubs</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ6()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q7: Array Copy -->
-  <section id="q7">
-    <h2>Q7: Array Copy</h2>
-    <p><strong>Scenario:</strong> A student copies an array of exam subjects into another array for further analysis. The subjects are: <code>["Math", "English", "History", "Biology", "Chemistry"]</code>.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 subjects = ["Math", "English", "History", "Biology", "Chemistry"]
-02 copy = subjects
-03 print(copy)
-    </pre>
-    <table id="traceTableQ7">
-      <tr>
-        <th>Line Number</th>
-        <th>subjects</th>
-        <th>copy</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ7()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q8: Array Index Update -->
-  <section id="q8">
-    <h2>Q8: Array Index Update</h2>
-    <p><strong>Scenario:</strong> A student updates the second element of the weekdays array <code>["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]</code> to "Tues".</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-02 days[1] = "Tues"
-03 print(days)
-    </pre>
-    <table id="traceTableQ8">
-      <tr>
-        <th>Line Number</th>
-        <th>days</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ8()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q9: Counting Occurrences -->
-  <section id="q9">
-    <h2>Q9: Counting Occurrences</h2>
-    <p><strong>Scenario:</strong> A student counts how many times "pass" appears in the array of exam outcomes: <code>["pass", "fail", "pass", "pass", "fail"]</code>.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 outcomes = ["pass", "fail", "pass", "pass", "fail"]
-02 count = 0
-03 for i = 0 to 4
-04     if outcomes[i] == "pass" then
-05         count = count + 1
-06     endif
-07 next i
-08 print("Pass count: " + count)
-    </pre>
-    <table id="traceTableQ9">
-      <tr>
-        <th>Line Number</th>
-        <th>outcomes</th>
-        <th>count</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ9()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Q10: Array Summation with Casting -->
-  <section id="q10">
-    <h2>Q10: Array Summation with Casting</h2>
-    <p><strong>Scenario:</strong> A student has an array of exam marks stored as strings: <code>["10", "20", "30", "40", "50"]</code>. Convert each to an integer and calculate the total marks.</p>
-    <p><strong>Pseudocode:</strong></p>
-    <pre>
-01 strNums = ["10", "20", "30", "40", "50"]
-02 sum = 0
-03 for i = 0 to 4
-04     sum = sum + int(strNums[i])
-05 next i
-06 print("Sum is " + sum)
-    </pre>
-    <table id="traceTableQ10">
-      <tr>
-        <th>Line Number</th>
-        <th>strNums</th>
-        <th>sum</th>
-        <th>Output</th>
-      </tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-    </table>
-    <button onclick="checkAnswersQ10()">Check Answers</button>
-  </section>
-  
-</body>
-</html>
+        ["01", "10, 20, 30, 40
