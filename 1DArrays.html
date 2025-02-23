@@ -62,11 +62,11 @@
   </style>
   <script>
     // Q1: Basic Array Access (Colours)
-    // 3 columns: [LineNumber, colours, Output]
-    // For line 02, we only want the raw output "Green" in final column.
+    // [LineNumber, colours, Output]
+    // Only line 02 prints: "Green"
     function checkAnswersQ1() {
       let correctValues = [
-        ["01", "Blue, Pink, Green, Yellow, Red", "colours assigned"],
+        ["01", "Blue, Pink, Green, Yellow, Red", ""],
         ["02", "", "Green"]
       ];
       let table = document.getElementById("traceTableQ1");
@@ -82,12 +82,12 @@
     }
     
     // Q2: Array Element Modification (Scores)
-    // 3 columns: [LineNumber, scores, Output]
-    // For line 03, we only want the raw final array in final column: "65, 70, 75, 90, 85"
+    // [LineNumber, scores, Output]
+    // Only line 03 prints final array: "65, 70, 75, 90, 85"
     function checkAnswersQ2() {
       let correctValues = [
-        ["01", "65, 70, 75, 80, 85", "scores assigned"],
-        ["02", "65, 70, 75, 90, 85", "index 3 updated to 90"],
+        ["01", "65, 70, 75, 80, 85", ""],
+        ["02", "65, 70, 75, 90, 85", ""],
         ["03", "", "65, 70, 75, 90, 85"]
       ];
       let table = document.getElementById("traceTableQ2");
@@ -103,17 +103,17 @@
     }
     
     // Q3: Sum of Array Elements (Marks)
-    // 5 columns: [LineNumber, marks, i, total, Output]
-    // For line 06, only want raw output "Total marks: 150".
+    // [LineNumber, marks, i, total, Output]
+    // Only line 06 prints: "Total marks: 150"
     function checkAnswersQ3() {
       let correctValues = [
-        ["01", "10,20,30,40,50", "", "", "marks assigned"],
-        ["02", "", "", "0", "total = 0"],
-        ["04", "", "0", "10", "total updated to 10"],
-        ["04", "", "1", "30", "total updated to 30"],
-        ["04", "", "2", "60", "total updated to 60"],
-        ["04", "", "3", "100", "total updated to 100"],
-        ["04", "", "4", "150", "total updated to 150"],
+        ["01", "10,20,30,40,50", "", "", ""],
+        ["02", "", "", "0", ""],
+        ["04", "", "0", "10", ""],
+        ["04", "", "1", "30", ""],
+        ["04", "", "2", "60", ""],
+        ["04", "", "3", "100", ""],
+        ["04", "", "4", "150", ""],
         ["06", "", "", "150", "Total marks: 150"]
       ];
       let table = document.getElementById("traceTableQ3");
@@ -129,15 +129,15 @@
     }
     
     // Q4: Finding Maximum in an Array (Scores)
-    // 4 columns: [LineNumber, i, max, Output]
-    // For line 08, only want raw output "Max score is 90"
+    // [LineNumber, i, max, Output]
+    // Only line 08 prints: "Max score is 90"
     function checkAnswersQ4() {
       let correctValues = [
-        ["01", "", "[55,78,82,67,90]", "scores assigned"],
-        ["02", "", "55", "max = 55"],
-        ["05", "i=1", "78", "max updated to 78"],
-        ["05", "i=2", "82", "max updated to 82"],
-        ["05", "i=4", "90", "max updated to 90"],
+        ["01", "", "[55,78,82,67,90]", ""],
+        ["02", "", "55", ""],
+        ["05", "i=1", "78", ""],
+        ["05", "i=2", "82", ""],
+        ["05", "i=4", "90", ""],
         ["08", "", "90", "Max score is 90"]
       ];
       let table = document.getElementById("traceTableQ4");
@@ -153,13 +153,13 @@
     }
     
     // Q5: Array Element Search
-    // 4 columns: [LineNumber, fruits, found, Output]
-    // For line 10, only want raw output "Found apple: true"
+    // [LineNumber, fruits, found, Output]
+    // Only line 10 prints: "Found apple: true"
     function checkAnswersQ5() {
       let correctValues = [
-        ["01", "banana, orange, apple, kiwi, grape", "", "fruits assigned"],
-        ["02", "", "false", "found = false"],
-        ["06", "", "true", "found updated to true"],
+        ["01", "banana, orange, apple, kiwi, grape", "", ""],
+        ["02", "", "false", ""],
+        ["06", "", "true", ""],
         ["10", "", "", "Found apple: true"]
       ];
       let table = document.getElementById("traceTableQ5");
@@ -175,19 +175,18 @@
     }
     
     // Q6: Array Reversal (Club Names)
-    // 3 columns: [LineNumber, clubs, Output]
-    // For line 11, only want the raw reversed array, e.g. "Science, Debate, Art, Music, Drama"
-    // or you can keep an explanation if you like.
+    // [LineNumber, clubs, Output]
+    // We'll add a row for line 11 printing the reversed array
     function checkAnswersQ6() {
       let correctValues = [
-        ["01", "Drama, Music, Art, Debate, Science", "clubs assigned"],
-        ["02", "", "i=0"],
-        ["03", "", "j=4"],
-        ["05", "", "temp = Drama"],
-        ["06", "", "clubs[0] = Science"],
-        ["07", "", "clubs[4] = Drama"],
-        // If you'd like to track line 11 printing the final reversed array, add a row here:
-        // e.g. ["11", "Science, Debate, Art, Music, Drama", ""]
+        ["01", "Drama, Music, Art, Debate, Science", ""],
+        ["02", "", ""],
+        ["03", "", ""],
+        ["05", "", ""],
+        ["06", "", ""],
+        ["07", "", ""],
+        // final line 11 prints reversed array
+        ["11", "", "Science, Debate, Art, Music, Drama"]
       ];
       let table = document.getElementById("traceTableQ6");
       let rows = table.rows;
@@ -202,12 +201,12 @@
     }
     
     // Q7: Array Copy (Exam Subjects)
-    // 4 columns: [LineNumber, subjects, copy, Output]
-    // For line 03, only want raw array in final column: "Math, English, History, Biology, Chemistry"
+    // [LineNumber, subjects, copy, Output]
+    // Only line 03 prints: "Math, English, History, Biology, Chemistry"
     function checkAnswersQ7() {
       let correctValues = [
-        ["01", "Math, English, History, Biology, Chemistry", "", "subjects assigned"],
-        ["02", "", "Math, English, History, Biology, Chemistry", "copy = subjects"],
+        ["01", "Math, English, History, Biology, Chemistry", "", ""],
+        ["02", "", "Math, English, History, Biology, Chemistry", ""],
         ["03", "", "", "Math, English, History, Biology, Chemistry"]
       ];
       let table = document.getElementById("traceTableQ7");
@@ -223,12 +222,12 @@
     }
     
     // Q8: Array Index Update (Weekdays)
-    // 3 columns: [LineNumber, days, Output]
-    // For line 03, only want "Monday, Tues, Wednesday, Thursday, Friday" in final column.
+    // [LineNumber, days, Output]
+    // Only line 03 prints: "Monday, Tues, Wednesday, Thursday, Friday"
     function checkAnswersQ8() {
       let correctValues = [
-        ["01", "Monday, Tuesday, Wednesday, Thursday, Friday", "days assigned"],
-        ["02", "Monday, Tues, Wednesday, Thursday, Friday", "index 1 updated to Tues"],
+        ["01", "Monday, Tuesday, Wednesday, Thursday, Friday", ""],
+        ["02", "Monday, Tues, Wednesday, Thursday, Friday", ""],
         ["03", "", "Monday, Tues, Wednesday, Thursday, Friday"]
       ];
       let table = document.getElementById("traceTableQ8");
@@ -244,15 +243,15 @@
     }
     
     // Q9: Counting Occurrences (Exam Outcomes)
-    // 4 columns: [LineNumber, outcomes, count, Output]
-    // For line 08, only want the raw output "Pass count: 3"
+    // [LineNumber, outcomes, count, Output]
+    // Only line 08 prints: "Pass count: 3"
     function checkAnswersQ9() {
       let correctValues = [
-        ["01", "pass, fail, pass, pass, fail", "", "outcomes assigned"],
-        ["02", "", "0", "count = 0"],
-        ["05", "i=0", "1", "count becomes 1"],
-        ["05", "i=2", "2", "count becomes 2"],
-        ["05", "i=3", "3", "count becomes 3"],
+        ["01", "pass, fail, pass, pass, fail", "", ""],
+        ["02", "", "0", ""],
+        ["05", "i=0", "1", ""],
+        ["05", "i=2", "2", ""],
+        ["05", "i=3", "3", ""],
         ["08", "", "3", "Pass count: 3"]
       ];
       let table = document.getElementById("traceTableQ9");
@@ -268,13 +267,13 @@
     }
     
     // Q10: Array Summation with Casting (Marks as Strings)
-    // 4 columns: [LineNumber, strNums, sum, Output]
-    // For line 06, only want "Sum is 150" in final column
+    // [LineNumber, strNums, sum, Output]
+    // Only line 06 prints: "Sum is 150"
     function checkAnswersQ10() {
       let correctValues = [
-        ["01", "10, 20, 30, 40, 50", "", "strNums assigned"],
-        ["02", "", "0", "sum = 0"],
-        ["04", "", "150", "sum updated to 150"],
+        ["01", "10, 20, 30, 40, 50", ""],
+        ["02", "", "0", ""],
+        ["04", "", "150", ""],
         ["06", "", "150", "Sum is 150"]
       ];
       let table = document.getElementById("traceTableQ10");
@@ -294,12 +293,8 @@
   <h1>1D Array Trace Table Challenges</h1>
   <p>
     Below are 10 trace table challenges related to 1D arrays.  
-    For lines that produce an actual print, you only need to type the 
-    <strong>raw output</strong> (e.g., <code>Green</code> instead of 
-    <code>Printed: Green</code>).  
-    For lines that do not produce output, a short descriptive message 
-    (e.g., <code>scores assigned</code>) may still appear if you want to 
-    show what changed. Feel free to remove those if you prefer an empty cell.
+    For lines that print, the final column should show only the <strong>raw output</strong>.  
+    For lines that do not print, the final column is blank.
   </p>
   
   <hr>
@@ -493,6 +488,8 @@
         <th>clubs</th>
         <th>Output</th>
       </tr>
+      <!-- 7 total rows if we want to show line 11 printing final array -->
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
