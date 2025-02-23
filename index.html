@@ -40,7 +40,7 @@
 
     /* Sidebar links */
     .sidebar a {
-      display: flex;             /* Show icon on left, text on right */
+      display: flex;             /* text on one line */
       align-items: center;
       color: #333;
       text-decoration: none;
@@ -56,18 +56,10 @@
       color: #000;
     }
 
-    /* Image icon styling */
-    .sidebar a img.nav-icon {
-      width: 24px;        /* Adjust as needed */
-      height: 24px;       /* Adjust as needed */
-      margin-right: 8px;  /* Spacing between image and text */
-      flex-shrink: 0;     /* Ensure image doesn't shrink */
-    }
-
     /* Text label styling */
     .sidebar a .nav-text {
-      /* Always show text (even when collapsed) 
-         Remove if you want the text hidden until hover. */
+      /* Always show text (even when collapsed).
+         Remove or modify if you prefer a “hover to show text” effect. */
       display: inline-block;
     }
 
@@ -87,164 +79,52 @@
   <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- 1) HOME -->
       <a href="#" onclick="document.getElementById('myFrame').src='index.html'">
-        <!-- Placeholder image, 24x24 with text "H" -->
-        <img 
-          src="https://via.placeholder.com/24?text=H" 
-          alt="Home" 
-          class="nav-icon"
-        />
         <span class="nav-text">Home</span>
       </a>
-
-      <!-- 2) SEQUENCE -->
       <a href="#" onclick="document.getElementById('myFrame').src='sequence.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=S" 
-          alt="Sequence" 
-          class="nav-icon"
-        />
         <span class="nav-text">Sequence</span>
       </a>
-
-      <!-- 3) IF THEN ELSE -->
       <a href="#" onclick="document.getElementById('myFrame').src='ifthenelse.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=I" 
-          alt="If Then Else" 
-          class="nav-icon"
-        />
         <span class="nav-text">If Then Else</span>
       </a>
-
-      <!-- 4) SWITCH CASE -->
       <a href="#" onclick="document.getElementById('myFrame').src='switchcase.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=SC" 
-          alt="Switch Case" 
-          class="nav-icon"
-        />
         <span class="nav-text">Switch Case</span>
       </a>
-
-      <!-- 5) FOR LOOP -->
       <a href="#" onclick="document.getElementById('myFrame').src='forloop.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=F" 
-          alt="For Loop" 
-          class="nav-icon"
-        />
         <span class="nav-text">For Loop</span>
       </a>
-
-      <!-- 6) WHILE -->
       <a href="#" onclick="document.getElementById('myFrame').src='while.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=W" 
-          alt="While" 
-          class="nav-icon"
-        />
         <span class="nav-text">While</span>
       </a>
-
-      <!-- 7) DO WHILE -->
       <a href="#" onclick="document.getElementById('myFrame').src='dowhile.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=DW" 
-          alt="Do While" 
-          class="nav-icon"
-        />
         <span class="nav-text">Do While</span>
       </a>
-
-      <!-- 8) STRINGS -->
       <a href="#" onclick="document.getElementById('myFrame').src='strings.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=STR" 
-          alt="Strings" 
-          class="nav-icon"
-        />
         <span class="nav-text">Strings</span>
       </a>
-
-      <!-- 9) 1D ARRAYS -->
       <a href="#" onclick="document.getElementById('myFrame').src='1DArrays.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=1D" 
-          alt="1D Arrays" 
-          class="nav-icon"
-        />
         <span class="nav-text">1D Arrays</span>
       </a>
-
-      <!-- 10) 2D ARRAYS -->
       <a href="#" onclick="document.getElementById('myFrame').src='2DArrays.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=2D" 
-          alt="2D Arrays" 
-          class="nav-icon"
-        />
         <span class="nav-text">2D Arrays</span>
       </a>
-
-      <!-- 11) SUBPROGRAMS -->
       <a href="#" onclick="document.getElementById('myFrame').src='sub.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=SUB" 
-          alt="Subprograms" 
-          class="nav-icon"
-        />
         <span class="nav-text">Subprograms</span>
       </a>
-
-      <!-- 12) FILE HANDLING -->
       <a href="#" onclick="document.getElementById('myFrame').src='filehandling.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=FH" 
-          alt="File Handling" 
-          class="nav-icon"
-        />
         <span class="nav-text">File Handling</span>
       </a>
-
-      <!-- 13) SEARCH (LaB) -->
       <a href="#" onclick="document.getElementById('myFrame').src='searchLaB.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=SL" 
-          alt="Search (LaB)" 
-          class="nav-icon"
-        />
         <span class="nav-text">Search (LaB)</span>
       </a>
-
-      <!-- 14) SORTS (BMI) -->
       <a href="#" onclick="document.getElementById('myFrame').src='sortbmi.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=BM" 
-          alt="Sorts (BMI)" 
-          class="nav-icon"
-        />
         <span class="nav-text">Sorts (BMI)</span>
       </a>
-
-      <!-- 15) BOOLEAN LOGIC -->
       <a href="#" onclick="document.getElementById('myFrame').src='booleanlogic.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=B" 
-          alt="Boolean Logic" 
-          class="nav-icon"
-        />
         <span class="nav-text">Boolean Logic</span>
       </a>
-
-      <!-- 16) SQL -->
       <a href="#" onclick="document.getElementById('myFrame').src='SQL.html'">
-        <img 
-          src="https://via.placeholder.com/24?text=SQL" 
-          alt="SQL" 
-          class="nav-icon"
-        />
         <span class="nav-text">SQL</span>
       </a>
     </div>
@@ -256,4 +136,3 @@
   </div>
 </body>
 </html>
-
