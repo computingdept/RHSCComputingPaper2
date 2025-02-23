@@ -64,9 +64,7 @@
     // Q1: Basic Array Access (Colours)
     function checkAnswersQ1() {
       let correctValues = [
-        // Row 1
         ["01", "Blue, Pink, Green, Yellow, Red", ""],
-        // Row 2
         ["02", "", "Green"]
       ];
       let table = document.getElementById("traceTableQ1");
@@ -84,11 +82,8 @@
     // Q2: Array Element Modification (Scores)
     function checkAnswersQ2() {
       let correctValues = [
-        // Row 1
         ["01", "65, 70, 75, 80, 85", ""],
-        // Row 2
         ["02", "65, 70, 75, 90, 85", ""],
-        // Row 3
         ["03", "", "65, 70, 75, 90, 85"]
       ];
       let table = document.getElementById("traceTableQ2");
@@ -103,45 +98,45 @@
       }
     }
     
-    // Q3: Sum of Array Elements (Marks) - UPDATED to show each iteration
+    // Q3: Sum of Array Elements (Marks) - UPDATED
+    // - Column for 'marks' only changes on line 01.
+    // - No iteration for line 03, only line 04 repeats (i=0..4).
+    // - 'endfor' replaced by 'next i' in pseudocode.
     function checkAnswersQ3() {
-      // We now have 13 rows: lines 01, 02, then each iteration for lines 03 & 04 (i=0..4), and finally line 06.
-      // The correct iteration values (assuming marks = [10,20,30,40,50]) are:
-      // i=0 => total=10, i=1 => total=30, i=2 => total=60, i=3 => total=100, i=4 => total=150
+      // We have 8 rows total:
+      //  1) line 01 => array assigned
+      //  2) line 02 => total=0
+      //  3) line 04 i=0 => i=0, total=10
+      //  4) line 04 i=1 => i=1, total=30
+      //  5) line 04 i=2 => i=2, total=60
+      //  6) line 04 i=3 => i=3, total=100
+      //  7) line 04 i=4 => i=4, total=150
+      //  8) line 06 => output => "Total marks: 150"
+      //
+      // The "marks" column only changes on line 01, so the rest are blank or no changes.
       
       let correctValues = [
+        // (lineNumber, marks, i, total, output)
         // 1) line 01
-        ["01", "", "", ""],
+        ["01", "[10,20,30,40,50]", "", "", ""],
         // 2) line 02
-        ["02", "", "0", ""],
-        // 3) line 03 (i=0)
-        ["03 i=0", "0", "0", ""],
-        // 4) line 04 (i=0)
-        ["04 i=0", "0", "10", ""],
-        // 5) line 03 (i=1)
-        ["03 i=1", "1", "10", ""],
-        // 6) line 04 (i=1)
-        ["04 i=1", "1", "30", ""],
-        // 7) line 03 (i=2)
-        ["03 i=2", "2", "30", ""],
-        // 8) line 04 (i=2", "2", "60", ""],
-        ["04 i=2", "2", "60", ""],
-        // 9) line 03 (i=3)
-        ["03 i=3", "3", "60", ""],
-        // 10) line 04 (i=3)
-        ["04 i=3", "3", "100", ""],
-        // 11) line 03 (i=4)
-        ["03 i=4", "4", "100", ""],
-        // 12) line 04 (i=4)
-        ["04 i=4", "4", "150", ""],
-        // 13) line 06
-        ["06", "", "150", "Total marks: 150"]
+        ["02", "", "", "0", ""],
+        // 3) line 04 i=0
+        ["04 i=0", "", "0", "10", ""],
+        // 4) line 04 i=1
+        ["04 i=1", "", "1", "30", ""],
+        // 5) line 04 i=2
+        ["04 i=2", "", "2", "60", ""],
+        // 6) line 04 i=3
+        ["04 i=3", "", "3", "100", ""],
+        // 7) line 04 i=4
+        ["04 i=4", "", "4", "150", ""],
+        // 8) line 06
+        ["06", "", "", "150", "Total marks: 150"]
       ];
       
       let table = document.getElementById("traceTableQ3");
       let rows = table.rows;
-      // We have 13 data rows (plus the header row).
-      // So we loop from row index 1 to 13 inclusive.
       for (let i = 1; i < rows.length; i++) {
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
@@ -204,12 +199,11 @@
         ["06", "clubs[0] = Science", "", ""],
         ["07", "clubs[4] = Drama", "", ""]
       ];
-      // Note: This is a shortened version. Adjust if you want more detail in your table.
       let table = document.getElementById("traceTableQ6");
       let rows = table.rows;
       for (let i = 1; i < rows.length; i++) {
          let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1] || []; // to avoid out-of-bounds
+         let correct = correctValues[i - 1] || [];
          for (let j = 0; j < inputs.length; j++) {
             inputs[j].style.backgroundColor =
               (inputs[j].value.trim() === (correct[j]||"")) ? "lightgreen" : "lightcoral";
@@ -375,116 +369,90 @@
   
   <hr>
   
-  <!-- Q3: Sum of Array Elements (UPDATED for all iterations) -->
+  <!-- Q3: Sum of Array Elements (UPDATED) -->
   <section id="q3">
     <h2>Q3: Sum of Array Elements</h2>
-    <p><strong>Scenario:</strong> A student calculates the total marks from an array of marks: <code>[10, 20, 30, 40, 50]</code>. We want to see each iteration of <code>i</code> and <code>total</code>.</p>
+    <p><strong>Scenario:</strong> A student calculates the total marks from an array of marks: <code>[10, 20, 30, 40, 50]</code>. The program only changes the array on line 01, so we only show the array once. Then line 04 repeats for each iteration (<em>i=0..4</em>).</p>
     <p><strong>Pseudocode:</strong></p>
     <pre>
 01 marks = [10,20,30,40,50]
 02 total = 0
 03 for i = 0 to 4
 04     total = total + marks[i]
-05 endfor
+05 next i
 06 print("Total marks: " + total)
     </pre>
     <table id="traceTableQ3">
       <tr>
-        <th>Line Number</th>
+        <th>Line<br>Number</th>
+        <th>marks</th>
         <th>i</th>
         <th>total</th>
         <th>Output</th>
       </tr>
       <!-- 1) line 01 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
       <!-- 2) line 02 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
-      <!-- 3) line 03 i=0 -->
+      <!-- 3) line 04 i=0 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
-      <!-- 4) line 04 i=0 -->
+      <!-- 4) line 04 i=1 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
-      <!-- 5) line 03 i=1 -->
+      <!-- 5) line 04 i=2 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
-      <!-- 6) line 04 i=1 -->
+      <!-- 6) line 04 i=3 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
-      <!-- 7) line 03 i=2 -->
+      <!-- 7) line 04 i=4 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
-      <!-- 8) line 04 i=2 -->
+      <!-- 8) line 06 -->
       <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-      </tr>
-      <!-- 9) line 03 i=3 -->
-      <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-      </tr>
-      <!-- 10) line 04 i=3 -->
-      <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-      </tr>
-      <!-- 11) line 03 i=4 -->
-      <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-      </tr>
-      <!-- 12) line 04 i=4 -->
-      <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-      </tr>
-      <!-- 13) line 06 -->
-      <tr>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
-        <td><input type="text" value=""></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
       </tr>
     </table>
     <button onclick="checkAnswersQ3()">Check Answers</button>
@@ -504,7 +472,7 @@
 04     if scores[i] > max then
 05         max = scores[i]
 06     endif
-07 endfor
+07 next i
 08 print("Max score is " + max)
     </pre>
     <table id="traceTableQ4">
@@ -550,30 +518,10 @@
         <th>found</th>
         <th>Output</th>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+      <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
     </table>
     <button onclick="checkAnswersQ5()">Check Answers</button>
   </section>
@@ -679,7 +627,7 @@
 04     if outcomes[i] == "pass" then
 05         count = count + 1
 06     endif
-07 endfor
+07 next i
 08 print("Pass count: " + count)
     </pre>
     <table id="traceTableQ9">
@@ -711,7 +659,7 @@
 02 sum = 0
 03 for i = 0 to 4
 04     sum = sum + int(strNums[i])
-05 endfor
+05 next i
 06 print("Sum is " + sum)
     </pre>
     <table id="traceTableQ10">
