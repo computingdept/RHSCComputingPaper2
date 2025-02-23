@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>RHSC Computing Department</title>
   <style>
-    /* Reset and basic styling */
+    /* Basic Reset */
     * {
       margin: 0;
       padding: 0;
@@ -17,53 +17,52 @@
       color: #333;
     }
 
-    /* Main container for sidebar and content */
+    /* Container for sidebar + content */
     .container {
       display: flex;
       height: 100vh;
       width: 100%;
     }
 
-    /* Sidebar styling */
+    /* Collapsing Sidebar */
     .sidebar {
       background: linear-gradient(to bottom, #F2F2F2, #E8E8E8);
-      width: 200px;               /* Collapsed width */
+      width: 60px;                  /* Collapsed width */
       transition: width 0.3s;
-      overflow-x: hidden;
-      overflow-y: auto;
+      overflow: hidden;             /* Hide text that doesn't fit */
       border-right: 1px solid #DDD;
     }
-    /* Expand sidebar on hover */
     .sidebar:hover {
-      width: 200px;              /* Expanded width */
+      width: 200px;                 /* Expanded width */
     }
 
     /* Sidebar links */
     .sidebar a {
-      display: flex;             /* text on one line */
+      display: flex;
       align-items: center;
-      color: #333;
       text-decoration: none;
+      color: #333;
       padding: 15px;
       border-bottom: 1px solid #DDD;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       transition: background 0.2s, color 0.2s;
     }
     .sidebar a:hover {
-      background-color: #E0E0E0;
+      background: #E0E0E0;
       color: #000;
     }
 
-    /* Text label styling */
-    .sidebar a .nav-text {
-      /* Always show text (even when collapsed).
-         Remove or modify if you prefer a “hover to show text” effect. */
-      display: inline-block;
+    /* Hide the text when sidebar is collapsed */
+    .nav-text {
+      display: none;                /* Hidden by default */
+      margin-left: 10px;            /* Space between icon & text if you add icons */
+      white-space: nowrap;          /* Prevent text from wrapping onto a new line */
+    }
+    /* Reveal text only on hover (when sidebar is wide) */
+    .sidebar:hover .nav-text {
+      display: inline;              /* or 'inline-block' */
     }
 
-    /* Content area */
+    /* Main Content */
     .content {
       flex: 1;
       background: #fff;
@@ -77,7 +76,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     <div class="sidebar">
       <a href="#" onclick="document.getElementById('myFrame').src='index.html'">
         <span class="nav-text">Home</span>
@@ -129,7 +128,7 @@
       </a>
     </div>
 
-    <!-- Main Content Area -->
+    <!-- MAIN CONTENT AREA -->
     <div class="content">
       <iframe id="myFrame" src="overview.html"></iframe>
     </div>
