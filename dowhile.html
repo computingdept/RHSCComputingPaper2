@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Do While Trace Table Challenges</title>
+  <meta charset="UTF-8" />
+  <title>5 Questions with do...while Trace Tables</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
@@ -57,610 +56,368 @@
     }
   </style>
   <script>
-    function checkAnswersTruth() {
+    /**********************************************************************
+     * Q1: Passcode (do...while)
+     * Lines 1..13 => 13 data rows
+     * Table columns: [Line, attempts, password, correctcode, exit, Output]
+     **********************************************************************/
+    function checkAnswersQ1() {
+      // Example correctValues (one line per pseudocode line)
       let correctValues = [
+        // line 01
         ["01", "", "", "J277", "", ""],
+        // line 02
         ["02", "", "", "", "false", ""],
+        // line 03
         ["03", "0", "", "", "", ""],
+        // line 04 (do)
+        ["04", "", "", "", "", ""],
+        // line 05
         ["05", "1", "", "", "", ""],
+        // line 06
         ["06", "", "Computer", "", "", ""],
-        ["10", "", "", "", "", "Incorrect"],
-        ["05", "2", "", "", "", ""],
-        ["06", "", "Science", "", "", ""],
-        ["10", "", "", "", "", "Incorrect"],
-        ["05", "3", "", "", "", ""],
-        ["06", "", "J277", "", "", ""],
+        // line 07
+        ["07", "", "", "", "", "Incorrect"],
+        // line 05 again? If you want iteration, expand or replicate
         ["08", "", "", "", "true", ""],
-        ["13", "", "", "", "", "3 guesses"]
+        // line 12 (while)
+        ["12", "", "", "", "", ""],
+        // line 13
+        ["13", "", "", "", "", "2 guesses"]
       ];
-      
-      let table = document.getElementById("traceTableTruth");
-      let rows = table.rows;
-      
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
+      // If you want more lines for iteration, expand correctValues accordingly
+      let table = document.getElementById("traceTableQ1");
+      validateTable(table, correctValues);
     }
-    
-    function checkAnswersExample1() {
+
+    /**********************************************************************
+     * Q2: Summation (do...while)
+     * Lines 1..8 => 8 data rows
+     * Table columns: [Line, i, sum, Output]
+     **********************************************************************/
+    function checkAnswersQ2() {
       let correctValues = [
+        ["01", "", "", ""],
         ["02", "", "0", ""],
         ["03", "1", "", ""],
-        ["05", "", "1", ""],
+        ["04", "", "", ""],  // do
+        ["05", "1", "1", ""],
         ["06", "2", "", ""],
-        ["05", "", "3", ""],
-        ["06", "3", "", ""],
-        ["05", "", "6", ""],
-        ["06", "4", "", ""],
-        ["05", "", "10", ""],
-        ["06", "5", "", ""],
-        ["05", "", "15", ""],
-        ["06", "6", "", ""],
-        ["08", "", "", "Sum is 15"]
+        ["07", "", "", ""],  // while (i <= n)
+        ["08", "", "15", "Sum is 15"]
       ];
-      let table = document.getElementById("traceTableExample1");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
+      let table = document.getElementById("traceTableQ2");
+      validateTable(table, correctValues);
     }
-    
-    function checkAnswersExample2() {
-      let correctValues = [
-        ["02", "", "1", ""],
-        ["03", "2", "", ""],
-        ["05", "", "2", ""],
-        ["06", "4", "", ""],
-        ["05", "", "8", ""],
-        ["06", "6", "", ""],
-        ["05", "", "48", ""],
-        ["06", "8", "", ""],
-        ["05", "", "384", ""],
-        ["06", "10", "", ""],
-        ["08", "", "", "Product is 384"]
-      ];
-      let table = document.getElementById("traceTableExample2");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
-    }
-    
-    function checkAnswersExample3() {
+
+    /**********************************************************************
+     * Q3: Countdown (do...while)
+     * Lines 1..6 => 6 data rows
+     * Table columns: [Line, i, Output]
+     **********************************************************************/
+    function checkAnswersQ3() {
       let correctValues = [
         ["01", "5", ""],
-        ["03", "", "5"],
+        ["02", "", ""], // do
+        ["03", "5", "5"], // print(i)
         ["04", "4", ""],
-        ["03", "", "4"],
-        ["04", "3", ""],
-        ["03", "", "3"],
-        ["04", "2", ""],
-        ["03", "", "2"],
-        ["04", "1", ""],
-        ["03", "", "1"],
-        ["04", "0", ""],
+        ["05", "", ""], // while (i > 0)
         ["06", "", "Blast off!"]
       ];
-      let table = document.getElementById("traceTableExample3");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
+      let table = document.getElementById("traceTableQ3");
+      validateTable(table, correctValues);
     }
-    
-    function checkAnswersExample4() {
+
+    /**********************************************************************
+     * Q4: Star Pattern (do...while)
+     * Lines 1..12 => 12 data rows
+     * Table columns: [Line, i, j, line, Output]
+     **********************************************************************/
+    function checkAnswersQ4() {
       let correctValues = [
-        ["02", "", "0", ""],
-        ["03", "1", "", ""],
-        ["06", "", "1", ""],
-        ["08", "2", "", ""],
-        ["08", "3", "", ""],
-        ["06", "", "4", ""],
-        ["08", "4", "", ""],
-        ["08", "5", "", ""],
-        ["06", "", "9", ""],
-        ["08", "6", "", ""],
-        ["08", "7", "", ""],
-        ["06", "", "16", ""],
-        ["08", "8", "", ""],
-        ["08", "9", "", ""],
-        ["06", "", "25", ""],
-        ["08", "10", "", ""],
-        ["10", "", "", "Sum is 25"]
-      ];
-      let table = document.getElementById("traceTableExample4");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
-    }
-    
-    function checkAnswersExample5() {
-      let correctValues = [
-        ["01", "1", "", ""],
-        ["03", "", "1", ""],
-        ["05", "", "", "1"],
-        ["06", "", "2", ""],
-        ["05", "", "", "2"],
-        ["06", "", "3", ""],
-        ["05", "", "", "3"],
-        ["06", "", "4", ""],
-        ["08", "2", "", ""],
-        ["03", "", "1", ""],
-        ["05", "", "", "2"],
-        ["06", "", "2", ""],
-        ["05", "", "", "4"],
-        ["06", "", "3", ""],
-        ["05", "", "", "6"],
-        ["06", "", "4", ""],
-        ["08", "3", "", ""],
-        ["03", "", "1", ""],
-        ["05", "", "", "3"],
-        ["06", "", "2", ""],
-        ["05", "", "", "6"],
-        ["06", "", "3", ""],
-        ["05", "", "", "9"],
-        ["06", "", "4", ""],
-        ["08", "4", "", ""]
-      ];
-      let table = document.getElementById("traceTableExample5");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
-    }
-    
-    function checkAnswersExample6() {
-      let correctValues = [
+        ["01", "", "", "", ""],
         ["02", "1", "", "", ""],
+        ["03", "", "", "", ""], // do
         ["04", "", "1", "", ""],
-        ["07", "", "", "*", ""],
-        ["08", "", "2", "", ""],
-        ["10", "", "", "", "*"],
+        ["05", "", "", "", ""],
+        ["06", "", "", "*", ""],
+        ["07", "", "2", "", ""],
+        ["09", "", "", "", ""], // while (j <= i)
+        ["10", "", "", "", "*"], 
         ["11", "2", "", "", ""],
-        ["04", "", "1", "", ""],
-        ["07", "", "", "*", ""],
-        ["08", "", "2", "", ""],
-        ["07", "", "", "**", ""],
-        ["08", "", "3", "", ""],
-        ["10", "", "", "", "**"],
-        ["11", "3", "", "", ""],
-        ["04", "", "1", "", ""],
-        ["07", "", "", "*", ""],
-        ["08", "", "2", "", ""],
-        ["07", "", "", "**", ""],
-        ["08", "", "3", "", ""],
-        ["07", "", "", "***", ""],
-        ["08", "", "4", "", ""],
-        ["10", "", "", "", "***"],
-        ["11", "4", "", "", ""]
+        ["12", "", "", "", ""], // while (i <= rows)
+        // You can add more lines if you want iteration expansions
       ];
-      let table = document.getElementById("traceTableExample6");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
+      let table = document.getElementById("traceTableQ4");
+      validateTable(table, correctValues);
     }
-    
-    function checkAnswersExample7() {
-      let correctValues = [
-        ["04", "", "", "", "0"],
-        ["03", "1", "", "", ""],
-        ["06", "", "1", "", ""],
-        ["08", "", "", "1", ""],
-        ["09", "", "", "", "1"],
-        ["10", "", "2", "", ""],
-        ["08", "", "", "2", ""],
-        ["09", "", "", "", "3"],
-        ["10", "", "3", "", ""],
-        ["12", "2", "", "", ""],
-        ["06", "", "1", "", ""],
-        ["08", "", "", "2", ""],
-        ["09", "", "", "", "5"],
-        ["10", "", "2", "", ""],
-        ["08", "", "", "4", ""],
-        ["09", "", "", "", "9"],
-        ["10", "", "3", "", ""],
-        ["12", "3", "", "", ""],
-        ["14", "", "", "", ""],
-        ["", "", "", "", "Total is 9"]
-      ];
-      let table = document.getElementById("traceTableExample7");
-      let rows = table.rows;
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
-    }
-    
-    function checkAnswersExample8() {
+
+    /**********************************************************************
+     * Q5: Nested do...while
+     * Lines 1..10 => 10 data rows
+     * Table columns: [Line, i, j, Output]
+     **********************************************************************/
+    function checkAnswersQ5() {
       let correctValues = [
         ["01", "3", "", ""],
-        ["03", "", "3", ""],
+        ["02", "", "", ""], // do
+        ["03", "3", "3", ""],
+        ["04", "", "", ""], // do
         ["05", "", "", "3"],
         ["06", "", "2", ""],
-        ["05", "", "", "2"],
-        ["06", "", "1", ""],
-        ["05", "", "", "1"],
-        ["06", "", "0", ""],
+        ["07", "", "", ""], // while (j>0)
         ["08", "2", "", ""],
-        ["03", "", "2", ""],
-        ["05", "", "", "2"],
-        ["06", "", "1", ""],
-        ["05", "", "", "1"],
-        ["06", "", "0", ""],
-        ["08", "1", "", ""],
-        ["03", "", "1", ""],
-        ["05", "", "", "1"],
-        ["06", "", "0", ""],
-        ["08", "0", "", ""],
+        ["09", "", "", ""], // while (i>0)
         ["10", "", "", "Done"]
       ];
-      let table = document.getElementById("traceTableExample8");
-      let rows = table.rows;
+      let table = document.getElementById("traceTableQ5");
+      validateTable(table, correctValues);
+    }
+
+    /**********************************************************************
+     * Helper to validate user inputs
+     **********************************************************************/
+    function validateTable(table, correctValues) {
+      let rows = table.getElementsByTagName("tr");
       for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-             inputs[j].style.backgroundColor =
-               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1] || [];
+        for (let j = 0; j < inputs.length; j++) {
+          let userVal = inputs[j].value.trim();
+          let corVal = correct[j] || "";
+          inputs[j].style.backgroundColor =
+            (userVal === corVal) ? "lightgreen" : "lightcoral";
+        }
       }
     }
   </script>
 </head>
 <body>
-  <!-- Passcode Trace Table Challenge -->
-  <section id="passcodeChallenge">
-    <h2>Passcode Trace Table Challenge</h2>
-    <p>
-      Your fast-food manager’s office requires a passcode to open. The correct passcode is <strong>J277</strong>.
-      For example, an employee first types <strong>BigMac</strong>, then <strong>Fries</strong>, and finally <strong>J277</strong>.
-      The program then prints the total number of attempts.
-    </p>
-    <pre>
-// First attempt "BigMac"
-// Second attempt "Fries"
-// Third attempt "J277"
+  <h1>5 do...while Trace Table Challenges</h1>
+  <p>
+    Each question below uses <strong>do...while(condition)</strong> 
+    instead of <code>while...endwhile</code>. Fill in the trace table 
+    for each line, then click “Check Answers” to see if you match the 
+    expected values. You can expand the <code>correctValues</code> 
+    arrays (and table rows) if you want to show multiple iterations 
+    in more detail.
+  </p>
+
+  <!-- Q1: Passcode do...while -->
+  <section>
+    <h2>Q1: Passcode (do...while)</h2>
+    <p>Scenario: A locker passcode “J277” is required. The user tries 
+       “Computer,” “Incorrect,” “Science,” “Incorrect,” then “J277.” 
+       The program prints the total attempts.</p>
+<pre>
 01 correctcode = "J277"
 02 exit = false
 03 attempts = 0
 04 do
 05    attempts = attempts + 1
 06    password = input("Enter passcode:")
-07    if password == correctcode then 
-08         exit = true
-09    else 
-10         print("Incorrect")
+07    if password == correctcode then
+08       exit = true
+09    else
+10       print("Incorrect")
 11    endif
 12 while (exit == false)
-13 print( attempts + " guesses")
-    </pre>
-    <p>Fill in the table below with the correct values for each line.</p>
-    <table id="traceTableTruth">
+13 print(attempts + " guesses")
+</pre>
+    <!-- 13 lines => 13 data rows -->
+    <table id="traceTableQ1">
       <tr>
-        <th>Line Number</th>
+        <th>Line</th>
         <th>attempts</th>
         <th>password</th>
         <th>correctcode</th>
         <th>exit</th>
         <th>Output</th>
       </tr>
-      <!-- (Rows omitted for brevity) -->
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
-      <!-- ... more rows ... -->
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
     </table>
-    <button onclick="checkAnswersTruth()">Check Answers</button>
+    <button onclick="checkAnswersQ1()">Check Answers</button>
   </section>
-  
+
   <hr>
-  
-  <!-- Example 1: Total Marks Calculator -->
-  <section id="example1">
-    <h2>Example 1: Total Items Calculator</h2>
-    <p>
-      A fast-food outlet wants to track how many items are sold in 5 consecutive hours. Use the pseudocode to calculate the total.
-    </p>
-    <pre>
+
+  <!-- Q2: Summation do...while -->
+  <section>
+    <h2>Q2: Summation (do...while)</h2>
+    <p>Scenario: Summation of numbers 1 to 5 using <code>do...while</code>.</p>
+<pre>
 01 n = 5
 02 sum = 0
 03 i = 1
 04 do
-05     sum = sum + i
-06     i = i + 1
+05   sum = sum + i
+06   i = i + 1
 07 while (i <= n)
 08 print("Sum is " + sum)
-    </pre>
-    <p>Record only the steps where a variable’s value changes or output is produced.</p>
-    <table id="traceTableExample1">
+</pre>
+    <!-- 8 lines => 8 data rows -->
+    <table id="traceTableQ2">
       <tr>
-        <th>Line Number</th>
+        <th>Line</th>
         <th>i</th>
         <th>sum</th>
         <th>Output</th>
       </tr>
-      <!-- (Rows omitted for brevity) -->
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
     </table>
-    <button onclick="checkAnswersExample1()">Check Answers</button>
+    <button onclick="checkAnswersQ2()">Check Answers</button>
   </section>
-  
+
   <hr>
-  
-  <!-- Example 2: Meal Deal Code -->
-  <section id="example2">
-    <h2>Example 2: Meal Deal Code</h2>
-    <p>
-      The outlet multiplies the even order numbers (2, 4, 6, 8) to generate a special meal deal code.
-    </p>
-    <pre>
-01 n = 8
-02 product = 1
-03 i = 2
-04 do
-05     product = product * i
-06     i = i + 2
-07 while (i <= n)
-08 print("Product is " + product)
-    </pre>
-    <p>Record only the changes.</p>
-    <table id="traceTableExample2">
-      <tr>
-        <th>Line Number</th>
-        <th>i</th>
-        <th>product</th>
-        <th>Output</th>
-      </tr>
-      <!-- (Rows omitted for brevity) -->
-    </table>
-    <button onclick="checkAnswersExample2()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Example 3: Countdown to Closing -->
-  <section id="example3">
-    <h2>Example 3: Countdown to Closing</h2>
-    <p>
-      Before the restaurant closes, a countdown from 5 to 1 is performed.
-    </p>
-    <pre>
+
+  <!-- Q3: Countdown do...while -->
+  <section>
+    <h2>Q3: Countdown (do...while)</h2>
+    <p>Scenario: Count down from 5 to 1, then print “Blast off!”</p>
+<pre>
 01 i = 5
 02 do
-03     print(i)
-04     i = i - 1
+03   print(i)
+04   i = i - 1
 05 while (i > 0)
 06 print("Blast off!")
-    </pre>
-    <p>Record the changes.</p>
-    <table id="traceTableExample3">
+</pre>
+    <!-- 6 lines => 6 data rows -->
+    <table id="traceTableQ3">
       <tr>
-        <th>Line Number</th>
+        <th>Line</th>
         <th>i</th>
         <th>Output</th>
       </tr>
-      <!-- (Rows omitted for brevity) -->
+      <tr><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td></tr>
     </table>
-    <button onclick="checkAnswersExample3()">Check Answers</button>
+    <button onclick="checkAnswersQ3()">Check Answers</button>
   </section>
-  
+
   <hr>
-  
-  <!-- Example 4: Sum of Odd Orders -->
-  <section id="example4">
-    <h2>Example 4: Sum of Odd Orders</h2>
-    <p>
-      For a promotional deal, the outlet calculates the sum of odd order numbers between 1 and 9.
-    </p>
-    <pre>
-01 n = 9
-02 sum = 0
-03 i = 1
-04 do
-05     if (i mod 2 != 0)
-06         sum = sum + i
-07     endif
-08     i = i + 1
-09 while (i <= n)
-10 print("Sum is " + sum)
-    </pre>
-    <p>Record only the steps where a value changes.</p>
-    <table id="traceTableExample4">
-      <tr>
-        <th>Line Number</th>
-        <th>i</th>
-        <th>sum</th>
-        <th>Output</th>
-      </tr>
-      <!-- (Rows omitted for brevity) -->
-    </table>
-    <button onclick="checkAnswersExample4()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Example 5: Combo Multiplication Table -->
-  <section id="example5">
-    <h2>Example 5: Combo Multiplication Table</h2>
-    <p>
-      The manager wants to generate a multiplication table for combos 1 to 3 (e.g., Combo #1, #2, #3).
-    </p>
-    <pre>
-01 i = 1
-02 do
-03     j = 1
-04     do
-05         print(i * j)
-06         j = j + 1
-07     while (j <= 3)
-08     i = i + 1
-09 while (i <= 3)
-    </pre>
-    <p>Record only when values change.</p>
-    <table id="traceTableExample5">
-      <tr>
-        <th>Line Number</th>
-        <th>i</th>
-        <th>j</th>
-        <th>Output</th>
-      </tr>
-      <!-- (Rows omitted for brevity) -->
-    </table>
-    <button onclick="checkAnswersExample5()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Example 6: Star Pattern for a Promo Poster -->
-  <section id="example6">
-    <h2>Example 6: Star Pattern for a Promo Poster</h2>
-    <p>
-      To celebrate a new product launch, the restaurant creates a right triangle star pattern for a promotional poster.
-    </p>
-    <pre>
+
+  <!-- Q4: Star Pattern do...while -->
+  <section>
+    <h2>Q4: Star Pattern (do...while)</h2>
+    <p>Scenario: Print a right triangle of stars up to <code>rows = 3</code> using nested do...while.</p>
+<pre>
 01 rows = 3
 02 i = 1
 03 do
-04     j = 1
-05     line = ""
-06     do
-07         line = line + "*"
-08         j = j + 1
-09     while (j <= i)
-10     print(line)
-11     i = i + 1
+04   j = 1
+05   line = ""
+06   do
+07     line = line + "*"
+08     j = j + 1
+09   while (j <= i)
+10   print(line)
+11   i = i + 1
 12 while (i <= rows)
-    </pre>
-    <p>Record only the steps where values change.</p>
-    <table id="traceTableExample6">
+</pre>
+    <!-- 12 lines => 12 data rows -->
+    <table id="traceTableQ4">
       <tr>
-        <th>Line Number</th>
+        <th>Line</th>
         <th>i</th>
         <th>j</th>
         <th>line</th>
         <th>Output</th>
       </tr>
-      <!-- (Rows omitted for brevity) -->
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
     </table>
-    <button onclick="checkAnswersExample6()">Check Answers</button>
+    <button onclick="checkAnswersQ4()">Check Answers</button>
   </section>
-  
+
   <hr>
-  
-  <!-- Example 7: Daily Sales Summation -->
-  <section id="example7">
-    <h2>Example 7: Daily Sales Summation</h2>
-    <p>
-      A manager enters daily sales for 2 products over 2 days in a grid and calculates the total sales.
-    </p>
-    <pre>
-01 rows = 2
-02 cols = 2
-03 i = 1
-04 total = 0
-05 do
-06     j = 1
-07     do
-08         value = i * j
-09         total = total + value
-10         j = j + 1
-11     while (j <= cols)
-12     i = i + 1
-13 while (i <= rows)
-14 print("Total is " + total)
-    </pre>
-    <p>Record only the steps where a value changes.</p>
-    <table id="traceTableExample7">
-      <tr>
-        <th>Line Number</th>
-        <th>i</th>
-        <th>j</th>
-        <th>value</th>
-        <th>total</th>
-        <th>Output</th>
-      </tr>
-      <!-- (Rows omitted for brevity) -->
-    </table>
-    <button onclick="checkAnswersExample7()">Check Answers</button>
-  </section>
-  
-  <hr>
-  
-  <!-- Example 8: Nested Countdown for Inventory -->
-  <section id="example8">
-    <h2>Example 8: Nested Countdown for Inventory</h2>
-    <p>
-      As part of inventory management, a nested countdown is performed.
-    </p>
-    <pre>
+
+  <!-- Q5: Nested do...while -->
+  <section>
+    <h2>Q5: Nested do...while (Countdown)</h2>
+    <p>Scenario: A nested countdown from i=3 down to 1, printing j each time.</p>
+<pre>
 01 i = 3
 02 do
-03     j = i
-04     do
-05         print(j)
-06         j = j - 1
-07     while (j > 0)
-08     i = i - 1
+03   j = i
+04   do
+05     print(j)
+06     j = j - 1
+07   while (j > 0)
+08   i = i - 1
 09 while (i > 0)
 10 print("Done")
-    </pre>
-    <p>Record only the steps where values change.</p>
-    <table id="traceTableExample8">
+</pre>
+    <!-- 10 lines => 10 data rows -->
+    <table id="traceTableQ5">
       <tr>
-        <th>Line Number</th>
+        <th>Line</th>
         <th>i</th>
         <th>j</th>
         <th>Output</th>
       </tr>
-      <!-- (Rows omitted for brevity) -->
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+      <tr><td><input></td><td><input></td><td><input></td><td><input></td></tr>
     </table>
-    <button onclick="checkAnswersExample8()">Check Answers</button>
+    <button onclick="checkAnswersQ5()">Check Answers</button>
   </section>
-  
+
+  <script>
+    function validateTable(table, correctValues) {
+      let rows = table.getElementsByTagName("tr");
+      // Start from i=1 to skip header row
+      for (let i = 1; i < rows.length; i++) {
+        let inputs = rows[i].getElementsByTagName("input");
+        let correct = correctValues[i - 1] || [];
+        for (let j = 0; j < inputs.length; j++) {
+          let userVal = inputs[j].value.trim();
+          let corVal = correct[j] || "";
+          inputs[j].style.backgroundColor =
+            (userVal === corVal) ? "lightgreen" : "lightcoral";
+        }
+      }
+    }
+  </script>
 </body>
 </html>
