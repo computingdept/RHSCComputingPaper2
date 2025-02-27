@@ -67,7 +67,7 @@
       // 06: Subprogram called: "procedure agePass"
       // 02: Output: "You are old enough to ride"
       let correctValues = [
-        ["06", "procedure agePass", ""],
+        ["06", "Procedure agePass()", ""],
         ["02", "", "You are old enough to ride"]
       ];
       let table = document.getElementById("traceTableQ1");
@@ -85,10 +85,10 @@
     // Q2: Procedure with Parameter (printName)
     function checkAnswersQ2() {
       // Expected trace:
-      // 06: "procedure printName(Alice)" called
+      // 06: "Procedure printName("Alice")" called
       // 02: Output: "Alice"
       let correctValues = [
-        ["06", "procedure printName(Alice)", ""],
+        ["06", "Procedure printName("Alice")", ""],
         ["02", "", "Alice"]
       ];
       let table = document.getElementById("traceTableQ2");
@@ -106,10 +106,10 @@
     // Q3: Procedure with Multiple Parameters (multiply)
     function checkAnswersQ3() {
       // Expected trace:
-      // 06: "procedure multiply(5,4)" called
+      // 06: "Procedure multiply(5,4)" called
       // 02: Output: "20"
       let correctValues = [
-        ["06", "procedure multiply(5,4)", ""],
+        ["06", "Procedure multiply(5,4)", ""],
         ["02", "", "20"]
       ];
       let table = document.getElementById("traceTableQ3");
@@ -130,7 +130,7 @@
       // 07: "function squared(3)" called, returning 9
       // 03: Output: "9"
       let correctValues = [
-        ["07", "function squared(3)", "", ""],
+        ["07", "Function squared(3)", "", ""],
         ["03", "", "", "9"]
       ];
       let table = document.getElementById("traceTableQ4");
@@ -151,8 +151,8 @@
       // 02: "procedure printName(Bob)" called → Output "Bob"
       // 03: "procedure multiply(7,8)" called → Output "56"
       let correctValues = [
-        ["02", "procedure printName(Bob)", ""],
-        ["03", "procedure multiply(7,8)", "56"]
+        ["02", "Procedure printName("Bob")", ""],
+        ["03", "Procedure multiply(7,8)", "56"]
       ];
       let table = document.getElementById("traceTableQ5");
       let rows = table.rows;
@@ -172,8 +172,8 @@
       // 02: "newValue = function squared(4)" called and returns "16"
       // 03: Output: "Square is 16"
       let correctValues = [
-        ["02", "newValue = function squared(4)", "16", ""],
-        ["03", "", "", "Square is 16"]
+        ["02", "Function squared(4)", "", ""],
+        ["03", "", "16", "Square is 16"]
       ];
       let table = document.getElementById("traceTableQ6");
       let rows = table.rows;
@@ -197,12 +197,12 @@
       // 06: Output: "You are old enough to ride"
       // 12: "procedure greetStudent completed" (or similar)
       let correctValues = [
-        ["15", "procedure greetStudent(Charlie)", ""],
-        ["10", "procedure printName(Charlie)", ""],
+        ["15", "Procedure greetStudent(Charlie)", ""],
+        ["10", "Procedure printName(Charlie)", ""],
         ["02", "", "Charlie"],
-        ["11", "procedure agePass", ""],
+        ["11", "Procedure agePass", ""],
         ["06", "", "You are old enough to ride"],
-        ["12", "procedure greetStudent completed", "",""]
+        
       ];
       let table = document.getElementById("traceTableQ7");
       let rows = table.rows;
@@ -222,8 +222,8 @@
       // 11: "function area(5)" called, returns "25"
       // 07: "procedure printResult(25)" called → Output "Area is 25"
       let correctValues = [
-        ["11", "function area(5)", "25", ""],
-        ["07", "procedure printResult(25)", "", "Area is 25"]
+        ["11", "Function area(5)", "", ""],
+        ["07", "", "25", "Area is 25"]
       ];
       let table = document.getElementById("traceTableQ8");
       let rows = table.rows;
@@ -548,11 +548,7 @@
         <td><input type="text"></td>
         <td><input type="text"></td>
       </tr>
-      <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
-      </tr>
+      
     </table>
     <button onclick="checkAnswersQ7()">Check Answers</button>
   </section>
