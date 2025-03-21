@@ -24,7 +24,7 @@
       background-color: #f2f2f2;
     }
     pre {
-      background: #eee;
+      background-color: #eee;
       padding: 10px;
       font-size: 1.1em;
       overflow-x: auto;
@@ -38,25 +38,26 @@
   </style>
   <script>
     function checkAnswersNorm() {
-      // Each row is an array of 5 values: 
-      // [Line Number, Action, Mantissa/Value, Exponent, Normalized Form]
+      // Expected values for each row:
+      // Columns: [Step, Working, Mantissa, Exponent, Normalized Representation]
       let correctValues = [
-        ["01", "Read representation", "00011", "0010", ""],
-        ["02", "Convert mantissa to fraction", "0.0011 (0.1875)", "0010 (+2)", ""],
-        ["03", "Calculate value", "0.1875 * 2^2 = 0.75", "2", ""],
-        ["04", "Normalize value", "Shift: 0.75×2 = 1.5", "-1", "1.1 x 2^-1"],
-        ["05", "Final normalized representation", "", "", "1.1 x 2^-1"]
+        ["01: Read representation", "Mantissa = 00011, Exponent = 0010", "00011", "0010", ""],
+        ["02: Calculate value", "3 * 2^(2) = 12", "3", "2", ""],
+        ["03: Normalize value", "12 = 12 * 2^(0)", "12", "0", ""],
+        ["04: Convert normalized mantissa to 5-bit", "12 in binary = 01100", "01100", "", ""],
+        ["05: Convert normalized exponent to 4-bit", "0 in binary = 0000", "", "0000", ""],
+        ["06: Final normalized representation", "Combine to get 01100 0000", "", "", "01100 0000"]
       ];
       
       let table = document.getElementById("traceTableNorm");
       let rows = table.rows;
       
-      // Skip the header row (index 0) and check each data row.
+      // Skip header row (index 0) and then check each data row.
       for (let i = 1; i < rows.length; i++) {
          let inputs = rows[i].getElementsByTagName("input");
          let correct = correctValues[i - 1];
          for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor =
+            inputs[j].style.backgroundColor = 
               (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
          }
       }
@@ -66,34 +67,42 @@
 <body>
   <h2>Floating Point Normalization Trace Table</h2>
   <p>
-    The number is stored in floating point format with a 5-bit mantissa (in two's complement) and a 4-bit exponent (in two's complement).
+    The number is stored in floating point format with a 5‑bit mantissa and a 4‑bit exponent.
+    The given representation is: <strong>Mantissa = 00011</strong> and <strong>Exponent = 0010</strong>.
   </p>
   <p>
-    The given representation is:
-    <strong>Mantissa = 00011</strong> and <strong>Exponent = 0010</strong>.
-  </p>
-  <p>
-    Follow these steps to normalize the number:
+    This means the value is 3 × 2^(2) = 12.
+    To normalize 12, we write it as 12 × 2^(0).
+    Then we convert 12 to a 5‑bit binary number (01100) and 0 to a 4‑bit binary number (0000).
+    The final normalized representation is: <strong>01100 0000</strong>.
+    (You get 1 mark for the normalized mantissa and 1 mark for the normalized exponent.)
   </p>
   <pre>
-01 correct: 00011, exponent: 0010
-02 Convert mantissa: 00011 -> 0.0011 (binary) = 0.1875 (decimal)
-03 Calculate value: 0.1875 * 2^(+2) = 0.75
-04 Normalize: 0.75 = 1.5 x 2^(-1)  (1.5 in binary is 1.1)
-05 Final normalized form: 1.1 x 2^(-1)
+01: Read representation
+    Mantissa = 00011, Exponent = 0010
+02: Calculate value
+    3 * 2^(2) = 12
+03: Normalize value
+    12 = 12 * 2^(0)
+04: Convert normalized mantissa to 5-bit
+    12 in binary = 01100
+05: Convert normalized exponent to 4-bit
+    0 in binary = 0000
+06: Final normalized representation
+    01100 0000
   </pre>
   <p>
-    Fill in the table below with your working.
+    Fill in the trace table below.
   </p>
   <table id="traceTableNorm">
     <tr>
-      <th>Line Number</th>
-      <th>Action</th>
-      <th>Mantissa/Value</th>
+      <th>Step</th>
+      <th>Working</th>
+      <th>Mantissa</th>
       <th>Exponent</th>
-      <th>Normalized Form</th>
+      <th>Normalized Representation</th>
     </tr>
-    <!-- Row 1 -->
+    <!-- 6 rows corresponding to steps 1 to 6 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -101,7 +110,6 @@
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 2 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -109,7 +117,6 @@
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 3 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -117,7 +124,6 @@
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 4 -->
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
@@ -125,7 +131,13 @@
       <td><input type="text"></td>
       <td><input type="text"></td>
     </tr>
-    <!-- Row 5 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
     <tr>
       <td><input type="text"></td>
       <td><input type="text"></td>
