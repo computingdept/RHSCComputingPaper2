@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Floating Point Normalization Trace Table</title>
+  <title>Floating Point Normalization Challenge</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,16 +15,13 @@
       border-collapse: collapse;
       margin-top: 20px;
     }
-    th, td {
+    td {
       border: 1px solid #000;
       padding: 8px;
       text-align: center;
     }
-    th {
-      background-color: #f2f2f2;
-    }
     pre {
-      background-color: #eee;
+      background: #eee;
       padding: 10px;
       font-size: 1.1em;
       overflow-x: auto;
@@ -37,115 +34,95 @@
     }
   </style>
   <script>
-    function checkAnswersNorm() {
-      // Expected values for each row:
-      // Columns: [Step, Working, Mantissa, Exponent, Normalized Representation]
-      let correctValues = [
-        ["01: Read representation", "Mantissa = 00011, Exponent = 0010", "00011", "0010", ""],
-        ["02: Calculate value", "3 * 2^(2) = 12", "3", "2", ""],
-        ["03: Normalize value", "12 = 12 * 2^(0)", "12", "0", ""],
-        ["04: Convert normalized mantissa to 5-bit", "12 in binary = 01100", "01100", "", ""],
-        ["05: Convert normalized exponent to 4-bit", "0 in binary = 0000", "", "0000", ""],
-        ["06: Final normalized representation", "Combine to get 01100 0000", "", "", "01100 0000"]
-      ];
+    function checkAnswersNormalization() {
+      // Expected answers:
+      // Step 1: Mantissa = "00011", Exponent = "0010"
+      // Step 2: Denary value = "12"
+      // Step 3: Normalized mantissa = "01100", Normalized exponent = "0000"
       
-      let table = document.getElementById("traceTableNorm");
-      let rows = table.rows;
+      // Create an object with the expected answers:
+      let expected = {
+        step1_mantissa: "00011",
+        step1_exponent: "0010",
+        step2_value: "12",
+        step3_mantissa: "01100",
+        step3_exponent: "0000"
+      };
       
-      // Skip header row (index 0) and then check each data row.
-      for (let i = 1; i < rows.length; i++) {
-         let inputs = rows[i].getElementsByTagName("input");
-         let correct = correctValues[i - 1];
-         for (let j = 0; j < inputs.length; j++) {
-            inputs[j].style.backgroundColor = 
-              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
-         }
-      }
+      // Check each input field:
+      let s1mantissa = document.getElementById("step1_mantissa");
+      let s1exponent = document.getElementById("step1_exponent");
+      let s2value = document.getElementById("step2_value");
+      let s3mantissa = document.getElementById("step3_mantissa");
+      let s3exponent = document.getElementById("step3_exponent");
+      
+      s1mantissa.style.backgroundColor = (s1mantissa.value.trim() === expected.step1_mantissa) ? "lightgreen" : "lightcoral";
+      s1exponent.style.backgroundColor = (s1exponent.value.trim() === expected.step1_exponent) ? "lightgreen" : "lightcoral";
+      s2value.style.backgroundColor = (s2value.value.trim() === expected.step2_value) ? "lightgreen" : "lightcoral";
+      s3mantissa.style.backgroundColor = (s3mantissa.value.trim() === expected.step3_mantissa) ? "lightgreen" : "lightcoral";
+      s3exponent.style.backgroundColor = (s3exponent.value.trim() === expected.step3_exponent) ? "lightgreen" : "lightcoral";
     }
   </script>
 </head>
 <body>
-  <h2>Floating Point Normalization Trace Table</h2>
+  <h2>Floating Point Normalization Challenge</h2>
   <p>
-    The number is stored in floating point format with a 5‑bit mantissa and a 4‑bit exponent.
-    The given representation is: <strong>Mantissa = 00011</strong> and <strong>Exponent = 0010</strong>.
+    The number is stored using a 5‑bit mantissa (in two’s complement) and a 4‑bit exponent (in two’s complement).  
+    The given representation is:  
+    <strong>Mantissa = 00011</strong> and <strong>Exponent = 0010</strong>.
   </p>
   <p>
-    This means the value is 3 × 2^(2) = 12.
-    To normalize 12, we write it as 12 × 2^(0).
-    Then we convert 12 to a 5‑bit binary number (01100) and 0 to a 4‑bit binary number (0000).
-    The final normalized representation is: <strong>01100 0000</strong>.
-    (You get 1 mark for the normalized mantissa and 1 mark for the normalized exponent.)
+    This represents the value 3 × 2^(2) = 12. To normalize, we want to write 12 as 12 × 2^(0) and then convert:
+  </p>
+  <p>
+    Normalized mantissa (5‑bit binary) = 01100  
+    Normalized exponent (4‑bit binary) = 0000  
+    So, the final normalized representation is <strong>01100 0000</strong>.
   </p>
   <pre>
-01: Read representation
-    Mantissa = 00011, Exponent = 0010
-02: Calculate value
-    3 * 2^(2) = 12
-03: Normalize value
-    12 = 12 * 2^(0)
-04: Convert normalized mantissa to 5-bit
-    12 in binary = 01100
-05: Convert normalized exponent to 4-bit
-    0 in binary = 0000
-06: Final normalized representation
-    01100 0000
+Step 1: Read representation
+  Enter Mantissa (5-bit): ______ 
+  Enter Exponent (4-bit): ______
+
+Step 2: Calculate denary value
+  Calculate 3 * 2^(2) = ______
+
+Step 3: Write normalized representation
+  Enter normalized mantissa (5-bit): ______ 
+  Enter normalized exponent (4-bit): ______
   </pre>
-  <p>
-    Fill in the trace table below.
-  </p>
-  <table id="traceTableNorm">
+  <table>
     <tr>
-      <th>Step</th>
-      <th>Working</th>
-      <th>Mantissa</th>
-      <th>Exponent</th>
-      <th>Normalized Representation</th>
-    </tr>
-    <!-- 6 rows corresponding to steps 1 to 6 -->
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
+      <td>
+        <strong>Step 1:</strong> Enter the original values.
+      </td>
+      <td>
+        Mantissa: <input type="text" id="step1_mantissa" size="6">
+      </td>
+      <td>
+        Exponent: <input type="text" id="step1_exponent" size="6">
+      </td>
     </tr>
     <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
+      <td>
+        <strong>Step 2:</strong> Calculate the value (3 * 2^(2) = ?)
+      </td>
+      <td colspan="2">
+        Denary value: <input type="text" id="step2_value" size="10">
+      </td>
     </tr>
     <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
+      <td>
+        <strong>Step 3:</strong> Enter normalized representation.
+      </td>
+      <td>
+        Normalized Mantissa: <input type="text" id="step3_mantissa" size="6">
+      </td>
+      <td>
+        Normalized Exponent: <input type="text" id="step3_exponent" size="6">
+      </td>
     </tr>
   </table>
-  <button onclick="checkAnswersNorm()">Check Answers</button>
+  <button onclick="checkAnswersNormalization()">Check Answers</button>
 </body>
 </html>
