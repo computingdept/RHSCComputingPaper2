@@ -42,11 +42,17 @@
     }
   </style>
   <script>
-    function checkAllAnswers() {
-      // Challenge 1: expected answers
-      // Step 1 (W): "00011", "0010"
-      // Step 2 (I): "12"
-      // Step 3 (N): "01100", "0000"
+    /* 
+       CHALLENGE 1 
+       5-bit mantissa: 00011
+       4-bit exponent: 0010
+       Expected answers:
+         Step 1 (W): Mantissa=00011, Exponent=0010
+         Step 2 (I): Denary value=12  (since 3×2^2=12)
+         Step 3 (N): Normalised Mantissa=01100, Normalised Exponent=0000
+    */
+    function checkAnswersChallenge1() {
+      // Hard-coded correct answers for Challenge 1
       const c1_expected = {
         step1_mantissa: "00011",
         step1_exponent: "0010",
@@ -55,8 +61,38 @@
         step3_exponent: "0000"
       };
 
-      // Challenge 2: expected answers
-      // Currently placeholders ("?"). Replace them if you already know final answers.
+      // Get the user inputs
+      const c1_s1m = document.getElementById("c1_step1_mantissa");
+      const c1_s1e = document.getElementById("c1_step1_exponent");
+      const c1_s2v = document.getElementById("c1_step2_value");
+      const c1_s3m = document.getElementById("c1_step3_mantissa");
+      const c1_s3e = document.getElementById("c1_step3_exponent");
+
+      // Helper function to check an individual field
+      function checkField(inputElem, correctVal) {
+        const userVal = inputElem.value.trim();
+        inputElem.style.backgroundColor =
+          (userVal === correctVal) ? "lightgreen" : "lightcoral";
+      }
+
+      // Compare user inputs to expected values
+      checkField(c1_s1m, c1_expected.step1_mantissa);
+      checkField(c1_s1e, c1_expected.step1_exponent);
+      checkField(c1_s2v, c1_expected.step2_value);
+      checkField(c1_s3m, c1_expected.step3_mantissa);
+      checkField(c1_s3e, c1_expected.step3_exponent);
+    }
+
+    /* 
+       CHALLENGE 2 
+       5-bit mantissa: 11100
+       4-bit exponent: 0110
+       If you know the final correct answers, replace the "?" placeholders below.
+       Otherwise, the script won't highlight correct/incorrect for Challenge 2.
+    */
+    function checkAnswersChallenge2() {
+      // Currently placeholders for Challenge 2
+      // Replace them if you already know the correct final values
       const c2_expected = {
         step1_mantissa: "11100",
         step1_exponent: "0110",
@@ -65,25 +101,18 @@
         step3_exponent: "?"
       };
 
-      // CHALLENGE 1 FIELDS
-      const c1_s1m = document.getElementById("c1_step1_mantissa");
-      const c1_s1e = document.getElementById("c1_step1_exponent");
-      const c1_s2v = document.getElementById("c1_step2_value");
-      const c1_s3m = document.getElementById("c1_step3_mantissa");
-      const c1_s3e = document.getElementById("c1_step3_exponent");
-
-      // CHALLENGE 2 FIELDS
+      // Get the user inputs
       const c2_s1m = document.getElementById("c2_step1_mantissa");
       const c2_s1e = document.getElementById("c2_step1_exponent");
       const c2_s2v = document.getElementById("c2_step2_value");
       const c2_s3m = document.getElementById("c2_step3_mantissa");
       const c2_s3e = document.getElementById("c2_step3_exponent");
 
-      // Helper to check an individual field
+      // Helper function to check an individual field
       function checkField(inputElem, correctVal) {
         const userVal = inputElem.value.trim();
-        // If correctVal is "?" or empty, do not highlight
-        if (correctVal === "?" || correctVal === "") {
+        // If correctVal is "?" we won't highlight
+        if (correctVal === "?") {
           inputElem.style.backgroundColor = "";
         } else {
           inputElem.style.backgroundColor =
@@ -91,14 +120,7 @@
         }
       }
 
-      // Challenge 1 checks
-      checkField(c1_s1m, c1_expected.step1_mantissa);
-      checkField(c1_s1e, c1_expected.step1_exponent);
-      checkField(c1_s2v, c1_expected.step2_value);
-      checkField(c1_s3m, c1_expected.step3_mantissa);
-      checkField(c1_s3e, c1_expected.step3_exponent);
-
-      // Challenge 2 checks
+      // Compare user inputs to expected values
       checkField(c2_s1m, c2_expected.step1_mantissa);
       checkField(c2_s1e, c2_expected.step1_exponent);
       checkField(c2_s2v, c2_expected.step2_value);
@@ -114,7 +136,8 @@
   <h2>Challenge 1</h2>
   <p>
     Mantissa (5 bits) = <strong>00011</strong>, Exponent (4 bits) = <strong>0010</strong><br>
-    Normalise this number, showing your working.
+    Refer to the number line for two’s complement when interpreting both the mantissa and exponent.  
+    Then normalise the result, showing your working.
   </p>
   <table>
     <tr>
@@ -155,12 +178,14 @@
       </td>
     </tr>
   </table>
+  <button onclick="checkAnswersChallenge1()">Check Answers (Challenge 1)</button>
 
   <!-- CHALLENGE 2 -->
   <h2>Challenge 2</h2>
   <p>
     Mantissa (5 bits) = <strong>11100</strong>, Exponent (4 bits) = <strong>0110</strong><br>
-    Normalise this number, showing your working.
+    Refer to the number line for two’s complement when interpreting both the mantissa and exponent.  
+    Then normalise the result, showing your working.
   </p>
   <table>
     <tr>
@@ -201,7 +226,7 @@
       </td>
     </tr>
   </table>
+  <button onclick="checkAnswersChallenge2()">Check Answers (Challenge 2)</button>
 
-  <button onclick="checkAllAnswers()">Check All Answers</button>
 </body>
 </html>
