@@ -31,14 +31,14 @@
       border-top: 2px solid #999;
       padding-top: 20px;
     }
-    /* A style for dark green drop-case letters */
+    /* Dark green style for dropcase letters with no gap */
     .dropcase {
       color: darkgreen;
       font-size: 1.3em;
       font-weight: bold;
-      float: left;
+      display: inline-block;
       line-height: 1;
-      margin-right: 6px;
+      margin-right: 0;
     }
   </style>
   <script>
@@ -56,152 +56,4 @@
       };
 
       // Challenge 2: expected answers
-      // Currently placeholders. Fill them in if you already know them.
-      const c2_expected = {
-        step1_mantissa: "11100",
-        step1_exponent: "0110",
-        step2_value: "?",
-        step3_mantissa: "?",
-        step3_exponent: "?"
-      };
-
-      // CHALLENGE 1 FIELDS
-      const c1_s1m = document.getElementById("c1_step1_mantissa");
-      const c1_s1e = document.getElementById("c1_step1_exponent");
-      const c1_s2v = document.getElementById("c1_step2_value");
-      const c1_s3m = document.getElementById("c1_step3_mantissa");
-      const c1_s3e = document.getElementById("c1_step3_exponent");
-
-      // CHALLENGE 2 FIELDS
-      const c2_s1m = document.getElementById("c2_step1_mantissa");
-      const c2_s1e = document.getElementById("c2_step1_exponent");
-      const c2_s2v = document.getElementById("c2_step2_value");
-      const c2_s3m = document.getElementById("c2_step3_mantissa");
-      const c2_s3e = document.getElementById("c2_step3_exponent");
-
-      // Helper to check an individual field
-      function checkField(inputElem, correctVal) {
-        const userVal = inputElem.value.trim();
-        // If correctVal is "?" or empty, do not highlight (unknown or not set)
-        if (correctVal === "?" || correctVal === "") {
-          inputElem.style.backgroundColor = "";
-        } else {
-          inputElem.style.backgroundColor =
-            (userVal === correctVal) ? "lightgreen" : "lightcoral";
-        }
-      }
-
-      // Challenge 1 checks
-      checkField(c1_s1m, c1_expected.step1_mantissa);
-      checkField(c1_s1e, c1_expected.step1_exponent);
-      checkField(c1_s2v, c1_expected.step2_value);
-      checkField(c1_s3m, c1_expected.step3_mantissa);
-      checkField(c1_s3e, c1_expected.step3_exponent);
-
-      // Challenge 2 checks
-      checkField(c2_s1m, c2_expected.step1_mantissa);
-      checkField(c2_s1e, c2_expected.step1_exponent);
-      checkField(c2_s2v, c2_expected.step2_value);
-      checkField(c2_s3m, c2_expected.step3_mantissa);
-      checkField(c2_s3e, c2_expected.step3_exponent);
-    }
-  </script>
-</head>
-<body>
-  <h1>Floating Point Normalisation - Two Challenges</h1>
-
-  <!-- CHALLENGE 1 -->
-  <h2>Challenge 1</h2>
-  <p>
-    Mantissa (5 bits) = <strong>00011</strong>, Exponent (4 bits) = <strong>0010</strong><br>
-    Normalise this number, showing your working.
-  </p>
-  <table>
-    <tr>
-      <td>
-        <span class="dropcase">W</span>rite down original:
-      </td>
-      <td>
-        Mantissa (5-bit):
-        <input type="text" id="c1_step1_mantissa" size="6">
-      </td>
-      <td>
-        Exponent (4-bit):
-        <input type="text" id="c1_step1_exponent" size="6">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="dropcase">I</span>dentify the denary value<br>
-        (Calculation: 3 × 2<sup>2</sup>)
-      </td>
-      <td colspan="2">
-        Denary value:
-        <input type="text" id="c1_step2_value" size="6">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="dropcase">N</span>ormalise<br>
-        (Should start with "01" if positive)
-      </td>
-      <td>
-        Normalised Mantissa (5-bit):
-        <input type="text" id="c1_step3_mantissa" size="6">
-      </td>
-      <td>
-        Normalised Exponent (4-bit):
-        <input type="text" id="c1_step3_exponent" size="6">
-      </td>
-    </tr>
-  </table>
-
-  <!-- CHALLENGE 2 -->
-  <h2>Challenge 2</h2>
-  <p>
-    Mantissa (5 bits) = <strong>11100</strong>, Exponent (4 bits) = <strong>0110</strong><br>
-    Normalise this number, showing your working.
-  </p>
-  <table>
-    <tr>
-      <td>
-        <span class="dropcase">W</span>rite down original:
-      </td>
-      <td>
-        Mantissa (5-bit):
-        <input type="text" id="c2_step1_mantissa" size="6">
-      </td>
-      <td>
-        Exponent (4-bit):
-        <input type="text" id="c2_step1_exponent" size="6">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="dropcase">I</span>dentify the denary value<br>
-        (Calculation: ???)
-      </td>
-      <td colspan="2">
-        Denary value:
-        <input type="text" id="c2_step2_value" size="6">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span class="dropcase">N</span>ormalise<br>
-        (Should start with "0" if positive, or "1" if negative, etc.)
-      </td>
-      <td>
-        Normalised Mantissa (5-bit):
-        <input type="text" id="c2_step3_mantissa" size="6">
-      </td>
-      <td>
-        Normalised Exponent (4-bit):
-        <input type="text" id="c2_step3_exponent" size="6">
-      </td>
-    </tr>
-  </table>
-
-  <button onclick="checkAllAnswers()">Check All Answers</button>
-</body>
-</html>
+      // Currently placeholders ("?"). Replace them if you already know final answ
