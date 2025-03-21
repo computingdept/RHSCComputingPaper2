@@ -31,6 +31,15 @@
       border-top: 2px solid #999;
       padding-top: 20px;
     }
+    /* A style for dark green drop-case letters */
+    .dropcase {
+      color: darkgreen;
+      font-size: 1.3em;
+      font-weight: bold;
+      float: left;
+      line-height: 1;
+      margin-right: 6px;
+    }
   </style>
   <script>
     function checkAllAnswers() {
@@ -47,7 +56,7 @@
       };
 
       // Challenge 2: expected answers
-      // (Currently placeholders. Feel free to update if you know them.)
+      // Currently placeholders. Fill them in if you already know them.
       const c2_expected = {
         step1_mantissa: "11100",
         step1_exponent: "0110",
@@ -73,8 +82,8 @@
       // Helper to check an individual field
       function checkField(inputElem, correctVal) {
         const userVal = inputElem.value.trim();
+        // If correctVal is "?" or empty, do not highlight (unknown or not set)
         if (correctVal === "?" || correctVal === "") {
-          // If we have no known correct value, do not highlight
           inputElem.style.backgroundColor = "";
         } else {
           inputElem.style.backgroundColor =
@@ -109,7 +118,9 @@
   </p>
   <table>
     <tr>
-      <td><strong>Step 1 (<span style="font-weight:bold;">W</span>):</strong> Write down original.</td>
+      <td>
+        <span class="dropcase">W</span>rite down original:
+      </td>
       <td>
         Mantissa (5-bit):
         <input type="text" id="c1_step1_mantissa" size="6">
@@ -121,7 +132,7 @@
     </tr>
     <tr>
       <td>
-        <strong>Step 2 (<span style="font-weight:bold;">I</span>):</strong> Identify the denary value<br>
+        <span class="dropcase">I</span>dentify the denary value<br>
         (Calculation: 3 × 2<sup>2</sup>)
       </td>
       <td colspan="2">
@@ -131,7 +142,7 @@
     </tr>
     <tr>
       <td>
-        <strong>Step 3 (<span style="font-weight:bold;">N</span>):</strong> Normalise<br>
+        <span class="dropcase">N</span>ormalise<br>
         (Should start with "01" if positive)
       </td>
       <td>
@@ -153,7 +164,9 @@
   </p>
   <table>
     <tr>
-      <td><strong>Step 1 (<span style="font-weight:bold;">W</span>):</strong> Write down original.</td>
+      <td>
+        <span class="dropcase">W</span>rite down original:
+      </td>
       <td>
         Mantissa (5-bit):
         <input type="text" id="c2_step1_mantissa" size="6">
@@ -165,8 +178,8 @@
     </tr>
     <tr>
       <td>
-        <strong>Step 2 (<span style="font-weight:bold;">I</span>):</strong> Identify the denary value<br>
-        (Fill in your own calculation)
+        <span class="dropcase">I</span>dentify the denary value<br>
+        (Calculation: ???)
       </td>
       <td colspan="2">
         Denary value:
@@ -175,7 +188,7 @@
     </tr>
     <tr>
       <td>
-        <strong>Step 3 (<span style="font-weight:bold;">N</span>):</strong> Normalise<br>
+        <span class="dropcase">N</span>ormalise<br>
         (Should start with "0" if positive, or "1" if negative, etc.)
       </td>
       <td>
