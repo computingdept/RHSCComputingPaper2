@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Floating Point Normalization Trace Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding-bottom: 50px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      font-size: 1.1em;
+      overflow-x: auto;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function checkAnswersNorm() {
+      // Each row is an array of 5 values: 
+      // [Line Number, Action, Mantissa/Value, Exponent, Normalized Form]
+      let correctValues = [
+        ["01", "Read representation", "00011", "0010", ""],
+        ["02", "Convert mantissa to fraction", "0.0011 (0.1875)", "0010 (+2)", ""],
+        ["03", "Calculate value", "0.1875 * 2^2 = 0.75", "2", ""],
+        ["04", "Normalize value", "Shift: 0.75×2 = 1.5", "-1", "1.1 x 2^-1"],
+        ["05", "Final normalized representation", "", "", "1.1 x 2^-1"]
+      ];
+      
+      let table = document.getElementById("traceTableNorm");
+      let rows = table.rows;
+      
+      // Skip the header row (index 0) and check each data row.
+      for (let i = 1; i < rows.length; i++) {
+         let inputs = rows[i].getElementsByTagName("input");
+         let correct = correctValues[i - 1];
+         for (let j = 0; j < inputs.length; j++) {
+            inputs[j].style.backgroundColor =
+              (inputs[j].value.trim() === correct[j]) ? "lightgreen" : "lightcoral";
+         }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Floating Point Normalization Trace Table</h2>
+  <p>
+    The number is stored in floating point format with a 5-bit mantissa (in two's complement) and a 4-bit exponent (in two's complement).
+  </p>
+  <p>
+    The given representation is:
+    <strong>Mantissa = 00011</strong> and <strong>Exponent = 0010</strong>.
+  </p>
+  <p>
+    Follow these steps to normalize the number:
+  </p>
+  <pre>
+01 correct: 00011, exponent: 0010
+02 Convert mantissa: 00011 -> 0.0011 (binary) = 0.1875 (decimal)
+03 Calculate value: 0.1875 * 2^(+2) = 0.75
+04 Normalize: 0.75 = 1.5 x 2^(-1)  (1.5 in binary is 1.1)
+05 Final normalized form: 1.1 x 2^(-1)
+  </pre>
+  <p>
+    Fill in the table below with your working.
+  </p>
+  <table id="traceTableNorm">
+    <tr>
+      <th>Line Number</th>
+      <th>Action</th>
+      <th>Mantissa/Value</th>
+      <th>Exponent</th>
+      <th>Normalized Form</th>
+    </tr>
+    <!-- Row 1 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 2 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 3 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 4 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+    <!-- Row 5 -->
+    <tr>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+      <td><input type="text"></td>
+    </tr>
+  </table>
+  <button onclick="checkAnswersNorm()">Check Answers</button>
+</body>
+</html>
