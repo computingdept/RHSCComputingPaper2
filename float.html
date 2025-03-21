@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Floating Point Normalization Challenge</title>
+  <title>Floating Point Normalisation Challenge</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
       text-align: center;
     }
     pre {
-      background: #eee;
+      background-color: #eee;
       padding: 10px;
       font-size: 1.1em;
       overflow-x: auto;
@@ -34,13 +34,12 @@
     }
   </style>
   <script>
-    function checkAnswersNormalization() {
+    function checkAnswersNormalisation() {
       // Expected answers:
       // Step 1: Mantissa = "00011", Exponent = "0010"
-      // Step 2: Denary value = "12"
-      // Step 3: Normalized mantissa = "01100", Normalized exponent = "0000"
-      
-      // Create an object with the expected answers:
+      // Step 2: Denary value = "12"  (because 3 * 2^2 = 12)
+      // Step 3: Normalised value: should start with "01" (for positive)
+      //         Normalised Mantissa = "01100" and Normalised Exponent = "0000"
       let expected = {
         step1_mantissa: "00011",
         step1_exponent: "0010",
@@ -49,47 +48,41 @@
         step3_exponent: "0000"
       };
       
-      // Check each input field:
-      let s1mantissa = document.getElementById("step1_mantissa");
-      let s1exponent = document.getElementById("step1_exponent");
-      let s2value = document.getElementById("step2_value");
-      let s3mantissa = document.getElementById("step3_mantissa");
-      let s3exponent = document.getElementById("step3_exponent");
-      
-      s1mantissa.style.backgroundColor = (s1mantissa.value.trim() === expected.step1_mantissa) ? "lightgreen" : "lightcoral";
-      s1exponent.style.backgroundColor = (s1exponent.value.trim() === expected.step1_exponent) ? "lightgreen" : "lightcoral";
-      s2value.style.backgroundColor = (s2value.value.trim() === expected.step2_value) ? "lightgreen" : "lightcoral";
-      s3mantissa.style.backgroundColor = (s3mantissa.value.trim() === expected.step3_mantissa) ? "lightgreen" : "lightcoral";
-      s3exponent.style.backgroundColor = (s3exponent.value.trim() === expected.step3_exponent) ? "lightgreen" : "lightcoral";
+      document.getElementById("step1_mantissa").style.backgroundColor = 
+        (document.getElementById("step1_mantissa").value.trim() === expected.step1_mantissa) ? "lightgreen" : "lightcoral";
+      document.getElementById("step1_exponent").style.backgroundColor = 
+        (document.getElementById("step1_exponent").value.trim() === expected.step1_exponent) ? "lightgreen" : "lightcoral";
+      document.getElementById("step2_value").style.backgroundColor = 
+        (document.getElementById("step2_value").value.trim() === expected.step2_value) ? "lightgreen" : "lightcoral";
+      document.getElementById("step3_mantissa").style.backgroundColor = 
+        (document.getElementById("step3_mantissa").value.trim() === expected.step3_mantissa) ? "lightgreen" : "lightcoral";
+      document.getElementById("step3_exponent").style.backgroundColor = 
+        (document.getElementById("step3_exponent").value.trim() === expected.step3_exponent) ? "lightgreen" : "lightcoral";
     }
   </script>
 </head>
 <body>
-  <h2>Floating Point Normalization Challenge</h2>
+  <h2>Floating Point Normalisation Challenge</h2>
   <p>
-    The number is stored using a 5‑bit mantissa (in two’s complement) and a 4‑bit exponent (in two’s complement).  
-    The given representation is:  
-    <strong>Mantissa = 00011</strong> and <strong>Exponent = 0010</strong>.
-  </p>
-  <p>
-    This represents the value 3 × 2^(2) = 12. To normalize, we want to write 12 as 12 × 2^(0) and then convert:
-  </p>
-  <p>
-    Normalized mantissa (5‑bit binary) = 01100  
-    Normalized exponent (4‑bit binary) = 0000  
-    So, the final normalized representation is <strong>01100 0000</strong>.
+    The numbers below are represented in floating point format with a 5‑bit mantissa in two’s complement followed by a 4‑bit exponent in two’s complement.
+    <br><br>
+    <strong>Mantissa = 00011</strong>  
+    <strong>Exponent = 0010</strong>
+    <br><br>
+    Normalise the number shown above, showing your working.
   </p>
   <pre>
-Step 1: Read representation
+Step 1: Read the representation.
   Enter Mantissa (5-bit): ______ 
   Enter Exponent (4-bit): ______
 
-Step 2: Calculate denary value
-  Calculate 3 * 2^(2) = ______
+Step 2: Calculate the denary value.
+  (Calculation: 3 * 2^(2) = ______)
 
-Step 3: Write normalized representation
-  Enter normalized mantissa (5-bit): ______ 
-  Enter normalized exponent (4-bit): ______
+Step 3: Enter the normalised value.
+  (It should start with "01" because the number is positive)
+  Enter normalised Mantissa (5-bit): ______ 
+  Enter normalised Exponent (4-bit): ______
   </pre>
   <table>
     <tr>
@@ -97,15 +90,15 @@ Step 3: Write normalized representation
         <strong>Step 1:</strong> Enter the original values.
       </td>
       <td>
-        Mantissa: <input type="text" id="step1_mantissa" size="6">
+        Mantissa: <input type="text" id="step1_mantissa" size="8">
       </td>
       <td>
-        Exponent: <input type="text" id="step1_exponent" size="6">
+        Exponent: <input type="text" id="step1_exponent" size="8">
       </td>
     </tr>
     <tr>
       <td>
-        <strong>Step 2:</strong> Calculate the value (3 * 2^(2) = ?)
+        <strong>Step 2:</strong> Calculate the denary value.
       </td>
       <td colspan="2">
         Denary value: <input type="text" id="step2_value" size="10">
@@ -113,16 +106,16 @@ Step 3: Write normalized representation
     </tr>
     <tr>
       <td>
-        <strong>Step 3:</strong> Enter normalized representation.
+        <strong>Step 3:</strong> Enter the normalised value<br>(It should start with "01")
       </td>
       <td>
-        Normalized Mantissa: <input type="text" id="step3_mantissa" size="6">
+        Normalised Mantissa: <input type="text" id="step3_mantissa" size="8">
       </td>
       <td>
-        Normalized Exponent: <input type="text" id="step3_exponent" size="6">
+        Normalised Exponent: <input type="text" id="step3_exponent" size="8">
       </td>
     </tr>
   </table>
-  <button onclick="checkAnswersNormalization()">Check Answers</button>
+  <button onclick="checkAnswersNormalisation()">Check Answers</button>
 </body>
 </html>
