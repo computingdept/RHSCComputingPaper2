@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Floating Point Normalisation Challenge</title>
+  <title>Floating Point Normalisation - Two Challenges</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -26,87 +26,169 @@
       font-size: 1em;
       cursor: pointer;
     }
+    h2 {
+      margin-top: 40px;
+      border-top: 2px solid #999;
+      padding-top: 20px;
+    }
   </style>
   <script>
-    function checkAnswersNormalisation() {
-      // Expected answers:
-      // Step 1: Mantissa = "00011", Exponent = "0010"
-      // Step 2: Denary value = "12"  (3 * 2^2)
-      // Step 3: Normalised mantissa = "01100", Normalised exponent = "0000"
-
-      let expected = {
+    function checkAllAnswers() {
+      // Challenge 1: expected answers
+      // Step 1 (W): "00011", "0010"
+      // Step 2 (I): "12"
+      // Step 3 (N): "01100", "0000"
+      const c1_expected = {
         step1_mantissa: "00011",
         step1_exponent: "0010",
         step2_value: "12",
         step3_mantissa: "01100",
         step3_exponent: "0000"
       };
-      
-      const s1mantissa = document.getElementById("step1_mantissa");
-      const s1exponent = document.getElementById("step1_exponent");
-      const s2value    = document.getElementById("step2_value");
-      const s3mantissa = document.getElementById("step3_mantissa");
-      const s3exponent = document.getElementById("step3_exponent");
-      
-      s1mantissa.style.backgroundColor = 
-        (s1mantissa.value.trim() === expected.step1_mantissa) ? "lightgreen" : "lightcoral";
-      s1exponent.style.backgroundColor = 
-        (s1exponent.value.trim() === expected.step1_exponent) ? "lightgreen" : "lightcoral";
-      s2value.style.backgroundColor = 
-        (s2value.value.trim() === expected.step2_value) ? "lightgreen" : "lightcoral";
-      s3mantissa.style.backgroundColor = 
-        (s3mantissa.value.trim() === expected.step3_mantissa) ? "lightgreen" : "lightcoral";
-      s3exponent.style.backgroundColor = 
-        (s3exponent.value.trim() === expected.step3_exponent) ? "lightgreen" : "lightcoral";
+
+      // Challenge 2: expected answers
+      // (Currently placeholders. Feel free to update if you know them.)
+      const c2_expected = {
+        step1_mantissa: "11100",
+        step1_exponent: "0110",
+        step2_value: "?",
+        step3_mantissa: "?",
+        step3_exponent: "?"
+      };
+
+      // CHALLENGE 1 FIELDS
+      const c1_s1m = document.getElementById("c1_step1_mantissa");
+      const c1_s1e = document.getElementById("c1_step1_exponent");
+      const c1_s2v = document.getElementById("c1_step2_value");
+      const c1_s3m = document.getElementById("c1_step3_mantissa");
+      const c1_s3e = document.getElementById("c1_step3_exponent");
+
+      // CHALLENGE 2 FIELDS
+      const c2_s1m = document.getElementById("c2_step1_mantissa");
+      const c2_s1e = document.getElementById("c2_step1_exponent");
+      const c2_s2v = document.getElementById("c2_step2_value");
+      const c2_s3m = document.getElementById("c2_step3_mantissa");
+      const c2_s3e = document.getElementById("c2_step3_exponent");
+
+      // Helper to check an individual field
+      function checkField(inputElem, correctVal) {
+        const userVal = inputElem.value.trim();
+        if (correctVal === "?" || correctVal === "") {
+          // If we have no known correct value, do not highlight
+          inputElem.style.backgroundColor = "";
+        } else {
+          inputElem.style.backgroundColor =
+            (userVal === correctVal) ? "lightgreen" : "lightcoral";
+        }
+      }
+
+      // Challenge 1 checks
+      checkField(c1_s1m, c1_expected.step1_mantissa);
+      checkField(c1_s1e, c1_expected.step1_exponent);
+      checkField(c1_s2v, c1_expected.step2_value);
+      checkField(c1_s3m, c1_expected.step3_mantissa);
+      checkField(c1_s3e, c1_expected.step3_exponent);
+
+      // Challenge 2 checks
+      checkField(c2_s1m, c2_expected.step1_mantissa);
+      checkField(c2_s1e, c2_expected.step1_exponent);
+      checkField(c2_s2v, c2_expected.step2_value);
+      checkField(c2_s3m, c2_expected.step3_mantissa);
+      checkField(c2_s3e, c2_expected.step3_exponent);
     }
   </script>
 </head>
 <body>
-  <h2>Floating Point Normalisation Challenge</h2>
+  <h1>Floating Point Normalisation - Two Challenges</h1>
+
+  <!-- CHALLENGE 1 -->
+  <h2>Challenge 1</h2>
   <p>
-    The numbers below are represented in floating point format with a 5‑bit mantissa in two’s complement followed by a 4‑bit exponent in two’s complement.
-    <br><br>
-    <strong>Mantissa = 00011</strong>  
-    <strong>Exponent = 0010</strong>
-    <br><br>
-    Normalise the number shown above, showing your working.
+    Mantissa (5 bits) = <strong>00011</strong>, Exponent (4 bits) = <strong>0010</strong><br>
+    Normalise this number, showing your working.
   </p>
-  
   <table>
     <tr>
+      <td><strong>Step 1 (<span style="font-weight:bold;">W</span>):</strong> Write down original.</td>
       <td>
-        <strong>Step 1:</strong> Enter the original values.
+        Mantissa (5-bit):
+        <input type="text" id="c1_step1_mantissa" size="6">
       </td>
       <td>
-        Mantissa (5-bit): <input type="text" id="step1_mantissa" size="8">
-      </td>
-      <td>
-        Exponent (4-bit): <input type="text" id="step1_exponent" size="8">
+        Exponent (4-bit):
+        <input type="text" id="c1_step1_exponent" size="6">
       </td>
     </tr>
     <tr>
       <td>
-        <strong>Step 2:</strong> Calculate the denary value  
-        <br>(Calculation: 3 × 2<sup>2</sup>)
+        <strong>Step 2 (<span style="font-weight:bold;">I</span>):</strong> Identify the denary value<br>
+        (Calculation: 3 × 2<sup>2</sup>)
       </td>
       <td colspan="2">
-        Denary value: <input type="text" id="step2_value" size="8">
+        Denary value:
+        <input type="text" id="c1_step2_value" size="6">
       </td>
     </tr>
     <tr>
       <td>
-        <strong>Step 3:</strong> Enter the normalised value  
-        <br>(Should start with "01" because it's positive)
+        <strong>Step 3 (<span style="font-weight:bold;">N</span>):</strong> Normalise<br>
+        (Should start with "01" if positive)
       </td>
       <td>
-        Normalised Mantissa (5-bit): <input type="text" id="step3_mantissa" size="8">
+        Normalised Mantissa (5-bit):
+        <input type="text" id="c1_step3_mantissa" size="6">
       </td>
       <td>
-        Normalised Exponent (4-bit): <input type="text" id="step3_exponent" size="8">
+        Normalised Exponent (4-bit):
+        <input type="text" id="c1_step3_exponent" size="6">
       </td>
     </tr>
   </table>
-  
-  <button onclick="checkAnswersNormalisation()">Check Answers</button>
+
+  <!-- CHALLENGE 2 -->
+  <h2>Challenge 2</h2>
+  <p>
+    Mantissa (5 bits) = <strong>11100</strong>, Exponent (4 bits) = <strong>0110</strong><br>
+    Normalise this number, showing your working.
+  </p>
+  <table>
+    <tr>
+      <td><strong>Step 1 (<span style="font-weight:bold;">W</span>):</strong> Write down original.</td>
+      <td>
+        Mantissa (5-bit):
+        <input type="text" id="c2_step1_mantissa" size="6">
+      </td>
+      <td>
+        Exponent (4-bit):
+        <input type="text" id="c2_step1_exponent" size="6">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Step 2 (<span style="font-weight:bold;">I</span>):</strong> Identify the denary value<br>
+        (Fill in your own calculation)
+      </td>
+      <td colspan="2">
+        Denary value:
+        <input type="text" id="c2_step2_value" size="6">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Step 3 (<span style="font-weight:bold;">N</span>):</strong> Normalise<br>
+        (Should start with "0" if positive, or "1" if negative, etc.)
+      </td>
+      <td>
+        Normalised Mantissa (5-bit):
+        <input type="text" id="c2_step3_mantissa" size="6">
+      </td>
+      <td>
+        Normalised Exponent (4-bit):
+        <input type="text" id="c2_step3_exponent" size="6">
+      </td>
+    </tr>
+  </table>
+
+  <button onclick="checkAllAnswers()">Check All Answers</button>
 </body>
 </html>
