@@ -135,3 +135,29 @@
   <button onclick="checkAnswer('q5')">Check Answer</button>
   <div class="result" id="result-q5"></div>
 </div>
+
+<script>
+  const correctAnswers = {
+    q1: "04",
+    q2: ["sensorType", "sensorNumber", "sensorID"],
+    q3: "Boolean",
+    q4: ["02", "05"],
+    q5: "02"
+  };
+
+  function checkAnswer(questionId) {
+    const input = document.getElementById(questionId).value.trim();
+    const resultDiv = document.getElementById("result-" + questionId);
+    let isCorrect = false;
+    const correct = correctAnswers[questionId];
+
+    if (Array.isArray(correct)) {
+      isCorrect = correct.map(a => a.toLowerCase()).includes(input.toLowerCase());
+    } else {
+      isCorrect = input.toLowerCase() === correct.toLowerCase();
+    }
+
+    resultDiv.innerHTML = isCorrect ? "✅ Correct!" : "❌ Incorrect.";
+  }
+</script>
+</div>
