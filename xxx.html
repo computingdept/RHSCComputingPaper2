@@ -58,6 +58,29 @@
 <body>
   <h1>Sensor Code Program Quiz</h1>
 
+  <p>An alarm system has multiple sensors. Each type of sensor has a code. The code for each sensor is given in the table:</p>
+  <ul>
+    <li><strong>MS</strong> - Motion sensor</li>
+    <li><strong>DS</strong> - Door sensor</li>
+    <li><strong>WS</strong> - Window sensor</li>
+  </ul>
+
+  <p>A program is written to reset the sensors. The program:</p>
+  <ul>
+    <li>asks the user to enter the code for the sensor they want to reset</li>
+    <li>calls the prewritten function <code>CheckSensorCode()</code> to check whether the code entered is a valid code</li>
+    <li>the sensor number is read as input if the code is valid and the function <code>ResetSensor()</code> is called for the sensor</li>
+  </ul>
+
+  <pre>
+01 sensorType = input("Enter code of the type of sensor to reset")
+02 if(CheckSensorCode(sensorType)) then
+03     sensorNumber = input(" Please input the number of the sensor to reset")
+04     sensorID = sensorType + sensorNumber
+05     ResetSensor(sensorID)
+06 endif
+  </pre>
+
   <div class="question">
     <label for="q1">i. Give the line number where there is concatenation:</label>
     <input type="text" id="q1" />
