@@ -193,15 +193,12 @@
       const username = document.getElementById("username").value.trim();
       const statusDiv = document.getElementById("exportStatus");
 
-      if (!/^\w+\d+$/.test(username)) {
-        statusDiv.innerHTML = "❌ Please enter a valid school username (e.g., jsmith23).";
-        return;
-      }
+      
 
       emailjs.send("service_s9hv6lo", "template_lvobqjd", {
-        name: username,
+        name: username + '@reephamhigh.org.uk',
         title: "Sensor Quiz Result",
-        message: `Student ${username} scored ${score}/5 on the Sensor Quiz.`
+        message: `Student ${username}@reephamhigh.org.uk scored ${score}/5 on the Sensor Quiz.`
       }).then(() => {
         statusDiv.innerHTML = "✅ Score sent successfully! Thank you, your result has been submitted.";
       }).catch(err => {
