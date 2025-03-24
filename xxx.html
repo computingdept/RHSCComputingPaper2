@@ -53,13 +53,18 @@
       white-space: pre-wrap;
       margin-bottom: 20px;
     }
+    #emailExport {
+      margin-top: 30px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
   <h1>Sensor Code Program Quiz</h1>
 
   <p>An alarm system has multiple sensors. Each type of sensor has a code. The code for each sensor is given in the table:</p>
-
   <ul>
     <li><strong>MS</strong> - Motion sensor</li>
     <li><strong>DS</strong> - Door sensor</li>
@@ -82,40 +87,7 @@
 06 endif
   </pre>
 
-  <div class="question">
-    <label for="q1">i. Give the line number where there is concatenation (e.g. 04):</label>
-    <input type="text" id="q1" />
-    <button onclick="checkAnswer('q1')">Check Answer</button>
-    <div class="result" id="result-q1"></div>
-  </div>
-
-  <div class="question">
-    <label for="q2">ii. Give the identifier of a variable used in the program:</label>
-    <input type="text" id="q2" />
-    <button onclick="checkAnswer('q2')">Check Answer</button>
-    <div class="result" id="result-q2"></div>
-  </div>
-
-  <div class="question">
-    <label for="q3">iii. Identify the data type of the data returned by the function CheckSensorCode():</label>
-    <input type="text" id="q3" />
-    <button onclick="checkAnswer('q3')">Check Answer</button>
-    <div class="result" id="result-q3"></div>
-  </div>
-
-  <div class="question">
-    <label for="q4">iv. Give the line number that contains a function call (e.g. 02 or 05):</label>
-    <input type="text" id="q4" />
-    <button onclick="checkAnswer('q4')">Check Answer</button>
-    <div class="result" id="result-q4"></div>
-  </div>
-
-  <div class="question">
-    <label for="q5">v. Identify the line where a selection construct is used (e.g. 02):</label>
-    <input type="text" id="q5" />
-    <button onclick="checkAnswer('q5')">Check Answer</button>
-    <div class="result" id="result-q5"></div>
-  </div>
+  <div id="questions"></div>
 
   <div id="scoreDisplay">Score: <span id="score">0</span>/5</div>
   <div id="finalFeedback"></div>
@@ -123,44 +95,52 @@
   <button onclick="showFinalFeedback()">Show Final Feedback</button>
   <button onclick="resetQuiz()">Reset Quiz</button>
 
+  <!-- (existing content unchanged) -->
+
+  <div id="emailExport">
+    <h3>Export Your Score</h3>
+    <label for="username">Enter your school username:</label>
+    <input type="text" id="username" placeholder="jsmith23" />
+    <button onclick="exportResults()">Email My Score</button>
+    <div id="exportStatus"></div>
+  </div>
+
   <script>
-    const correctAnswers = {
-      q1: "04",
-      q2: ["sensorType", "sensorNumber", "sensorID"],
-      q3: "Boolean",
-      q4: ["02", "05"],
-      q5: "02"
-    };
+    const questions = [
+      { id: "q1", text: "i. Give the line number where there is concatenation:", answer: "04" },
+      { id: "q2", text: "ii. Give the identifier of a variable used in the program:", answer: ["sensorType", "sensorNumber", "sensorID"] },
+      { id: "q3", text: "iii. Identify the data type of the data returned by the function CheckSensorCode():", answer: "Boolean" },
+      { id: "q4", text: "iv. Give the line number that contains a function call:", answer: ["02", "05"] },
+      { id: "q5", text: "v. Identify the line where a selection construct is used:", answer: "02" }
+    ];
 
     let score = 0;
     const answered = {};
+    const container = document.getElementById("questions");
+
+    questions.forEach(q => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `
+        <label for="${q.id}">${q.text}</label>
+        <input type="text" id="${q.id}" />
+        <button onclick="checkAnswer('${q.id}')">Check Answer</button>
+        <div class="result" id="result-${q.id}"></div>
+      `;
+      container.appendChild(div);
+    });
 
     function checkAnswer(questionId) {
       const input = document.getElementById(questionId).value.trim();
       const resultDiv = document.getElementById("result-" + questionId);
+      const correct = questions.find(q => q.id === questionId).answer;
       let isCorrect = false;
 
-      if (questionId === "q2" || questionId === "q3") {
+      if (Array.isArray(correct)) {
         const inputLower = input.toLowerCase();
-        if (questionId === "q2") {
-          const matches = correctAnswers[questionId].filter(val => val.toLowerCase() === inputLower);
-          isCorrect = matches.length > 0;
-          if (!isCorrect) {
-            const nearMatch = correctAnswers[questionId].find(val => val.toLowerCase().includes(inputLower) || inputLower.includes(val.toLowerCase()));
-            resultDiv.innerHTML = nearMatch ? `❌ Incorrect. Did you mean "${nearMatch}"?` : "❌ Incorrect.";
-            return;
-          }
-        } else if (questionId === "q3") {
-          isCorrect = inputLower === correctAnswers[questionId].toLowerCase();
-          if (!isCorrect && inputLower.includes("bool")) {
-            resultDiv.innerHTML = "❌ Incorrect. Very close! Hint: It starts with 'Boo...'";
-            return;
-          }
-        }
-      } else if (Array.isArray(correctAnswers[questionId])) {
-        isCorrect = correctAnswers[questionId].includes(input);
+        isCorrect = correct.some(val => val.toLowerCase() === inputLower);
       } else {
-        isCorrect = input === correctAnswers[questionId];
+        isCorrect = input.toLowerCase() === correct.toLowerCase();
       }
 
       if (isCorrect) {
@@ -171,30 +151,54 @@
           answered[questionId] = true;
         }
       } else {
-        resultDiv.innerHTML = "❌ Incorrect. Hint: use two-digit format, e.g. 02.";
+        if (questionId === "q1" || questionId === "q4" || questionId === "q5") {
+          resultDiv.innerHTML = "❌ Incorrect. Hint: Use a two-digit number like 02";
+        } else if (questionId === "q2" || questionId === "q3") {
+          resultDiv.innerHTML = "❌ Incorrect. Hint: Check for spelling or capital letters.";
+        } else {
+          resultDiv.innerHTML = "❌ Incorrect.";
+        }
       }
     }
 
     function showFinalFeedback() {
       const feedback = document.getElementById("finalFeedback");
       if (score === 5) {
-        feedback.innerHTML = "🌟 Excellent! You got all answers right!";
+        feedback.innerHTML = "🌟 Perfect score! Great job.";
       } else if (score >= 3) {
-        feedback.innerHTML = "✅ Well done! You're nearly there. Review the ones you missed.";
+        feedback.innerHTML = "👍 Good effort! Review the ones you missed.";
       } else {
-        feedback.innerHTML = "📘 Keep practicing! Review the code and try again.";
+        feedback.innerHTML = "📘 Keep practicing! You'll get it.";
       }
     }
 
     function resetQuiz() {
       score = 0;
-      for (const q in correctAnswers) {
-        document.getElementById(q).value = "";
-        document.getElementById("result-" + q).innerHTML = "";
-        answered[q] = false;
-      }
+      questions.forEach(q => {
+        document.getElementById(q.id).value = "";
+        document.getElementById("result-" + q.id).innerHTML = "";
+        answered[q.id] = false;
+      });
       document.getElementById("score").textContent = "0";
       document.getElementById("finalFeedback").innerHTML = "";
+      document.getElementById("username").value = "";
+      document.getElementById("exportStatus").innerHTML = "";
+    }
+
+    function exportResults() {
+      const username = document.getElementById("username").value.trim();
+      const statusDiv = document.getElementById("exportStatus");
+
+      if (!/^\w+\d+$/.test(username)) {
+        statusDiv.innerHTML = "❌ Please enter a valid school username (first initial, last name, number).";
+        return;
+      }
+
+      const body = `Student Username: ${username}\nScore: ${score}/5`;
+      const mailtoLink = `mailto:computingdept@reephamhigh.org.uk?subject=Sensor Quiz Result&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
+      statusDiv.innerHTML = "✅ Email client opened. Please click send.";
     }
   </script>
 </body>
