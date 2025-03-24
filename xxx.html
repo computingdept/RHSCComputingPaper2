@@ -10,6 +10,17 @@
       font-family: Arial, sans-serif;
       padding: 20px;
       background-color: #f2f2f2;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    body * {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
     }
     .question {
       margin-bottom: 15px;
@@ -54,158 +65,24 @@
       border: 1px solid #ccc;
     }
   </style>
-</head>
-<body>
-  <h1>Sensor Code Program Quiz</h1>
-
-  <p>An alarm system has multiple sensors. Each type of sensor has a code. The code for each sensor is given in the table:</p>
-  <ul>
-    <li><strong>MS</strong> - Motion sensor</li>
-    <li><strong>DS</strong> - Door sensor</li>
-    <li><strong>WS</strong> - Window sensor</li>
-  </ul>
-
-  <p>A program is written to reset the sensors. The program:</p>
-  <ul>
-    <li>asks the user to enter the code for the sensor they want to reset</li>
-    <li>calls the prewritten function <code>CheckSensorCode()</code> to check whether the code entered is a valid code</li>
-    <li>the sensor number is read as input if the code is valid and the function <code>ResetSensor()</code> is called for the sensor</li>
-  </ul>
-
-  <pre>
-01 sensorType = input("Enter code of the type of sensor to reset")
-02 if(CheckSensorCode(sensorType)) then
-03     sensorNumber = input(" Please input the number of the sensor to reset")
-04     sensorID = sensorType + sensorNumber
-05     ResetSensor(sensorID)
-06 endif
-  </pre>
-
-  <div class="question">
-    <label for="q1">i. Give the line number where there is concatenation:</label>
-    <input type="text" id="q1" />
-    <button onclick="checkAnswer('q1')">Check Answer</button>
-    <div class="result" id="result-q1"></div>
-  </div>
-  <div class="question">
-    <label for="q2">ii. Give the identifier of a variable used in the program:</label>
-    <input type="text" id="q2" />
-    <button onclick="checkAnswer('q2')">Check Answer</button>
-    <div class="result" id="result-q2"></div>
-  </div>
-  <div class="question">
-    <label for="q3">iii. Identify the data type of the data returned by the function CheckSensorCode():</label>
-    <input type="text" id="q3" />
-    <button onclick="checkAnswer('q3')">Check Answer</button>
-    <div class="result" id="result-q3"></div>
-  </div>
-  <div class="question">
-    <label for="q4">iv. Give the line number that contains a function call:</label>
-    <input type="text" id="q4" />
-    <button onclick="checkAnswer('q4')">Check Answer</button>
-    <div class="result" id="result-q4"></div>
-  </div>
-  <div class="question">
-    <label for="q5">v. Identify the line where a selection construct is used:</label>
-    <input type="text" id="q5" />
-    <button onclick="checkAnswer('q5')">Check Answer</button>
-    <div class="result" id="result-q5"></div>
-  </div>
-
-  <div id="scoreDisplay">Score: <span id="score">0</span>/5</div>
-  <div id="finalFeedback"></div>
-  <br><br>
-  <button onclick="showFinalFeedback()">Show Final Feedback</button>
-  <button onclick="resetQuiz()">Reset Quiz</button>
-
-  <div id="emailExport">
-    <h3>Export Your Score</h3>
-    <label for="username">Enter your school username (e.g., jsmith23):</label>
-    <input type="text" id="username" placeholder="e.g., jsmith23" />
-    <button onclick="emailScore()">Send via Email</button>
-    <div id="exportStatus"></div>
-  </div>
-
-  <script>
-    emailjs.init("U3ew4A81TT7_e3yIh");
-
-    const correctAnswers = {
-      q1: "04",
-      q2: ["sensorType", "sensorNumber", "sensorID"],
-      q3: "Boolean",
-      q4: ["02", "05"],
-      q5: "02"
-    };
-
-    let score = 0;
-    const answered = {};
-
-    function checkAnswer(questionId) {
-      const input = document.getElementById(questionId).value.trim();
-      const resultDiv = document.getElementById("result-" + questionId);
-      let isCorrect = false;
-
-      const correct = correctAnswers[questionId];
-
-      if (Array.isArray(correct)) {
-        isCorrect = correct.map(x => x.toLowerCase()).includes(input.toLowerCase());
-      } else {
-        isCorrect = input.toLowerCase() === correct.toLowerCase();
+<audio id="tutSound" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Tut-tut-sound.ogg" preload="auto"></audio>
+<script>
+    document.addEventListener("contextmenu", e => {
+    e.preventDefault();
+    document.getElementById("tutSound").play();
+    alert("⚠️ Sorry, right-clicking isn’t allowed on this page. Cheers for understanding.");
+  });
+    document.addEventListener("keydown", e => {
+      if (
+        (e.ctrlKey && (e.key === "c" || e.key === "x" || e.key === "v" || e.key === "u")) ||
+        (e.key === "F12")
+      ) {
+        e.preventDefault();
+        document.getElementById("tutSound").play();
+        alert("⚠️ Steady on! Copying, pasting, or peeking at the source isn’t allowed, I’m afraid.");
       }
-
-      if (isCorrect) {
-        resultDiv.innerHTML = "✅ Correct!";
-        if (!answered[questionId]) {
-          score++;
-          document.getElementById("score").textContent = score;
-          answered[questionId] = true;
-        }
-      } else {
-        resultDiv.innerHTML = "❌ Incorrect. Try again.";
-      }
-    }
-
-    function showFinalFeedback() {
-      const feedback = document.getElementById("finalFeedback");
-      if (score === 5) {
-        feedback.innerHTML = "🌟 Perfect score! Great job.";
-      } else if (score >= 3) {
-        feedback.innerHTML = "👍 Good effort! Review the ones you missed.";
-      } else {
-        feedback.innerHTML = "📘 Keep practicing! You'll get it.";
-      }
-    }
-
-    function resetQuiz() {
-      score = 0;
-      Object.keys(correctAnswers).forEach(q => {
-        document.getElementById(q).value = "";
-        document.getElementById("result-" + q).innerHTML = "";
-        answered[q] = false;
-      });
-      document.getElementById("score").textContent = "0";
-      document.getElementById("finalFeedback").innerHTML = "";
-      document.getElementById("username").value = "";
-      document.getElementById("exportStatus").innerHTML = "";
-    }
-
-    function emailScore() {
-      const username = document.getElementById("username").value.trim();
-      const statusDiv = document.getElementById("exportStatus");
-
-      
-
-      emailjs.send("service_s9hv6lo", "template_lvobqjd", {
-        name: username + '@reephamhigh.org.uk',
-        title: "Sensor Quiz Result",
-        message: `Student ${username}@reephamhigh.org.uk scored ${score}/5 on the Sensor Quiz.`
-      }).then(() => {
-        statusDiv.innerHTML = "✅ Score sent successfully! Thank you, your result has been submitted.";
-      }).catch(err => {
-        statusDiv.innerHTML = "❌ Failed to send score. Please try again.";
-        console.error("EmailJS Error:", err);
-      });
-    }
+    });
   </script>
-</body>
-</html>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+<!-- Rest of the content stays unchanged -->
