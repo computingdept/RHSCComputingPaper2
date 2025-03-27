@@ -67,7 +67,7 @@
       // Row 1 (Line 01): Subprogram called: procedure open("sample.txt")
       // Row 2 (Line 02): Output: "File sample.txt opened"
       let correctValues = [
-        ["01", "procedure open(\"sample.txt\")", ""],
+        ["01", "open("sample.txt), ""],
         ["02", "", "File sample.txt opened"]
       ];
       let table = document.getElementById("traceTableQ1");
@@ -89,8 +89,8 @@
       // Row 2 (Line 02): procedure close() called on myFile
       // Row 3 (Line 03): Output: "File closed"
       let correctValues = [
-        ["01", "procedure open(\"sample.txt\")", ""],
-        ["02", "procedure close()", ""],
+        ["01", "open("sample.txt")", ""],
+        ["02", "close()", ""],
         ["03", "", "File closed"]
       ];
       let table = document.getElementById("traceTableQ2");
@@ -113,8 +113,8 @@
       // Row 2 (Line 02): function readLine() called, returns "Hello, world!"
       // Row 3 (Line 03): Output: "Hello, world!"
       let correctValues = [
-        ["01", "procedure open(\"sample.txt\")", ""],
-        ["02", "function readLine()", "line = Hello, world!"],
+        ["01", "procedure open("sample.txt"), ""],
+        ["02", "readLine()", ""],
         ["03", "", "Hello, world!"]
       ];
       let table = document.getElementById("traceTableQ3");
@@ -136,8 +136,8 @@
       // Row 2 (Line 02): procedure writeLine("Add new line") called
       // Row 3 (Line 03): Output: "Line added"
       let correctValues = [
-        ["01", "procedure open(\"sample.txt\")", ""],
-        ["02", "procedure writeLine(\"Add new line\")", ""],
+        ["01", "open("sample.txt")", ""],
+        ["02", "writeLine("Add new line")", ""],
         ["03", "", "Line added"]
       ];
       let table = document.getElementById("traceTableQ4");
@@ -163,11 +163,11 @@
       // Row 5 (Line 03): function readLine() called, returns "Third"
       // Row 6 (Line 04): Loop ends; Output: "First", "Second", "Third" printed sequentially
       let correctValues = [
-        ["01", "procedure open(\"sample.txt\")", ""],
+        ["01", "procedure open("sample.txt")", ""],
         ["02", "while NOT endOfFile()", ""],
-        ["03", "function readLine()", "First"],
-        ["03", "function readLine()", "Second"],
-        ["03", "function readLine()", "Third"],
+        ["03", "readLine()", ""],
+        ["03", "readLine()", ""],
+        ["03", "readLine()", ""],
         ["04", "", "End of file reached"]
       ];
       let table = document.getElementById("traceTableQ5");
